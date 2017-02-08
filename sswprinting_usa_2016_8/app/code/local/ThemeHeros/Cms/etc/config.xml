@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <ThemeHeros_Cms>
+            <version>0.1.0</version>
+        </ThemeHeros_Cms>
+    </modules>
+    <global>
+        <blocks>
+            <themeheros_cms>
+                <class>ThemeHeros_Cms_Block</class>
+            </themeheros_cms>
+        </blocks>
+        <models>
+            <themeheros_cms>
+                <class>ThemeHeros_Cms_Model</class>
+            </themeheros_cms>
+        </models>
+        <helpers>
+            <themeheros_cms>
+                <class>ThemeHeros_Cms_Helper</class>
+            </themeheros_cms>
+        </helpers>
+        <resources>
+            <themeheros_cms_setup>
+                <setup>
+                    <module>ThemeHeros_Cms</module>
+                    <class>ThemeHeros_Cms_Model_Resource_Setup</class>
+                </setup>
+                <setup>
+                </setup>
+            </themeheros_cms_setup>
+        </resources>
+    </global>
+</config>

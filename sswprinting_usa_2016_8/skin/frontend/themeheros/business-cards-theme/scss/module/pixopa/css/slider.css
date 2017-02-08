@@ -1,0 +1,163 @@
+.jcarousel-skin-tango .jcarousel-container {
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal {
+    margin:0;
+    width:1200px;
+    padding:0px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip {
+    overflow:hidden;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-horizontal {
+    width:1200px;
+}
+
+.jcarousel-skin-tango .jcarousel-item {
+    width:252px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal {
+	margin:0;
+    position:relative;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left:0;
+    margin-right: 0;
+}
+
+#fileupload_box{display:none;}
+
+/**
+ *  Horizontal Buttons
+ */
+ 
+ .product-block .jcarousel-next-horizontal, .product-block .jcarousel-prev-horizontal { top: -76px;}
+ .information .jcarousel-next-horizontal, .information .jcarousel-prev-horizontal{top:0;}
+ 
+#carousel1 .jcarousel-next-horizontal, #carousel1 .jcarousel-prev-horizontal,
+#carousel2 .jcarousel-next-horizontal, #carousel2 .jcarousel-prev-horizontal,
+#tabs .jcarousel-next-horizontal, #tabs .jcarousel-prev-horizontal {top:-85px }
+.box-up-sell .jcarousel-next-horizontal, .box-up-sell .jcarousel-prev-horizontal {top:-73px }
+
+.jcarousel-next-horizontal, .jcarousel-prev-horizontal  {display:block; position:absolute; width:39px; height:39px; background-image: url("../images/arrow_about.png"); background-repeat:no-repeat;}
+.jcarousel-prev-horizontal {margin:0; right:40px; background-position:100% 0;  top: -85px;}
+.jcarousel-next-horizontal {margin:0; right:0; top: -85px;}
+.jcarousel-prev-horizontal.jcarousel-prev-disabled-horizontal, .jcarousel-next-horizontal.jcarousel-next-disabled-horizontal {background-color:#eceeec;}
+
+.catalogsearch-result-index .jcarousel-next-horizontal, .catalogsearch-result-index .jcarousel-prev-horizontal, .catalog-category-view .jcarousel-next-horizontal, .catalog-category-view .jcarousel-prev-horizontal, .cms-page-view .jcarousel-prev-horizontal, .cms-page-view  .jcarousel-next-horizontal {display:none !important;}
+
+
+
+
+
+#loginForm {float: left;}
+
+.ui-draggable{z-index:1000}
+
+#dialog_box_overlay {
+    background: black;
+    opacity: .5;
+    height:100%;
+    left:0;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index: 5006;
+}
+
+#updating_box .desc{
+    position:fixed;
+    top:50%;
+    left:50%;
+    padding:20px;
+    background: #fff;
+}
+
+#updating_box_container {
+    position: absolute;
+    text-align: center;
+    left: 48.5%;
+    top: 46%;
+    margin-left: -150px;    
+    margin-top: -80px;
+    position:fixed;
+    z-index:5007;
+    background: #fff;
+}
+
+.desc{font-size:12px;border-radius:5px;}
+.desc img{
+     margin: -3px -3px -3px 10px;
+}
+
+#image_association_box_content.prompt {
+    height: 75px;
+}
+
+#image_association_box_content p {
+    margin: 10px;
+    line-height: 1.3em;
+}
+
+
+
+
+#image_association_box_container, #filepload_box_content {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#image_association_box_buttons input[type=text] {
+    width: 90%;
+    display: block;
+    margin: 0 0 5px 11px;
+}
+
+#image_association_box_buttons input[type=button] {
+    margin: 0 1em;
+}
+
+#fileupload_box {
+    display: none;
+    width:340px !important;
+    padding:0px !important;
+}
+
+
+
+
+
+#fileupload_box_content.prompt {
+    height: 75px;
+}
+
+#fileupload_box_content.prompt {
+    height: 75px;
+}
+
+#fileupload_box h2 {
+    font-family:Verdana,Helvetica,sans-serif;
+    font-size:1.6em;
+}
+
+
+
+#fileupload_box_buttons input[type=text] {
+    width: 90%;
+    display: block;
+    margin: 0 0 5px 11px;
+}
+
+#fileupload_box_buttons input[type=button] {
+    margin: 0 1em;
+}
+

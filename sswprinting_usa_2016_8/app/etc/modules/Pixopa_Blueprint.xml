@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+   <Pixopa_Blueprint>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.1.0</version>
+      <depends>
+      	<Pixopa_Template />
+      </depends>
+   </Pixopa_Blueprint>
+</modules>
+</config>

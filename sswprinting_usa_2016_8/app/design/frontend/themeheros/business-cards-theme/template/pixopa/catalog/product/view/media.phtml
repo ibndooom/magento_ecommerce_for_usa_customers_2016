@@ -1,0 +1,190 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    
+    $template_id = $_product->getTemplate();
+	  
+	if(!$template_id){
+		$template_id = $this->getRequest()->getParam('template');
+	}
+	
+	$child_images_data = array();
+	
+	if($template_id){
+      	$template = Mage::getModel("template/template")->load($template_id);
+      	$name = $template->getName();
+      	$short_description = $template->getDescription();
+      	$child_images_data = Mage::helper('dol')->getChildImages($template_id);
+	}
+?>
+
+<?php if ($template_id): ?>
+
+<div class="product-img-wrapper">
+<p class="product-image product-image-zoom">
+    <?php
+    	$dimensions = Mage::helper('dol')->getResizedDisplayDimensions($template->getImagePath(), 640, 500);
+        $_img = '<img alt="progress image" id="progress_image" src="'.$this->getSkinUrl('images/opc-ajax-loader.gif').'" style="display:none;margin:0 auto;position:absolute;left:50%;top:50%;" /><a id="image_zoom" href="'.$template->getImagePath().'" class="mainimageZoom" rel="0"><img alt="design image" class="designImage" id="image" src="'.$template->getImagePath().'" alt="'.$this->htmlEscape($name).'" width="'.$dimensions['width'].'" height="'.$dimensions['height'].'" title="'.$this->htmlEscape($name).'" /></a>';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+</div>
+<script type="text/javascript">var fancy = true;</script>
+<!--[if lt IE 8]>
+<script type="text/javascript">
+
+$j('.product-image a').fancyzoom();
+
+  fancy = false      
+
+</script>
+<![endif]-->
+<script type="text/javascript">
+$j(function() {
+	if($j('.more-views').length>0){
+		if(fancy){
+		$j('.more-views a.imageZoom').lightBox({	
+			overlayOpacity: 0.6,
+			imageLoading: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)?>all/editor/images/lightbox-images/lightbox-ico-loading.gif',
+			imageBtnClose: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)?>all/editor/images/lightbox-images/lightbox-btn-close.gif',
+			imageBtnPrev: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)?>all/editor/images/lightbox-images/lightbox-btn-prev.gif',
+			imageBtnNext: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)?>all/editor/images/lightbox-images/lightbox-btn-next.gif',
+			containerResizeSpeed: 350	
+	   });
+		}
+	   $j('.mainimageZoom').click(function(e){
+	   		e.preventDefault();	   
+	   		$j('.more-views a[rel='+$j(this).attr("rel")+']').trigger('click',[true])
+	   })
+	   $j('.more-views a').bind('click',function(e,value){   		
+	   		e.preventDefault();	 
+	   		if (!value){ 		
+		   		if($j('#jquery-overlay').length>0){
+		   			$j('#jquery-overlay').remove();
+		   			$j('#jquery-lightbox').remove();
+		   		}
+
+		   		if($j('#image_zoom').attr('rev')=='1'){	   		
+			   		  $j('#image_zoom').attr('rev','0')
+		   		}else{
+		   			 $j('#image_zoom').attr('rev','1')
+		   		}
+	   		}
+	   		$j('#image_zoom').attr('rel',$j(this).attr("rel"));	   		
+	   		$j('#image_zoom').attr('href',$j(this).attr("href"));	   		
+	   		$j('#image_zoom img').attr('src',$j(this).children(0).attr('src'));
+	   })
+	   
+	}else{
+		if(fancy){
+			$j('a.mainimageZoom').lightBox({	
+				overlayOpacity: 0.6,
+				imageLoading: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)?>all/editor/images/lightbox-images/lightbox-ico-loading.gif',
+				imageBtnClose: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)?>all/editor/images/lightbox-images/lightbox-btn-close.gif',
+				imageBtnPrev: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)?>all/editor/images/lightbox-images/lightbox-btn-prev.gif',
+				imageBtnNext: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS)?>all/editor/images/lightbox-images/lightbox-btn-next.gif',
+				containerResizeSpeed: 350	
+		   });
+		}
+	}
+	var $sidebar   = $j('.product-img-box'), 
+        $window    = $j(window),
+        offset     = $sidebar.offset(),
+        topPadding = 15;
+		maxheight = $j('.product-essential').outerHeight()
+		boxWidth =  $j('.product-essential').outerWidth()
+		sliderheight = $j('.product-img-box').outerHeight()
+		console.log(maxheight);
+		console.log(sliderheight);
+		console.log(Math.abs(maxheight-sliderheight));
+		console.log(Math.abs(sliderheight-maxheight));
+	if(maxheight > 750 && boxWidth > 720){
+		$window.scroll(function() {		
+	        if ($window.scrollTop() > offset.top && $window.scrollTop() < Math.abs(maxheight-sliderheight)+offset.top-80){
+	            $sidebar.stop().animate({
+	                marginTop: $window.scrollTop() - offset.top
+	            });
+	        }else if($window.scrollTop() == 0){
+	        	$sidebar.stop().animate({
+	                marginTop: '0'
+	            });
+	        }else if($window.scrollTop() > Math.abs(maxheight-sliderheight)+offset.top-80) {
+	        	$sidebar.stop().animate({
+	                marginTop: (maxheight-sliderheight)-80
+	            });
+	        }
+	    });
+	}
+});
+</script>
+
+<?php else: ?>
+<p class="product-image">
+    <?php
+        $_img = '<a href="'.$this->helper('catalog/image')->init($_product, 'image').'" class="mainimageZoom" rel="0"><img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(600).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" /></a>';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+<?php endif; ?>
+<?php if ($child_images_data && count($child_images_data)>0): 
+
+$number_of_pages = Mage::helper('dol')->getNumberOfPages(null, count($child_images_data)+1);
+$page_labels = $number_of_pages['page_labels'];
+$image_count = 1;
+?>
+<div class="more-views">
+    <h2><?php echo Mage::helper('cms')->__('Design Sides') ?></h2>
+    <ul>
+    	<li>
+			<a href="<?php echo $template->getImagePath()?>" title="" class="imageZoom" rel="0" class="dImage">
+				<img src="<?php echo $template->getImagePath()?>" style="max-height:200px;max-width:145px;margin:0 auto;" alt="" class="dImage"/>
+        	</a>
+        	<br />
+        	<div style="text-align:center;"><?php echo $page_labels[0]?></div>
+       	</li>
+    <?php foreach ($child_images_data as $child_image): ?>
+        <li>
+			<a href="<?php echo $child_image['image_path']?>" title="" class="imageZoom" rel="<?php echo ($image_count);?>" class="dImage">
+                <img src="<?php echo $child_image['image_path']?>" style="max-height:200px;max-width:145px;margin:0 auto;" alt="" class="dImage"/>
+            </a>
+            <br />
+        	<div style="text-align:center;"><?php echo $page_labels[$image_count]; $image_count++;?></div>
+        </li>
+    <?php endforeach; ?>    
+    </ul>
+</div>
+<?php endif; ?>
+
+

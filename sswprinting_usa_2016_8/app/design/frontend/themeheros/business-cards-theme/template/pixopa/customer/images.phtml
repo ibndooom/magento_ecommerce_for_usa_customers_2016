@@ -1,0 +1,33 @@
+<div class="page-title">
+    <h1><?php echo Mage::helper('customer')->__('My Uploaded Images') ?></h1>
+</div>
+<?php 
+$messages = Mage::getSingleton("customer/session")->getMessages(true);
+echo $this->getLayout()->getMessagesBlock()->setMessages($messages)->getGroupedHtml();
+
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$images = Mage::helper('customer')->getCustomerAccountImages($customer);
+
+?>
+<?php if(!count($images)){?>
+<p class="note-msg"><?php echo $this->__('There are no images uploaded by user from Online Designer.') ?></p>
+<?php }?>
+
+<div class="category-products">
+
+<?php $_collectionSize = count($images) ?>
+<?php $_columnCount = 3; ?>
+<?php $i=0; foreach ($images as $image): ?>
+	<?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <a href="<?php echo $image->getImagePath(); ?>" target="_blank" title="My Image" class="product-image"><img class="designImage" src="<?php echo $image->getThumbnailPath(); ?>" alt="My Image" /></a>
+                <a href="/customer/images/delete/id/<?php echo $image->getImageId()?>" title="<?php echo $this->__('Delete Image') ?>"class="px-btn-remove2" ><?php echo $this->__('Delete Image');?></a>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+	<?php endif ?>
+<?php endforeach ?>
+                
+</div>

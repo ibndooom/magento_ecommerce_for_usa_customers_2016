@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Web4pro_Catalog>
+            <version>0.0.1</version>
+        </Web4pro_Catalog>
+    </modules>
+    <global>
+        <helpers>
+            <web4pro_catalog>
+                <class>Web4pro_Catalog_Helper</class>
+            </web4pro_catalog>
+        </helpers>
+        <models>
+        
+        </models>
+        <blocks>
+        	<web4pro_catalog>
+                <class>Web4pro_Catalog_Block</class>
+            </web4pro_catalog>
+        </blocks>
+    </global>
+    <frontend>
+        <!--layout>
+           <updates>
+               <web4pro_4over>
+                   <file>web4pro_4over.xml</file>
+               </web4pro_4over>
+           </updates>
+       </layout-->
+    </frontend>
+</config>

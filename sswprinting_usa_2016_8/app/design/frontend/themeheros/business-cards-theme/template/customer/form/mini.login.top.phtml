@@ -1,0 +1,39 @@
+<?php
+/**
+ * @var Mage_Customer_Block_Form_Login $this
+ */
+?>
+<?php $helper = Mage::helper('customer'); ?>
+
+<div class="block block-login">
+    <div class="login-holder">
+        <span class="login-head"><?php echo $this->__('Login') ?></span>
+        <form action="<?php echo $this->getPostActionUrl() ?>" method="post">
+            <?php echo $this->getBlockHtml('formkey'); ?>
+            <div class="block-content">
+                <div class="form-row">
+                    <label for="mini-login"><?php echo $this->__('Email:') ?></label>
+                    <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="login[username]" id="mini-login" class="input-text" />
+                </div>
+                <div class="form-row">
+                    <label for="mini-password"><?php echo $this->__('Password:') ?></label>
+                    <input type="password" name="login[password]" id="mini-password" class="input-text" />
+                    <?php echo $this->getChildHtml('ced_soc_login'); ?>
+                </div>
+                <a class="forgot-pass-link" href="<?php echo $helper->getForgotPasswordUrl() ?>"><?php echo $this->__('Forgot your password?') ?></a>
+                <div class="actions">
+                    <button type="submit" class="button"><span><span><?php echo $this->__('Sign In') ?></span></span></button>
+                </div>
+
+                <div class="sign-up-link">
+                    <a href="<?php echo $helper->getRegisterUrl() ?>"><?php echo $this->__('Sign Up Now') ?></a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+        //]]>
+    </script>
+</div>

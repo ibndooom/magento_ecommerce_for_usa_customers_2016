@@ -1,0 +1,236 @@
+.dol-index-index{
+	.col-main{
+		overflow: auto;
+		margin: 0 auto;
+		@media only screen and (max-width: $phablet){
+			margin: 0 auto 31px;
+		}
+	}
+	.header,
+	.footer .wrap,
+	.breadcrumbs-holder{
+		display: block !important;
+		border: none;
+	}
+	.header .wrap{
+		border: none;
+	}
+	.pxboginya #svg_editor.content{
+		margin: 0 auto 61px;
+		max-width: 1170px;
+		// min-width: 620px;
+		min-width: $desctop;
+		width: auto;
+		height: 1175px;
+		background: $white url("/js/all/editor/icons/transp_bg.png") repeat;
+		// .top_left_bar{
+		// 	background:$blue--sky;
+		// }
+		@media only screen and (max-width: $phablet){
+			padding: 15px 15px 30px;
+			height: auto;
+		}
+		#svgcanvas{
+			@media only screen and (max-width: $phablet){
+				padding: 0;
+			}
+		}
+		.ribbon-front{
+			button{
+				padding: 0;
+			}
+			background: #8facc9;
+		}
+		.tools{
+			max-width: 1173px;
+			width: auto;
+			height: auto;
+			@extend %clearfix;
+			float: none;
+			ul{
+				@media only screen and (max-width: $phablet){
+					float: none;
+					margin: 0 0 10px -15px !important;
+				}
+			}
+		}
+		#tool_resetpage{
+			background-position: -372px -119px;
+		}
+		.zoom_controls{
+			span{
+				font-size: 12px;
+				line-height: 16px;
+			}
+		}
+		.settings{
+			@media only screen and (max-width: $phablet){
+				position: static;
+			}
+		}
+		.tools_left{
+			@media only screen and (max-width: $phablet){
+				float: none;
+				// padding: 10px 0 0;
+				margin: 0;
+				width: auto;
+				-webkit-transform: scale(0.8);
+						transform: scale(0.8);
+			}
+			> div{
+				@media only screen and (max-width: $phablet){
+					display: inline-block !important;
+					margin: 2px !important;
+				}
+			}
+		}
+		.top_toolbar{
+			height: auto;
+			@media only screen and (max-width: $phablet){
+				margin: 0;
+			}
+		}
+		.niko_tool_bgcolor,
+		.niko_tool_bgimage,
+		.niko_tool_bgclear,
+		.niko_tool_ellipse1,
+		.niko_tool_circle,
+		.niko_tool_fhellipse{
+			width: 68px !important;
+			height: 68px !important;
+		}
+		.niko_tool_text,
+		.niko_tool_image,
+		.niko_tool_shapes,
+		.niko_tool_qr,
+		.niko_tool_fhpath,
+		.niko_tool_line{
+			.image{
+				background-color:transparent;
+			}
+		}
+		#workarea{
+			width: 788px;
+			padding-top: 50px;
+			margin: 0 17px 0 66px;
+			@media only screen and (max-width: $phablet){
+				padding: 0;
+				margin: 0 auto;
+				width: 660px;
+				height: 440px;
+				float: none;
+			}
+			@media only screen and (max-width: $phablet){
+				width: 440px;
+				height: 340px;
+			}
+		}
+		.niko_tool_left{
+			height: 72px;
+			width: 72px;
+			margin-left: 23px;
+		}
+		.tools_panel{
+			height: auto;
+		}
+		.tools_panel.niko_panel .slider > div .ui-slider-handle,
+		.tools_panel.niko_panel #text_size_slider .ui-slider-handle,
+		#image_height_slider .ui-slider-handle,
+		#image_width_slider .ui-slider-handle,
+		#line_spacing_slider .ui-slider-handle,
+		#zoom_slider .ui-slider-handle{
+			width: 32px;
+			height: 32px;
+			background-color: #2c9ff8;
+			background-position: 9px 8px;
+		}
+		.intellectual{
+			// padding-bottom: 140px;
+			color: #2f2f2f;
+			padding-top: 75px !important;
+			@media only screen and (max-width: $phablet){
+				padding-top: 0 !important;
+				margin: 0 !important;
+			}
+		}
+		ul.top_right_bar{
+			margin: 0;
+			@media only screen and (max-width: $phablet){
+				text-align: center;
+				margin: 0 !important;
+				-webkit-transform: scale(0.8);
+						transform: scale(0.8);
+			}
+			li{
+				width: 70px;
+				height: 70px;
+				margin: 0 0 0 15px;
+				@media only screen and (max-width: $phablet){
+					margin: 0;
+					float: none;
+					display: inline-block;
+					vertical-align: top;
+				}
+				button{
+					padding: 0;
+				}
+				&.cart{
+					width: 76px !important;
+				}
+			}
+		}
+		.settings{
+			width: 187px;
+			z-index: 10;
+			@media only screen and (max-width: $phablet){
+				float: none;
+				margin: 0 auto;
+			}
+		}
+		.settings_header{
+			height: 42px;
+		}
+		.zoom{
+			// margin-left: 340px !important;
+			// @extend %clearfix;
+			// @media only screen and (max-width: $phablet){
+			// 	margin: 0 !important;
+			// 	text-align: center;
+			// }
+
+			// .zoom_ui{
+			// 	@media only screen and (max-width: $phablet){
+			// 		float: none;
+			// 		margin: 0 auto;
+			// 	}
+			// }
+		}
+		li.helps, button.help,
+		button.help:hover,
+		.help span{
+			background-color: #ea6d61;
+		}
+		li.preview,
+		.btn-previewpdf,
+		.btn-previewpdf:hover,
+		.btn-previewpdf span{
+			background-color: #ae76c0;
+		}
+		li.save,
+		.btn-savedesign,
+		.btn-savedesign:hover,
+		.btn-savedesign span{
+			background-color: #52d5f0;
+		}
+		li.cart,
+		.btn-cart,
+		.btn-cart span,
+		.btn-cart:hover{
+			background-color: #51bd7e;
+		}
+	}
+	.fancybox-skin{
+		background: $grey--custom11;
+	}
+}
+

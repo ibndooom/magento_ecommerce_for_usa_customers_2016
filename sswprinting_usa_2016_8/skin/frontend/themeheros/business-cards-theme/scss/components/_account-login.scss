@@ -1,0 +1,51 @@
+.customer-account-login,
+.customer-account-forgotpassword{
+	.col-main > .wrap{
+		border-radius: 5px;
+		background:$white;
+	}
+	h1{
+		font-size: 38px;
+		line-height: 54px;
+		@media screen and (max-width: $mobile){
+			font-size: 30px;
+			line-height: 36px;
+		}
+	}
+}
+.account-login{
+	margin: 0 auto;
+	padding: 70px 0;
+	max-width: 600px;
+	text-align: center;
+	@media screen and (max-width: $mobile){
+		padding: 10% 0;
+	}
+	.page-title{
+		margin: 0 0 30px;
+	}
+	.register-block{
+		margin: 0 0 20px;
+	}
+	label{
+		display: block;
+		margin: 0 0 4px;
+	}
+	input{
+		text-align: center;
+	}
+	.form-list{
+		padding: 20px 0 0;
+		li{
+			margin: 0 0 10px;
+		}
+	}
+	.buttons-set{
+		padding: 20px 0 0;
+	}
+	button,
+	.btn{
+		font-size: 15px;
+		line-height: 18px;
+	}
+}

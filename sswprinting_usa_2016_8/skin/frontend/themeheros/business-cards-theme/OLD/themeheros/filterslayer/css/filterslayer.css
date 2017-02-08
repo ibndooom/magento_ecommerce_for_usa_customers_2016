@@ -1,0 +1,65 @@
+#narrow-by-list ol li.filter{
+    /*float: left;*/
+    list-style: none outside none;
+    /*padding: 5px;
+    width: 45px;*/
+}
+#narrow-by-list ol li{
+    float: left;
+    width:100%;
+	padding:3px 0;
+}
+#narrow-by-list ol li.filter a{
+   
+}
+#narrow-by-list ol li.filter a.checkbox, #narrow-by-list ol li a.checkbox{
+    padding-left: 20px;
+    /*padding-bottom: 5px;*/
+    background: url("../images/checkbox_no.png") no-repeat scroll 0px 0 transparent; 
+    /*display: block;*/
+    /*float: left;*/
+}
+#narrow-by-list ol li a.checkbox{
+     background: url("../images/checkbox_no.png") no-repeat scroll 0px 0 transparent; 
+}
+
+#narrow-by-list ol li a.checked_box.checkbox{
+     background: url("../images/checkbox_yes.png") no-repeat scroll 0px 0 transparent; 
+}
+.products-loader{
+    background: none repeat scroll 0 0 #fff;
+    display:block;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9500;
+    opacity: 0.5;
+    filter: alpha(opacity = 50);
+}
+    
+.block-layered-nav dt{
+    clear: both;
+}
+/*.block-layered-nav ol{
+    float: left;
+}*/
+.block-layered-nav ol{
+    float: left;
+	/*margin-bottom:4%;*/
+}
+
+
+.button-filter{
+    clear:both;
+    float: right; 
+    padding-top: 10px; 
+    margin: 0 0 2px;
+}
+
+/**/
+#amount_min, #amount_max{width:75%; box-shadow:none; padding:0px; color:#333 !important; font-weight:normal !important;}
+.color-filter a{display:block;}
+.color-filter img {float:right; width:15px; height:15px; margin:2px 0 0 0;}
+.over-hidden{overflow:hidden;}

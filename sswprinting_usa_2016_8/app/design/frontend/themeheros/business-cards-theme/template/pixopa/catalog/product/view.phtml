@@ -1,0 +1,289 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php echo $this->getLayout()->getBlock('image_slider')->toHtml()?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct();
+	  $name = $_helper->productAttribute($_product, $_product->getName(), 'name');
+	  $product_name = $name;
+	  $short_description = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+
+	  $template_id = $_product->getTemplate();
+
+	  if(!$template_id){
+		$template_id = $this->getRequest()->getParam('template');
+	  }
+
+	  if($template_id){
+		$template = Mage::getModel("template/template")->load($template_id);
+		$name = $template->getName();
+		$short_description = $template->getDescription();
+	  }
+
+	  $personalization_fields = Mage::helper('dol')->getPersonalizationFields($template_id);
+	  $thumb_url = array();
+
+	  $_product->setData('template_id', $template_id);
+
+	  $bleed  = $_helper->productAttribute($_product, $_product->getBleed(), 'bleed');
+	  $inflate_bleed  = $_helper->productAttribute($_product, $_product->getInflateBleed(), 'inflate_bleed');
+	  $product_number_of_pages  = $_helper->productAttribute($_product, $_product->getProductNumberOfPages(), 'product_number_of_pages');
+	  $product_dimensions  = $_helper->productAttribute($_product, $_product->getProductDimensions(), 'product_dimensions');
+	  
+	  $bleed_margin_color = $_helper->productAttribute($_product, $_product->getBleedMarginColor(), 'bleed_margin_color');
+	  $bleed_margin_text = $_helper->productAttribute($_product, $_product->getBleedMarginText(), 'bleed_margin_text');
+	  $bleed_margin_stroke = $_helper->productAttribute($_product, $_product->getBleedMarginStroke(), 'bleed_margin_stroke');
+
+	  $safe_margin = $_helper->productAttribute($_product, $_product->getSafeMargin(), 'safe_margin');
+	  $safe_margin_color = $_helper->productAttribute($_product, $_product->getSafeMarginColor(), 'safe_margin_color');
+	  $safe_margin_text = $_helper->productAttribute($_product, $_product->getSafeMarginText(), 'safe_margin_text');
+	  $safe_margin_stroke = $_helper->productAttribute($_product, $_product->getSafeMarginStroke(), 'safe_margin_stroke');
+
+	  if($bleed || $bleed=='0'){
+		 $bleed = $bleed * 96;
+	  }else{
+		 $bleed = '';
+	  }
+
+	  if($safe_margin){
+		 $safe_margin = $safe_margin * 96;
+	  }else{
+		 $safe_margin = '';
+	  }
+
+	  if($inflate_bleed && $inflate_bleed=='Yes'){
+		 $inflate_bleed = 1;
+	  }else{
+		 $inflate_bleed = '';
+	  }
+?>
+
+<script type="text/javascript">
+	var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+<div class="product-view product-info wrap" itemscope itemtype="http://schema.org/Product">
+<div class="grid-outer">
+	<div class="product-essential">
+		<form action="/dol" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+			<div class="no-display">
+				<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+				<input type="hidden" name="template_id" value="<?php echo $template_id ?>" />
+				<input type="hidden" name="related_product" id="related-products-field" value="" />
+				<input type="hidden" name="price_box_data" id="price_box_data" value="" />
+				<input type="hidden" name="product_name" id="product_name" value="<?php echo $product_name?>" />
+				<input type="hidden" name="product_bleed" id="product_bleed" value="<?php echo $bleed?>" />
+				<input type="hidden" name="inflate_bleed" id="inflate_bleed" value="<?php echo $inflate_bleed?>" />
+				<input type="hidden" name="product_number_of_pages" id="product_number_of_pages" value="<?php echo $product_number_of_pages?>" />
+				<input type="hidden" name="product_dimensions" id="product_dimensions" value="<?php echo htmlentities($product_dimensions)?>" />
+				<input type="hidden" name="bleed_margin_color" id="bleed_margin_color" value="<?php echo $bleed_margin_color?>" />
+				<input type="hidden" name="bleed_margin_text" id="bleed_margin_text" value="<?php echo $bleed_margin_text?>" />
+				<input type="hidden" name="bleed_margin_stroke" id="bleed_margin_stroke" value="<?php echo $bleed_margin_stroke?>" />
+				<input type="hidden" name="product_safe_margin" id="safe_margin" value="<?php echo $safe_margin?>" />
+				<input type="hidden" name="safe_margin_color" id="safe_margin_color" value="<?php echo $safe_margin_color?>" />
+				<input type="hidden" name="safe_margin_text" id="safe_margin_text" value="<?php echo $safe_margin_text?>" />
+				<input type="hidden" name="safe_margin_stroke" id="safe_margin_stroke" value="<?php echo $safe_margin_stroke?>" />
+			</div>
+
+			<div class="grid3-2">
+				<div class="product-info-box bord-light _same-height">
+					<?php if($_product->getTypeId()=='configurable' || $_product->getTypeId()=='bundle') {?>
+						<div class="page-title product-name">
+							<h1 itemprop="name"><?php echo $name ?></h1>
+						</div>
+						<?php if ($_product->getShortDescription()):?>
+							<div class="short-description hidden-phone">
+								<div class="std" itemprop="description"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+							</div>
+						<?php endif;?>
+						<div class="product-img-box"><?php echo $this->getChildHtml('media') ?></div>
+					<?php }?>
+				</div>
+			</div>
+			
+			<div class="grid3 grid3_1">
+				<div class="product-shop sidebar-right bord-light product-shop-template _same-height">
+					<div class="row">
+						<div class="span5"><?php /*<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>*/?></div>
+					</div>
+
+					<?php echo $this->getChildHtml('alert_urls') ?>
+
+					<?php /*<div class="detl"><?php echo $this->getChildHtml('product_type_data') ?></div>*/?>
+					<?php echo $this->getTierPriceHtml() ?>
+
+					<?php echo $this->getChildHtml('extrahint') ?>
+					<?php if (!$this->hasOptions()):?>
+						<div class="add-to-box">
+							<?php if($_product->isSaleable()): ?>
+								<?php echo $this->getChildHtml('addtocart') ?>
+								<?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+									<span class="or"><?php echo $this->__('OR') ?></span>
+								<?php endif; ?>
+								<?php $this->getChild('addto')->setData('template_id', $template_id); echo $this->getChildHtml('addto') ?>
+							<?php endif; ?>
+						</div>
+						<?php echo $this->getChildHtml('extra_buttons') ?>
+					<?php elseif (!$_product->isSaleable()): ?>
+						<div class="add-to-box"><?php $this->getChild('addto')->setData('template_id', $template_id); echo $this->getChildHtml('addto') ?></div>
+					<?php endif; ?>
+
+					<?php if ($this->hasOptions()):?>
+					<div class="product-options" id="product-options-wrapper">
+					<?php endif;?>
+
+						<?php if($personalization_fields){
+							$count = 0;
+							$this->getChild('addtocart')->setData('has_personalization', 'true');
+						?>
+							<h4 style="padding-bottom: 12px;"><?php echo Mage::helper('cms')->__('Personalize this Design') ?></h4>
+							<dl>
+								<?php foreach($personalization_fields as $personalization_field){
+									$count++;
+								?>
+									<?php if(!array_key_exists('imagetype', $personalization_field)){?>
+									<dt><label class="required"><?php echo $personalization_field['name']?> <i>(edit)</i> <?php if($personalization_field['is_multiline']){?> <font color="red">Maximum <?php echo $personalization_field['line_count']?> lines</font><?php }?></label></dt>
+									<dd>
+										<div class="input-box">
+										<?php if($personalization_field['is_multiline']){?>
+										<script type="text/javascript">
+												//<![CDATA[
+												var textarea_<?php echo str_replace('-', '_', $personalization_field['texttype'])?> = "<?php echo str_replace(array("\r\n", "\r", "\n", '"'), '', $personalization_field['data_value'])?>";
+												//]]>
+											</script>
+
+											<textarea id="<?php echo $personalization_field['texttype']?>" class="input-text" name="<?php echo $personalization_field['texttype']?>" size='50' onkeyup="if(event.keyCode == 13){clearTimeout(timeoutVar); timeoutVar=setTimeout(refreshDesignImage, 3000);};" onBlur="if($j(this).val()!=''){refreshDesignImage();}" onFocus='if($j(this).val().replace(/(\r\n|\n|\r|\")/gm,"") === textarea_<?php echo str_replace('-', '_', $personalization_field['texttype'])?>){$j(this).attr("value", "");}' placeholder="Type your text here..."><?php echo $personalization_field['data_value']?></textarea>
+										<?php }else{?>
+											<input class="input-text" id='<?php echo $personalization_field['texttype']?>' name="<?php echo $personalization_field['texttype']?>"  placeholder="<?php echo $personalization_field['data_value']?>" type="text" size='50' onkeyup="if(event.keyCode == 13){refreshDesignImage()};" onBlur="if($j(this).val()!=''){refreshDesignImage();}" />
+										<?php }?>
+										</div>
+									</dd>
+									<?php }else{?>
+									<dt><label class="required"><?php echo $personalization_field['name']?></label></dt>
+									<dd>
+										<div class="input-box">
+										<?php $thumb_url[$personalization_field['imagetype']] = Mage::helper('dol')->getThumbnailOfDesignImage($personalization_field['src'], $count)?>
+										<input type="hidden" id='<?php echo $personalization_field['imagetype']?>' name="<?php echo $personalization_field['imagetype']?>" value="<?php echo $personalization_field['src']?>"/>
+										<img id="<?php echo $personalization_field['imagetype']?>_thumb" src="<?php echo $thumb_url[$personalization_field['imagetype']] ?>"/>
+										 <button type="button" title="Search" rel-name="<?php echo $personalization_field['imagetype']?>" rel-aspectratio="<?php echo $personalization_field['width']/$personalization_field['height'];?>" rel-width="<?php echo $personalization_field['width']?>" rel-height="<?php echo $personalization_field['height']?>" class="button button-change-image" style="margin-top:30px"><span><span><?php echo Mage::helper('cms')->__('Change Image') ?></span></span></button><br />
+										</div>
+									</dd>
+								<?php }?>
+							<?php }?>
+							</dl>
+						<?php }?>
+						<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+							 <?php $this->getChild('addto')->setData('template_id', $template_id); echo $this->getChildChildHtml('container1', '', true, true) ?>
+						<?php endif;?>
+
+						<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+							<?php $this->getChild('addto')->setData('template_id', $template_id); echo $this->getChildChildHtml('container2', '', true, true) ?>
+						<?php endif;?>
+					</div>
+				</div>
+			<!-- </div> -->
+
+
+		</form>
+		<script type="text/javascript">
+	//<![CDATA[
+		var productAddToCartForm = new VarienForm('product_addtocart_form');
+		productAddToCartForm.submit = function(button, url) {
+			if (this.validator.validate()) {
+				var form = this.form;
+				var oldUrl = form.action;
+
+				document.getElementById('price_box_data').value = $$('div.price-box')[0].innerHTML;
+
+				if (url) {
+				   form.action = url;
+				}
+				var e = null;
+				try {
+					this.form.submit();
+				} catch (e) {
+				}
+				this.form.action = oldUrl;
+				if (e) {
+					throw e;
+				}
+
+				if (button && button != 'undefined') {
+					button.disabled = true;
+				}
+			}
+		}.bind(productAddToCartForm);
+
+		productAddToCartForm.submitLight = function(button, url){
+			if(this.validator) {
+				var nv = Validation.methods;
+				delete Validation.methods['required-entry'];
+				delete Validation.methods['validate-one-required'];
+				delete Validation.methods['validate-one-required-by-name'];
+				if (this.validator.validate()) {
+					if (url) {
+						this.form.action = url;
+					}
+					document.getElementById('price_box_data').value = $$('div.price-box')[0].innerHTML;
+					this.form.submit();
+				}
+				Object.extend(Validation.methods, nv);
+			}
+		}.bind(productAddToCartForm);
+	//]]>
+	</script>
+	</div>
+
+	<div class="product-collateral">
+		<?php echo $this->getChildHtml('upsell_products') ?>
+
+		<?php /*<?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+			<div class="box-collateral <?php echo "box-{$alias}"?>">
+				<?php if ($title = $this->getChildData($alias, 'title')):?>
+				<h2><?php echo $this->escapeHtml($title); ?></h2>
+				<?php endif;?>
+				<?php echo $html; ?>
+			</div>
+		<?php endforeach;?>*/?>
+
+		<?php /*<?php echo $this->getChildHtml('product_additional_data') ?>*/?>
+	</div>
+</div>
+</div>
+<?php if($personalization_fields && $thumb_url){?>
+<?php echo $this->getChild('slider')->setData('personalization_fields', $personalization_fields)->setData('thumb_url', $thumb_url)->toHtml(); ?>
+<?php }?>
+
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-5022ca35340bf69e"></script>

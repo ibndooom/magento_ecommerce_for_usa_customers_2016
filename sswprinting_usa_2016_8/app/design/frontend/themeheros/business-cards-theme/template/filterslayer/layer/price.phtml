@@ -1,0 +1,40 @@
+<script type="text/javascript">
+   function createSliderPrice() {
+        jQuery( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max:<?php echo $this->getMaxPriceInt();?>,
+            values: [<?php echo $this->getCurrentPrice('min')?>, <?php echo $this->getCurrentPrice('max');?>],
+            slide: function( event, ui ) {
+                jQuery( "#amount_min" ).val(ui.values[ 0 ]);
+                jQuery( "#amount_max" ).val(ui.values[ 1 ]);
+            },
+            stop: function(event, ui){
+                jQuery().FiltersLayer(ui.values[0], ui.values[1], '<?php echo Mage::helper('core/url')->getCurrentUrl();?>');             
+            }
+        });
+        jQuery( "#amount_min" ).val( jQuery( "#slider-range" ).slider( "values", 0 ));
+        jQuery( "#amount_max" ).val(jQuery( "#slider-range" ).slider( "values", 1 ));
+    }
+    
+    jQuery(function() {
+        createSliderPrice();
+    });
+    </script>
+ <h6>Price Range:</h6>   
+ <div id="slider-range"></div>
+ <p style="width:165px; margin-top: 10px">
+ <div class="left">
+   <label for="amount_min"><?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></label>
+   <input type="text" id="amount_min" size="3" /> 
+ </div> 
+ <div class="right">
+   <label for="amount_min"><?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></label>
+   <input type="text" id="amount_max" size="3"/>
+ </div>
+</p>
+<!--<p class="button-filter">
+    <button onclick="jQuery().FiltersLayer(jQuery('#amount_min').val(), jQuery('#amount_max').val(), '<?php echo Mage::helper('core/url')->getCurrentUrl();?>');" class="button btn-cart" type="button"><span><span>Filters</span></span></button>
+</p>-->
+ 
+

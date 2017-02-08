@@ -1,0 +1,93 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 24.06.15
+ * Time: 13:29
+ */
+if($this->canShow()):?>
+<section class="choose-design">
+	<div class="wrap">
+		<div class="hedding">
+			<h2><?php echo $this->__('Choose design options'); ?></h2>
+			<p><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('choose-design-title')->toHtml(); ?></p>
+		</div>
+		<ul class="grid-outer">
+			<li class="grid3">
+				<section class="grid-section up-decor">
+					<div class="description bottom-decor bord-light">
+						<h3><?php echo $this->__('Upload Your File') ?></h3>
+						<div class="image-outer">
+							<img src="/js/all/standalone/images/dyo.png"/>
+						</div>
+						<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('design_your_own')->toHtml();?>
+						<!-- <button class="frame_button" id="choose_dyo" onclick="removeRequiredClass(this);">Choose</button>-->
+						<!--<button class="frame_button" id="choose_dyo">Next Step</button>-->
+						<button class="more btn" onclick="return checkPrice(removeRequiredClass, this);">Let's Design</button>
+					</div>
+				</section>
+			</li>
+			<li class="grid3">
+				<section class="grid-section up-decor">
+					<div class="description bottom-decor bord-light">
+						<h3><?php echo $this->__('Browse Designs') ?></h3>
+						<div class="image-outer">
+							<img src="/js/all/standalone/images/browse.png"/>
+						</div>
+						<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('browse_designs')->toHtml();?>
+						<button class="more btn" onclick="return checkPrice(showDesigns, this);">Browse</button>
+					</div>
+				</section>
+			</li>
+			<li class="grid3">
+				<section class="grid-section up-decor">
+					<div class="description bottom-decor bord-light">
+						<h3><?php echo $this->__('Create Your Own Design') ?></h3>
+						<div class="image-outer">
+							<img src="/js/all/standalone/images/upload_new.png"/>
+						</div>
+						<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('upload_files')->toHtml();?>
+						<button class="more btn" onclick="return checkPrice(upld, this);">Upload Files</button>
+					</div>
+				</section>
+			</li>
+<!--frame content-->
+		</ul>
+	</div>
+</section>
+<script type="text/javascript">
+   function upld(){
+		started();
+		jQuery('.step2').hide();
+		jQuery('.step2_upload').show();
+		jQuery('.upload_content_1').show();
+		jQuery('.upload_content_2 .container').show();
+	}
+   var superAttributeId = 'attribute'+'<?php echo $this->getSizeAttribute()->getId() ?>';
+	function showDesigns(){
+
+		var el = document.getElementById(superAttributeId);
+		if(typeof el=='object'){
+			var sid=el.options[el.selectedIndex].value;
+			var form;
+			if(form = document.getElementById('product_addtocart_form')){
+				form.method = 'POST';
+				form.action = "<?php echo $this->getUrl('',array('_direct'=>$this->getCategory()->getUrlPath())); ?>?sid="+sid;
+                productAddToCartForm.submit();
+			}
+		}
+	}
+
+   function checkPrice(callback, element) {
+      if(optionsPrice != undefined) {
+          if(optionsPrice.optionPrices.options == 0) {
+              alert(Translator.translate('The configuration can\'t be requested(no pricing)'));
+              return false;
+          }
+      }
+      return callback(element);
+   }
+    
+</script>
+<div style="clear:both"></div>
+<?php endif;?>

@@ -1,0 +1,35 @@
+<div class="page-title">
+    <h1><?php echo Mage::helper('customer')->__('My Templates') ?></h1>
+</div>
+<?php
+$messages = Mage::getSingleton("customer/session")->getMessages(true);
+echo $this->getLayout()->getMessagesBlock()->setMessages($messages)->getGroupedHtml();
+?>
+
+<?php 
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$result = Mage::helper('customer')->getCustomerAccountTemplates($customer);
+$templates = $result['templates'];
+?>
+
+<?php if(!count($templates)){?>
+<p class="note-msg"><?php echo $this->__('There are no templates specific to your account.') ?></p>
+<?php }?>
+
+<div class="category-products">
+
+<?php $_collectionSize = count($templates) ?>
+<?php $_columnCount = 3; ?>
+<?php $i=0; foreach ($templates as $template): ?>
+	<?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?> span2">
+                <a href="/<?php echo $template->getUrlPath(); ?>"><img class="designImage" src="<?php echo $template->getThumbnailPath(); ?>" alt="Template" /></a>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+	<?php endif ?>
+<?php endforeach ?>
+                
+</div>

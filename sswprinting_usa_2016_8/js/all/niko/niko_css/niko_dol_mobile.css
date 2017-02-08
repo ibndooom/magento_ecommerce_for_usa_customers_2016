@@ -1,0 +1,876 @@
+@CHARSET "ISO-8859-1";
+
+@media (min-width: 300px) and (max-width: 998px) {
+	
+	/***Themes Specific***/
+	.main-dol{
+		width:540px !important;
+	}
+	.fortis_m .container, .ultimo_m .container{
+		max-width:500px !important;
+	}
+	#svg_editor.pxniko.fortis_svg, #svg_editor.pxniko.ultimo_svg {
+	    margin-left:0 !important;
+	    height:950px !important;
+	}
+	
+	/***Custom Scroll Bar***/
+	/*.wrapper{
+		width:540px !important;
+		height:540px !important;
+	}
+	.wrapper .mCS-dark-thick .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+		width:14px;
+	}
+	.wrapper .mCSB_container{
+		margin-right:15px;
+	}*/
+	
+	/***Body***/
+	#svg_editor{
+		width:467px !important;
+		height:950px !important;
+		padding-bottom:0px !important;
+	}
+	#workarea.workarea{
+		width:499px !important;
+		margin:0 0 0 -16px !important;
+		padding-top:0 !important;
+	}
+	#svgcanvas{
+		width:499px !important;
+		margin-left:0 !important;
+		padding-top:0 !important;
+	}
+	
+	/***Container***/
+	.floatingbuttons_wrapper{
+		/*background:#efefef none repeat scroll 0 0;*/
+		width:auto;
+		height:auto;
+		position:fixed;
+		z-index:999;
+		/*top:0;
+		right:0;*/
+		left:0;
+	}
+	.tooloptions_wrapper, .toolspanel_wrapper{	
+		background:#E9931A none repeat scroll 0 0;
+		width:41px;
+		height:auto;
+		cursor:pointer;
+		opacity:0.76;
+	}
+	.tooloptions_wrapper{
+		height:50px;
+	}
+	.toolspanel_wrapper{
+		margin:15px 0 0 0;
+	}
+	.tooloptions_wrapper span{
+		background:url("/js/all/niko/niko_images/tooloptions_mobile.png") no-repeat scroll 1px 8px #E9931A;
+		float:left;
+		width:41px;
+		height:51px;
+	}
+	.toolspanel_wrapper span{
+		background:url("/js/all/niko/niko_images/toolspanel_mobile.png") no-repeat scroll 4px 11px #E9931A;
+		float:left;
+		width:41px;
+		height:157px;
+	}
+	
+	/***Page Show***/
+	.page_show{
+		width:465px !important;
+		margin-left:0px !important;
+		padding:10px 0 0 0 !important;
+	}
+	.page_content{
+		width:288px !important;
+	}
+	.page_tab{
+		float:none !important;
+		margin:0 auto !important;
+	}
+	
+	/***Settings***/
+	#settings_header_close, #productoptions_header_close{
+		background:url("/js/all/niko/niko_images/head_close.png") no-repeat scroll 0 0 #2c9ff8;
+	}
+	#settings_header_close{
+		margin:8px 8px 0 0;
+	}
+	#productoptions_header_close{
+		margin:8px 5px 0 0;
+	}
+	.dol_tool_options{
+		top:0;
+		left:0;
+		position:fixed;
+		z-index:999;
+		-ms-transform:scale(1.2); /* IE 9 */
+		-webkit-transform:scale(1.2); /* Chrome, Safari, Opera */
+		-moz-transform:scale(1.2); /*Firefox*/
+	}
+	
+	/***Tools Panel***/
+	.tools_panel.niko_panel{ 
+		width:auto;
+		height:auto;
+	}		
+	.tools_panel.niko_panel .wrap{
+	    margin-top:0 !important;
+	    position:fixed !important;	    
+	    left:0;	
+	    z-index:999;
+		-ms-transform:scale(1.2); /* IE 9 */
+		-webkit-transform:scale(1.2); /* Chrome, Safari, Opera */
+		-moz-transform:scale(1.2); /*Firefox*/
+	}
+	#panel_header_close{
+		background:url("/js/all/niko/niko_images/head_close.png") no-repeat scroll 0 0 #2c9ff8;
+		margin:2px 4px 0 0; 
+	}
+	.tools_panel_overlay, .tool_options_overlay{
+		background:rgba(0,0,0,0.6); 
+		width:100%; 
+		height:100%;
+		position:fixed; 
+		top:0; 
+		left:0; 
+		z-index:101; 		 
+		display:none; 
+	}
+	
+	/***Top Tool Bar***/
+	.tools{
+		width:467px;
+	}
+	.tools .top_right_bar{
+		position:absolute;
+		/*z-index:999;*/
+		right:10px;
+	}
+	.tools .top_right_bar li{
+		float:left;
+		width:60px !important;
+		margin:0 3px 0 0;
+	}
+	
+	.toprightbar_menu{
+		float:right !important;
+	}
+	/*.toprightbar_multioptions{
+		width:40px;
+		height:auto;
+		margin:-3px 0 0 17px;
+		padding:0;
+		cursor:pointer;
+	}
+	.toprightbar_up, .toprightbar_down{
+		width:40px;
+		height:15px;
+		display:block;
+	}
+	.toprightbar_up{
+		background:url("/js/all/niko/niko_images/arrowup_mobile.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+	}
+	.toprightbar_down{
+		background:url("/js/all/niko/niko_images/arrowdown_mobile.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+	}*/
+	.top_right_bar .toprightbar_menu{
+		background:no-repeat scroll 0px 0px #336699 !important; 
+		opacity:1 !important;
+	}
+	.top_right_bar .toprightbar_menu .btn-menu{
+	    background:url("/js/all/niko/niko_images/toprightbar_menu.png") no-repeat scroll 10px 15px #336699;
+	    width:60px;
+	    height:70px;
+	    margin-left:0px;
+	}
+	.top_right_bar .toprightbar_menu span{
+		margin-top:48px !important;
+		margin-left:0px !important;
+	}
+	.top_right_bar .toprightbar_menu:hover,
+	.top_right_bar li.cart, 
+	.top_right_bar li.save, 
+	.top_right_bar li.preview,
+	.top_right_bar .btn-previewpdf,
+	.top_right_bar .btn-savedesign,
+	.top_right_bar .btn-cart,
+	.top_right_bar .btn-previewpdf span,
+	.top_right_bar .btn-savedesign span,
+	.top_right_bar .btn-cart span,
+	.top_right_bar li.cart:hover, 
+	.top_right_bar li.save:hover, 
+	.top_right_bar li.preview:hover,
+	.top_right_bar .btn-previewpdf:hover,
+	.top_right_bar .btn-savedesign:hover,
+	.top_right_bar .btn-cart:hover,
+	.top_right_bar .btn-previewpdf span:hover,
+	.top_right_bar .btn-savedesign span:hover,
+	.top_right_bar .btn-cart span:hover{
+	    background-color:#336699 !important;
+	    opacity:1 !important;
+	}
+	
+	/***Side Bar Icons***/
+	/*.scroll_left, .scroll_right{
+		background:#006699 !important;
+		color:#fff !important; 
+		width:20px !important;
+		height:72px !important;  
+		margin:10px 0 0 0 !important;
+		position:absolute !important;
+		z-index:99 !important;
+		border:none !important;
+		border-radius:2px !important;
+	}
+	.scroll_left{
+		float:left !important; 
+		left:0 !important;
+	}
+	.scroll_right{
+		float:right !important; 
+		left:477px;
+	}
+	.scrollleft_arrow, .scrollright_arrow{
+		width:16px;
+		height:15px;
+		display:block;
+	}
+	.scrollleft_arrow{
+		background:url("/js/all/niko/niko_images/scroll_left.png") no-repeat scroll center center #006699;
+	}
+	.scrollright_arrow{
+		background:url("/js/all/niko/niko_images/scroll_right.png") no-repeat scroll 7px center #006699;
+	}*/
+	.tools_left_container.tools_left{
+		float:left;
+		width:499px;
+		height:auto;
+		margin:-127px 0 0 -16px;
+		/*overflow:hidden;*/
+		position:relative;
+		z-index:100;
+	}
+	.niko_tool_left{
+		float:left !important;  
+		margin-left:13px !important;
+		margin-right:0px !important; 
+		padding:13px !important;
+		opacity:1 !important;
+	}	
+	#tool_text{
+		margin-left:13px !important;
+	}
+	#tools_background.niko_ellipse{
+		width:75px !important;
+		margin-left:-15px !important;
+	}
+	#tool_bg{
+		margin-top:-100px !important;
+	}
+	#tool_bg, #tool_bgimage, #tool_removebg{
+		padding:17px !important;
+	}
+	#tool_bgimage, #tool_circle, #tool_square{
+		margin-top:-191px !important;
+	}
+	#tool_removebg, #tool_fhellipse, #tool_fhrect{
+		margin-top:-281px !important;
+	}
+	/*#tool_text, .niko_tool_text .image{
+		background-color:#e84c3d !important;
+	}
+	#tool_image, .niko_tool_image .image{
+		background-color:#f5a101 !important;
+	}
+	#tools_background_show, .pxniko .niko_tool_bgcolor1 .image, #tool_bg, #tool_bgimage, #tool_removebg{
+		background-color:#9c56b2 !important;
+	}
+	#tools_shapelib_show, .niko_tool_shapes .image{
+		background-color:#2acdef !important;
+	}
+	#tool_fhpath, .niko_tool_fhpath .image{
+		background-color:#27ae60 !important;
+	}*/	
+	#tool_bg.niko_tool_bgcolor{
+		background:#336699 url("/js/all/niko/niko_images/color_palette.png") no-repeat scroll center 11px;
+		background-position:center 11px;
+	}
+	#tool_bgimage.niko_tool_bgimage{
+		background-position:center 11px
+	}
+	#tool_removebg.niko_tool_bgclear{
+		background-position:23px 13px
+	}
+		
+	/***Add Text***/
+	#text_panel_close{
+		background:url("/js/all/niko/niko_images/head_close.png") no-repeat scroll 0 0 #2c9ff8;
+		margin:3px 3px 0 0;
+	}
+	.edit #edit_text_panel_close{
+		background:url("/js/all/niko/niko_images/edit_head_close.png") no-repeat scroll 0 0 #2c9ff8;
+		margin:3px -15px 0 0;
+	}
+	.text_panel.multilined_text{
+		/*top:400px;*/
+		left:19px !important;
+		z-index:100 !important;
+	}
+	.multilined_text{
+		left:19px !important;
+	}
+	.multilined_text textarea{
+		font-size:18px !important;
+		line-height:22px !important;	
+	}
+	#fontview.niko.ui-dialog-content.ui-widget-content{
+		width:465px !important;
+		height:420px !important;
+		overflow:hidden !important;
+	}
+	#previewimage{
+		width:470px !important;
+	}
+	#fontview .vtab{
+		width:470px !important;
+		height:275px !important;
+	}
+	#fontview .vtab > ul{
+		margin:auto 0 auto 0 !important;
+	}
+	#fontview .vtab > div{
+		width:285px !important;
+		height:265px !important;
+	}
+	#font_view_content .actions{
+		margin-left:175px !important;
+	}
+	#fontview button.button{
+		margin-top:5px !important;
+	}
+	
+	/***Add Image***/ 
+	/*Image Slider*/
+	.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.fixedpos{
+		width:490px !important;
+		height:490px !important;
+		left:13px;
+	}
+	#vtab{
+		height:420px !important;
+		margin:0 !important;
+		overflow-x:hidden;
+		overflow-y:auto;
+	}
+	#vtab > ul{
+		width:100% !important;
+	}
+	#vtab > ul > li{
+		float:left !important;
+		width:120px !important;
+		margin:5px 5px 3px 5px !important;
+	}
+	#vtab ul li.selected span.arrow{
+		width:auto !important;
+	}	
+	#vtab > ul > li.selected, #vtab li.myimages{
+		margin-top:5px !important;
+	}
+	#vtab > ul > li.selected{
+		background-color:#e84c3d;
+	}
+	#vtab > div{
+		float:left !important;
+		width:445px !important;
+		height:330px !important;
+		margin:5px 0 0 0 !important;
+		padding-left:10px !important;
+		padding-right:10px !important;
+		border-left:1px solid #ddd !important;
+		display:block;
+		text-align:center;
+		z-index: 100000000;
+	}
+	#vtab #loginForm1 .img_upload{
+		width:auto !important;
+		height:125px !important;
+		padding:6px 79px !important;
+		border-right:none !important;
+	}
+	div.upload_logo{
+		margin-left:88px !important;
+	}
+	.login.myimages_loginform{
+		width:445px !important;
+		margin-top:8px !important; 
+	}
+	.login.myimages_loginform #send2{
+		margin-left:0 !important;
+	}
+	#vtab .loginform button{
+		margin-top:15px;
+		margin-left:160px;
+	}
+	#loginForm1 #send2{
+		float:none;
+		margin-left:0;
+	}
+	#loginForm2 #send2, #loginForm5 #send2{
+		margin-left:-30px;
+	}
+	.picasa_hdr, .flickr_hdr, .facebook_hdr, .instagram_hdr{
+		padding-top:5px;
+		padding-bottom:7px;
+	}
+	.instagram_logo, .facebook_logo, .google_logo, .flickr_logo, .picasa_logo{
+		float:none !important;
+		margin:35px 0 0 0 !important;
+		display:inline;
+	}
+	#search_img{
+		width:150px !important;
+	}
+	.search_loader{
+		float:none !important;
+		margin-top:0 !important;
+	}
+	.descLoader1{
+		top:225px !important;
+		left:185px !important;
+	}
+	#vtab .google_logo{
+		margin-top:-70px !important;
+	}
+	#vtab .imagefilters{
+		margin-top:35px !important;
+		margin-bottom:0 !important;
+	}
+	.imagefilters .sbSelector{
+		width:126px !important;
+	}
+	.limit{
+		margin:-103px 83px 0 0 !important;
+	}
+	.myimages_div.colorscroll,
+	.facebook_div.colorscroll,
+	.flickr_div.colorscroll,
+	.picasa_div.colorscroll,
+	.instagram_div.colorscroll{
+		width:445px !important;
+		height:253px !important;
+		margin-top:40px !important;
+	}
+	.google_div.colorscroll{
+		margin-top:115px !important;
+	}
+	.facebook_div.colorscroll .mCSB_container,
+	.flickr_div.colorscroll .mCSB_container,
+	.picasa_div.colorscroll .mCSB_container,
+	.instagram_div.colorscroll .mCSB_container{
+		width:auto !important;
+	}
+	#vtab .vclose{
+		display:none;
+	}
+	.google_text{
+		float:left;
+		width:100%;
+		margin:0 0 8px 0 !important;	
+	}
+	#vtab .imagefilters .sbHolder{
+		margin-left:16px !important;
+		margin-bottom:8px !important;
+	}
+	#colorScroller1 .mCSB_container{
+		width:auto !important;
+	}
+	ul.colorSet li{
+		margin-right:15px !important;
+	}
+	
+	/*Image Crop*/
+	#container{
+		height:428px !important;
+		padding:3px !important;
+	}
+	#page-wrap{
+		height:428px !important;
+		margin:0px !important;
+		overflow-y:scroll !important;
+	}
+	#page-wrap .buttons{
+		width:133px !important;
+		height:auto;
+		margin:0;
+	}
+	.buttons .rotate_div{
+		width:143px;
+		margin:0 0 0 0;
+		padding:0;
+	} 
+	.rotate_div .btn.rotate{
+		margin-left:13px;
+	}
+	.rotate_div .btn.reset_rotate{
+		margin-top:0px;
+		margin-left:15px;
+	}
+	.buttons .btn.place, .buttons .btn.original{
+		line-height:20px;	
+	}
+	
+	/*Enhance Image*/
+	.imagefilter_wrapper{
+		width:492px !important;
+		height:435px !important;
+	}
+	.default_filters_wrapper{
+		width:471px !important;
+	}
+	.left_section{
+		width:245px !important;
+	}
+	.right_section{
+		width:245px !important;
+	}
+	.canvas{
+		height:297px !important;
+	}
+	.canvasLoader{
+		width:210px !important;
+		height:auto !important;
+	}
+	.set_filter{
+		width:30px !important;
+		height:30px !important;
+		margin:0 5px 0 0;
+		padding:7px !important;
+	}
+	#row_filters{
+		width:240px !important;
+		padding:30px 0 0 0;
+		margin-bottom:0 !important;
+	}
+	.row_filters_text{
+		width:90px;
+		margin-top:-11px;
+		text-align:center;
+	}
+	.row_filters_text span, .row_filters_del span{
+		font-size:18px;
+	}
+	.row_filters_del{
+		margin:-10px 8px 0 -2px;
+	}
+	.resetBtnSlider{
+		margin:-4px 5px 0 0;
+	}
+	.horizontal-line{
+		padding:0;
+	}
+	.horizontal-line.mobile{
+		margin-top:-29px !important;
+	}
+	.second_row{
+		width:240px;
+	}
+	.rgbSlider span{
+		font-size:13px;
+		margin-left:-46px !important;
+	}
+	.resetRGBSlider{
+		margin-top:-42px !important;
+		margin-right:-42px !important;
+	}
+	.filter_buttons{
+		width:235px;
+		padding:0 !important;
+	}
+	.filter_buttons button{
+		font-size:15px !important;
+		padding:10px 25px;
+	}
+	.set_filter_img{
+		width:50px;
+		margin-top:-2px;
+	}
+	.right_section .set_filters .row_filters .ui-slider{
+		width:95px !important;
+	}
+	#brightness .set_filter_img div{
+		background:url("/js/all/niko/niko_css/icons/mobile/brightness_mobile.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+		width:50px;
+		height:40px;
+	}
+	#contrast .set_filter_img div{
+		background:url("/js/all/niko/niko_css/icons/mobile/contrast_mobile.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+		width:50px;
+		height:40px;
+	}
+	#hue .set_filter_img div{
+		background:url("/js/all/niko/niko_css/icons/mobile/hue_mobile.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+		width:50px;
+		height:40px;
+	}
+	.page_tab > ul > li, .page_tab > ul > li:hover{
+		height:30px;
+	}
+	#saturation .set_filter_img div{
+		background:url("/js/all/niko/niko_css/icons/mobile/saturation_mobile.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+		width:50px;
+		height:40px;
+	}
+	#blur .set_filter_img div{
+		background:url("/js/all/niko/niko_css/icons/mobile/blur_mobile.png") no-repeat scroll 13px 0 rgba(0, 0, 0, 0);
+		width:50px;
+		height:40px;
+	}
+	#brightness.selected .set_filter_img div{
+		background: url("/js/all/niko/niko_css/icons/mobile/brightness_white_mobile.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+	}
+	#contrast.selected .set_filter_img div{
+		background: url("/js/all/niko/niko_css/icons/mobile/contrast_white_mobile.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+	}
+	#hue.selected .set_filter_img div{
+		background: url("/js/all/niko/niko_css/icons/mobile/hue_white_mobile.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+	}
+	#saturation.selected .set_filter_img div{
+		background: url("/js/all/niko/niko_css/icons/mobile/saturation_white_mobile.png") no-repeat scroll 8px 0 rgba(0, 0, 0, 0);
+	}
+	#blur.selected .set_filter_img div{
+		background: url("/js/all/niko/niko_css/icons/mobile/blur_white_mobile.png") no-repeat scroll 13px 0 rgba(0, 0, 0, 0);
+	}
+	
+	/*Background*/
+	#color_picker{
+		left:-35px !important;
+		top:216px !important;
+	}
+	#color_picker .jPicker td[class="Text"] input{
+		width:40px !important;
+		height:25px !important;
+	}
+	
+	/*ON/OFF on Drawing*/
+	.niko_tool_fhpath .drawing_on{
+		background: url('/js/all/niko/niko_images/on.png') no-repeat;
+		margin: -100px 0 0 15px;
+		width: 29px;
+		height: 29px;
+	}
+	.niko_tool_fhpath .drawing_off{
+		background: url('/js/all/niko/niko_images/off.png') no-repeat;
+		margin: -100px 0 0 15px;
+		width: 30px;
+		height: 29px;
+	}
+	
+	/*Cliparts*/
+	#shapes_lib.ui-dialog-content.ui-widget-content{
+		height:404px !important;
+		overflow-x:hidden !important;
+		overflow-y:scroll !important;
+	}
+	#shapes_lib #shape_buttons{
+		width:340px !important;
+		height:1188px !important;
+	}
+		
+	/*Hidden Elements*/
+	#editor_panel .sep.sep2,	
+	#editor_panel .units,
+	#editor_panel .uioptions,
+	.helps,
+	.info,
+	.pdfDownload,
+	.zoom,
+	.settings .arrow.down,
+	.settings .arrow.up,
+	.productoptions_header .arrow.down,
+	.productoptions_header .arrow.up,
+	.tools_left #tool_QR,
+	.tools_left #tool_line,
+	.tools_left #tools_ellipse_show,
+	.tools_left #tools_rect_show,
+	.tools_left #tool_path{
+		display:none !important;
+	}	
+	
+	/*Pop-ups*/
+	.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.fixedpos{
+		width:490px !important;
+		height:490px !important;
+		left:13px;
+	}
+	#personalize_box{
+		height:420px !important;
+		padding-right:5px !important;
+	}
+	#personalize_box_container, .personalize_label{
+		text-align:center !important;
+	}
+	#personalize_box_container textarea{
+		padding:10px !important;
+		font-size:16px !important;
+	}
+	.personalizegroup{
+		float:none !important;
+	}
+	.fancybox-close{
+		top:-10px;
+		right:-10px;    
+	}
+	
+	/*Head Close*/
+	.head_close{
+		float:right;
+		width:15px;
+		height:15px;
+		cursor:pointer;
+	}
+	
+	/*Ajax Loader*/
+	.font_prog img{
+		margin-top:-277px !important;
+		margin-left:218px !important;	
+	}
+	.clipart_prog img{
+		margin-top:125px !important;
+		margin-left:240px !important;	
+	}
+	#imagefilter_wrapper .left_section .canvasLoader{
+		display:none !important;
+	}			
+	
+	/*Additional Css*/
+	.multilined_text.wrap1 .btn{
+		float:right;
+		background-color: #2c9ff8
+	}
+	.tools_left_container, .toprightbar_menu{
+		display: block;
+	}
+	.tools_left.desktop{
+		display: none;
+	}
+	#personalize_box textarea, .multilined_text textarea, #color_picker input{
+		-webkit-user-select:text;  /* Chrome all / Safari all */
+		-moz-user-select:text;     /* Firefox all */
+		-ms-user-select:text;      /* IE 10+ */
+	    /*user-select:text;*/      
+	}
+	.floating_div_mobile{
+		background:transparent none repeat scroll 0 0;
+	    float:right;
+	    width:497px;
+	    height:10px;
+	    /*margin:140px 0 0 -15px;
+	    position:fixed;*/
+	}
+	
+	/*Browse Designs*/
+	/*#browse_templates{
+		height:423px !important;
+	}
+	#frame_content_browse{
+		height:429px !important;
+	}*/
+	
+	/*Pick Color*/
+	#svg_editor #color_picker{
+		height:389px;
+	}	
+	#eyedropper, #page-wrap{
+		height:420px !important;
+	}
+	#eyedropper .buttons{
+		padding:5px;
+	}
+	#eyedropper .buttons #preview-pane1 li{
+		width:131px;
+	}
+	#pickColorValue{
+		width:88px !important;
+	}
+	/*#inpickcolor, #inpickcolors{
+		background:url("/js/all/niko/niko_css/icons/colorpicker.png") no-repeat scroll 0px 3px rgba(0, 0, 0, 0);
+		float:left;
+		width:auto;
+		height:25px;
+	}
+	#inpickcolor span, #inpickcolors span{
+		float:left;
+		width:auto;
+		margin:7px 0 0 23px;
+	}*/
+	
+	/*Intellectual*/
+	.intellectual{
+		margin-left:0 !important;
+		padding-top:37px !important;
+	} 	
+	
+	/*----------Browse Design responsive css------------*/
+	/*.dol-index-index .ui-dialog{
+		max-height:inherit !important;
+		height:auto !important;
+		width:95% !important;
+		left:5px !important;
+		left: 2% !important;
+		position: relative !important;
+	}*/
+	.dol-index-index #browse_templates #frame_content_browse .browse_content_1{
+		height: auto !important;
+    	width: 100%;
+	}
+	.dol-index-index #browse_templates #frame_content_browse .browse_content_1 .top_bar_menu{
+		height: auto;
+    	width: 85%;
+	}
+	
+	.dol-index-index #browse_templates #frame_content_browse .browse_content_1 #resetting{
+		float: right !important;
+	}
+	.dol-index-index #browse_templates #frame_content_browse .browse_content_1 .top_bar_menu #refine_by_list li{
+		margin: 5px !important;
+	}
+	.dol-index-index #browse_templates #frame_content_browse{width: 100% !important;}
+	.dol-index-index #browse_templates #frame_content_browse .browse_content_2{width: 100% !important;height: 300px !important;overflow: scroll !important;-webkit-overflow-scrolling: touch;}
+	.ui-widget-content #browse_templates{height: 423px !important;}
+	.ui-widget-content #browse_templates #frame_content_browse{height: 429px !important;}
+	.ui-widget-content #browse_templates{padding: 5px 0px !important;}
+	.browse_content_2 #demo-frame{height: 300px !important;}
+	
+	/*----------End of Browse Design responsive css------------*/	
+	
+	.dol-index-index .main{
+		padding-left:0px !important;
+	}
+	
+}
+
+@media (min-width: 999px) and (max-width: 1300px) {
+	.dol-index-index #browse_templates #frame_content_browse .browse_content_2{width: 100% !important;overflow: scroll !important;-webkit-overflow-scrolling: touch;} /*Browse Design scrolling*/
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.row{
+		margin-left:-55px !important;
+	}	
+	.fortis_m .container{
+		margin-left:0px !important;
+	}
+	.ultimo_m .container{
+		margin-left:20px !important;
+	}
+	.dol-index-index .main{
+		padding-left:0px !important;
+	}
+}
+

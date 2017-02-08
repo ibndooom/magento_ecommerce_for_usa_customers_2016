@@ -1,0 +1,162 @@
+<?php
+//SCP: This is part of the Custom Option AJAX response - it shows custom options for 'associated' products.
+
+//opConfig is forced into global scope even if pulled in via ajax (by using window.)
+//and also ensure correct form encoding
+?>
+<script type="text/javascript">
+    //<![CDATA[
+
+    <?php
+	if (Mage::helper('core')->isModuleEnabled('MageWorx_CustomOptions')) {
+		$helper = $this->helper('customoptions');
+	?>
+    try{window.opConfig = new Product.Options(<?php echo $helper->getOptionsJsonConfig($this->getOptions()) ?>);}catch(e){}
+    <?php }else{ ?>
+    try{window.opConfig = new Product.Options(<?php echo $this->getJsonConfig() ?>);}catch(e){}
+    <?php } ?>
+    $('product_addtocart_form').encoding = 'multipart/form-data';
+    //]]>
+</script>
+<?php if (count($this->getOptions())): ?>
+<dl>
+<?php $is_instant_pricing = $this->getRequest()->getParam('is_instant_pricing');?>
+
+<?php $_options = Mage::helper('core')->decorateArray($this->getOptions());
+      $_groups = $this->helper('web4pro_pixopa')->getOptionsWithTemplate($_options);
+      foreach($_groups as $key=>$group):
+          if($key!='empty_group'):?>
+          <span>
+              <strong><?php echo $group['title']; ?></strong>
+          <?php endif;
+          $options = $group['options'];
+         ?>
+
+<?php foreach($options as $_option): ?>
+	<?php if($is_instant_pricing && $_option->getType()=='file') continue;?>
+	<?php $option_html = $this->getOptionHtml($_option);
+		  $option_html = str_replace('<em>*</em>','<em></em>', $option_html);
+		  echo $option_html;
+    ?>
+
+<?php endforeach;
+    if($key!='empty_group'):?>
+        </span>
+<?php endif;
+    endforeach;?>
+</dl>
+
+<script type="text/javascript">
+    $$('#product-options-wrapper dl').each(function(label) {
+        label.removeClassName('last');
+    });
+    $$('#SCPcustomOptionsDiv dl').each(function(label) {
+        label.addClassName('last');
+    });
+    <?php
+    if (Mage::helper('core')->isModuleEnabled('MageWorx_CustomOptions') && $helper->isDependentEnabled()) { ?>
+		dependentOptions.dependentData = <?php echo $helper->getJsonDependentData($this->getOptions()) ?>;
+		dependentOptions.inGroupIdData = <?php echo $helper->getJsonInGroupIdData($this->getOptions()) ?>;
+		dependentOptions.defaultData = <?php echo $helper->getJsonDefaultData($this->getOptions()) ?>;
+
+		formElements = $('product_addtocart_form').getElementsBySelector('select');
+		for(var i=0; i<formElements.length; i++){
+		 	dependentOptions.select(this.formElements[i]);
+		}
+	<?php }?>
+
+	/* To move tier prices above addtocart buttons
+	var element = $j('.tier-prices').detach();
+	$j('.product-options-bottom .price-box').append(element);
+	*/
+
+	<?php /* to update pricing based on tier prices
+
+	<?php $_product = Mage::getModel("catalog/product")->load($this->getRequest()->getParam('id')); ?>
+
+	$j('#qty').removeAttr('onchange');
+    //opConfig.reloadPrice();
+
+    var $p = {};
+    var prices = {};
+    //dom elements being used
+    $p["old"] = $j(".price-box .old-price .price");
+    $p["special"] = $j(".price-box .special-price .price");
+    $p["regular"] = $j(".price-box .regular-price .price");
+
+    //save original price to reset back if quantity is reset
+    //Checking for special price
+    if ($p["special"].html()) {
+        var specialPrice = $p["special"].html();
+        var oldPrice = $p["old"].html();
+    } else {
+        var originalPrice = $p["regular"].html();
+    }
+
+    //lets get to work.
+    $j(function(){
+        var tiers = <?php echo json_encode($_product->getTierPrice()) ?>;
+        var h = tiers.length;
+        while (h--) {
+            var key = h;
+            var line = {};
+            //just build the prices object for use later
+            line["qty"] = parseInt(tiers[h]["price_qty"]);
+            line["price"] = parseFloat(tiers[h]["price"]).toFixed(2);
+            prices[key] = line;
+        }
+        //keyup event works nicely here
+        $j("#qty").on("keyup",function(){
+            var quantity = $j(this).val();
+            for (var i in prices) {
+                var z = i;
+                //save lowest tier for reset back to original price
+                var lowest = prices[0]["qty"];
+                //set the range
+                var bottom = prices[i]["qty"];
+                var top = prices[z++]["qty"];
+                //format to currency -- should probably switch to magento's helper method.
+                var price = "<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol() ?>"+(quantity*prices[i]["price"]);
+                //check if the price needs to be reset after quantity is reset < lowest
+                if (quantity < lowest) {
+                    if (specialPrice) {
+                        $p["special"].html(specialPrice);
+                        $p["old"].html(oldPrice);
+                    } else {
+                        $p["regular"].html(originalPrice);
+                    }
+                    break;
+                }
+                //check the ranges, set the price accordingly.
+                if (quantity >= bottom) {
+                    if (quantity >= top) {
+                        if (specialPrice) {
+                            $p["special"].html(price);
+                        } else {
+                            $p["regular"].html(price);
+                        }
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        })
+    })
+    */ ?>
+   jcf.setOptions('Select', {
+        "wrapNative": false,
+        "wrapNativeOnMobile": false,
+        "useCustomScroll": false,
+        "multipleCompactStyle": true
+    });
+    jcf.replaceAll();
+    jQuery('#pricing').find('select').on('change', function(event) {
+        jcf.replaceAll();
+    });
+   jQuery('.same-height').matchHeight();
+   jQuery('.catalog-product-view .product-options select').on('change', function(){
+        jcf.replaceAll();
+   });
+</script>
+<?php endif; ?>

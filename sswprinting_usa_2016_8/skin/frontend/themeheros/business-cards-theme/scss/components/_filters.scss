@@ -1,0 +1,183 @@
+.filters{
+	padding: 12px 17px 12px 14px;
+	margin: 0 0 27px;
+	background: $grey--light;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 16px;
+	h1,
+	.filter-head{
+		float: left;
+		margin: 0;
+		font-size: 26px;
+		line-height: 28px;
+		color: $grey;
+		@media screen and (max-width: $phablet) {
+			float: none;
+			display: block;
+			margin: 0 0 14px;
+			text-align: center;
+		}
+	}
+	label{
+		margin: 0 6px 0 0;
+	}
+	.jcf-select{
+		margin: 0;
+		vertical-align: middle;
+		min-width: 0;
+	}
+	.sort-by{
+		.jcf-select{
+			width: 109px;
+		}
+	}
+	.toolbar{
+		float: right;
+		@media screen and (max-width: $phablet) {
+			float: none;
+			text-align: center;
+		}
+		.sorter{
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 41px 0 0;
+			position: relative;
+			@media screen and (max-width: $mobile){
+				margin: 0 0 10px;
+				display: block;
+			}
+			&:before{
+				content: '';
+				position: absolute;
+				top: -4px;
+				bottom: -4px;
+				right: -31px;
+				width: 1px;
+				background:$grey--darkMin;
+			}
+		}
+		.pager{
+			display: inline-block;
+			vertical-align: top;
+		}
+		.view-mode,
+		.pull-right{
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+	.view-mode{
+		margin: 0 23px 0 0;
+		position: relative;
+		&:before{
+			content: '';
+			position: absolute;
+			top: -4px;
+			bottom: -4px;
+			right: -14px;
+			width: 1px;
+			background:$grey--darkMin;
+		}
+		.view-type{
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 0 0 7px;
+			border-radius: 1px;
+			height: 28px;
+		}
+		a,
+		button{
+			display: block;
+			width: 28px;
+			height: 28px;
+			border: none;
+			text-indent: -9999px;
+			overflow: hidden;
+		}
+		.grid,
+		.list{
+			position: relative;
+			&:before{
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%, -50%);
+						transform: translate(-50%, -50%);
+				@extend %iconsSprite;
+				@include back-pos('ico-grid-mode');
+			}
+		}
+		.list{
+			&:before{
+				@include back-pos('ico-grid-list');
+			}
+		}
+		button{
+			background:$white;
+			&.list{
+				&:before{
+					@include back-pos('ico-grid-list--active');
+				}
+			}
+			&.grid{
+				&:before{
+					@include back-pos('ico-grid-mode--active');
+				}
+			}
+		}
+	}
+	.amount,
+	.limiter{
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 10px 0 0;
+		.jcf-select{
+			width: 49px;
+			.jcf-select-text{
+				margin: 0 18px 0 8px;
+			}
+		}
+	}
+	.amount{
+		float: right;
+		margin: 7px 0 0;
+		strong{
+			font-weight: normal;
+		}
+	}
+	.sort-by-switcher{
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		width: 16px;
+		height: 16px;
+		margin-right: -16px;
+		@extend %text-hide;
+		&:before{
+			content:'';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			@extend %iconsSprite;
+			@include back-pos('ico-arrow-bottom');
+		}
+		&.sort-by-switcher--asc:before{
+			-webkit-transform: translate(-50%, -50%) rotate(180deg);
+			transform: translate(-50%, -50%) rotate(180deg);
+		}
+	}
+	.limiter-info{
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 6px;
+	}
+}
+.blog-index-list{
+	.filters{
+		padding: 10px;
+	}
+}

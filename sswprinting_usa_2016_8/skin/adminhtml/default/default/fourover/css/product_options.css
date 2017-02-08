@@ -1,0 +1,10 @@
+.fourover-admin-adminhtml-product-options,
+.fourover-admin-adminhtml-product-options .middle{
+    background:none;
+}
+.fourover-admin-adminhtml-product-options .middle{
+    padding:15px;
+}
+.fourover-admin-adminhtml-product-options .wrapper-popup{
+    min-width:600px;
+}

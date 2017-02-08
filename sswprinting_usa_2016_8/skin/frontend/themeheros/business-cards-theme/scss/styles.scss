@@ -1,0 +1,68 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+/*@import "compass/reset";*/
+// @import "compass/utilities/general/float";
+// @import "compass/utilities/general/clearfix";
+// @import "compass/css3";
+// @import "compass/typography/lists/horizontal-list";
+// @import "lib/sprites";
+/*@import setup;*/
+@import "setup/variables";
+/*@import libraries;*/
+@import "lib/extends";
+@import "lib/media";
+@import "lib/mixins";
+/*@import setup;*/
+@import "setup/color";
+@import "setup/fonts";
+@import "setup/normalize";
+@import "setup/typography";
+@import "setup/z-index";
+/*@import libraries;*/
+@import "lib/sprites";
+/*@import vendor;*/
+@import "vendor/jcf";
+@import "vendor/slick";
+@import "vendor/fancybox/jquery.fancybox";
+@import "vendor/fancybox/jquery.fancybox-buttons";
+@import "vendor/fancybox/jquery.fancybox-thumbs";
+
+/*@import layout;*/
+@import "layout/footer";
+@import "layout/header";
+@import "layout/sidebar";
+/*@import components;*/
+@import "components/grid";
+@import "components/product-info";
+@import "components/category-banner";
+@import "components/socialslist";
+@import "components/grid-section";
+@import "components/advantages";
+@import "components/tabs";
+@import "components/main-nav";
+@import "components/breadcrumbs";
+@import "components/faq";
+@import "components/postlisting";
+@import "components/pagination";
+@import "components/registration";
+@import "components/canvas";
+@import "components/account";
+@import "components/cart";
+@import "components/related";
+@import "components/fancybox";
+@import "components/select";
+@import "components/filters";
+@import "components/sidebar";
+@import "components/checkout";
+@import "components/search";
+@import "components/404";
+@import "components/account-login";
+@import "components/forgot-password";
+@import "components/pixopa_help";
+@import "components/privacy-policy";
+@import "components/contact-us";
+/*@import common;*/
+@import "common";

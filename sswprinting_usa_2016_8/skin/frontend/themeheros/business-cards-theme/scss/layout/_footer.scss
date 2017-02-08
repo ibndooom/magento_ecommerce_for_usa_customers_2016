@@ -1,0 +1,182 @@
+.footer{
+	border-top: 5px solid $grey--lightHight;
+	.phone-email-data{
+		overflow: hidden;
+		border-bottom: 1px solid $grey--darkMin;
+		color: $grey;
+		@media screen and (max-width: $tablet) {
+			border-bottom: none;
+		}
+		div{
+			float: left;
+			width: 50%;
+			padding: 34px 0;
+			border-right: 1px solid $grey--darkMin;
+			font: 20px/23px $proximanova;
+			text-align: center;
+			@media screen and (max-width: $tablet) {
+				float: none;
+				width: 100%;
+				padding: 20px 0;
+				border-right: none;
+				border-bottom: 1px solid $grey--darkMin;
+				font: 16px/19px $proximanova;
+			}
+			&:last-child{
+				border-right: none;
+			}
+		}
+		a{
+			display: inline-block;
+			vertical-align: middle;
+			text-decoration: none;
+			color: $grey;
+		}
+	}
+	.footer-columns{
+		@extend %clr;
+		padding: 38px 0 45px;
+		border-bottom: 1px solid $grey--darkerMin;
+		@media screen and (max-width: $tablet) {
+			padding: 25px 0;
+			font-size: 0;
+			line-height: 0;
+		}
+		> div{
+			width: 22.5%;
+			float: left;
+			padding: 0 20px 0 0;
+			@media screen and (max-width: $tablet) {
+				display: inline-block;
+				vertical-align: top;
+				float: none;
+				width: 50%;
+				margin-bottom: 33px;
+				text-align: center;
+				padding: 0;
+				font-size: 13px;
+				line-height: 15px;
+			}
+			@media screen and (max-width: $mobile) {
+				display: block;
+				width: 100%;
+				text-align: center;
+				padding: 0;
+			}
+			li{
+				padding: 0 0 4px;
+				&:last-child{
+					padding: 0;
+				}
+			}
+			a{
+				font: 13px/15px $proximanova;
+				color: $grey--lightMore;
+				text-decoration: none;
+			}
+		}
+	}
+	.block-title{
+		margin: 0 0 11px;
+		span{
+			font: bold 16px/19px $proximanova;
+			color: $grey---darkLight;
+		}
+	}
+	div.footer-news-block{
+		width: 32.5%;
+		margin: 0 0 -22px;
+		@media screen and (max-width: $tablet) {
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		@media screen and (max-width: $mobile) {
+			display: block;
+			width: 100%;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		.news-box{
+			margin: 0 0 22px;
+		}
+	}
+	.form-subscribe-header{
+		span{
+			display: block;
+			margin: 0 0 4px;
+			font: 12px/14px $proximanova;
+			color: $grey--lightMore;
+		}
+	}
+	.input-box{
+		display: inline-block;
+		position: relative;
+		padding: 0 63px 0 0;
+		vertical-align: top;
+		border: 1px solid $grey--darkerMin;
+		.news-bttn{
+			position: absolute;
+			height:31px;
+			width:60px;
+			margin: 0;
+			top: 0;
+			right: 0;
+			padding: 8px;
+			line-height: 12px;
+			font-size: 12px;
+		}
+		.for-news-input{
+			overflow: hidden;
+			min-width: 212px;
+			@media screen and (max-width: $phablet) {
+				min-width: 150px;
+			}
+		}
+		.news-input{
+			width: 100%;
+			font: 13px/15px $proximanova;
+			padding: 8px 11px;
+			height:31px;
+			border:none;
+			color: $brown;
+			outline:none;
+			background: $grey--darkLightest;
+		}
+	}
+	.social-media{
+		.block-title{
+			margin: 0 0 5px;
+		}
+	}
+	.footer-bottom{
+		padding: 13px 0;
+		overflow: hidden;
+		.payment-system{
+			float: right;
+			overflow: hidden;
+			div{
+				float: right;
+				margin: 0 5px 0 0;
+				&:first-child{
+					margin: 0;
+				}
+			}
+			img{
+				max-width: 100%;
+			}
+		}
+		.copyright{
+			padding: 5px 30px 0 0;
+			overflow: hidden;
+			font: normal 12px/14px $proximanova;
+			color: $grey--darker;
+			@media screen and (max-width: $tablet) {
+				font: normal 12px/14px $proximanova;
+			}
+		}
+	}
+	address{
+		margin: 0;
+	}
+}

@@ -1,0 +1,27 @@
+.no-display{
+	display: none;
+	height: 0;
+	overflow: hidden;
+}
+.fancybox-skin{
+	padding: 47px 62px !important;
+	border-radius: 0;
+	border: 1px solid $grey--custom7;
+	@media screen and (max-width: $mobile){
+		padding: 30px 20px !important;
+	}
+}
+.fancybox-wrap{
+	overflow: visible !important;
+	.fancybox-close{
+		right: -10px;
+		top: -10px;
+		width: 15px;
+		height: 15px;
+		@extend %iconsSprite;
+		@include back-pos('ico-popup-close');
+	}
+}
+.fancybox-lock{
+	overflow: hidden !important;
+}

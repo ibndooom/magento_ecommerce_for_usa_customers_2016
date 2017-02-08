@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <cms_index_index>
+        <reference name="head">
+            <action method="addJs"><script>pixopa/jquery.carouFredSel-6.2.1-packed.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="banner/view" name="home.banner" after="page_content_heading">
+                <action method="setGroup"><group_name>home_tabs</group_name></action>
+            </block>
+        </reference>
+    </cms_index_index>
+</layout>

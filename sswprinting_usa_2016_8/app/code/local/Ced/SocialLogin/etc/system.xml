@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+/**
+ * CedCommerce
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    Ced
+ * @package     Ced_SocialLogin
+ * @author 		CedCommerce Magento Core Team <Ced_MagentoCoreTeam@cedcommerce.com>
+ * @copyright   Copyright CedCommerce (http://cedcommerce.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * SocialLogin 	etc/system.xml
+ *
+ * @category   	Ced
+ * @package    	Ced_SocialLogin
+ * @author		CedCommerce Magento Core Team <Ced_MagentoCoreTeam@cedcommerce.com>
+ */
+-->
+
+<config>
+	<tabs>
+        <ced translate="label" module="sociallogin">
+            <label>CedCommerce</label>
+            <sort_order>200</sort_order>
+        </ced>
+    </tabs>
+    <sections>
+        <ced>
+			<label>SocialLogin</label>
+            <tab>ced</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+			
+            <groups>
+                <ced_sociallogin_google translate="label" module="sociallogin">
+                    <label>Social Login Google Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>120</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <client_id translate="label" module="sociallogin">
+                            <label>Google API Client ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_id>
+                        <client_secret translate="label" module="sociallogin">
+                            <label>Google API Client Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_secret>
+                    </fields>
+                </ced_sociallogin_google>
+                <ced_sociallogin_facebook translate="label" module="sociallogin">
+                    <label>Social Login Facebook Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <client_id translate="label" module="sociallogin">
+                            <label>Facebook App ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_id>
+                        <client_secret translate="label" module="sociallogin">
+                            <label>Facebook App Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_secret>
+                    </fields>
+                </ced_sociallogin_facebook>
+                <ced_sociallogin_twitter translate="label" module="sociallogin">
+                    <label>Social Login Twitter Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>140</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <client_id translate="label" module="sociallogin">
+                            <label>Consumer Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_id>
+                        <client_secret translate="label" module="sociallogin">
+                            <label>Consumer Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_secret>
+                    </fields>
+                </ced_sociallogin_twitter>
+                <ced_sociallogin_linkedin translate="label" module="sociallogin">
+                    <label>Social Login Linkedin Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>160</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <client_id translate="label" module="sociallogin">
+                            <label>Consumer Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_id>
+                        <client_secret translate="label" module="sociallogin">
+                            <label>Consumer Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_secret>
+                    </fields>
+                </ced_sociallogin_linkedin>                                
+            </groups>
+        </ced>
+    </sections>
+</config>

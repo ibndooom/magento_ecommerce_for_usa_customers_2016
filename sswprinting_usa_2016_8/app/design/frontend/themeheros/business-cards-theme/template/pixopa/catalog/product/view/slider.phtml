@@ -1,0 +1,719 @@
+<link rel="stylesheet" href="<?php echo $this->getJsUrl('all/editor/jquery-ui-1.9.2.custom.css')?>" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getJSUrl('../../../../js/all/editor/dol_slider.css')?>">
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getJSUrl('../../../../js/all/editor/jquery.Jcrop.css')?>">
+
+<script type="text/javascript" src="<?php echo $this->getJSUrl('all/editor/jQueryRotate.js')?>"></script>
+<input type="hidden" value="" id="lumilia" />
+<?php 
+
+$personalization_fields = $this->getData('personalization_fields');
+$thumb_url = $this->getData('thumb_url');
+$has_personalizable_image = false;
+$personalizable_image_count = 0;
+if($personalization_fields){
+	foreach($personalization_fields as $personalization_field){
+		if(array_key_exists('imagetype', $personalization_field)){
+			$has_personalizable_image = true;
+			$personalizable_image_count++;
+		}
+	}
+}?>
+
+<script>
+
+/*$j('.product-img-wrapper').droppable({
+	drop: function( event, ui ) {
+  		var draggable = ui.draggable;		  		
+  		if(draggable.hasClass('myImages')){
+  			addGalleryImage(draggable.attr('rel'),false);
+  		}else{
+  			addGalleryImage(draggable.attr('rel'),true);
+  		}
+	}
+});*/
+
+$j(document).ready(function(){	
+	$j('#image_association_box').dialog({ autoOpen: false ,modal: true,width: 340});	
+	$j('#fileupload_box').dialog({ autoOpen: false ,modal: true,width: 340, dialogClass:'fileupload'});	
+})
+
+function addGalleryImage(url,ajax){
+	$j('#updating_box').show();	
+	if(ajax){
+		$j.ajax({
+			  url: '/dol/index/uploadRemoteFile',
+			  data:{'image_url':url},
+			  success: function(data) {
+				  var json = $j.parseJSON(data);
+				  $j('#updating_box').hide();
+				  if($j('#lumilia').val() == "lumilia"){
+				  $j.ajax({
+						'url' : '/dol/index/applyImageFilter',
+						type : 'POST',
+						'dataType': 'text',
+						'data' : {'src': json.imageUrl, 'filter': 'filter_darken', 'zoom_factor':zoom_factor},
+						success: function(data1){
+							//elem.setAttribute('xlink:href', data);								
+						  
+						  $j(new Image()).load(function() {					 
+							  content = 'Loading Image.... <img src="/skin/frontend/pixopa/default/images/opc-ajax-loader.gif">';
+							  //$j('#updating_box .desc').html(content);
+							  $j('#updating_box .desc').show();
+							  $j('#updating_box .desc-rendering').hide();
+							  $j('#updating_box').hide();
+							  document.getElementById('replacement_image_url').value = json.imageUrl;
+							  <?php if($personalizable_image_count==1){?>
+							  associateImage();
+							  <?php }else{?>
+							  $j('#image_association_box').dialog("open")
+							  <?php }?>
+						  }).attr('src',data1);
+						}
+					});
+				  }else{
+					  document.getElementById('replacement_image_url').value = json.imageUrl;
+					  <?php if($personalizable_image_count==1){?>
+					  associateImage();
+					  <?php }else{?>
+					  $j('#image_association_box').dialog("open")
+					  <?php }?>
+				}
+			  }
+			});
+	}else{
+		var img = new Image();
+		img.onload = function() {		  
+		  //canvas.addDragImage(url,this.width,this.height);
+		  $j('#updating_box').hide();
+		  document.getElementById('replacement_image_url').value = url;
+		  <?php if($personalizable_image_count==1){?>
+		  associateImage();
+		  <?php }else{?>
+		   $j('#image_association_box').dialog("open")
+		  <?php }?>
+		}
+		img.src = url;
+	}
+}
+
+$j('.btn-image-association').live('click',function(){
+	var checked = $j('#image_association_form input:checked').length;
+	if(checked > 0){
+		associateImage();
+	}else{
+		$j('#checkbox_error').show();
+	}
+});
+
+$j('.button-change-image').live('click',function(){
+	$j('#vtab').slideDown('slow');
+	$j('html').animate({scrollTop: 0},'slow');
+	$j('body').animate({scrollTop: 0},'slow');
+	$j('.button-change-image').removeClass('selectedImage');
+	$j(this).addClass('selectedImage');	
+	image_name = $j(this).attr('rel-name');
+});
+
+$j('.button-new-upload').live('click',function(){	
+	$j('#fileupload_box').dialog("open");
+});
+
+$j('.button-upload-close').live('click',function(){
+	$j('#fileupload_box').dialog("close");
+});
+
+function associateImage(){
+
+	$j('#image_association_box').dialog("close")
+	$j('#updating_box').show();
+	params = $('product_addtocart_form').serialize();
+	params1 = $('image_association_form').serialize();
+	params = params + '&' + params1;
+
+	url = '/dol/index/processDesignImage';
+	new Ajax.Request(url, {
+        method:     'POST',
+        dataType: 'json',
+        parameters : params,
+        onSuccess: function(transport){     	
+	        if (transport.responseText.isJSON()) {
+	            response = transport.responseText.evalJSON();
+	            if (response.error) {
+	                alert(response.message);
+	                 $j('#image_association_box').dialog("close")
+	                $j('#updating_box').hide();
+	            } else {
+
+	                if(response['child_images'].length>0){
+	                	
+	                	$j('#image').attr('src', response['child_images'][$j('#image_zoom').attr('rel')]);
+		                $j('#image_zoom').attr('href', response['child_images'][$j('#image_zoom').attr('rel')]);
+		                
+		                for(i=0;i<response['child_images'].length;i++){
+		                	$j('.more-views li a').filter(':eq('+i+')').attr('href',response['child_images'][i])
+		                	$j('.more-views li a img').filter(':eq('+i+')').attr('src',response['child_images'][i])
+		                }
+	                }else{
+		                if($j('#image').length>0){
+	                		document.getElementById('image').src = response['main'];
+	                	}
+	                	if($j('#image_zoom').length>0){
+	                		document.getElementById('image_zoom').href = response['main'];
+	                	}
+
+		                if($j('.frame-cover').length>0){
+		                	url = 'url("'+ response['main'] + '") -0px 0 no-repeat';
+		                	$j('.frame-cover').css("background",url);
+		                	$j('.frame-cover').css("background-size","130%");
+		                	$j('.frame-cover').css("background-position","center");
+	                	}
+	                }
+	                
+	                 $j('#image_association_box').dialog("close")
+					images = response['images'];
+	                for(var key in images) {
+						document.getElementById(key).value = images[key];
+					}
+	                thumbs = response['thumbs'];
+	                for(var key in thumbs) {
+						document.getElementById(key+'_thumb').src = thumbs[key];
+					}
+	                $j('#updating_box').hide();
+	                
+	                $j('#image_association_form table tbody tr').find(":checked").each(function() {						
+			            $j('#image_association_form table tbody img[rel='+$j(this).attr("rel")+']').attr('src', thumbs[key]);
+				     });
+	        	}
+	        }
+        },
+  		onFailure:function(response){
+    		return '';
+      	}
+   	});
+}
+
+
+(function ($j){
+    $j.fn.iframePostForm = function (options)
+    {
+        var response,
+            returnReponse,
+            element,
+            status = true,
+            iframe;
+        
+        options = $j.extend({}, $j.fn.iframePostForm.defaults, options);
+        // Add the iframe.
+        if (!$j('#' + options.iframeID).length) {
+            $j('body').append('<iframe id="' + options.iframeID + '" name="' + options.iframeID + '" style="display:none" />');
+        }
+
+        return $j(this).each(function (){
+            element = $j(this);
+
+            // Target the iframe.
+            element.attr('target', options.iframeID);
+
+            // Submit listener.
+            element.submit(function (){
+                // If status is false then abort.
+                status = options.post.apply(this);
+                iframe = $j('#' + options.iframeID).load(function (){
+                    response = iframe.contents().find('body');
+                    if (options.json){
+                        returnReponse = $j.parseJSON(response.html());
+                    }else{
+                        returnReponse = response.html();
+                    }
+                    options.complete.apply(this, [returnReponse]);
+                    iframe.unbind('load');
+                    setTimeout(function (){
+                        response.html('');
+                    }, 1);
+                });
+            });
+        });
+    };
+
+    $j.fn.iframePostForm.defaults ={
+        iframeID : 'iframe-post-form',       // Iframe ID.
+        json : false,                        // Parse server response as a json object.
+        post : function () {},               // Form onsubmit.
+        complete : function (response) {}    // After response from the server has been received.
+    };
+})(jQuery);
+
+$j(function () {
+    $j('form#upload_form').iframePostForm({
+        json : false,
+        post : function (){
+        	$j('#fileupload_box').dialog("close");
+        	$j('#updating_box').show();	
+            if ($j('input[type=file]').val().length){
+            	$j('#updating_box').show();	
+            }else{
+            	$j('#updating_box').hide();	
+                return false;
+            }
+        },
+        complete : function (response){
+            var style,
+                width,
+                html = '';
+            if (response.success){
+                // ToDo: Add message for jason success response.
+            }else{
+                html += response;
+                json = $j.parseJSON(html);
+                if (html == "ERROR") {
+                    alert("File Format Not Supported");
+                    $j('#fileupload_box').show();
+                    $j('#updating_box').hide();
+                }else if(json.width == null) {
+                    alert("Please select an image");
+                    $j('#fileupload_box').show();
+                    $j('#updating_box').hide();
+                }else {
+                	json = $j.parseJSON(html);
+                    $j('#updating_box').hide();
+                    $j('#fileupload_box').hide();
+                    $j('#fileupload_box').attr('rel','');
+
+                    document.getElementById('replacement_image_url').value = json.imageUrl;
+      			  	<?php if($personalizable_image_count==1){?>
+      			  	associateImage();
+      			  	<?php }else{?>
+      			  	 $j('#image_association_box').dialog("open")
+      			  	<?php }?>
+                }
+            }
+        }
+    });
+});
+
+
+
+
+</script>
+
+<script type="text/javascript">
+
+ var jcrop_api, original_width, original_height,dpi,zoom_factor,resized_image;
+    	$j(document).ready(function(){    		
+    		$j("#container").dialog({ autoOpen: false,modal: true,height:640,width: 876,dialogClass:'fixedpos',title:'<?php echo Mage::helper('cms')->__('Crop Image'); ?>',resizable: false,close: function( event, ui ) {$j(".container").show();if($j('#container.crop').is(':visible')){jcrop_api.destroy();$j('#cropimage').removeAttr('style')}}});
+			$pimg = $j('#preview-pane .preview-container img');	
+    	});
+
+var showCoords = function(c){
+      $j('#x1').val(c.x);
+      $j('#y1').val(c.y);
+      $j('#x2').val(c.x2);
+      $j('#y2').val(c.y2);
+      $j('#w').val(c.w);
+      $j('#h').val(c.h);
+};
+var showCoords1 = function(c){	   
+      $j('#x1').val(c.x);
+      $j('#y1').val(c.y);
+      $j('#x2').val(c.x2);
+      $j('#y2').val(c.y2);
+      $j('#w').val(c.w);
+      $j('#h').val(c.h);    
+      replaceImage = $j('.button-change-image');
+      if(replaceImage.length!=0){
+      	aspect = replaceImage.attr('rel-aspectratio'); 
+      }else{ 
+      	selects = svgCanvas.getSelectedElems();     	
+      	aspect = $j(selects[0]).attr('orig_w')/$j(selects[0]).attr('orig_h');
+      }
+      
+      multiple = 110;      
+	  ysize = multiple;
+	  xsize = multiple * aspect; 
+	  $j('.preview-container').css('width',xsize);
+	  $j('.preview-container').css('height',ysize);
+	  multiple = multiple-50;
+	  bounds = this.getBounds();
+	  boundx = bounds[0];
+	  boundy = bounds[1];	 
+	  
+      if (parseInt(c.w) > 0)
+      {
+        var rx = xsize / c.w;
+        var ry = ysize / c.h;
+	
+        $pimg.css({
+          width: Math.round(rx * boundx) + 'px',
+          height: Math.round(ry * boundy) + 'px',
+          marginLeft: '-' + Math.round(rx * c.x) + 'px',
+          marginTop: '-' + Math.round(ry * c.y) + 'px'
+        });
+      }
+      if(showWarning(dpi,original_width,original_height,72)){
+			$j('.errorBox').hide();
+		}else{
+			$j('.errorBox').show();
+		}
+};
+
+var showWarning = function(dpi, width, height,safedpi){
+		cropWidth = $j('#w').val()
+		cropHeight = $j('#h').val()
+		
+		replaceImage = $j('.button-change-image.selectedImage');
+		if(resized_image==true){
+			repalceWidth = replaceImage.attr('rel-height')/zoom_factor;
+			repalceHeight = replaceImage.attr('rel-width')/zoom_factor;
+		}else{
+			repalceWidth = replaceImage.attr('rel-height');
+			repalceHeight = replaceImage.attr('rel-width');
+		}
+		if(dpi<safedpi){
+			return false
+			
+		}else{
+			if(cropWidth < repalceWidth || cropHeight < repalceHeight){
+				image_factor = cropWidth/cropHeight;
+				repalce_factor = repalceWidth/repalceHeight;
+				if(cropWidth >= cropHeight){
+					change_factor = repalceWidth/cropWidth
+				}else{
+					change_factor = repalceHeight/cropHeight
+				}
+				if(dpi/change_factor< safedpi){
+					return false;
+				}else{
+					return true
+				}
+			}else{
+				return true				
+			}
+		}
+	}
+function makeCrop(url){	
+	if(window.svgEditor){
+		if($j('#tool_image').attr('placeholder') =="" || $j('#tool_image').attr('placeholder') == undefined){			
+			//svgEditor.addGalleryImage(url,true);
+			imageaspect = 0;
+			$j('.jcrop-preview').hide();
+		}else{
+			selects = svgCanvas.getSelectedElems();	
+			console.log(selects);		
+			if(selects[0] == undefined || selects[0] == null) return;						    	
+	      	imageaspect = $j(selects[0]).attr('orig_w')/$j(selects[0]).attr('orig_h');
+	      	if($j('#tool_crop').attr('crop')=="true"){imageaspect = 0;$j('.jcrop-preview').hide();}else{$j('.jcrop-preview').show();}     	
+      	}
+      }else{      
+      	replaceImage = $j('.button-change-image.selectedImage');
+		imageaspect = replaceImage.attr('rel-aspectratio');
+      }
+      $j("#container").dialog("open");
+		$j('#updating_crop').show();
+		$j('.rotate').attr('rel', 0);
+		$j(".jcrop-holder img").rotate(0);
+		$j(".preview-container img").rotate(0);
+		if(!url){		
+		image = $j('#cropimage').attr('src');
+		image1 = new Image();
+		image1.onload = function() {					
+			$j('#cropimage').Jcrop({	
+					onChange:   showCoords,
+					onSelect:   showCoords1,					
+					boxWidth : 400,
+					boxHeight : 400,
+					aspectRatio: imageaspect														
+					},function(){						
+					bounds = this.getBounds();
+					boundx = bounds[0];
+					boundy = bounds[1];
+					// Store the API in the jcrop_api variable
+	               	jcrop_api = this;
+	                // Move the preview into the jcrop container for css positioning
+					//$preview.appendTo(jcrop_api.ui.holder);	  
+	                })
+	     
+	                jcrop_api.setImage(image,$j('.jcrop-preview').attr("src",image)); 
+	                //$j('.jcrop-holder').css('top',$j('.photoEdit').outerHeight()/2-$j('.jcrop-holder').outerHeight()/2)
+	                jcrop_api.setSelect([0,0,500,500]);					
+					$j('#updating_crop').hide();
+					$j('#progress_crop').hide();
+			};image1.src= image	
+		}else{
+		$j(new Image()).load(function(){
+				$j('#cropimage').Jcrop({	
+					onChange:   showCoords,
+					onSelect:   showCoords1,					
+					boxWidth : 500,
+					boxHeight : 500,					
+					aspectRatio: imageaspect															
+					},function(){						
+					var bounds = this.getBounds();
+					boundx = bounds[0];
+					boundy = bounds[1];
+					// Store the API in the jcrop_api variable
+	               	jcrop_api = this;
+	                // Move the preview into the jcrop container for css positioning
+					//$preview.appendTo(jcrop_api.ui.holder);	  
+	                })
+	                jcrop_api.setImage(url,$j('.jcrop-preview').attr("src",url));
+	                //$j('.jcrop-holder').css('top',$j('.photoEdit').outerHeight()/2-$j('.jcrop-holder').outerHeight()/2)
+	                jcrop_api.setSelect([0,0,500,500]);					
+					$j('#updating_crop').hide();
+					$j('#progress_crop').hide();						
+		}).attr("src",url);
+		
+	}	
+}
+	
+$j('.overlay').live('click',function() {
+	$j('.tooltipster-base').hide();
+	var img_path = $j(this).next().children().attr("rel");
+	if(window.svgEditor){
+		if($j('#tool_image').attr('placeholder') =="" || $j('#tool_image').attr('placeholder') == undefined){
+			svgEditor.addGalleryImage(img_path,true);
+			return;
+		}
+	}
+	$j.ajax({
+		'url': '/dol/ajax/getImageDpi?image_url='+img_path,
+		'dataType': 'json',
+		type: "GET",						
+		success: function(json) {					
+			dpi = json.dpi;
+			width = json.width;
+			height = json.height;
+			zoom_factor = json.zoom_factor
+			image = json.img_url;
+			$j(new Image()).load(function(){				
+				if(width<500 && height<500){
+						console.log(width)
+						console.log(height)
+						image  = json.img_url.replace('_sized', '');
+				}
+				if(window.svgEditor){
+					if($j('#tool_image').attr('placeholder') =="" || $j('#tool_image').attr('placeholder') == undefined){
+						svgEditor.addGalleryImage(image,true);
+						return;
+					}
+				}
+				$j("#cropimage").attr("src",image);
+				$j('.jcrop-preview').attr("src",image);
+				
+				makeCrop(image);
+				jcrop_api.setImage(image,$j('.jcrop-preview').attr("src",image));
+				jcrop_api.setSelect([0,0,500,500]); 					 
+			}).attr("src",image);
+			replaceImage = $j('.button-change-image.selectedImage');
+		}
+	});
+	
+});
+
+
+
+$j('.place').live('click',function(e){
+
+	e.stopPropagation();
+	jcrop_api.destroy();
+	replaceImage = $j('.button-change-image.selectedImage');
+	imageheight = replaceImage.attr('rel-height');
+	imagewidth = replaceImage.attr('rel-width');
+	imagename = replaceImage.attr('rel-name');
+	if(window.svgEditor){
+		rotate = $j('.crop .rotate').attr('rel');
+	}else{
+		rotate = $j('.rotate').attr('rel');
+	}
+	var image = $j('#cropimage').attr('src');
+		var x = $j('#x1').val();
+	    var y =$j('#y1').val();			      
+	    var w = $j('#w').val();
+	    var h = $j('#h').val();
+	   
+				
+	    var image1 = new Image();
+		
+		image1.onload = function() {
+		  original_width = this.width;
+		  original_height = this.height;
+		  var iw = this.width;
+		  var ih = this.height;
+		  console.log({'image': image, 'x':x, 'y':y, 'width':w, 'height':h, 'rwidth':iw, 'rheight':ih,'owidth':original_width, 'oheight':original_height, 'resize':false, 'original':imagename, 'rotate':rotate, 'zoom_factor':zoom_factor});	
+		  $j("#container").dialog("close");		  
+		  $j('#progress_crop').show();
+		  $j.ajax({
+					'url': '/dol/index/crop',
+					'dataType': 'json',
+					type: "POST",
+					'data': {'image': image, 'x':x, 'y':y, 'width':w, 'height':h, 'rwidth':iw, 'rheight':ih,'owidth':original_width, 'oheight':original_height, 'resize':false, 'original':imagename, 'rotate':rotate, 'zoom_factor':zoom_factor},
+					success: function(json) {				
+						if(json.imageUrl.indexOf("_sized") != -1){
+							resized_image = true;								
+						}else{
+							resized_image = false;
+						}					
+						$j('#updating_box').hide();
+						$j('#progress_crop').hide();
+						if(!window.svgEditor){
+							$j('#replacement_image_url').val(json.imageUrl.replace('_sized',''));
+						}else{								
+								if($j('#tool_image').attr('rel') == "true" || $j('#tool_crop').attr('crop')=="true"){											
+									svgCanvas.setCropImageURL(json.imageUrl.replace('_sized',''),json.width,json.height);
+									$j('#tool_crop').attr('crop','false')
+																
+								}else{
+									svgEditor.addGalleryImage(json.imageUrl.replace('_sized',''),false);
+								}
+						}
+						$j('.header, .header-container, .wrap-header').css('zIndex','101');
+						$j('.header-primary').css({'zIndex':'100','position':'relative'});
+						$j('.nav-container').css({'zIndex':'99','position':'relative'});
+						$j('#vtab').css({'zIndex':'100','position':'relative'});
+						
+						//svgCanvas.setRotationAngle(angle);
+						
+						<?php if($personalizable_image_count==1){ ?>
+						  associateImage();
+						   <?php }else{ ?>
+						  $j('#image_association_box').dialog("open")
+						  <?php }?>
+					}
+				});
+	};
+	
+	image1.src = image
+	
+});
+
+
+$j('.rotate').live('click',function(){		
+	$j(".img1").rotate(parseInt($j(this).attr('rel'))+5);	
+	$j(".jcrop-holder img").rotate(parseInt($j(this).attr('rel'))+5);
+	$j(this).attr('rel',parseInt($j(this).attr('rel'))+5);
+	$j(".jcrop-holder").css('backgroundColor','#fff');
+	$j(".preview-container img").rotate(parseInt($j(this).attr('rel'))+5);
+});
+
+$j('.reset_rotate').live('click',function(){
+	$j('.rotate').attr('rel','0')
+	$j('.photoEdit .jcrop-holder img').rotate(parseInt($j('.rotate').attr('rel')))
+	$j(".preview-container img").rotate(parseInt($j('.rotate').attr('rel')));
+	jcrop_api.setSelect([0,0,500,500]);	
+})
+
+$j('.cancel').live('click', function(e){
+	e.stopPropagation();
+ 	$j("#container").dialog("close");
+ 	jcrop_api.destroy();
+});
+
+$j('.original').live('click',function(){	
+	addGalleryImage($j('#cropimage').attr('src'),true);
+	$j("#container").dialog("close");
+	jcrop_api.destroy();
+	$j('.header, .header-container, .wrap-header').css('zIndex','101');
+	$j('.header-primary').css({'zIndex':'100','position':'relative'});
+	$j('.nav-container').css({'zIndex':'99','position':'relative'});
+	$j('#vtab').css({'zIndex':'100','position':'relative'});
+});
+
+</script>
+
+
+<div id="container" style="display:none;" class="crop">
+	<div id="page-wrap">
+   		  <div class="photoEdit">
+           		 <img src="/js/all/editor/images/blank.gif" id="cropimage"></img>
+           </div>
+          <div class="buttons"> 
+         <div id="preview-pane">
+		      <div class="preview-container">
+		        <img src="/js/all/editor/images/blank.gif" class="jcrop-preview" />
+		      </div>
+          </div>      
+           <div class="errorBox" style="display:none;"><?php echo Mage::helper('cms')->__('Your photo resolution is low and might affect product quality.'); ?></div>
+              <div class = rotate_div>
+	       		  <button class="btn rotate" rel="0"><?php echo Mage::helper('cms')->__('Rotate Photo'); ?></button>
+	       		  <button class="btn reset_rotate"><?php echo Mage::helper('cms')->__('Reset Rotate'); ?></button>
+	       	  </div>
+              <button class="btn place"><?php echo Mage::helper('cms')->__('Use Cropped Photo'); ?></button>
+              <button class="btn original"><?php echo Mage::helper('cms')->__('Use Original Photo'); ?></button>
+              <a href="#" class="cancel"><?php echo Mage::helper('cms')->__('Cancel'); ?></a>
+   		 </div>
+	  </div>	
+	  <div style="display:none">
+				<input type="text" size="4" id="x1" name="x1" />
+				<input type="text" size="4" id="y1" name="y1" />
+				<input type="text" size="4" id="x2" name="x2" />
+				<input type="text" size="4" id="y2" name="y2" />
+				<input type="text" size="4" id="w" name="w" />
+				<input type="text" size="4" id="h" name="h" />
+	  </div>
+</div>
+
+
+
+	
+	<div id="updating_box" style="display:none;">
+		<div id="dialog_box_overlay"></div>
+		<div id="updating_box_container" class="container">
+		<div class="desc">
+			<?php echo Mage::helper('cms')->__('Loading Image....'); ?>  <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>">
+		</div>
+		<div class="desc-rendering" style="display:none;">
+			<?php echo Mage::helper('cms')->__('Rendering Image....'); ?>  <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>">
+		</div>
+		</div>
+	</div>
+	<div style="display: none;" id="updating_crop">
+		<div id="dialog_box_overlay"></div>
+		<div class="container" id="updating_crop_container">
+			<div class="desc">
+				<?php echo Mage::helper('cms')->__('Loading Selected Image'); ?>....<img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>">
+			</div>
+		</div>
+	</div>
+	<div style="display: none;" id="progress_crop">
+			<div id="dialog_box_overlay"></div>
+			<div class="container" id="progress_crop_container">
+				<div class="desc">
+					<?php echo Mage::helper('cms')->__('Processing Image'); ?>....<img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>">
+				</div>
+			</div>
+	</div>
+<?php if($has_personalizable_image){?>
+	<div id="image_association_box" style="display: none;" title="<?php echo Mage::helper('cms')->__('Apply New Image in place of'); ?> : ">
+		
+		<div id="image_association_box_container">			
+			<form id="image_association_form" name="image_association_form" action="" method="POST" width="100%">
+				<input type="hidden" id="replacement_image_url" name="replacement_image" value="" /> 
+				<table width="100%">
+				<?php $index = 0 ?>
+				<?php foreach($personalization_fields as $personalization_field){?>
+					<?php if(array_key_exists('imagetype', $personalization_field)){?>
+					<input type="hidden" id="<?php echo $personalization_field['imagetype']?>_width" name="<?php echo $personalization_field['imagetype']?>_width" value="<?php echo $personalization_field['width']?>" /> 
+					<input type="hidden" id="<?php echo $personalization_field['imagetype']?>_height" name="<?php echo $personalization_field['imagetype']?>_height" value="<?php echo $personalization_field['height']?>" /> 
+					<tr align="center">
+						<td width="50%" style="text-align:center;vertical-align:middle;height:120px">
+							<input type="checkbox" checked="checked" rel="<?php echo $index ?>" id="<?php echo $personalization_field['imagetype']?>_img_checkbox" name="<?php echo $personalization_field['imagetype']?>_img_checkbox" value="<?php echo $personalization_field['src']?>"/>
+						</td>
+						<td width="50%" style="text-align:left;vertical-align:middle;height:120px"><img rel="<?php echo $index ?>" src="<?php echo $thumb_url[$personalization_field['imagetype']] ?>"/><br /><?php echo $personalization_field['name']?>
+						</td>
+					</tr>
+					<?php $index++ ?>
+					<?php }?>
+				<?php }?>
+				</table>
+				<br />
+				<button type="button" title="Apply Image"
+					class="button btn-image-association">
+					<span><span><?php echo Mage::helper('cms')->__('Apply'); ?></span> </span>
+				</button>
+				<p id="checkbox_error" style="color:red; font-weight:bold; margin-top:4px; display:none"><?php echo Mage::helper('cms')->__('Please select at least one image'); ?></p>
+			</form>
+			<p style="margin-top:6px;"><?php echo Mage::helper('cms')->__('Note: New image will be resized automatically to fit recommended dimensions.'); ?></p>
+		</div>
+	</div>
+	
+	
+<?php }?>

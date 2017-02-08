@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <featured translate="label" module="featuredcategory">
+            <label>Featured Category</label>
+            <tab>web4pro</tab>
+            <sort_order>700</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <block_head translate="label">
+                            <label>Block head</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </block_head>
+                        <categories_in_block translate="label">
+                            <label>Block size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_class>required-entry</frontend_class>
+                            <validate>validate-number</validate>
+                        </categories_in_block>
+                    </fields>
+                </general>
+            </groups>
+        </featured>
+    </sections>
+</config>

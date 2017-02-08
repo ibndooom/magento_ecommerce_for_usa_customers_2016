@@ -1,0 +1,80 @@
+ <?php
+
+$html = '';
+
+$children = $menuTree->getChildren();
+$parentLevel = $menuTree->getLevel();
+$childLevel = is_null($parentLevel) ? 0 : $parentLevel + 1;
+
+$counter = 1;
+$childrenCount = $children->count();
+
+$parentPositionClass = $menuTree->getPositionClass();
+$itemPositionClassPrefix = $parentPositionClass ? $parentPositionClass . '-' : 'nav-';
+
+foreach ($children as $child) {
+    $child->setLevel($childLevel);
+    $child->setIsFirst($counter == 1);
+    $child->setIsLast($counter == $childrenCount);
+    $child->setPositionClass($itemPositionClassPrefix . $counter);
+    
+    $categoryId = explode('-', $child->getId());
+    $category = Mage::getModel('catalog/category')->load((int) $categoryId[2]);
+
+    $outermostClassCode = 'level'. $childLevel;
+    $_hasChildren = ($child->hasChildren()) ? 'has-children' : '';
+    
+    if (strlen($category->getNavMenuAdditionalItemCls())) {
+    	$html .= '<li '. $this->_getRenderedMenuItemAttributesAdd($child, $category->getNavMenuAdditionalItemCls()) .'>';
+    }else{
+    	$html .= '<li '. $this->_getRenderedMenuItemAttributes($child) .'>';
+    }
+
+    if ($category->getNavMenuReplacementContent() || $category->getNavMenuOutputLink()) {
+    	$link ='javascript:void(0)';
+    } elseif (strlen($category->getNavMenuAdditionalLink())) {
+    	$link = $this->getUrl($category->getNavMenuAdditionalLink());
+    } else $link = $child->getUrl();
+
+    if (strlen($category->getNavMenuReplacementContent())) {
+    	$parsedContent = Mage::helper('cms')->getBlockTemplateProcessor()->filter($category->getNavMenuReplacementContent());
+    	if (preg_match("!<a(.*?)</a>!si",$parsedContent)) {
+    		$html .= '<span class="' . $outermostClassCode . ' ' . $_hasChildren . '">' . $parsedContent . '</span>';
+    	} else {
+    		$html .= '<a href="' . $link . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '">' . $parsedContent . '</a>';
+    	}
+    } else {
+    	$html .= '<a href="' . $link . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '"><span>' . $this->escapeHtml($this->__($child->getName())) . '</span></a>';
+    }
+
+    if (!empty($childrenWrapClass)) {
+        $html .= '<div class="'. $childrenWrapClass .'">';
+    }
+
+    $nextChildLevel = $childLevel + 1;
+
+    if (!empty($_hasChildren)) {
+        $html .= '<ul class="level'. $childLevel .'">';
+        //$html .=     '<li class="level'. $nextChildLevel .' view-all">';
+        //$html .=         '<a class="level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
+        //$html .=             $this->__('View All') . ' ' . $this->escapeHtml($this->__($child->getName()));
+        //$html .=         '</a>';
+        //$html .=     '</li>';
+        $html .=     $this->render($child, $childrenWrapClass);
+        $html .= '</ul>';
+    }
+
+    if (!empty($childrenWrapClass)) {
+        $html .= '</div>';
+    }
+
+    $html .= '</li>';
+    
+    if ($category->getNavMenuNewColumnAfter()) {
+    	$html .= '</ul><ul class="level' . ($childLevel - 1) . '">';
+    }
+    
+    $counter++;
+}
+
+return $html;

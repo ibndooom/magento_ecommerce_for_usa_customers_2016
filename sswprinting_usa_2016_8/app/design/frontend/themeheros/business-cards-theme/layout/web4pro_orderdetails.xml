@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<layout version="0.0.1">
+    <sales_order_history translate="label">
+        <label>Customer My Account Order History</label>
+        <remove name="cart_sidebar" />
+        <remove name="left.blog.menu" />
+        <remove name="sale.reorder.sidebar" />
+    </sales_order_history>
+    <sales_order_reorderpage translate="label">
+        <remove name="left.blog.menu" />
+        <label>Customer My Account Reorder Center</label>
+        <update handle="customer_account"/>
+        <remove name="cart_sidebar" />
+        <remove name="sale.reorder.sidebar" />
+        <reference name="my.account.wrapper">
+            <block type="orderdetails/reorder_center" name="reorder.center">
+                <block type="sales/order_items" name="order_items" template="web4pro/orderdetails/items.phtml">
+                    <action method="addItemRender"><type>default</type><block>orderdetails/order_item_renderer_default</block><template>web4pro/orderdetails/items/renderer/default.phtml</template></action>
+                </block>
+            </block>
+        </reference>
+    </sales_order_reorderpage>
+
+    <!--    add tabs to order details-->
+    <sales_order_view>
+        <remove name="cart_sidebar" />
+        <remove name="left.blog.menu" />
+        <remove name="sale.reorder.sidebar" />
+
+        <reference name="sales.order.info">
+            <action method="setTemplate"><template>web4pro/orderdetails/order/info.phtml</template></action>
+        </reference>
+        <reference name="sales.order.view">
+            <action method="setTemplate"><template>web4pro/orderdetails/view.phtml</template></action>
+            <action method="addToChildGroup"><group>order_info</group><block helper="orderdetails/getChildBlock" /></action>
+            <reference name="order_totals">
+                <action method="setLabelProperties"><value>colspan="5" class="a-right"</value></action>
+            </reference>
+            <block type="sales/order_invoice_items" name="invoice_items" template="web4pro/orderdetails/invoice/items.phtml">
+                <action method="addToParentGroup"><group>order_info</group></action>
+                <action method="setTitle"><value>Invoices</value></action>
+                <action method="addItemRender"><type>default</type><block>orderdetails/order_item_renderer_default</block><template>web4pro/orderdetails/invoice/items/renderer/default.phtml</template></action>
+
+                <block type="sales/order_invoice_totals" name="invoice_totals" template="sales/order/totals.phtml">
+                    <action method="setLabelProperties"><value>colspan="5" class="a-right"</value></action>
+                    <action method="setValueProperties"><value>class="last a-right"</value></action>
+                    <block type="tax/sales_order_tax" name="tax" template="tax/order/tax.phtml" />
+                </block>
+            </block>
+
+            <block type="sales/order_shipment_items" name="shipment_items" template="web4pro/orderdetails/shipment/items.phtml">
+                <action method="setTitle"><value>Shipments</value></action>
+                <action method="addToParentGroup"><group>order_info</group></action>
+                <action method="addItemRender"><type>default</type><block>orderdetails/order_item_renderer_default</block><template>web4pro/orderdetails/shipment/items/renderer/default.phtml</template></action>
+
+                <block type="sales/order_comments" name="shipment_comments" template="sales/order/comments.phtml" />
+            </block>
+        </reference>
+    </sales_order_view>
+
+</layout>

@@ -1,0 +1,252 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+	$_category_detail=Mage::registry('current_category');
+?>
+<?php
+    //$_productCollection=$this->getLoadedProductCollection();
+    //$_helper = $this->helper('catalog/output');
+	  
+	$limit = $this->getChild('toolbar')->getLimit();
+	
+	$orders = array('position'=>'Newest','name'=>'Name','price'=>'Price','size'=>'Size');
+    
+    $this->getChild('toolbar')->setAvailableOrders($orders);
+    $current_order = $this->getChild('toolbar')->getCurrentOrder();
+    $current_direction = $this->getChild('toolbar')->getCurrentDirection();
+    
+    if(!$current_direction){
+    	$current_direction = 'asc';
+    	$this->getChild('toolbar')->setDefaultDirection($current_direction);
+    }
+    
+    if(!$current_order){
+    	$current_order = 'position';
+    	$this->getChild('toolbar')->setDefaultOrder($current_order);
+    }
+    
+    $search_results = Mage::helper('px_search')->executeSearch($this->getRequest(), $limit, $current_order, $current_direction);
+	$left_nav_display_list = Mage::helper('px_search')->buildLeftNav($this->getRequest(), $search_results);
+
+    $template_list = array();
+    $number_found = 0;
+    $results_count = 0;
+    $suggest_list = array();
+    
+    if($search_results){
+    	$suggest_list = Mage::helper('px_search')->getSuggestions($search_results, $this->helper('catalogsearch')->getEscapedQueryText());
+    }
+    
+    if($search_results && array_key_exists('response', $search_results) && array_key_exists('docs', $search_results['response']) && $search_results['response']['docs']){
+    	$template_list = $search_results['response']['docs'];
+    	$number_found = $search_results['response']['numFound'];
+    	$results_count = count($template_list);
+    }
+    
+    $base_url = Mage::helper('px_search')->buildBaseUrl($this->getRequest());
+    $current_url = $this->getLeftNavUrl(array('p'=>null,'order'=>null,'dir'=>null,'mode'=>null));
+    
+    $pos = strpos($current_url, '?');
+	if($pos===false){
+		$separator = '?';
+	}else{
+		$separator = '&';
+	}
+	
+	$is_search = strpos($current_url, 'catalogsearch');
+	if($is_search===false){
+		$is_search = false;
+	}else{
+		$is_search = true;
+	}
+?>
+<?php if(!$_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <?php if($number_found == 0):?>
+        <script type="text/javascript">
+    		jQuery(".sidebar-left").hide();
+        	jQuery(".page-title").html("<h1><?php echo Mage::helper("cms")->__("Nothing found for")." '".Mage::helper('catalogsearch')->getEscapedQueryText() . "'"?></h1>");
+    	</script>
+    <?php endif;?>
+<div class="category-products">
+    <?php if($number_found !=0): ?>
+        <div class="top-bar filters">
+    	<?php if(is_object($_category_detail) && $_category_detail->getId() != "") :?>
+            <h1><?php echo $_category_detail->getName(); ?></h1>
+    	<?php elseif($number_found):?>
+            <span class="filter-head"><?php echo  $this->__("%d Design(s)", $number_found);?></span>
+        <?php endif;?>
+            <?php
+                echo $this->getToolbarHtml() ?>
+        </div>
+    <?php endif;?>
+    <?php // List mode ?>
+    <?php if($this->getMode()!='grid'): ?>
+
+        <?php $_iterator = 0; ?>
+    <ul class="products-list thumbnails products-grid products-grid-list" id="products-list">
+    <?php foreach ($template_list as $template): ?>
+        <li class="bottom-decor item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?> span9">
+            <section class="grid-section up-decor">
+            <div class="thumbnail relative bord-light">
+                <?php // Product Image ?>
+                <?php // Product description ?>
+                    <?php $_productNameStripped = $this->stripTags($template['name'], null, true); ?>
+                    <a href="<?php echo Mage::getBaseUrl().$template['url'] ?>" title="<?php echo $this->stripTags($template['name'], null, true); ?>" class="product-image"><img class="designImage" src="<?php echo $template['thumb'] ?>" alt="<?php echo $this->stripTags($template['name'], null, true); ?>" /></a>
+                    <div class="product-desc">
+                    <h4 class="product-name"><a href="<?php echo Mage::getBaseUrl().$template['url'] ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $template['name'] ?></a></h4>
+
+                    <?php /*if($_product->getRatingSummary()): ?>
+                        <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; */?>
+
+                    <?php //echo $this->getPriceHtml($_product, true) ?>
+
+                    <?php /*<div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div> */?>
+					<div class="desc std">
+							 <?php echo $this->helper('core/string')->truncate($template['templateDescription'],60,'...') ?>
+                        </div>
+                    <a class="select-design btn" href="<?php //echo $_product->getProductUrl() ?>">View Design</a>
+                    <?php /*?><div class="actions">
+
+                        <?php if(!$_product->isSaleable()): ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+
+                        <div class="btn-group">
+                            <?php if($_product->isSaleable()): ?>
+                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn btn-success btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span class="visible-phone"><?php echo $this->__('Cart') ?></span><span class="hidden-phone"><?php echo $this->__('Add to Cart') ?></span></span></button>
+
+                                <?php if ( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->getAddToCompareUrl($_product) ) : ?>
+                                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                            <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="btn link-wishlist"><span class="visible-phone"><?php echo $this->__('Wishlist') ?></span><span class="hidden-phone"><?php echo $this->__('Add to Wishlist') ?></span></a>
+                                        <?php endif; ?>
+                                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                            <a href="<?php echo $_compareUrl ?>" class="btn link-compare"><span class="visible-phone"><?php echo $this->__('Compare') ?></span><span class="hidden-phone"><?php echo $this->__('Add to Compare') ?></span></a>
+                                        <?php endif; ?>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <?php if ( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->getAddToCompareUrl($_product) ) : ?>
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="btn link-wishlist"><i class="icon-star"></i> <span class="visible-phone"><?php echo $this->__('Wishlist') ?></span><span class="hidden-phone"><?php echo $this->__('Add to Wishlist') ?></span></a>
+                                        <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                    <?php endif; ?>
+                                    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                        <ul class="dropdown-menu add-to-links">
+                                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                                <li><a href="<?php echo $_compareUrl ?>" class="link-compare"><span class="visible-phone"><?php echo $this->__('Add to Compare') ?></span><span class="hidden-phone"><?php echo $this->__('Add to Compare') ?></span></a></li>
+                                            <?php endif; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
+                            <?php endif; ?>
+                        </div>
+
+                    </div><?php */?>
+                    </div>
+            </div>
+            </section>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    <?php else: ?>
+
+    <?php // Grid Mode ?>
+
+    <?php $_collectionSize = count($template_list) ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <?php $i=0; foreach ($template_list as $template): ?>
+        <?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid thumbnails grid-outer">
+        <?php endif ?>
+            <li class="grid3 item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <section class="grid-section up-decor">
+            	<div class="thumbnail relative bottom-decor bord-light">
+                	<h4 class="product-name"><a rel="<?php echo $template['id']; ?>" href="<?php echo Mage::getBaseUrl().$template['url'] ?>" title="<?php echo $this->stripTags($template['name'], null, true) ?>"><?php echo $template['name'] ?></a></h4>
+                    <a href="<?php echo Mage::getBaseUrl().$template['url'] ?>" rel="<?php echo $template['id']; ?>" title="<?php echo $this->stripTags($template['name'], null, true) ?>" class="product-image"><img class="designImage" src="<?php echo $template['thumb']; ?>" alt="<?php echo $this->stripTags($template['name'], null, true) ?>" /></a>
+                    <div class="caption list-captn">
+                        <?php /*if($_product->getRatingSummary()): ?>
+                        	<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                        <?php endif; */?>
+                        
+                        <div class="desc std">
+                            <?php echo $this->helper('core/string')->truncate($template['templateDescription'],60,'...'); ?>
+                        </div>
+                        
+                        <?php //echo $this->getPriceHtml($_product, true) ?>
+                        <div class="actions">
+                        
+                            <?php //if($_product->isSaleable()): ?>
+                            	<a class="select-design btn" rel="<?php echo $template['id']; ?>" href="<?php echo Mage::getBaseUrl().$template['url'] ?>">View Design</a>
+								<!--<button type="button" title="<?php //echo $this->__('Add to Cart') ?>" class="btn" onclick="setLocation('<?php //echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php //echo $this->__('Add to Cart') ?></span></span></button>-->
+                            <?php //else: ?>
+                                <p class="availability out-of-stock"><span><?php //echo $this->__('Out of stock') ?></span></p>
+                            <?php //endif; ?>
+                            <?php /*?><div class="addto-links">
+								<?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                    <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="wish-view" title="<?php echo $this->__('Add to Wishlist') ?>"><?php echo $this->__('Add to Wishlist') ?></a> |
+                                <?php endif; ?>
+                                <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                    <a href="<?php echo $_compareUrl ?>" class="link-compare btn-comp"><?php echo $this->__('Add to Compare') ?></a>
+                                <?php endif; ?>
+                            </div><?php */?>
+                        </div>
+                    </div>
+                </div>
+                </section>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif ?>
+        <?php endforeach ?>
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    <?php endif; ?>
+
+</div>
+<?php ?><div class="toolbar-bottom clear">
+	<?php echo $this->getPagerHtml($limit,$number_found,$results_count); ?>
+</div><?php ?>
+<?php endif; ?>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <cms>
+            <children>
+                <banner translate="title" module="banner">
+                    <title>Banner</title>
+                    <sort_order>24</sort_order>
+                    <children>
+                        <banner>
+                            <title>Manage Banners</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/banner</action>
+                        </banner>                        
+                        <settings>
+                            <title>Settings</title>
+                            <sort_order>44</sort_order>
+                            <action>adminhtml/system_config/edit/section/banner</action>
+                        </settings>
+                    </children>
+                </banner>
+            </children>
+        </cms>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <cms>
+                        <children>
+                            <banner translate="title" module="banner">
+                                <title>Banner</title>
+                                <sort_order>120</sort_order>
+                                <children>
+                                    <banner translate="title">
+                                        <title>Manage Banners</title>
+                                        <sort_order>11</sort_order>
+                                    </banner>
+                                    <settings translate="title">
+                                        <title>Settings</title>
+                                        <sort_order>99</sort_order>
+                                    </settings>
+                                </children>
+                            </banner>
+                        </children>
+                    </cms>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <banner translate="title" module="banner">
+                                        <title>Banner</title>
+                                        <sort_order>990</sort_order>
+                                    </banner>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

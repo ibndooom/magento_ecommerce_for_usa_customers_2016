@@ -1,0 +1,67 @@
+.grid-outer{
+	font-size:0;
+	line-height:0;
+	margin:0 -18px;
+	@media screen and (max-width: $mobile) {
+		margin: 0;
+	}
+}
+.grid3{
+	display:inline-block;
+	width:33.333%;
+	max-width: 325px;
+	padding: 0 8px;
+	font-size: 15px;
+	line-height:18px;
+	vertical-align: top;
+	@media screen and (max-width: $tablet) {
+		width: 50%;
+	}
+	@media screen and (max-width: $mobile) {
+		width: 100%;
+	}
+}
+.grid4{
+	display:inline-block;
+	width:25%;
+	// max-width: 325px;
+	padding: 0 8px;
+	font-size: 15px;
+	line-height:18px;
+	vertical-align: top;
+	@media screen and (max-width: $phablet) {
+		width: 50%;
+	}
+	@media screen and (max-width: $mobile) {
+		width: 100%;
+	}
+}
+.grid3_1{
+	@media screen and (max-width: $phablet) {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+	}
+}
+.grid3-2{
+	display:inline-block;
+	width:66.667%;
+	max-width: 650px;
+	padding: 0 8px;
+	font-size: 15px;
+	line-height: 18px;
+	vertical-align: top;
+	@media screen and (max-width: $phablet) {
+		display: block;
+		margin: 0 auto 20px;
+		width: 100%;
+	}
+}
+.grid-section{
+	margin: 0 0 16px;
+	h3{
+		font: 24px/28px $proximanova, Helvetica, sans-serif;
+		margin: 0 0 16px;
+		text-align:center;
+	}
+}

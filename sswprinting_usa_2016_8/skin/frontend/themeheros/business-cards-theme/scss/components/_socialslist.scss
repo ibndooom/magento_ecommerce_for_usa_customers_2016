@@ -1,0 +1,54 @@
+.footer .links.social-media{
+	width:100%;
+	margin: 0 0 22px;
+}
+.links.social-media ul{
+	overflow: hidden;
+	li{
+		float: left;
+		margin: 0 0 0 3px;
+		@media screen and (max-width: $tablet) {
+			display: inline-block;
+			vertical-align: top;
+			float: none;
+			margin:0;
+			text-align: center;
+		}
+		&:first-child{
+			margin:0;
+		}
+	}
+	a{
+		display: block;
+		position: relative;
+		width: 31px;
+		height: 31px;
+		@extend %text-hide;
+		border-radius: 2px;
+		background: $grey--darkMore;
+	}
+	em{
+		display: block;
+		width: 100%;
+		height: 100%;
+		&:before{
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+		}
+		$images: ico-facebook ico-twitter ico-linkedin ico-googleplus;
+		$i:0;
+		@each $col in facebook, twitter, linkedin, google {
+			$i: $i + 1;
+			&.#{$col} {
+				&:before{
+					@extend %iconsSprite;
+					@include back-pos(nth($images, $i));
+				}
+			}
+		}
+	}
+}

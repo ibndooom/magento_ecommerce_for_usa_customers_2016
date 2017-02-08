@@ -1,0 +1,120 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ */
+?>
+<?php
+    $_htmlId = $this->getElement()->getHtmlId();
+    $_htmlName = $this->getElement()->getName();
+?>
+<tr>
+    <td class="label"><?php echo $this->getElement()->getLabel(); ?></td>
+    <td class="grid tier">
+        <div id="<?php echo $_htmlId ?>_container" class="custom-options data"></div>
+        <?php echo $this->getAddProductButtonHtml() ?>
+
+<script type="text/javascript">
+//<![CDATA[
+var foverProductTemplate =
+      '<div class="option-box" id="product_uuid_{{index}}" data-index="{{index}}" style="padding:0.8em; margin:0.8em 0">'
+    + '<table cellspacing="0" style="border:none; margin-bottom:0.8em"><tbody style="background:none;">'
+    + '<tr>'
+    + '<td style="border:none; width:100px"><strong><?php echo $this->__('Product UUID')?> <span class="required">*</span></strong></td>'
+    + '<td style="border:none;"><input class="input-text required-entry product-uuid-entry" type="text" name="<?php echo $_htmlName?>[{{index}}][uuid]" value="{{uuid}}" /></td>'
+    + '<td style="border:none; width:33px;"><button title="<?php echo $this->__('Delete UUID Button'); ?>" type="button" class="scalable delete icon-btn delete-product-option" onclick="return foverProduct.deleteUuid({{index}});">'
+    + '<span><?php echo $this->__('Delete'); ?></span></button></td>'
+    + '</tr>'
+    + '</tbody></table>'
+    + '<div class="form-list">'
+    + '<table id="product_uuid_options_{{index}}_table" cellspacing="0">'
+    + '<thead>'
+    + '<tr class="headings">'
+    + '<th><?php echo $this->__('Option Label')?> <span class="required">*</span></th>'
+    + '<th><?php echo $this->__('Option Value')?> <span class="required">*</span></th>'
+    + '<th></th>'
+    + '</thead>'
+    + '<tbody class="options-list" id="product_uuid_options_{{index}}"></tbody>'
+    + '<tfoot><tr><td colspan="10" align="right"><?php echo $this->getAddProductOptionButtonHtml() ?></td></td></tfoot>'
+    + '</table>'
+    + '</div></div>';
+
+var forverProductOptionTemplate = '<tr id="product_uuid_{{uuid_index}}_{{index}}">'
+    + '<td><input class="input-text required-entry" type="text" name="<?php echo $_htmlName?>[{{uuid_index}}][options][{{index}}][label]" value="{{label}}"></td>'
+    + '<td><input class="input-text required-entry" type="text" name="<?php echo $_htmlName?>[{{uuid_index}}][options][{{index}}][value]" value="{{value}}"></td>'
+    + '<td style="width:33px"><button title="<?php echo $this->__('Delete UUID Option Button'); ?>" type="button" class="scalable delete icon-btn delete-product-option" onclick="return foverProduct.deleteOption(\'{{uuid_index}}_{{index}}\');">'
+    + '<span><?php echo $this->__('Delete'); ?></span></button></td>'
+    + '</tr>';
+
+var foverProduct = {
+    productTpl: new Template(foverProductTemplate, new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', '')),
+    optionTpl: new Template(forverProductOptionTemplate, new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', '')),
+    counter: [],
+    addUuid: function () {
+        var data = {};
+        var index = this.counter.length;
+
+        data.index = index;
+        this.counter[index] = 0;
+        if (arguments.length) {
+            data.uuid = arguments[0];
+        }
+
+        Element.insert($('<?php echo $_htmlId; ?>_container'), {
+            bottom : this.productTpl.evaluate(data),
+        });
+
+        var emptyEntry = $('none-product-uuid-pointed');
+        if (emptyEntry) emptyEntry.remove();
+    },
+    deleteUuid: function(index) {
+        $('product_uuid_' + index).remove();
+        var uuidEntries = $$('.product-uuid-entry');
+
+        if (!uuidEntries.length) {
+            Element.insert($('<?php echo $_htmlId; ?>_container'), {
+                bottom : '<input id="none-product-uuid-pointed" type="hidden" name="<?php echo $_htmlName?>" />',
+            });
+        }
+    },
+    addOption: function () {
+        var data = {}, uuidIndex, options = {label: '', value: ''};
+
+        if (arguments.length == 1) {
+            var event = arguments[0];
+            data.uuid_index = Event.findElement(event, '.option-box').readAttribute('data-index');
+        } else if (arguments.length == 2) {
+            data.uuid_index = arguments[0];
+            options = arguments[1];
+        }
+
+        uuidIndex = data.uuid_index;
+        data.index = this.counter[uuidIndex];
+        data.label = options.label;
+        data.value = options.value;
+        this.counter[uuidIndex]++;
+
+        Element.insert($('product_uuid_options_' + uuidIndex), {
+            bottom : this.optionTpl.evaluate(data),
+        });
+    },
+    deleteOption: function(uuidOptionIndex) {
+        $('product_uuid_' + uuidOptionIndex).remove();
+        this.counter[uuidIndex];
+    }
+};
+
+<?php $index = 0; foreach ($this->getValues() as $_product) :  ?>
+    foverProduct.addUuid('<?php echo $_product['uuid'] ?>');
+    <?php
+        if (!empty($_product['options'])):
+            foreach ($_product['options'] as $option) :
+    ?>
+        foverProduct.addOption(<?php echo $index ?>, <?php echo json_encode($option) ?>);
+    <?php endforeach; endif; ?>
+<?php $index++; endforeach; ?>
+//]]>
+</script>
+</td></tr>

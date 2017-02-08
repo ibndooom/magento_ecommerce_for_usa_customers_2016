@@ -1,0 +1,152 @@
+<?php
+    
+    $search_results = Mage::helper('px_search')->executeSearch($this->getRequest(), 0, 'position', 'asc');
+	$left_nav_display_list = Mage::helper('px_search')->buildLeftNav($this->getRequest(), $search_results);
+
+    $base_url = Mage::helper('px_search')->buildBaseUrl($this->getRequest());
+    $product_ids = explode('|',$this->getRequest()->getParam('productIds'));
+    if(($sid = $this->getRequest()->getParam('sid'))&&(count($product_ids)==1)){
+        $base_url = $base_url.'?sid='.$sid;
+    }
+    $urlParams = array();
+    $urlParams['_current']  = true;
+    $urlParams['_escape']   = true;
+    $urlParams['_use_rewrite']   = true;
+    $urlParams['_query']    = array('p'=>null,'order'=>null,'dir'=>null,'mode'=>null);
+    $current_url = $this->getUrl('*/*/*', $urlParams);
+    
+    $pos = strpos($current_url, '?');
+	if($pos===false){
+		$separator = '?';
+	}else{
+		$separator = '&';
+	}
+?>
+<script type="text/javascript">
+$j(function() {
+	var $sidebar1   = $j('.block-layered-nav'), 
+	$window     = $j(window),
+	offset1     = $sidebar1.offset(),
+	topPadding1 = 15;
+	maxheight1 = $j('.col-main').outerHeight()- $j('.header-container').outerHeight() - $j('.nav-container').outerHeight();;
+	sliderheight1 = $j('.block-layered-nav').outerHeight()
+	
+	
+		
+	$window.scroll(function() {		
+		if($j('.topcategory')[0] != null && $j('.topcategory').outerHeight()<100){
+			offset_top = offset1.top + 300;	
+		}else{
+			offset_top = offset1.top;
+		}
+        if ($window.scrollTop() > offset_top && $window.scrollTop() < Math.abs(maxheight1-sliderheight1)+offset_top){
+            $sidebar1.stop().animate({
+                marginTop: $window.scrollTop() - offset_top
+            });
+        }
+        else if($window.scrollTop() == 0){
+        	$sidebar1.stop().animate({
+                marginTop: '0'
+            });
+        }
+        else if($window.scrollTop() > Math.abs(maxheight1-sliderheight1)+offset_top) {
+        	$sidebar1.stop().animate({
+                marginTop: (maxheight1-sliderheight1)
+            });
+        }       
+        
+    });
+});	
+</script>
+
+<a href="#" class="layared-visibility js-layared-visibility">Show or hide layared nav</a>
+<div class="block block-layered-nav">
+	<?php if($left_nav_display_list && count($left_nav_display_list)>0){?>
+	<div class="filtered">
+
+	    <div class="block-title">
+	        <strong><span><?php echo $this->__('Active Filters')?></span></strong>
+	    </div>
+			<?php if(isset($left_nav_display_list['Selected'])&&(count($product_ids)==1)){
+                unset($left_nav_display_list['Selected']['Size']);
+            }
+            if(array_key_exists('Selected', $left_nav_display_list) && count($left_nav_display_list['Selected'])>0){?>
+							
+			<div class="currently">
+	    		<ol>
+	    		<?php 
+					$selected_nav_display_list = $left_nav_display_list['Selected'];
+					foreach($selected_nav_display_list as $key => $selected_nav_facet){?>
+	            	<li>
+	            		<?php if($key!='Color'){?>
+	            		<span class="label"><?php echo $key?>:</span> <span class="value"><?php echo $this->__($selected_nav_facet['name']) ?></span>
+	            		<?php }else{?>
+	            		<span class="label"><?php echo $key?>:</span> <span class="value"><span style="width:20px;height:20px;background: <?php echo $selected_nav_facet['hex']?>;color: <?php echo $selected_nav_facet['hex']?>;">Col<span>&nbsp;&nbsp;<?php echo $this->__($selected_nav_facet['name']) ?></span>
+	            		<?php }?>
+	            		<a  class="btn-remove" href="<?php echo $selected_nav_facet['url']?>" title="Remove This Item">Remove This Item</a>
+	                </li>
+	                <?php }?>
+	          	</ol>
+			</div>
+			<div class="actions"><a href="<?php echo $base_url?>">Remove all filters</a></div>
+			<?php }?>
+		</div>
+		<div class="block-content">
+		
+			
+			<?php if(array_key_exists('Display', $left_nav_display_list) && count($left_nav_display_list['Display'])>0){?>
+
+			<dl id="narrow-by-list">
+				<?php 
+				$left_nav_display_list = $left_nav_display_list['Display'];
+				foreach($left_nav_display_list as $key => $left_nav_facet){
+					$count = 0;
+				?>            
+				<dt><?php echo $this->__($key) ?> <em></em></dt>
+				<dd id="short_nav_<?php echo str_replace(' ','_',$key);?>">
+				<ol>
+				<?php foreach($left_nav_facet as $left_nav_facet_field){?>
+					<?php if($count<10){?>
+					<li>
+						<?php if($key!='Color'){?>
+						<a href="<?php echo $current_url.$separator.$left_nav_facet_field['key'].'='.$left_nav_facet_field['id']?>"><?php echo $this->__($left_nav_facet_field['name']) ?>&nbsp;<span class="count">(<?php echo $left_nav_facet_field['count']?>)</span></a>
+						<?php }else{?>
+						<a href="<?php echo $current_url.$separator.$left_nav_facet_field['key'].'='.$left_nav_facet_field['id']?>"><span style="width:20px;height:20px;background: <?php echo $left_nav_facet_field['hex']?>;color: <?php echo $left_nav_facet_field['hex']?>;">Color</span>&nbsp;&nbsp;<?php echo $this->__($left_nav_facet_field['name']) ?>&nbsp;<span class="count">(<?php echo $left_nav_facet_field['count']?>)</span></a>
+						<?php }?>
+					</li>
+					<?php }?>
+					<?php $count++;?>
+				<?php }?>
+				<?php if(count($left_nav_facet)>10):?>
+					<li style="text-align:right;font-style:italic;">
+					<a href="#" onclick="javascript:getElementById('long_nav_<?php echo $key?>').style.display='block';javascript:getElementById('short_nav_<?php echo $key?>').style.display='none'; return false;">More <?php echo $key?>s...&nbsp;</a>
+					</li>
+				<?php endif;?>
+				</ol>
+				</dd>
+				<?php if(count($left_nav_facet)>10):?>
+				<dd id="long_nav_<?php echo str_replace(' ','_',$key);?>" style="display:none">
+				<ol>
+				<?php $left_nav_facet = Mage::helper('px_search')->sortFacetsByName($left_nav_facet);?>
+				<?php foreach($left_nav_facet as $left_nav_facet_field){?>
+					<li>
+						<?php if($key!='Color'){?>
+						<a href="<?php echo $current_url.$separator.$left_nav_facet_field['key'].'='.$left_nav_facet_field['id']?>"><?php echo $this->__($left_nav_facet_field['name']) ?>&nbsp;(<?php echo $left_nav_facet_field['count']?>)</a>
+						<?php }else{?>
+						<a href="<?php echo $current_url.$separator.$left_nav_facet_field['key'].'='.$left_nav_facet_field['id']?>"><span style="width:20px;height:20px;background: <?php echo $left_nav_facet_field['hex']?>;color: <?php echo $left_nav_facet_field['hex']?>;">Color</span>&nbsp;&nbsp;<?php echo $this->__($left_nav_facet_field['name']) ?>&nbsp;(<?php echo $left_nav_facet_field['count']?>)</a>
+						<?php }?>
+					</li>
+				<?php }?>
+					<li style="text-align:right;font-style:italic;">
+					<a href="#" onclick="javascript:getElementById('short_nav_<?php echo $key?>').style.display='block';javascript:getElementById('long_nav_<?php echo $key?>').style.display='none'; return false;">Less <?php echo $key?>s...&nbsp;</a>
+					</li>
+				</ol>
+				</dd>
+				<?php endif;?>
+				<?php }?>
+			</dl>
+			<script type="text/javascript">decorateDataList('narrow-by-list')</script>
+		<?php }?>
+		</div>
+	<?php }?>
+</div>

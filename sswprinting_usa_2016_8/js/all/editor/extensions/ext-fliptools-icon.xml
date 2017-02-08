@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+	<g id="tool_flipHoriz">
+	  <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+		 <defs>
+		  <linearGradient id="flipH_4" x1="0" y1="0" x2="1" y2="0">
+		   <stop offset="0" stop-color="#0000ff"/>
+		   <stop offset="1" stop-color="#aaffff"/>
+		  </linearGradient>
+		  <linearGradient x1="1" y1="0" x2="0" y2="0" id="flipH_5">
+		   <stop offset="0" stop-color="#0000ff"/>
+		   <stop offset="1" stop-color="#aaffff"/>
+		  </linearGradient>
+		 </defs>
+		  <path id="flipH_1" d="m181.6188,271.76694l0,-242.99978l104.99997,242.99978l-104.99997,0z" stroke-width="5" stroke="#000000" fill="url(#flipH_4)"/>
+		  <path id="flipH_2" d="m115.3812,271.76691l0,-242.99975l-104.99994,242.99975l104.99994,0z" stroke-width="5" stroke="#000000" fill="url(#flipH_5)"/>
+		  <line fill="none" stroke="#000000" stroke-width="5" x1="150" y1="24" x2="150" y2="279" id="flipH_3"/>
+	  </svg>
+	</g>
+	<g id="tool_flipVert">
+	  <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+		 <defs>
+		  <linearGradient y2="0" x2="1" y1="0" x1="0" id="flipV_4">
+		   <stop stop-color="#0000ff" offset="0"/>
+		   <stop stop-color="#aaffff" offset="1"/>
+		  </linearGradient>
+		  <linearGradient id="flipV_5" y2="0" x2="0" y1="0" x1="1">
+		   <stop stop-color="#0000ff" offset="0"/>
+		   <stop stop-color="#aaffff" offset="1"/>
+		  </linearGradient>
+		 </defs>
+		  <g transform="rotate(90, 148.5, 150.266)" id="flipV_6">
+		   <path id="flipV_1" d="m181.6188,271.76694l0,-242.99978l104.99997,242.99978l-104.99997,0z" stroke-width="5" stroke="#000000" fill="url(#flipV_4)"/>
+		   <path id="flipV_2" d="m115.3812,271.76691l0,-242.99975l-104.99994,242.99975l104.99994,0z" stroke-width="5" stroke="#000000" fill="url(#flipV_5)"/>
+		   <line fill="none" stroke="#000000" stroke-width="5" x1="150" y1="24" x2="150" y2="279" id="flipV_3"/>
+		  </g>
+	  </svg>
+	</g>
+</svg>

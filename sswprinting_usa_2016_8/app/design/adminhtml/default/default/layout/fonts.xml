@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	
+	<fonts_adminhtml_fonts_index>
+			<reference name="content">
+				<block type="fonts/adminhtml_fonts" name="fonts">
+				</block>
+			</reference>
+	</fonts_adminhtml_fonts_index>
+	
+</layout>

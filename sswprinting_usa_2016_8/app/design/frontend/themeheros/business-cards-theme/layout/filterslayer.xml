@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        
+    </default>
+    <catalog_category_default translate="label">
+        <reference name="head">
+            <!--        <action  method="addJs"><script>themeheros/filterslayer/jquery-1.8.3.js</script></action> -->
+            <action  method="addJs"><script>themeheros/filterslayer/jquery.noconflict.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/history.adapter.jquery.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/history.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/filterslayer.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/jquery-ui.js</script></action>
+            <block   type="core/template" name="js_filter" template="filterslayer/js.phtml"/>
+	</reference>
+    </catalog_category_default>
+    <catalog_category_layered translate="label">
+        <reference name="head">
+            <!--             <action  method="addJs"><script>themeheros/filterslayer/jquery-1.8.3.js</script></action> -->
+            <action  method="addJs"><script>themeheros/filterslayer/jquery.noconflict.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/history.adapter.jquery.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/history.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/filterslayer.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/jquery-ui.js</script></action>
+            <block   type="core/template" name="js_filter" template="filterslayer/js.phtml"/>
+	</reference>
+    </catalog_category_layered>
+    
+    <catalogsearch_result_index translate="label">
+        <reference name="head">
+            <!--             <action  method="addJs"><script>themeheros/filterslayer/jquery-1.8.3.js</script></action> -->
+            <action  method="addJs"><script>themeheros/filterslayer/jquery.noconflict.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/history.adapter.jquery.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/history.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/filterslayer.js</script></action>
+            <action  method="addJs"><script>themeheros/filterslayer/jquery-ui.js</script></action>
+            <block   type="core/template" name="js_filter" template="filterslayer/js.phtml"/>
+	</reference>
+    </catalogsearch_result_index>
+    
+
+</layout> 

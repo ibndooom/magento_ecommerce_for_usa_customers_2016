@@ -1,0 +1,44 @@
+.wrapper,
+.fancybox-wrap{
+	.jcf-focus,
+	.jcf-focus *{
+		border-color: $grey--darkMin !important;
+	}
+	.jcf-select{
+		height:30px;
+		border: 1px solid $grey--darkMin;
+		border-radius: 3px;
+		z-index: 0;
+		@media screen and (max-width: $mobile) {
+			min-width:228px;
+		}
+		.jcf-select-text{
+			line-height: 30px;
+		}
+	}
+	.jcf-focus .jcf-select-opener,
+	.jcf-select-opener{
+		right:10px;
+		top:50%;
+		-webkit-transform: translate( 0, -50%);
+				transform: translate( 0, -50%);
+		width: 9px;
+		height: 5px;
+		background: transparent;
+		border-top: 5px solid $grey--custom10 !important;
+		border-left: 4px solid $transparent !important;
+		border-right: 4px solid $transparent !important;
+	}
+	select{
+		padding: 6px 9px;
+		border: 1px solid $grey--darkMin;
+		border-radius: 5px;
+		background: $white;
+		margin:2px 0 0;
+	}
+}
+.jcf-select-drop .jcf-select-drop-content{
+	border-color: $grey--darkMin;
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+			box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,11 @@
+<?php if($this->canShow()): ?>
+    <div class="home-set box">
+        <?php foreach($this->getCollection() as $banner): ?>
+            <div class="set">
+                <a href="<?php echo $banner->getUrl() ?>" title="<?php echo $banner->getAltText() ?>" target="<?php echo $this->getTargetWindow() ?>" onclick="if(typeof(ga)!='undefined'){ga('send','event','Banner','Click Home Set Banner','<?php echo $banner->getId() ?>');}">
+                    <img src="<?php echo $banner->getImageUrl() ?>" height="170" width="240"; alt="<?php echo $banner->getAltText() ?>" />
+                </a>
+            </div>       
+        <?php endforeach; ?>
+    </div>  
+<?php endif; ?>

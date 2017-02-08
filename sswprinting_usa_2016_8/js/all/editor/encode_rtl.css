@@ -1,0 +1,294 @@
+#typeSelect {
+	float:right;
+	margin-left:20px;
+}
+
+#typeSelect li {
+	width:194px;
+	line-height:24px;	
+	background: linear-gradient(to bottom, #F6F5F5 0%, #D4D3D3 50%, #D5D5D5 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	height:27px;
+	border-bottom:solid 1px #ccc;
+}
+
+#typeSelect li.active {
+	
+	background: linear-gradient(to bottom, #D5D5D5 0%, #D4D3D3 50%, #F6F5F5 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	
+}
+
+#typeSelect li.selected span.arrow{background:url(icons/slider_left.png) 0px 0px no-repeat;display:block;width:30px;height:29px;margin-top:-24px;margin-right:186px;z-index:100;position:relative;}
+
+#typeSelect a {
+	display:block;
+	font-size:13px;
+	padding-right:10px;
+	text-decoration:none;
+	color:#000;	
+	background:no-repeat 4px center;
+	font-family:myriad pro;
+}
+
+#typeSelect a:hover {	
+	text-decoration:none;
+}
+
+#typeSelect a.active {
+	text-decoration:none;
+	color:#000;	
+}
+
+
+#forms {
+	width:344px;
+	float:right;
+	opacity:1.0;
+}
+
+.qr_embed{width:auto !important;float:none !important;padding:0 4px;margin-left:0px !important;margin-bottom:10px; }
+
+#forms form {
+	display:none;
+	color:#777;
+}
+
+legend h2 {
+	font-size:13px;
+	font-weight:bold;
+	margin:0;
+	display:inline-block;
+	color:#000;
+}
+/*
+	legend {
+		font-size:100%;
+		background:#181818;
+		color:#fff;
+		text-shadow:1px 1px 0 #000;
+		padding:2px 6px;
+		border-radius:4px;
+	}
+*/
+
+#qrcode fieldset {
+	padding:8px 10px !important;
+	border-radius:4px !important;
+	margin:0 !important;
+	border:1px solid #ccc !important;
+}
+
+#qrcode legend{display:block !important;color:#000;}
+
+th {
+	font-weight:normal;
+	text-align:right;
+	width:130px;
+	padding-top:3px;
+}
+td {
+	padding:0 4px 8px 4px;
+}
+#forms input[type="text"],
+#forms input[type="url"],
+#forms input[type="email"],
+#forms textarea,
+#forms p,
+#forms label {
+	width:190px;
+	max-width:230px;
+	resize:none;
+}
+#forms label {
+	display:block;
+}
+
+#forms label {
+	padding-right:20px;
+}
+#forms label > input {
+	/*margin-right:-20px;*/
+}
+
+#forms fieldset p {
+	color:#666666;
+	margin:4px 0 0;
+	font-size:11px;
+	line-height:15px;
+}
+
+#forms input.datepicker {
+	width:190px;
+}
+.ui-datepicker-trigger {
+	margin-right:5px;
+}
+
+textarea {
+	height:100px;
+}
+
+table table th {
+	width:70px;
+}
+#forms table table input[type="text"],
+#forms table table input[type="url"],
+#forms table table input[type="email"],
+#forms table table textarea {
+	width:156px;
+	max-width:156px;
+}
+
+#forms input[type="text"],
+#forms input[type="url"],
+#forms input[type="email"],
+#forms textarea,
+#qrForeColor, #qrBackColor {
+	border:1px solid #aaa;
+	border-radius:4px;
+	padding:2px 4px;
+	box-shadow:none;
+	background:no-repeat left 2px;
+	width:171px;
+	margin:2px 0;
+}
+
+#forms input[type="text"]:required,
+#forms input[type="url"]:required,
+#forms input[type="email"]:required,
+#forms textarea:required {
+	padding-left:4px;
+}
+
+#forms input[type="text"]:valid:not(.empty):not(#mapAddress),
+#forms input[type="url"]:valid:not(.empty),
+#forms input[type="email"]:valid:not(.empty),
+#forms textarea:valid:not(.empty) {	
+	padding-left:22px;
+}
+
+#forms input[type="text"]:invalid:focus, #forms input[type="text"]:invalid:optional,
+#forms input[type="url"]:invalid:focus, #forms input[type="url"]:invalid:optional,
+#forms input[type="email"]:invalid:focus, #forms input[type="email"]:invalid:optional,
+#forms textarea:invalid:focus, #forms textarea:invalid:optional {	
+	padding-left:22px;
+}
+
+h3 {
+	font-size:11px;
+	font-weight:bold;
+	margin:0px 2px 2px 0;
+}
+
+#qrcode{overflow-x:hidden}
+
+#qrcode hr {
+	height:1px;
+	border:none;
+	background:#888;
+	margin:0px 0 !important;
+	clear:both;
+	
+}
+
+#example, pre {
+	font-family:Monospace;
+	font-size:9px;
+	margin:0 2px 0 0;
+	white-space:pre-wrap;
+	word-wrap:break-word;
+    line-height: 1em;
+}
+
+#error {	
+	color:#800;
+	padding-right:22px;
+	line-height:19px;
+}
+
+#mapSearch {
+	display:none;
+	margin-top:6px;
+}
+
+#map {
+	display:none;
+	margin-top:6px;
+	position:relative;
+	width:396px;
+	height:346px;
+	border:1px solid #000000;
+	border-radius:4px;
+}
+#map > div {
+	border-radius:4px;
+}
+
+#emoji {
+	display:none;
+	margin-top:6px;
+	position:relative;
+	border:1px solid #000000;
+	border-radius:4px;
+}
+.emoji {
+	float:right;
+	background:url(images/emoji.jpg) no-repeat 0 0;
+	width:17px;
+	height:17px;
+	margin:2px;
+	cursor:pointer;
+}
+.emojiTxt {
+	display:inline-block;
+	width:17px;
+	height:17px;
+	background:url(../img/emoji.jpg) no-repeat 0 0;
+	vertical-align:text-bottom;
+	text-indent:-9999px;
+}
+
+#preview {
+	outline:1px solid #ccc;
+}
+
+#preview, #encodedData {
+	cursor:pointer;
+}
+
+.modalBg {
+	display:none;
+	position:fixed;
+	background:rgba(255,255,255,0.8);
+	right:0;
+	top:0;
+	width:100%;
+	height:100%;
+	z-index:10;
+	cursor:pointer;
+}
+
+.modal {
+	position:absolute;
+	z-index:11;
+	right:50%;
+	top:50%;
+	background:#ffffff;
+	outline:1px solid #cccccc;
+}
+
+#qrForeColor, #qrBackColor {
+	width:104px;
+}
+
+#colorDifference {
+	font-size:11px;
+	margin:0 2px 2px 0;
+	line-height:14px;
+	background:url(images/contrast.png) no-repeat 0 center;
+	padding-right:22px;
+}
+
+#smsLength {
+	font-size:11px;
+	text-align:left;
+}

@@ -1,0 +1,28 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 20.07.15
+ * Time: 14:49
+ */
+if($this->canShow()):?>
+<div class="testimonials">
+	<section class="grid-section">
+		<div class="description">
+			<div id="bottom_testimonials">
+				<?php foreach($this->getTestimonials() as $_testimonial):?>
+					<div class="testimonial">
+						<div class="f-left photo">
+							<div class="image-outer">
+								<img src="<?php echo $this->getImageUrl($_testimonial); ?>" width="100" height="100"/>
+							</div>
+							<span class="persona"><?php echo $_testimonial->getName();?></span>
+						</div>
+						<blockquote><?php echo $_testimonial->getTestimonial(); ?></blockquote>
+					</div>
+				<?php endforeach;?>
+			</div>
+		</div>
+	</section>
+</div>
+<?php endif;?>

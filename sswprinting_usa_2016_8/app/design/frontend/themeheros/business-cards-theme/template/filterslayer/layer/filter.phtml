@@ -1,0 +1,23 @@
+
+<ol>
+	<?php foreach ($this->getItems() as $_item): ?>
+    <li <?php if($this->isFilterImage()): ?>class="filter color-filter"<?php endif; ?>>
+		<?php if ($_item->getCount() > 0): ?>
+		<?php if($this->isFilterImage()): ?>
+        <a <?php if($this->isFilterCheckbox()):?>class="<?php if($_item->isSelected()): ?>checked_box <?php endif;?> checkbox"<?php endif?> href="<?php if($_item->isSelected()): ?><?php echo $this->urlEscape($_item->getRemoveUrl()) ?><?php else: ?><?php echo $this->urlEscape($_item->getUrl()) ?><?php endif;?>" title="<?php echo $_item->getLabel() ?>  (<?php echo $_item->getCount() ?>)"><span><?php echo $_item->getLabel() ?> </span><img width="13" height="13" alt="<?php echo $_item->getLabel() ?>  (<?php echo $_item->getCount() ?>)" src="<?php echo $_item->_itemInfo(); ?>" /></a>
+		<?php else: ?>
+        <a <?php if($this->isFilterCheckbox()):?>class="<?php if($_item->isSelected()): ?>checked_box <?php endif;?> checkbox"<?php endif?>  href="<?php if($_item->isSelected()): ?><?php echo $this->urlEscape($_item->getRemoveUrl()) ?><?php else: ?><?php echo $this->urlEscape($_item->getUrl()) ?><?php endif; ?>"><?php echo $_item->getLabel() ?></a>
+		<?php endif; ?>
+	<?php else: ?>
+    <a <?php if($this->isFilterCheckbox()):?>class="<?php if($_item->isSelected()): ?>checked_box <?php endif;?> checkbox"<?php endif?> href="<?php if($_item->isSelected()): ?><?php echo $this->urlEscape($_item->getRemoveUrl()) ?><?php else: ?><?php echo $this->urlEscape($_item->getUrl()) ?><?php endif; ?>" title="<?php echo $_item->getLabel() ?>"><img width="13" height="13" alt="<?php echo $_item->getLabel() ?>"  src="<?php echo $_item->_itemInfo(); ?>" />
+    </a>
+    
+	<?php endif; ?>
+		<?php if ($this->shouldDisplayProductCount()): ?>
+		<?php if(!$this->isFilterImage()): ?>
+        (<?php echo $_item->getCount() ?>)
+		<?php endif; ?>
+		<?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>

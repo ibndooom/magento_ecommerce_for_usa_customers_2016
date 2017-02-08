@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Pixopa_Clipart>
+			<version>0.1.1</version>
+		</Pixopa_Clipart>
+	</modules>
+	
+	<frontend>
+		<routers>
+			<clipart>
+				<use>standard</use>
+				<args>
+					<module>Pixopa_Clipart</module>
+					<frontName>clipart</frontName>
+				</args>
+			</clipart>
+		</routers>
+		<layout>
+			<updates>
+				<clipart>
+					<file>clipart.xml</file>
+				</clipart>
+			</updates>
+		</layout>
+	</frontend>
+
+	<global>
+		<helpers>
+			<clipart>
+				<class>Pixopa_Clipart_Helper</class>
+			</clipart>
+		</helpers>
+
+		<blocks>
+			<clipart>
+				<class>Pixopa_Clipart_Block</class>
+			</clipart>
+		</blocks>
+
+		<models>
+			<clipart>
+				<class>Pixopa_Clipart_Model</class>
+				<resourceModel>clipart_mysql4</resourceModel>
+			</clipart>
+			<clipart_mysql4>
+				<class>Pixopa_Clipart_Model_Mysql4</class>
+				<entities>
+					<clipart>
+						<table>px_clipart</table>
+					</clipart>
+				</entities>
+			</clipart_mysql4>
+		</models>
+
+		<resources>
+			<clipart_setup>
+				<setup>
+					<module>Pixopa_Clipart</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</clipart_setup>
+			<clipart_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</clipart_write>
+			<clipart_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</clipart_read>
+		</resources>
+	</global>
+
+	<admin>
+		<routers>
+			<clipart>
+				<use>admin</use>
+				<args>
+					<module>Pixopa_Clipart</module>
+					<frontName>clipart_admin</frontName>
+				</args>
+			</clipart>
+		</routers>
+	</admin>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<clipart>
+					<file>clipart.xml</file>
+				</clipart>
+			</updates>
+		</layout>
+	</adminhtml>
+	
+</config> 

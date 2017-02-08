@@ -1,0 +1,73 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 07.07.15
+ * Time: 12:47
+ */
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$name = $_helper->productAttribute($_product, $_product->getName(), 'name');
+$product_name = $name;
+$short_description = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+
+$template_id = $_product->getTemplate();
+
+if(!$template_id){
+    $template_id = $this->getRequest()->getParam('template');
+}
+
+if($template_id){
+    $template = Mage::getModel("template/template")->load($template_id);
+    $name = $template->getName();
+    $short_description = $template->getDescription();
+}
+
+$personalization_fields = Mage::helper('dol')->getPersonalizationFields($template_id);
+$thumb_url = array();
+
+$_product->setData('template_id', $template_id);
+
+$bleed  = $_helper->productAttribute($_product, $_product->getBleed(), 'bleed');
+$inflate_bleed  = $_helper->productAttribute($_product, $_product->getInflateBleed(), 'inflate_bleed');
+$product_number_of_pages  = $_helper->productAttribute($_product, $_product->getProductNumberOfPages(), 'product_number_of_pages');
+$product_dimensions  = $_helper->productAttribute($_product, $_product->getProductDimensions(), 'product_dimensions');
+
+$bleed_margin_color = $_helper->productAttribute($_product, $_product->getBleedMarginColor(), 'bleed_margin_color');
+$bleed_margin_text = $_helper->productAttribute($_product, $_product->getBleedMarginText(), 'bleed_margin_text');
+$bleed_margin_stroke = $_helper->productAttribute($_product, $_product->getBleedMarginStroke(), 'bleed_margin_stroke');
+
+$safe_margin = $_helper->productAttribute($_product, $_product->getSafeMargin(), 'safe_margin');
+$safe_margin_color = $_helper->productAttribute($_product, $_product->getSafeMarginColor(), 'safe_margin_color');
+$safe_margin_text = $_helper->productAttribute($_product, $_product->getSafeMarginText(), 'safe_margin_text');
+$safe_margin_stroke = $_helper->productAttribute($_product, $_product->getSafeMarginStroke(), 'safe_margin_stroke');
+
+if($bleed || $bleed=='0'){
+    $bleed = $bleed * 96;
+}else{
+    $bleed = '';
+}
+
+if($safe_margin){
+    $safe_margin = $safe_margin * 96;
+}else{
+    $safe_margin = '';
+}
+
+if($inflate_bleed && $inflate_bleed=='Yes'){
+    $inflate_bleed = 1;
+}else{
+    $inflate_bleed = '';
+}
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<form action="<?php echo $this->getSubmitUrl($_product); ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+    <?php echo $this->getLayout()->getBlock('product.info.options')->toHtml();?>
+    <button type="button" onclick="return closeEditorPopup();"><span><span><?php echo $this->__('Cancel');?></span></span></button>
+    <button type="submit"><span><span><?php echo $this->__('Save'); ?></span></span></button>
+</form>
+<script type="text/javascript">
+    var addToCartForm = new VarienForm('product_addtocart_form');
+</script>

@@ -1,0 +1,363 @@
+{
+    "theme_2": {
+    	"doldesign_fonts_enable_font":"0",
+    	"doldesign_fonts_font_size":"14px",
+    	
+        "doldesign_dolleft_display_text": "1",
+		"doldesign_dolleft_display_image":"1",
+		"doldesign_dolleft_display_shapes":"1",
+		"doldesign_dolleft_display_qr":"1",
+		"doldesign_dolleft_display_draw":"1",
+		"doldesign_dolleft_display_line":"1",
+		"doldesign_dolleft_display_ellipse":"1",
+		"doldesign_dolleft_display_rect":"1",
+		"doldesign_dolleft_display_path":"1",
+		"doldesign_dolleft_button_corner":"round",
+		
+		"doldesign_dolleft_text_bg":"#336699",
+		"doldesign_dolleft_image_bg":"#336699",
+		"doldesign_dolleft_qr_bg":"#336699",
+		"doldesign_dolleft_shape_bg":"#336699",
+		"doldesign_dolleft_draw_bg":"#336699",
+		"doldesign_dolleft_line_bg":"#336699",
+		"doldesign_dolleft_ellipse_bg":"#336699",
+		"doldesign_dolleft_rectangle_bg":"#336699",
+		"doldesign_dolleft_path_bg":"#336699",
+		"doldesign_dolleft_tool_tipster":"#E9931A",
+		
+		"doldesign_upperleft_top_tool":"#8FACC9",
+		"doldesign_upperleft_tool_color":"#336699",
+		"doldesign_upperleft_corners":"slant",
+		
+		"doldesign_dolright_dol_right_icon":"#2C9FF8",
+		"doldesign_dolright_button_icon":"#CCCCCC",
+		"doldesign_dolright_slider":"#EEEEEE",
+		
+		"doldesign_upperright_dol_help":"#E84C3D",
+		"doldesign_upperright_dol_info":"#F5A101",
+		"doldesign_upperright_dol_preview":"#9C56B2",
+		"doldesign_upperright_dol_save":"#2ACDEF",
+		"doldesign_upperright_dol_checkout":"#27AE60",
+		
+		"doldesign_pattern_tex":"transp_bg",
+		
+		"doldesign_imageslider_slider":"#336699",
+		
+		"doldesign_others_zoom_control":"#8FACC9",
+		"doldesign_others_tabs":"#336699",
+		"doldesign_others_tab_header":"#336699",
+		"doldesign_others_pages_tab":"#336699",
+		"doldesign_others_pages_tab1":"#2C9FF8"
+    },
+    
+    "theme_3": {
+    	"doldesign_fonts_enable_font":"1",
+    	"doldesign_fonts_font_size":"14px",
+    	"doldesign_fonts_font":"Maven Pro",
+    	
+        "doldesign_dolleft_display_text": "1",
+		"doldesign_dolleft_display_image":"1",
+		"doldesign_dolleft_display_shapes":"1",
+		"doldesign_dolleft_display_qr":"1",
+		"doldesign_dolleft_display_draw":"1",
+		"doldesign_dolleft_display_line":"1",
+		"doldesign_dolleft_display_ellipse":"1",
+		"doldesign_dolleft_display_rect":"1",
+		"doldesign_dolleft_display_path":"1",
+		"doldesign_dolleft_button_corner":"round",	
+		
+		"doldesign_dolleft_text_bg":"#414b63",
+		"doldesign_dolleft_image_bg":"#414b63",
+		"doldesign_dolleft_qr_bg":"#414b63",
+		"doldesign_dolleft_shape_bg":"#414b63",
+		"doldesign_dolleft_draw_bg":"#414b63",
+		"doldesign_dolleft_line_bg":"#414b63",
+		"doldesign_dolleft_ellipse_bg":"#414b63",
+		"doldesign_dolleft_rectangle_bg":"#414b63",
+		"doldesign_dolleft_path_bg":"#414b63",
+		"doldesign_dolleft_tool_tipster":"#fba752",
+		
+		"doldesign_upperleft_top_tool":"#a6a9b2",
+		"doldesign_upperleft_tool_color":"#414b63",
+		"doldesign_upperleft_corners":"round",
+		
+		"doldesign_dolright_dol_right_icon":"#8590aa",
+		"doldesign_dolright_button_icon":"#CCCCCC",
+		"doldesign_dolright_slider":"#eeeeee",
+		
+		"doldesign_upperright_dol_help":"#414b63",
+		"doldesign_upperright_dol_info":"#414b63",
+		"doldesign_upperright_dol_preview":"#414b63",
+		"doldesign_upperright_dol_save":"#414b63",
+		"doldesign_upperright_dol_checkout":"#00a585",
+		
+		"doldesign_pattern_tex":"striped_bg",
+		
+		"doldesign_imageslider_slider":"#414b63",
+		
+		"doldesign_others_zoom_control":"#a6a9b2",
+		"doldesign_others_tabs":"#414b63",
+		"doldesign_others_tab_header":"#414b63",
+		"doldesign_others_pages_tab":"#414b63",
+		"doldesign_others_pages_tab1":"#8590aa"
+    },
+    
+    "theme_4": {
+    	"doldesign_fonts_enable_font":"1",
+    	"doldesign_fonts_font_size":"14px",
+    	"doldesign_fonts_font":"Lato",
+    	
+        "doldesign_dolleft_display_text": "1",
+		"doldesign_dolleft_display_image":"1",
+		"doldesign_dolleft_display_shapes":"1",
+		"doldesign_dolleft_display_qr":"1",
+		"doldesign_dolleft_display_draw":"1",
+		"doldesign_dolleft_display_line":"1",
+		"doldesign_dolleft_display_ellipse":"1",
+		"doldesign_dolleft_display_rect":"1",
+		"doldesign_dolleft_display_path":"1",
+		"doldesign_dolleft_button_corner":"square",	
+		
+		"doldesign_dolleft_text_bg":"#0a7f93",
+		"doldesign_dolleft_image_bg":"#0a7f93",
+		"doldesign_dolleft_qr_bg":"#0a7f93",
+		"doldesign_dolleft_shape_bg":"#0a7f93",
+		"doldesign_dolleft_draw_bg":"#0a7f93",
+		"doldesign_dolleft_line_bg":"#0a7f93",
+		"doldesign_dolleft_ellipse_bg":"#0a7f93",
+		"doldesign_dolleft_rectangle_bg":"#0a7f93",
+		"doldesign_dolleft_path_bg":"#0a7f93",
+		"doldesign_dolleft_tool_tipster":"#fba752",
+		
+		"doldesign_upperleft_top_tool":"#83bbc4",
+		"doldesign_upperleft_tool_color":"#0a7f93",
+		"doldesign_upperleft_corners":"slant",
+		
+		"doldesign_dolright_dol_right_icon":"#0091ab",
+		"doldesign_dolright_button_icon":"#CCCCCC",
+		"doldesign_dolright_slider":"#eeeeee",
+		
+		"doldesign_upperright_dol_help":"#eb866a",
+		"doldesign_upperright_dol_info":"#fba752",
+		"doldesign_upperright_dol_preview":"#f27098",
+		"doldesign_upperright_dol_save":"#47a9ed",
+		"doldesign_upperright_dol_checkout":"#53c08c",
+		
+		"doldesign_pattern_tex":"small-crackle-bright",
+		
+		"doldesign_imageslider_slider":"#0a7f93",
+		
+		"doldesign_others_zoom_control":"#0a7f93",
+		"doldesign_others_tabs":"#0a7f93",
+		"doldesign_others_tab_header":"#0a7f93",
+		"doldesign_others_pages_tab":"#0a7f93",
+		"doldesign_others_pages_tab1":"#0a7f93"
+    },
+    
+    "theme_5": {
+    	"doldesign_fonts_enable_font":"0",
+    	"doldesign_fonts_font_size":"14px",
+    	
+        "doldesign_dolleft_display_text": "1",
+		"doldesign_dolleft_display_image":"1",
+		"doldesign_dolleft_display_shapes":"1",
+		"doldesign_dolleft_display_qr":"1",
+		"doldesign_dolleft_display_draw":"1",
+		"doldesign_dolleft_display_line":"1",
+		"doldesign_dolleft_display_ellipse":"1",
+		"doldesign_dolleft_display_rect":"1",
+		"doldesign_dolleft_display_path":"1",
+		"doldesign_dolleft_button_corner":"round",	
+		
+		"doldesign_dolleft_text_bg":"#4a5456",
+		"doldesign_dolleft_image_bg":"#4a5456",
+		"doldesign_dolleft_qr_bg":"#4a5456",
+		"doldesign_dolleft_shape_bg":"#4a5456",
+		"doldesign_dolleft_draw_bg":"#4a5456",
+		"doldesign_dolleft_line_bg":"#4a5456",
+		"doldesign_dolleft_ellipse_bg":"#4a5456",
+		"doldesign_dolleft_rectangle_bg":"#4a5456",
+		"doldesign_dolleft_path_bg":"#4a5456",
+		"doldesign_dolleft_tool_tipster":"#c2a26f",
+		
+		"doldesign_upperleft_top_tool":"#9e9384",
+		"doldesign_upperleft_tool_color":"#4a5456",
+		"doldesign_upperleft_corners":"slant",
+		
+		"doldesign_dolright_dol_right_icon":"#c2a26f",
+		"doldesign_dolright_button_icon":"#CCCCCC",
+		"doldesign_dolright_slider":"#eeeeee",
+		
+		"doldesign_upperright_dol_help":"#c2a26f",
+		"doldesign_upperright_dol_info":"#c2a26f",
+		"doldesign_upperright_dol_preview":"#c2a26f",
+		"doldesign_upperright_dol_save":"#c2a26f",
+		"doldesign_upperright_dol_checkout":"#c2a26f",
+		
+		"doldesign_pattern_tex":"striped_bg",
+		
+		"doldesign_imageslider_slider":"#4a5456",
+		
+		"doldesign_others_zoom_control":"#9e9384",
+		"doldesign_others_tabs":"#c2a26f",
+		"doldesign_others_tab_header":"#c2a26f",
+		"doldesign_others_pages_tab":"#4a5456",
+		"doldesign_others_pages_tab1":"#c2a26f"
+    },
+    
+    "theme_6": {
+    	"doldesign_fonts_enable_font":"1",
+    	"doldesign_fonts_font_size":"14px",
+    	"doldesign_fonts_font":"Lato",
+    	
+        "doldesign_dolleft_display_text": "1",
+		"doldesign_dolleft_display_image":"1",
+		"doldesign_dolleft_display_shapes":"1",
+		"doldesign_dolleft_display_qr":"1",
+		"doldesign_dolleft_display_draw":"1",
+		"doldesign_dolleft_display_line":"1",
+		"doldesign_dolleft_display_ellipse":"1",
+		"doldesign_dolleft_display_rect":"1",
+		"doldesign_dolleft_display_path":"1",
+		"doldesign_dolleft_button_corner":"round",	
+		
+		"doldesign_dolleft_text_bg":"#019174",
+		"doldesign_dolleft_image_bg":"#019174",
+		"doldesign_dolleft_qr_bg":"#019174",
+		"doldesign_dolleft_shape_bg":"#019174",
+		"doldesign_dolleft_draw_bg":"#019174",
+		"doldesign_dolleft_line_bg":"#019174",
+		"doldesign_dolleft_ellipse_bg":"#019174",
+		"doldesign_dolleft_rectangle_bg":"#019174",
+		"doldesign_dolleft_path_bg":"#019174",
+		"doldesign_dolleft_tool_tipster":"#f5a101",
+		
+		"doldesign_upperleft_top_tool":"#e5bf27",
+		"doldesign_upperleft_tool_color":"#019174",
+		"doldesign_upperleft_corners":"round",
+		
+		"doldesign_dolright_dol_right_icon":"#00a585",
+		"doldesign_dolright_button_icon":"#CCCCCC",
+		"doldesign_dolright_slider":"#eeeeee",
+		
+		"doldesign_upperright_dol_help":"#00a585",
+		"doldesign_upperright_dol_info":"#00a585",
+		"doldesign_upperright_dol_preview":"#00a585",
+		"doldesign_upperright_dol_save":"#00a585",
+		"doldesign_upperright_dol_checkout":"#9b59b6",
+		
+		"doldesign_pattern_tex":"striped_bg",
+		
+		"doldesign_imageslider_slider":"#019174",
+		
+		"doldesign_others_zoom_control":"#019174",
+		"doldesign_others_tabs":"#019174",
+		"doldesign_others_tab_header":"#e5bf27",
+		"doldesign_others_pages_tab":"#019174",
+		"doldesign_others_pages_tab1":"#019174"
+    },
+    
+    "theme_7": {
+    	"doldesign_fonts_enable_font":"1",
+    	"doldesign_fonts_font_size":"14px",
+    	"doldesign_fonts_font":"Lato",
+    	
+        "doldesign_dolleft_display_text": "1",
+		"doldesign_dolleft_display_image":"1",
+		"doldesign_dolleft_display_shapes":"1",
+		"doldesign_dolleft_display_qr":"1",
+		"doldesign_dolleft_display_draw":"1",
+		"doldesign_dolleft_display_line":"1",
+		"doldesign_dolleft_display_ellipse":"1",
+		"doldesign_dolleft_display_rect":"1",
+		"doldesign_dolleft_display_path":"1",
+		"doldesign_dolleft_button_corner":"round",	
+		
+		"doldesign_dolleft_text_bg":"#75606f",
+		"doldesign_dolleft_image_bg":"#75606f",
+		"doldesign_dolleft_qr_bg":"#75606f",
+		"doldesign_dolleft_shape_bg":"#75606f",
+		"doldesign_dolleft_draw_bg":"#75606f",
+		"doldesign_dolleft_line_bg":"#75606f",
+		"doldesign_dolleft_ellipse_bg":"#75606f",
+		"doldesign_dolleft_rectangle_bg":"#75606f",
+		"doldesign_dolleft_path_bg":"#75606f",
+		"doldesign_dolleft_tool_tipster":"#75606f",
+		
+		"doldesign_upperleft_top_tool":"#eb866a",
+		"doldesign_upperleft_tool_color":"#75606f",
+		"doldesign_upperleft_corners":"round",
+		
+		"doldesign_dolright_dol_right_icon":"#eb866a",
+		"doldesign_dolright_button_icon":"#CCCCCC",
+		"doldesign_dolright_slider":"#eeeeee",
+		
+		"doldesign_upperright_dol_help":"#75606f",
+		"doldesign_upperright_dol_info":"#75606f",
+		"doldesign_upperright_dol_preview":"#75606f",
+		"doldesign_upperright_dol_save":"#75606f",
+		"doldesign_upperright_dol_checkout":"#eb866a",
+		
+		"doldesign_pattern_tex":"subtle-stripes-pattern-2273",
+		
+		"doldesign_imageslider_slider":"#75606f",
+		
+		"doldesign_others_zoom_control":"#eb866a",
+		"doldesign_others_tabs":"#75606f",
+		"doldesign_others_tab_header":"#75606f",
+		"doldesign_others_pages_tab":"#75606f",
+		"doldesign_others_pages_tab1":"#eb866a"
+    },
+    
+    "theme_8": {
+    	"doldesign_fonts_enable_font":"0",
+    	"doldesign_fonts_font_size":"14px",
+    	
+        "doldesign_dolleft_display_text": "1",
+		"doldesign_dolleft_display_image":"1",
+		"doldesign_dolleft_display_shapes":"1",
+		"doldesign_dolleft_display_qr":"1",
+		"doldesign_dolleft_display_draw":"1",
+		"doldesign_dolleft_display_line":"1",
+		"doldesign_dolleft_display_ellipse":"1",
+		"doldesign_dolleft_display_rect":"1",
+		"doldesign_dolleft_display_path":"1",
+		"doldesign_dolleft_button_corner":"square",	
+		
+		"doldesign_dolleft_text_bg":"#38526a",
+		"doldesign_dolleft_image_bg":"#38526a",
+		"doldesign_dolleft_qr_bg":"#38526a",
+		"doldesign_dolleft_shape_bg":"#38526a",
+		"doldesign_dolleft_draw_bg":"#38526a",
+		"doldesign_dolleft_line_bg":"#38526a",
+		"doldesign_dolleft_ellipse_bg":"#38526a",
+		"doldesign_dolleft_rectangle_bg":"#38526a",
+		"doldesign_dolleft_path_bg":"#38526a",
+		"doldesign_dolleft_tool_tipster":"#54b2b6",
+		
+		"doldesign_upperleft_top_tool":"#b3b3b3",
+		"doldesign_upperleft_tool_color":"#38526a",
+		"doldesign_upperleft_corners":"slant",
+		
+		"doldesign_dolright_dol_right_icon":"#5e7385",
+		"doldesign_dolright_button_icon":"#CCCCCC",
+		"doldesign_dolright_slider":"#eeeeee",
+		
+		"doldesign_upperright_dol_help":"#39536a",
+		"doldesign_upperright_dol_info":"#39536a",
+		"doldesign_upperright_dol_preview":"#39536a",
+		"doldesign_upperright_dol_save":"#39536a",
+		"doldesign_upperright_dol_checkout":"#082946",
+		
+		"doldesign_pattern_tex":"subtle-stripes-pattern-2273",
+		
+		"doldesign_imageslider_slider":"#39536a",
+		
+		"doldesign_others_zoom_control":"#5e7385",
+		"doldesign_others_tabs":"#39536a",
+		"doldesign_others_tab_header":"#39536a",
+		"doldesign_others_pages_tab":"#5e7385",
+		"doldesign_others_pages_tab1":"#39536a"
+    }
+    
+}

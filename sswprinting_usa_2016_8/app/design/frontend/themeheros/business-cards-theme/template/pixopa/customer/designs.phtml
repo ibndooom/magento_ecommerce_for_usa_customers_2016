@@ -1,0 +1,55 @@
+<div class="page-title">
+    <h1><?php echo Mage::helper('customer')->__('My Saved Designs') ?></h1>
+</div>
+<?php
+$messages = Mage::getSingleton("customer/session")->getMessages(true);
+echo $this->getLayout()->getMessagesBlock()->setMessages($messages)->getGroupedHtml();
+?>
+
+<?php 
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$result = Mage::helper('customer')->getCustomerAccountDesigns($customer);
+$designs = $result['designs'];
+$products = $result['products'];
+?>
+<script type="text/javascript">
+<!--
+function loadDol(design_id, key){
+	<?php $url = Mage::getUrl('dol', array('_secure' => false, '_nosid' => false,'_type' => 'direct_link'));
+	$url = str_replace('doladmin','dol',$url);
+	$sid_pos = strpos($url, 'SID');
+	if($sid_pos!==false){
+	?>
+	window.location = '<?php echo $url?>&design_id=' + design_id + '&key=' + key +'&uid=1';
+	<?php }else{?>
+	window.location = '<?php echo $url?>?design_id=' + design_id + '&key=' + key +'&uid=1';
+	<?php }?>
+}
+//-->
+</script>
+
+<?php if(!count($designs)){?>
+<p class="note-msg"><?php echo $this->__('There are no designs saved by user from Online Designer.') ?></p>
+<?php }?>
+
+<div class="category-products">
+
+<?php $_collectionSize = count($designs) ?>
+<?php $_columnCount = 3; ?>
+<?php $i=0; foreach ($designs as $design): ?>
+	<?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <a href="<?php echo $design->getImagePath(); ?>" target="_blank" title="My Design" class="product-image"><img class="designImage" src="<?php echo $design->getThumbnailPath(); ?>" alt="My Design" /></a>
+                <a href="/customer/designs/delete/id/<?php echo $design->getPxDesignId()?>" title="<?php echo $this->__('Delete Design') ?>"class="px-btn-remove2" ><?php echo $this->__('Delete Design');?></a>
+               	<h2 class="product-name">For <?php echo $products[$design->getProductId()]?></h2>
+               	<button type="button" title="<?php echo $this->__('Edit Design') ?>" class="button btn-cart" onclick="loadDol('<?php echo $design->getPxDesignId()?>', '<?php echo $design->getParentTemplateId()?>')"><span><span><?php echo $this->__('Edit Design') ?></span></span></button><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="/customer/designs/addToCart/id/<?php echo $design->getPxDesignId()?>"><?php echo $this->__('Add to Cart') ?></a>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+	<?php endif ?>
+<?php endforeach ?>
+                
+</div>

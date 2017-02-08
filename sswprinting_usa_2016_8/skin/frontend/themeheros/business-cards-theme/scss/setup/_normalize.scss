@@ -1,0 +1,130 @@
+* {
+	margin:0;
+	padding: 0;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	max-height: 100000px;
+}
+body{
+	font: 15px/18px proximanova, Helvetica, sans-serif;
+	color: $grey--default;
+	background:$white;
+	min-width:320px;
+	-webkit-text-size-adjust:100%;
+	-ms-text-size-adjust: none;
+}
+ul, ol{
+	list-style: none;
+}
+img{
+	border-style:none;
+	max-width:100%;
+	display: inline-block;
+	vertical-align: top;
+	height: auto;
+}
+a{
+	text-decoration:underline;
+	color:$blue;
+	-webkit-transition: color 0.2s ease;
+			transition: color 0.2s ease;
+	a:hover{
+		-webkit-transition: color 0.2s ease;
+				transition: color 0.2s ease;
+		text-decoration: none;
+	}
+}
+button{
+	cursor: pointer;
+}
+input,
+textarea,
+select{
+	font: 13px/15px proximanova, Helvetica, sans-serif;
+	vertical-align:middle;
+	color:$grey;
+	border: 1px solid $grey--default;
+	border-radius: 0;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+	padding: 8px 14px;
+	font: 13px/15px proximanova, Helvetica, sans-serif;
+	border: 1px solid $grey--lightMiddle;
+	background:transparent;
+}
+input[type="submit"]{
+	cursor: pointer;
+	background:$blue--dark;
+}
+textarea{
+	padding: 16px 0 0 19px;
+}
+form, fieldset{
+	margin:0;
+	padding:0;
+	border-style:none;
+}
+::-webkit-input-placeholder {
+	color:$brown;
+}
+:-moz-placeholder {
+	color:$brown;
+	opacity: 1;
+}
+::-moz-placeholder {
+	color:$brown;
+	opacity: 1;
+}
+:-ms-input-placeholder {
+	color:$brown;
+}
+input::-moz-focus-inner {
+	border:0;
+	padding:0;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+	display: block;
+}
+input [type="email"],
+input [type="tel"],
+input[type="search"],
+input[type="text"],
+input[type="password"],
+input[type="file"],
+input[type="submit"],
+textarea{
+	-webkit-appearance:none;
+	outline:none;
+	resize: none;
+}
+.wrap blockquote{
+	position: relative;
+	padding: 18px 40px 30px 39px;
+	border: none;
+	line-height: 23px;
+	@media screen and (max-width: $mobile) {
+		padding: 12px 22px;
+	}
+	&:before, &:after{
+		position: absolute;
+		color: $grey--custom8;
+		font-size: 72px;
+		line-height: 75px;
+		@media screen and (max-width: $mobile) {
+			font-size: 50px;
+			line-height: 53px;
+		}
+	}
+	&:before{
+		content: '“';
+		left: 0;
+		top: -6px;
+	}
+	&:after{
+		content: '”';
+		right: 2px;
+		bottom: -30px;
+	}
+}

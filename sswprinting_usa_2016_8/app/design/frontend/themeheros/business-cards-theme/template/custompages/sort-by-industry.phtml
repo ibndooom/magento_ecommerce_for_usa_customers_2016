@@ -1,0 +1,63 @@
+<section class="industries dictionary-container wrap bord-light">
+	<h1>Industries</h1>
+
+	<div class="nav-wrapper">
+
+		<ul class="industry-list">
+			<?php
+			$category = Mage::getModel('catalog/category')->load(21);
+			$subcategories = $category->getChildrenCategories();
+			if (count($subcategories) > 0){
+				$index = 0;
+				
+				foreach($subcategories as $subcategory){
+					$row_classes = 'list-abc';
+					
+					if($index % 6 < 3) {
+						$row_classes .= ' list-abc-odd';
+					}
+					else {
+						$row_classes .= ' list-abc-even';
+					}
+					
+					if($index % 4 < 2) {
+						$row_classes .= ' list-ab-odd';
+					}
+					else {
+						$row_classes .= ' list-ab-even';
+					}
+					
+					if($index % 2 < 1) {
+						$row_classes .= ' list-a-odd';
+					}
+					else {
+						$row_classes .= ' list-a-even';
+					}
+					
+					echo '<li class="'.$row_classes.'">';
+					
+					$index++;
+					
+					echo '<a class=""><span>'.$subcategory->getName().'</span></a>';
+					
+					$companies = Mage::getModel('catalog/category')->load($subcategory->getId())->getChildrenCategories();
+					
+					echo '<ul>';
+					
+					if (count($companies) > 0){
+						foreach($companies as $company){
+							echo '<li><a href="'.$company->getUrl().'" class=""><span>'.$company->getName().'</span></a></li>';
+						}
+					}
+					
+					echo '</ul>';
+					?>
+				</li>
+				<?php
+				}
+			}
+			?>
+		</ul>
+	</div>
+
+</section>

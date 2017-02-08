@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+	<default>
+ 		<reference name="catalog.topnav">
+		    <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="web4pro/topnav/renderer.phtml"/>
+		</reference>
+		<!-- <reference name="catalog.topnav.renderer">
+			<action method="setTemplate">
+				<template>web4pro/topnav/renderer.phtml</template>
+			</action>
+		</reference> -->
+	</default>
+</layout>

@@ -1,0 +1,197 @@
+/*css for new slider*/
+
+ul.colorSet li img { margin: 0 auto; vertical-align:middle; box-shadow: 3px 3px 5px #999; -moz-box-shadow: 3px 3px 5px #999; -webkit-box-shadow: 3px 3px 5px #999;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=3, OffY=3,Color='#D0D0D0');}
+li.high_resol:hover .overlay{
+    display:block;
+    background-color:rgba(0, 0, 0, 0.65);
+    /*opacity:0.65;*/
+    /*z-index:100;*/
+    width:100%;
+    cursor:pointer;
+    /*position:absolute;*/
+    margin:0 !important;
+    height:75px;
+}
+li.high_resol:hover .bt1{
+	overflow:visible;
+	background:none;
+	text-indent: 50%;
+}	
+	
+li.lowres:hover .overlay{
+	display:block;
+    background-color:rgba(0, 0, 0, 0.65);
+    /*opacity:0.65;*/
+    /*z-index:100;*/
+    width:100%;
+    /*position:absolute;*/
+    margin:0 !important;
+    height:75px;
+}
+li.lowres:hover .bt1{
+	overflow:visible;
+	background:none;
+	text-indent: 50%;
+	box-shadow:none;
+}
+.bt1 img{box-shadow:none !important;}
+.myimages_loading img,.picasa_loading img,.picasa_hdr img,.flickr_loading img,.flickr_hdr img,.fb_loading img,.facebook_hdr img,.instagram_loading img,.instagram_hdr img,#progress_crop img,#updating_crop img{display:inline;}
+li.lowres:hover .bt1 img{display:inline; box-shadow:none !important;}
+li.high_resol:hover .bt1 img{display:inline; box-shadow:none !important;}
+
+
+
+#container {
+  max-width:840px;
+  padding:20px;
+  margin:0px auto;}
+
+#page-wrap {
+  margin:0 20px;
+  background-color:#f5f5f5;
+  border: 1px solid #606060;
+  border-radius:5px;
+  clear:both;
+  overflow:hidden;
+  /*height:340px !important;*/
+  margin-bottom:25px;
+  height:95%;
+} 
+
+.errorBox {
+ /*width:298px;*/
+ height:100%;
+ background:#FFFF4F;
+ color:#444;
+ padding:10px;
+ margin:20px 0;
+ border-radius:5px;
+}
+.lowres-warning .tooltip_full_value p{width:auto !important;}
+
+.photoEdit {
+ width:64%;
+ padding:10px;
+ float:left;
+}
+.buttons {
+ width:30%;
+ padding:10px;
+ float:left;
+ position:relative;
+}
+
+.btn {position:relative; padding:10px; border-radius:5px; border:0; background:#404040; font-size:1em; color:#fff; font-weight:300; margin:10px 0; display:block;cursor:pointer;}
+
+.place, .original {background:#00A585;}
+
+.rotate, .reset_rotate{float: left;}
+.rotate_div{
+    float: left;
+    margin-left: -29px;
+    padding-left: 14px;
+    width: 265px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.reset_rotate{
+	margin-left: 30px;
+}
+
+.mCSB_container.mCS_no_scrollbar{height:100%;}
+
+
+#preview-pane .preview-container {overflow:hidden}
+.album{ 
+	background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 20px;
+    opacity: 0.7;
+    position: absolute;
+    text-align: center;
+    top: 55px;
+    width: 100% !important;
+}
+.lowres span{
+	background: url("/js/all/editor/images/warning-small22.png")!important;
+	margin-top:0 !important; 
+	right:0;
+}
+
+.cancel{float:left;}
+	
+
+
+.picasa_hdr span, .flickr_hdr span, .facebook_hdr span, .instagram_hdr span{font-weight:normal;font-size:12px;}
+
+
+#dialog_box_overlay {
+    background: black;
+    opacity: .5;
+    height:100%;
+    right:0;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index: 5006;
+}
+
+#updating_crop .desc{
+    position:fixed;
+    top:50%;
+    left:50%;
+    padding:20px;
+    background: #fff;
+    font-size:14px;
+    font-weight:400;
+    color:#000;
+}
+
+#updating_crop_container {
+    position: absolute;
+    text-align: center;
+    right: 48.5%;
+    top: 46%;
+    margin-right: -150px;    
+    margin-top: -80px;
+    position:fixed;
+    z-index:5007;
+    background: #fff;
+}
+
+#progress_crop .desc{
+    position:fixed;
+    top:50%;
+    left:50%;
+    padding:20px;
+    background: #fff;
+    font-size:14px;
+    /*font-weight:400;*/
+    color:#000;
+}
+
+#progress_crop_container {
+    position: absolute;
+    text-align: center;
+    right: 48.5%;
+    top: 46%;
+    margin-right: -150px;    
+    margin-top: -80px;
+    position:fixed;
+    z-index:5007;
+    background: #fff;
+}
+
+#updating_box .desc {
+	font-size:14px !important;
+    /*font-weight:400 !important;*/
+    color:#000 !important;
+}
+
+.desc img{display:inline;}
+
+.rotate_div .btn.rotate, .btn.place, .btn.reset_rotate{
+    font-family: Arial,Helvetica,sans-serif;
+}

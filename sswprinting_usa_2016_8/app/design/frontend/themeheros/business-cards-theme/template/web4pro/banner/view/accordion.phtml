@@ -1,0 +1,31 @@
+<?php if ($this->canShow()): ?>
+	<div class="home-banners box bg--pattern">
+		<div id="main-accordion" class="multi-banner <?php echo $this->getGroup(); ?>">
+			<?php foreach ($this->getCollection() as $banner): ?>
+			<div class="multi-banner-holder">
+				<div class="slide box-home wrap">
+					<div class="banner-preview" id="b<?php echo $banner->getId(); ?>" title="<?php echo $banner->getAltText() ?>" onclick="if(typeof(ga)!='undefined'){ga('send','event','Banner','Click Home Slider','<?php echo $banner->getId() ?>');}">
+						<img src="<?php echo $banner->getImageUrl() ?>" alt="<?php echo $banner->getAltText() ?>" />
+					</div>
+					<div class="banner-info"><?php echo $banner->getHtml(); ?></div>
+				</div>
+			</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="thumbs-wrapper">
+			<ul class="home-banner-list">
+				<?php foreach ($this->getCollection() as $banner):?>
+					<li>
+						<!-- <a href="#b<?php echo $banner->getId() ?>"></a> -->
+						<div>
+							<img src="<?php echo $banner->getSmallImageUrl(); ?>"/>
+						</div>
+					</li>
+				<?php endforeach;?>
+			</ul>
+			<span class="discount-info">Business Card Day Sale: UP TO 60% OFF ALL PRODUCTS!</span>
+		</div>
+	</div>
+<?php endif; ?>

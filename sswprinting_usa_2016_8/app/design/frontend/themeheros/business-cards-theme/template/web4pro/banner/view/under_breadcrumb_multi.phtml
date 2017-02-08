@@ -1,0 +1,17 @@
+<?php if($this->canShow()): ?>
+ <?php $bannerHelper = Mage::helper('banner')?>
+    <?php $_collection = $bannerHelper->getBannersForUnderBreadCrumbs(Mage::helper('web4procatalog')->isBottegaCategory()); ?>
+    <?php $size = $bannerHelper->getImageSizes();?>
+    <div class="under-breadcrumb-multi">
+		<?php $index = 0; $count = $_collection->count(); ?>
+        <?php foreach($_collection as $banner): ?>
+            <div class="set">
+                <a href="<?php echo $banner->getUrl() ?>" title="<?php echo $banner->getAltText() ?>" target="<?php echo $this->getTargetWindow() ?>" onclick="if(typeof(ga)!='undefined'){ga('send','event','Banner','Click Breadcrumb Banner','<?php echo $banner->getId() ?>');}">
+                <?php $isFirst = ($index == 0)? true : false; $isLast = ($index == $count - 1)? true : false; ?>
+                    <img src="<?php echo $banner->getImageUrl() ?>" alt="<?php echo $banner->getAltText() ?>" style="width: <?php echo $size['wight']; ?>px; height: <?php echo $size['height'];?>px; <?php if(!$isLast): echo 'padding-right: 2px;';  endif; ?>" />
+                </a>
+            </div>       
+            <?php $index ++; ?>
+        <?php endforeach; ?>
+    </div>  
+<?php endif; ?>

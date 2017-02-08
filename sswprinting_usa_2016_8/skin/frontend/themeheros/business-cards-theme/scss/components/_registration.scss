@@ -1,0 +1,118 @@
+.account-create{
+	margin: 0 auto 32px;  //мой добавить
+	@media screen and (max-width: $phablet){
+		margin: 0 auto 32px;
+	}
+	h1{
+		text-transform: capitalize;
+		@media screen and (max-width: $phablet){
+			text-align: center;
+		}
+	}
+	.create-holder{
+		padding: 15px 19px 30px;
+		background:$white;
+	}
+	#form-validate{
+		max-width: 834px;
+		margin: 0 auto;
+		padding: 27px 0 0;
+		.ced-sociallogin-register{
+			margin: 0 0 20px;
+		}
+		@media screen and (max-width: $mobile){
+			text-align: center;
+		}
+	}
+	.inputs-wrap{
+		padding: 0;
+		max-width: 100%;
+	}
+	label{
+		display: block;
+		color: $grey---darkLight;
+		font-size: 14px;
+		line-height: 16px;
+		margin: 0 0 1px;
+		@media screen and (max-width: $mobile){
+			margin: 0 0 4px;
+		}
+		em{
+			color: $blue;
+		}
+	}
+	input{
+		padding: 6px 14px 7px;
+		width: 100%;
+		border-radius: 5px;
+		@media screen and (max-width: $mobile){
+			text-align: center;
+		}
+	}
+	.form-list{
+		li{
+			margin: 0 0 18px;
+		}
+		.control{
+			margin: -10px 0 20px;
+			.input-box{
+				display: inline-block;
+				vertical-align: center;
+				margin: 0 2px 0 0;
+			}
+			label{
+				display: inline-block;
+				vertical-align: center;
+				font-size: 13px;
+				line-height: 15px;
+			}
+		}
+	}
+	.fields{
+		@extend %clr;
+		.customer-name{
+			@extend %clr;
+		}
+		+ li,
+		.control-group,
+		.password-confirm-field,
+		.password-field{
+			width: 46.4%;
+			@media screen and (max-width: $mobile){
+				width: 100%;
+				margin: 0 0 10px;
+			}
+		}
+		.name-firstname,
+		.password-field{
+			float: left;
+		}
+		.name-lastname,
+		.password-confirm-field{
+			float: right;
+		}
+	}
+	.sociallogin-holder{
+		h2{
+			display: none;
+		}
+		.col-1,
+		.col-2{
+			@extend %clr;
+			display: inline-block;
+		}
+	}
+	.buttons-set{
+		text-align: right;
+		@media screen and (max-width: $mobile){
+			text-align: center;
+		}
+		.btn{
+			min-width: 140px;
+			background:$blue;
+		}
+	}
+}
+div.ced-sociallogin-register, div.ced-sociallogin-checkout, div.ced-sociallogin-login{
+	margin-top: 0 !important;
+}

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<!-- All images created with SVG-edit - http://svg-edit.googlecode.com/ -->
+<g id="fill">
+<svg width="32" height="33" xmlns="http://www.w3.org/2000/svg">
+  <g id="svg_5">
+   <path id="svg_4" d="m17.49167,10.97621c6.9875,-0.325 12.1875,2.70833 12.13333,7.36667l-0.325,10.075c-0.75833,4.0625 -2.275,3.0875 -3.03333,0.10833l0.21667,-9.64166c-0.43333,-0.975 -1.08333,-1.625 -1.95,-1.51667" stroke-linejoin="round" stroke="#606060" fill="#c0c0c0"/>
+   <path id="svg_1" d="m2.00055,17.1309l10.72445,-10.72445l12.67445,12.13279l-3.52056,0.05389l-9.15389,9.26223l-10.72445,-10.72445z" stroke-linejoin="round" stroke="#000000" fill="#c0c0c0"/>
+   <path id="svg_3" d="m14.35,13.57621c-0.1625,-3.95417 0.86667,-11.7 -1.84167,-11.59167c-2.70833,0.10833 -2.6,2.05833 -2.16667,6.93333" stroke-linejoin="round" stroke="#000000" fill="none"/>
+   <circle id="svg_2" r="1.60938" cy="15.20121" cx="14.45833" stroke-linejoin="round" stroke="#000000" fill="none"/>
+  </g>
+</svg>
+</g>
+
+<g id="stroke">
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+  <rect fill="none" stroke="#707070" stroke-width="10" x="8.625" y="8.625" width="32.75" height="32.75" id="svg_1"/>
+</svg>
+</g>
+
+<g id="opacity">
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="0.1" x2="0.9" y1="0.9" x1="0.1" id="svg_7">
+   <stop stop-color="#000000" offset="0"/>
+   <stop stop-opacity="0" stop-color="#000000" offset="1"/>
+  </linearGradient>
+ </defs>
+  <rect id="svg_4" height="50" width="50" y="0" x="0" fill="#ffffff"/>
+  <rect id="svg_1" height="25" width="25" y="0" x="0" fill="#a0a0a0"/>
+  <rect id="svg_2" height="25" width="25" y="25" x="25" fill="#a0a0a0"/>
+  <rect id="svg_3" height="50" width="50" y="0" x="0" stroke-width="2" stroke="url(#svg_7)" fill="url(#svg_7)"/>
+ </svg>
+</g>
+<g id="no_color">
+	<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+	  <line fill="none" stroke="#d40000" id="svg_90" y2="24" x2="24" y1="0" x1="0"/>
+	  <line id="svg_92" fill="none" stroke="#d40000" y2="24" x2="0" y1="0" x1="24"/>
+	</svg>
+</g>
+<g id="svg_eof"/>
+
+</svg>

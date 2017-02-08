@@ -1,0 +1,35 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 03.07.15
+ * Time: 15:58
+ */
+
+$children = $this->getSortedChildBlocks();?>
+<div class="tabs-field">
+	<div class="wrap">
+		<div class="tabs-block">
+			<ul class="tabset">
+				<?php $i=0;
+				foreach($children as $child):?>
+					<?php if($child->canShow()):?>
+					<li>
+						<a <?php if(!$i)echo 'class="active"';?> href="#<?php echo $child->getHtmlId(); ?>"><?php echo $child->getTitle(); ?></a>
+					</li>
+					<?php $i++;
+					endif; ?>
+				<?php endforeach;?>
+			</ul>
+			<div class="tab-content">
+				<?php foreach($children as $child):?>
+					<?php if($child->canShow()):?>
+						<div id="<?php echo $child->getHtmlId(); ?>">
+							<?php echo $child->toHtml();?>
+						</div>
+					<?php endif;?>
+				<?php endforeach;?>
+			</div>
+		</div>
+	</div>
+</div>

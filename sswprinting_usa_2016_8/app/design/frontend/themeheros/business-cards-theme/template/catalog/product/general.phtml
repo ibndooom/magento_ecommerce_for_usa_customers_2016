@@ -1,0 +1,67 @@
+<?php
+/**
+ * MageParts
+ *
+ * NOTICE OF LICENSE
+ *
+ * This code is copyrighted by MageParts and may not be reproduced
+ * and/or redistributed without a written permission by the copyright
+ * owners. If you wish to modify and/or redistribute this file please
+ * contact us at info@mageparts.com for confirmation before doing
+ * so. Please note that you are free to modify this file for personal
+ * use only.
+ *
+ * If you wish to make modifications to this file we advice you to use
+ * the "local" file scope in order to aviod conflicts with future updates.
+ * For information regarding modifications see http://www.magentocommerce.com.
+ *
+ * DISCLAIMER
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * @category   MageParts
+ * @package    MageParts_Ddq
+ * @copyright  Copyright (c) 2009 MageParts (http://www.mageparts.com/)
+ * @author     MageParts Crew
+ */
+?>
+
+<?php if (Mage::helper('ddq')->isEnabled()): ?>
+<?php // hide normal quantity text box element before it's replaced by javascript (prevents element from blinking into view on page load)?>
+<?php $paths = $this->getCssRemovalPaths() ?>
+<?php if (!empty($paths)): ?>
+<style type="text/css">
+    <?php echo $paths ?> { display:none; }
+</style>
+<?php endif; ?>
+
+<script type="text/javascript">
+//<![CDATA[
+
+    var MP_DDQ_SETTINGS = {
+        baseUrl: '<?php echo Mage::getBaseUrl() ?>',
+        priceFormat: <?php echo Zend_Json::encode(Mage::app()->getLocale()->getJsPriceFormat()) ?>,
+        qtyBoxPaths: <?php echo Mage::helper('ddq')->getQtyBoxElPaths() ?>,
+        magentoVersion: '<?php echo Mage::getVersion() ?>',
+        priceUpdatesEnabled: <?php echo Mage::helper('ddq')->getPriceUpdatesEnabled() ? 'true' : 'false' ?>,
+        updateWithAjax: <?php echo Mage::getStoreConfigFlag('ddq/ajax/enabled') ? 'true' : 'false' ?>,
+        reloadCartOnChange: <?php echo Mage::getStoreConfigFlag('ddq/cart/reload_cart_on_change_qty') ? 'true' : 'false' ?>,
+        cartInclTax: <?php if (Mage::helper('tax')->displayCartBothPrices() || Mage::helper('tax')->displayCartPriceInclTax()) : ?>true<?php else: ?>false<?php endif; ?>,
+        cartExclTax: <?php if (Mage::helper('tax')->displayCartBothPrices() || Mage::helper('tax')->displayCartPriceExclTax()) : ?>true<?php else: ?>false<?php endif; ?>,
+        view: '<?php echo $this->_getView() ?>'
+    };
+
+//]]>
+</script>
+<?php endif; ?>
+
+<img src="<?php echo $this->getSkinUrl('mageparts/ddq/i/ajax_loader/1.gif') ?>" id="mp-ddq-ajax-loader" style="display:none;" />

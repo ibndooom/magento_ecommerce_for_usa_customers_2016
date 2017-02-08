@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Web4pro_Customermenu>
+            <version>0.0.1</version>
+        </Web4pro_Customermenu>
+    </modules>
+    <global>
+    	 <helpers>
+
+        </helpers>
+        <models>
+        	<customermenu>
+                <class>Web4pro_Customermenu_Model</class>
+            </customermenu>
+        </models>
+        <blocks>
+        	<customer>
+        		<rewrite>
+        			<account_navigation>Web4pro_Customermenu_Block_Account_Navigation</account_navigation>
+        		</rewrite>
+        	</customer>
+        	<customermenu>
+                <class>Web4pro_Customermenu_Block</class>
+            </customermenu>
+        </blocks>
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <customermenu>
+                        <type>singleton</type>
+                        <class>customermenu/observer</class>
+                        <method>checkMenu</method>
+                    </customermenu>
+                    <checkleftmenu>
+                        <type>singleton</type>
+                        <class>customermenu/observer</class>
+                        <method>checkLeftMenu</method>
+                    </checkleftmenu>
+                </observers>
+            </core_block_abstract_to_html_before>
+             <core_layout_block_create_after>
+                <observers>
+                    <customermenu>
+                        <type>singleton</type>
+                        <class>customermenu/observer</class>
+                        <method>addBreadcrumbs</method>
+                    </customermenu>
+                </observers>
+            </core_layout_block_create_after>
+        </events>
+    </global>
+</config>

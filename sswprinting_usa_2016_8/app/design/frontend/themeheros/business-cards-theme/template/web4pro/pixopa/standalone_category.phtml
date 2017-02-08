@@ -1,0 +1,617 @@
+<?php
+/**
+ *
+ * @ IonCube v8.3 Loader By DoraemonPT
+ * @ PHP 5.3
+ * @ Decoder version : 1.0.0.7
+ * @ Author     : DoraemonPT
+ * @ Release on : 09.05.2014
+ * @ Website    : http://EasyToYou.eu
+ *
+ **/
+
+echo '		<link rel="stylesheet" href="/js/all/niko/niko_css/niko_dol.css">
+		<link rel="stylesheet" href="/js/all/standalone/selectbox/css/jquery.selectbox.css">
+		<link rel="stylesheet" href="/js/all/editor/jquery-ui-1.9.2.custom.css">
+		<link rel="stylesheet" href="/js/all/standalone/selectbox/css/jquery.selectbox.css">
+		<link rel="stylesheet" href="/js/all/standalone/jquery.mCustomScrollbar.css">
+
+		<link rel="stylesheet" href="/js/all/editor/jquery-ui-1.9.2.custom.css">
+    	<link rel="stylesheet" href="/js/all/standalone/upload/bootstrap-3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/js/all/standalone/upload/css/blueimp-gallery.min.css">
+		<link rel="stylesheet" href="/js/all/standalone/upload/css/jquery.fileupload.css">
+		<link rel="stylesheet" href="/js/all/standalone/upload/css/jquery.fileupload-ui.css">
+		<link rel="stylesheet" href="/js/all/standalone/dol_popup_style.css">
+		<link rel="stylesheet" href="/js/all/standalone/standalone_responsive.css">
+
+
+
+';
+
+$is_last_level =$this->getData( 'is_last_level' ) ;
+
+if (!$is_last_level) {
+	$is_last_level = false;
+}
+
+
+$configurable_list = Mage::helper( 'template' )->getAllConfigurableProducts();
+;
+$TOPIC_CATEGORY_ID = Mage::getStoreConfig( 'dol/catalog_setting/topic_category_id' );
+echo '<script type="text/javascript" src="/js/all/common/product.js"></script>
+<script type="text/javascript">
+function removeRequiredClass(ab){
+	$j("#plain_product").val(0);
+	$j("input[type=\'file\'].product-custom-option").removeClass(\'required-entry\');
+	$j("input[type=\'file\'].product-custom-option").first().removeClass(\'required-entry\');
+	$j("#advice-required-entry-options_1_file").addClass(\'validation-advice hide\');
+
+	productAddToCartForm.submit(ab);
+}
+
+function addRequiredClass(){
+	$j("#plain_product").val(1);
+	$j("#advice-required-entry-options_1_file").removeClass(\'validation-advice hide\');
+	$j("#advice-required-entry-options_1_file").addClass(\'validation-advice\');
+	$j("input[type=\'file\'].product-custom-option").first().addClass(\'required-entry\');
+}
+
+function getAllFiles(){
+	$j("#fileupload button[data-type=\'DELETE\']").each(function() {
+		 var name = $j(this).attr("data-url").replace("/\\/g",\'/\').replace(" /.*\//", \'\').replace(\'index.php?file=\', \'\');
+		 console.log(name);
+	});
+}
+
+function doneUploading(){
+	var files = new Array();
+	$j("#fileupload tbody.files p.name a").each(function() {
+	    var name = $j(this).attr("href");
+	    files.push(name);
+	});
+
+	if(document.getElementById(\'uploaded_files\')==null){
+		alert(\'Uploaded files were not set!\');
+	}else{
+		document.getElementById(\'uploaded_files\').value = JSON.stringify(files);
+	}
+	//addRequiredClass();
+	$j("#plain_product").val(1);
+	productAddToCartForm.submit(this);
+}
+
+</script>
+';
+
+$is_scp_enabled = Mage::getStoreConfig( 'dol/catalog_setting/scp_enabled' );
+
+if ($is_scp_enabled) {
+	echo '<script type="text/javascript" src="';
+	echo $this->getSkinUrl( 'js/scp_product_extension.js' );
+	echo '"></script>
+';
+}
+
+echo '
+		<script type="text/javascript">
+				/*Custom Select*/
+				$j("#nextframe_choose").hide();
+				$j(".instant_pricing_container").hide();
+				$j(function () {
+					$j(".select_product #configurable_product_id").selectbox({
+						onOpen:function(){
+							$j(".mCSB_container").css({"overflow":"visible"});
+
+						},
+						onClose:function(){
+							$j(".mCSB_container").css({"overflow":"hidden"});
+
+						},
+						onChange:function(){
+							//Pricing()
+							$j(\'div#alone\').bind(\'dialogclose\', function(event) {
+	    						 parent.window.location.reload();
+	 						});
+							$j("#choose_dyo").show();
+							$j("#new_design_own").hide();
+							$j("#choose_upload").show();
+							$j("#new_upload_own").hide();
+
+							/*Show Instant Pricing Block*/
+							 var emptysrc = $j(\'.browse_content_2 iframe\').attr(\'src\',"");
+		    				 iframe_reset = $j("#demo-frame").attr(\'value\');
+							 document.getElementById("demo-frame").src = iframe_reset;
+
+							productId = $j( ".select_product #configurable_product_id option:selected" ).val();
+							browse = document.getElementById("demo-frame").src;
+							    $j.ajax({
+							      type: \'GET\',
+							      url: browse,
+							      data:{\'pid\':productId},
+							      complete: function(data){
+								 	 var result = $j(data.responseText).find(\'.category-products\').html();
+							     	 if(result == null){
+							     			$j(".choose_content_1").addClass(\'design\');
+											$j(".choose_content_3").addClass(\'upload\');
+						    	     		$j(".choose_content_1, .choose_content_2").css({"width":"478px"});
+						    	     		$j(".choose_content_3").css({"margin-left":"75px"});
+						    	     		//$j("#choose_upload").css({"margin-left":"130px"});
+											$j(\'.choose_content_2\').hide();
+							     		}else{
+							     			$j(".choose_content_1").removeClass(\'design\');
+											$j(".choose_content_3").removeClass(\'upload\');
+							     			$j(\'.choose_content_2\').show();
+							     			$j(".choose_content_1, .choose_content_2, .choose_content_3").css({"width":"318px"});
+								     		$j(".choose_content_3").css({"margin-left":"0px"});
+							     	}
+							      }
+							    });
+
+							$j(".select_content_1 h2").slideUp("slow");
+							$j(".select_product").slideUp("slow");
+							$j(".select_content_1").css({"border-bottom":"1px solid #ccc"});
+							$j(\'.step1\').hide();
+							$j(\'.step2\').show();
+							$j(".frame_footer").show();
+							$j("#upload_frame_footer").hide();
+							$j("#frame_content_choose").show();
+							$j(".category-image #configurable_product_id").remove();
+
+// 							$j(".select_content_1 h3").show();
+// 							$j(".instant_pricing_container").show();
+
+
+							/*Instant Pricing Selectbox*/
+
+
+							/*Change Header Text*/
+							$j(".select_product .sbHolder .sbSelector").addClass("sp_selector");
+							var design_browse_upload = \'What would you like to do for your \' + $j(".sp_selector").val(this).text() + \' ? \';
+							$j(".ui-dialog-titlebar .ui-dialog-title").text(design_browse_upload);
+
+							var design_pricing = \'Finalize Options for your \' + $j(".sp_selector").val(this).text();
+							$j("#choose_dyo").click(function(){
+								$j(".ui-dialog-titlebar .ui-dialog-title").text(design_pricing);
+								$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+							});
+
+							var browse_templates = \'Browse Designs of \' + $j(".sp_selector").val(this).text();
+								$j("#choose_browse").click(function(){
+									$j(".ui-dialog-titlebar .ui-dialog-title").text(browse_templates);
+									$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+								});
+
+							var upload_pricing = \'Finalize Options for your \' + $j(".sp_selector").val(this).text();
+							$j("#choose_upload").click(function(){
+								$j(".ui-dialog-titlebar .ui-dialog-title").text(upload_pricing);
+								$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+							});
+
+							/*Change Product Link*/
+							$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+							$j("#change_product").click(function(){
+								$j(".sp_selector").removeClass("sp_selector");
+								$j("#change_product").hide();
+								$j("#nextframe_choose").hide();
+								$j(".ui-dialog-titlebar .ui-dialog-title").text("Lets get started...");
+								$j(".select_product .sbHolder .sbSelector").text("Choose one product...");
+								$j(".select_content_1 h2").slideDown("slow");
+								$j(".select_product").slideDown("slow");
+								$j(".select_content_1").css({"border-bottom":"none"});
+								$j(".instant_pricing_container").hide();
+								$j(".step3").hide();
+								$j(".step2").hide();
+							});
+
+							/*Next Button*/
+							$j("#nextframe_choose").show();
+						}
+					});
+				});
+
+				$j(document).ready(function(){
+
+
+					$j("#choose_dyo").click(function(){
+						$j(".select_content_1 h2").hide();
+						$j(".select_product").hide();
+						$j(".frame_footer").show();
+						$j("#browse_prevframe").hide();
+						$j(\'.step2\').hide();
+						$j(\'.step1\').show();
+						Pricing();
+						//$j(".select_content_1 h3").show();
+						$j(".instant_pricing_container").show();
+						$j("#design_own").show();
+						$j("#design_upload_prevframe").show();
+						$j("#upload_own").hide();
+					});
+
+					$j("#choose_upload").click(function(){
+						$j(".select_content_1 h2").hide();
+						$j(".select_product").hide();
+						$j(".frame_footer").show();
+						$j("#browse_prevframe").hide();
+						$j(\'.step2\').hide();
+						$j(\'.step1\').show();
+						Pricing();
+						//$j(".select_content_1 h3").show();
+						$j(".instant_pricing_container").show();
+						$j("#upload_own").show();
+						$j("#design_own").hide();
+						$j("#design_upload_prevframe").show();
+					});
+
+					$j("#new_upload_own").click(function(){
+						$j("#frame_content_upload").show();
+						$j(".frame_footer").show();
+						$j(".step1").hide();
+						$j(".step2").hide();
+						$j("#upload_content .upload_content_2 .container").show();
+						$j("#upload_content .upload_content_1").show();
+						$j("#browsetemp_content").hide();
+						$j(".instant_pricing_container").hide();
+						//$j(".select_content_1 h3").hide();
+						$j("#upload_content").show();
+						$j("#upload_prevframe").hide();
+						$j("#new_upload_prevframe").show();
+						var upload_files = \'Upload Files for your \' + $j(".sp_selector").val(this).text();
+						$j(".ui-dialog-titlebar .ui-dialog-title").text(upload_files);
+						$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+					});
+
+					$j("#upload_own").click(function(){
+						$j("#frame_content_upload").show();
+						$j(".frame_footer").show();
+						$j(".step1").hide();
+						$j(".step2").hide();
+						$j("#upload_content .upload_content_2 .container").show();
+						$j("#upload_content .upload_content_1").show();
+						$j("#browsetemp_content").hide();
+						$j(".instant_pricing_container").hide();
+						//$j(".select_content_1 h3").hide();
+						$j("#upload_content").show();
+						$j("#upload_prevframe").show();
+						$j("#new_upload_prevframe").hide();
+						var upload_files = \'Upload Files for your \' + $j(".sp_selector").val(this).text();
+						$j(".ui-dialog-titlebar .ui-dialog-title").text(upload_files);
+						$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+					});
+
+					$j("#new_upload_prevframe").click(function(){
+						$j(".step1").hide();
+						$j(".step2").show();
+						$j("#upload_content").hide();
+						$j(".instant_pricing_container").hide();
+						var design_browse_upload = \'What would you like to do for your \' + $j(".sp_selector").val(this).text() + \' ? \';
+						$j(".ui-dialog-titlebar .ui-dialog-title").text(design_browse_upload);
+						$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+					});
+
+					$j("#upload_prevframe").click(function(){
+						$j(".step1").show();
+						$j(".step2").hide();
+						$j("#upload_content").hide();
+						Pricing();
+						$j(".instant_pricing_container").show();
+						var upload_pricing = \'Finalize Options for your \' + $j(".sp_selector").val(this).text();
+						$j(".ui-dialog-titlebar .ui-dialog-title").text(upload_pricing);
+						$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+					});
+
+					$j("#design_upload_prevframe").click(function(){
+						$j(".step1").hide();
+						$j(".step2").show();
+						var design_browse_upload = \'What would you like to do for your \' + $j(".sp_selector").val(this).text() + \' ? \';
+						$j(".ui-dialog-titlebar .ui-dialog-title").text(design_browse_upload);
+						$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+					});
+
+					/*Back to Choose Option*/
+					$j("#browse_prevframe").click(function(){
+						var design_browse_upload = \'What would you like to do for your \' + $j(".sp_selector").val(this).text() + \' ? \';
+						$j(".ui-dialog-titlebar .ui-dialog-title").text(design_browse_upload);
+						$j(".ui-dialog-titlebar .ui-dialog-title").append("<a id=\'change_product\'>[Change Product]</a>");
+					});
+
+				});
+
+
+		</script>
+
+
+		<!-------------------------------------------------------------------------------------------------Select Product-->
+			<div id="frame_selectproduct">
+				<div class="frame_container">
+
+					<div class="step1" id="selectproduct_content" style="display:none;">
+						<div class="frame_content" id="frame_content_select">
+							<div class="select_content_1">
+								<h2>';
+echo Mage::helper( 'catalog' )->__( 'Select a Product' );
+echo ' :</h2>
+								<!--<h3 style= "display:none;">';
+echo ' :</h3>-->
+								<div class="select_product">
+									<select id="configurable_product_id" name="configurable_product_id" onchange="getProductPricing(this.value);" class="sidebar-inner-select">
+										<option selected="selected" value="Choose one product" disabled>Choose one product...</option>
+										';
+foreach ($configurable_list as $product) {
+
+
+	if (( ( !$is_last_level || !$product_ids ) || ( $is_last_level && in_array( $product->getId(  ), $product_ids ) ) )) {
+		echo '										<option value="';
+		echo $product->getId(  );
+		echo '" >';
+		echo Mage::helper( 'catalog' )->__($product->getName());
+		echo '</option>
+										';
+		continue;
+	}
+}
+
+echo '									</select>
+									<input type="hidden" name="is_instant_pricing" id="is_instant_pricing" value="true" />
+								</div>
+								<div class="instant_pricing_wrapper">
+									<div class="instant_pricing_container">
+										<div id="pricing1">
+
+										</div>
+
+									</div> <!--instant pricing wrapper-->
+								</div> <!--instant pricing container-->
+
+							</div> <!--select content 1-->
+						</div> <!--frame content-->
+						<div style="clear:both"></div>
+						<div class="frame_footer">
+							<button style= "display:none;" class="frame_button prev_frame" id="design_upload_prevframe">Back</button>
+							<button style= "display:none;" id="design_own" onclick="removeRequiredClass(this);">Let\'s Design</button>
+							<button style= "display:none;" id="upload_own">Upload Files</button>
+						</div> <!--frame footer-->
+					</div> <!--select product content-->
+
+		<!-------------------------------------------------------------------------------------------------Choose One-->
+					<div class="step2" id="choose_content" style="display:none;">
+						<div class="frame_content" id="frame_content_choose">
+							<div class="choose_content_1">
+								<div class="content_1_img">
+									<img src="/js/all/standalone/images/dyo.png"/>
+								</div>
+								<div class="content_1_text">
+									<h2>Design Your Own</h2>
+									<ul id="content_1_text">
+										<li>- Make your own Design using our cutting edge Online Design Tool</li>
+										<li>- Add your images from Facebook, Picasa, Flickr and Instagram right into the Design Canvas.</li>
+										<li>- Save your designs and edit them later.</li>
+										<li>- Design Tool also works on iPad and Tablet devices.</li>
+									</ul>
+								</div>
+
+								<!-- <button class="frame_button" id="choose_dyo" onclick="removeRequiredClass(this);">Choose</button>-->
+								<button class="frame_button" id="choose_dyo">Next Step</button>
+								<button style= "display:none;" id="new_design_own" onclick="removeRequiredClass(this);">Let\'s Design</button>
+							</div>
+							<div class="choose_content_2" style="display:none;">
+								<div class="content_2_img">
+									<img src="/js/all/standalone/images/browse.png"/>
+								</div>
+								<div class="content_2_text">
+									<h2>Browse Our Designs</h2>
+									<ul id="content_2_text">
+										<li>- Save time by selecting ready-to-use Design Templates.</li>
+										<li>- Our elegant designs stand out and leave a lasting impression</li>
+										<li>- Personalize any design template with ease.</li>
+									</ul>
+								</div>
+								<button class="frame_button" id="choose_browse">Browse</button>
+							</div>
+							<div class="choose_content_3">
+								<div class="content_3_img">
+									<img style="margin-top:21px;" src="/js/all/standalone/images/upload_new.png"/>
+								</div>
+								<div class="content_3_text">
+									<h2>Upload Print-Ready Files</h2>
+									<ul id="content_3_text">
+										<li>Have a design file ready to go?</li>
+										<li>We\'ll produce the print using your uploaded file.</li>
+										<li>All File Formats are accepted.</li>
+									</ul>
+								</div>
+								<button class="frame_button" id="choose_upload">Next Step</button>
+								<button style="display:none;" id="new_upload_own">Upload Files</button>
+							</div>
+						</div> <!--frame content-->
+						<div style="clear:both"></div>
+						<div class="frame_footer">
+							<button class="frame_button" id="prevframe_select">Back</button>
+							<!--<button class="frame_button" id="next_frame">Next ></button>-->
+						</div> <!--frame footer-->
+					</div> <!--choose one content-->
+
+		<!-------------------------------------------------------------------------------------------------Browse Templates-->
+					<div class="step2_browse" id="browsetemp_content" style="display:none;">
+						<div class="frame_content" id="frame_content_browse">
+							<div class="browse_content_1" rel="/catalog/category/ajaxlistnav/id/';
+echo $TOPIC_CATEGORY_ID;
+echo '">
+
+							</div>
+
+							<div class="descLoader" style="display:none;">
+       							 <img src="';
+echo $this->getJSUrl( 'all/standalone/images/filters-main-preloader.gif' );
+echo '">
+							</div>
+
+						<div class="browse_content_2">
+							<iframe width="100%" height="476px" src="/catalog/category/ajaxlist/id/';
+echo $TOPIC_CATEGORY_ID;
+echo '" value = "/catalog/category/ajaxlist/id/';
+echo $TOPIC_CATEGORY_ID;
+echo '" id="demo-frame" class="brframe"></iframe>
+						</div>
+						</div> <!--frame content-->
+						<div style="clear:both"></div>
+						<div class="frame_footer">
+							<button class="frame_button prev_frame" id="browse_prevframe">Back</button>
+							<!--<button class="frame_button nextframe_browse" id="browse_nextframe">Next ></button>-->
+						</div> <!--frame footer-->
+					</div> <!--browse template content-->
+
+		<!-------------------------------------------------------------------------------------------------Upload File-->
+					<div class="step2_upload" id="upload_content" style="display:none;">
+						<div class="frame_content" id="frame_content_upload">
+							';
+
+$upload = $this->getLayout()->createBlock('core/template')->setTemplate( 'pixopa/dol/standalone/upload_files.phtml');
+echo $upload->toHtml();
+echo '						</div> <!--frame content-->
+						<!-- The blueimp Gallery widget -->
+						<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+						    <div class="slides"></div>
+						    <h3 class="title"></h3>
+						    <a class="prev">&#139;</a>
+						    <a class="next">&#155;</a>
+						    <a class="close">x</a>
+						    <a class="play-pause"></a>
+						    <ol class="indicator"></ol>
+						</div>
+						<div style="clear:both"></div>
+						<div class="upload_frame_footer">
+							<button style="display:none;" class="frame_button prev_frame" id="upload_prevframe">Back</button>
+							<button style="display:none;" class="frame_button prev_frame" id="new_upload_prevframe">Back</button>
+							<button class="add_to_cart" onclick="doneUploading();">Done Uploading</button>
+						</div> <!--frame footer-->
+					</div> <!--upload file content-->
+
+				</div> <!--frame container-->
+			</div> <!--frame wrapper-->
+
+		<script type="text/javascript">
+		function Pricing(){
+			jQuery.cachedScript = function(url, options) {
+				// allow user to set any option except for dataType, cache, and url
+				options = $j.extend(options || {}, {
+				dataType: "script",
+				cache: true,
+				url: url
+				});
+				// Use $.ajax() since it is more flexible than $.getScript
+				// Return the jqXHR object so we can chain callbacks
+				return jQuery.ajax(options);
+
+			};
+
+			var optionsPrice;
+			function getProductPricing(product_id){
+				getProductId(product_id)
+				if(product_id!=undefined){
+					url = \'/catalog/product/ajax\';
+					document.getElementById(\'pricing\').innerHTML = \'<div align="center"><img src="';
+echo $this->getJsUrl( 'all/standalone/images/opc-ajax-loader1.gif' );
+echo '"/><br /><br /></div>\';
+					$j.ajax({
+						url: url,
+						data: {\'id\':product_id},
+						dataType: \'text\',
+						success: function(data) {
+							$j.cachedScript("/catalog/product/js/id/"+product_id)
+							.done(function(script, textStatus) {
+								productAddToCartForm = new VarienForm(\'product_addtocart_form\');
+								productAddToCartForm.submit = function(button, url) {
+						            if (this.validator.validate()) {
+						                var form = this.form;
+						                var oldUrl = form.action;
+
+						                document.getElementById(\'price_box_data\').value = $$(\'div.price-box\')[0].innerHTML;
+
+						                if (url) {
+						                   form.action = url;
+						                }
+						                var e = null;
+						                try {
+						                    this.form.submit();
+						                } catch (e) {
+						                }
+						                this.form.action = oldUrl;
+						                if (e) {
+						                    throw e;
+						                }
+
+						                if (button && button != \'undefined\') {
+						                    button.disabled = true;
+						                }
+						            }
+						        }.bind(productAddToCartForm);
+
+						        ';
+
+$is_scp_enabled = Mage::getStoreConfig( 'dol/catalog_setting/scp_enabled' );
+
+if ($is_scp_enabled) {
+	echo '								$(\'product_addtocart_form\').getElements().each(function(el) {
+							        if(el.type == \'select-one\') {
+							            if(el.options && (el.options.length > 1)) {
+							                el.options[0].selected = true;
+							                spConfig.reloadOptionLabels(el);
+							            }
+							        }
+							    });
+							    ';
+}
+
+echo '
+							    if(spConfig.settings[0]!=undefined && spConfig.settings[0].length>1){
+									for(var i=0; i<10; i++){
+										if(spConfig.settings[i]!=undefined){
+											if(spConfig.settings[i].length>1){
+												spConfig.settings[i].selectedIndex = 1;
+												spConfig.configureElement(spConfig.settings[i]);
+											}else{
+												break;
+											}
+										}else{
+											break;
+										}
+									}
+							    }
+
+						})
+							data = data.replace(/[*]/g,"");
+							data = data.replace("Required Fields","");
+							data = data.replace("Availability: In stock.","");
+							data = data.replace("availability","availability hide");
+							data = data.replace("product-options","product-options no-margin-top");
+							data = data.replace("class=\"label\" id=\"configurable-price-from", "class=\"label hide\" id=\"configurable-price-from");
+							data = data.replace(/(\r\n|\n|\r)/gm,"");
+							data = data.replace("p>            <div class=\"price-box\">","p> <div class=\"price-box hide\">");
+							data = data.replace("regular-price","regular-price hide");
+							data = data.replace("</div>        <label id=\"ajax_qty\"","<label id=\"ajax_qty\"");
+							data = data.replace("</div>                <label id=\"ajax_qty\"","<label id=\"ajax_qty\"");
+							data = data.replace("</div>                <label style=\"margin-left:50px;\" for=\"qty\" id=\"ajax_qty\"","<label style=\"margin-left:50px;\" for=\"qty\" id=\"ajax_qty\"");
+							data = data.replace("</div>                <label for=\"qty\" style=\"margin-left:50px;\" id=\"ajax_qty\"","<label for=\"qty\" style=\"margin-left:50px;\" id=\"ajax_qty\"");
+
+							data = data.replace("<div class=\"add-to-cart\">","</div><div class=\"add-to-cart\">");
+
+							document.getElementById(\'pricing1\').innerHTML = data;
+							decorateGeneric($$(\'#product-options-wrapper dl\'), [\'last\']);
+
+
+						}
+					});
+				}
+			}
+			//]]>
+
+			<!--
+			getProductPricing($j("#configurable_product_id").first().val());
+
+			//-->
+
+			}
+
+		</script>
+		';
+?>

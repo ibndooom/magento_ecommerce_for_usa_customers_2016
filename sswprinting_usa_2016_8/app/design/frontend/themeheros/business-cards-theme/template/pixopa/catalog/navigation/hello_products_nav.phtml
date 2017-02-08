@@ -1,0 +1,136 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+?>
+<?php
+/**
+ * $this->renderCategoriesMenuHtml() supports optional arguments:
+ * int Level number for list item class to start from
+ * string Extra class of outermost list items
+ * string If specified wraps children list in div with this class
+ */
+?>
+
+<?php 
+$all_categories = Mage::helper('pixopa_catalog')->getProductsCategoryHierarchy();
+$PRODUCTS_CATEGORY_ID = Mage::getStoreConfig('dol/catalog_setting/products_category_id');
+$all_categories = json_decode($all_categories, true);
+?>
+<?php if($all_categories): ?>
+<div class="block block-leftnav">
+<div class="block-title">
+    <strong><span><?php echo $this->__('All Products') ?></span></strong> 
+</div>
+<div class="block-content">
+		<ul id="left-nav">
+			<?php $all_categories = $all_categories[$PRODUCTS_CATEGORY_ID]['0'][$PRODUCTS_CATEGORY_ID.'_childs'];?>
+			<?php foreach ($all_categories as $_category){ ?>
+				<?php 
+					$category_id = '';
+					foreach($_category as $key => $_category_detail){
+						$pos = strpos($key, '_childs');
+						if($pos === false){
+							$category_id = $key;
+							break;
+						}
+					}
+					$hasChildren = false;
+					if(array_key_exists($category_id.'_childs', $_category)){
+						$hasChildren = true;
+					}
+				?>
+				<li class="category"> 
+					<a href="<?php echo $_category['url']?>" >
+						<?php echo $this->__($_category[$category_id]);?>
+					</a>
+					<?php if($hasChildren): ?><span class="arrow" lang="<?php echo $category_id;?>"></span><?php endif ?>
+				</li>
+				
+				<?php if($hasChildren){ ?>
+				<li>
+					<ul class="subcategory_<?php echo $category_id;?> subcategory" style="display:none;">
+						<?php foreach ($_category[$category_id.'_childs'] as $childCategory){?>
+							<?php 
+								$child_category_id = '';
+								foreach($childCategory as $key => $_category_detail){
+									$pos = strpos($key, '_childs');
+									if($pos === false){
+										$child_category_id = $key;
+										break;
+									}
+								}
+								$hasmoreChildren = false;
+								if(array_key_exists($child_category_id.'_childs', $childCategory)){
+									$hasmoreChildren = true;
+								}
+							?>
+							<li class="category cate" lang="<?php echo $child_category_id; ?>">
+								<a href="<?php echo $childCategory['url']?>" >
+									<?php echo $this->__($childCategory[$child_category_id]); ?>
+								</a>
+								<?php if($hasmoreChildren) echo ' <span class="arrow" lang="'.$child_category_id.'"></span>'; ?>
+							</li>
+							
+							<?php if($hasmoreChildren){ ?>
+								<li>								
+									<ul class="subcategory_<?php echo $child_category_id; ?> subcategory" style="display:none;">
+									
+										<?php foreach ($childCategory[$child_category_id.'_childs'] as $_childCategory){?>
+											<?php 
+												$sub_child_category_id = '';
+												foreach($_childCategory as $key => $_category_detail){
+													$pos = strpos($key, '_childs');
+													if($pos === false){
+														$sub_child_category_id = $key;
+														break;
+													}
+												}
+											?>
+											<li class="category cat">
+												<a href="<?php echo $_childCategory['url']?>">
+													<?php echo $this->__($_childCategory[$sub_child_category_id]); ?>
+												</a>
+											</li>
+										<?php } ?>
+									</ul>
+								</li>
+							<?php } ?>
+						<?php }?>
+					</ul>
+				</li>
+				<?php } ?>
+			<?php } ?>
+		</ul>
+</div>
+</div>
+<?php endif ?>
+ 

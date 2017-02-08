@@ -1,0 +1,67 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct();
+	  $name = $_helper->productAttribute($_product, $_product->getName(), 'name');
+	  $product_name = $name;
+	  $short_description = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+?>
+var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+
+<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+	<?php $product_config = $this->getChildChildHtml('container2', '', true, true);
+		$start = strpos($product_config, 'var spConfig');
+        $end = strpos($product_config, 'window.onload');
+        echo substr($product_config, $start, $end-$start);
+        $start = strpos($product_config, 'var optionFileUpload');
+	    if($start===false){
+	    	$start = strpos($product_config, 'var optionTextCounter');
+	        if($start===false){
+	        	$start = strpos($product_config, 'Product.Options');
+	        	if($start===false){
+	        	}else{
+					$end = strpos($product_config, 'var parsebreak');
+		        	echo substr($product_config, $start, $end-$start);        		
+	        	}
+	        }else{
+	        	$end = strpos($product_config, 'var parsebreak');
+		        echo substr($product_config, $start, $end-$start);
+	        }
+        }else{
+        	$end = strpos($product_config, 'var parsebreak');
+	        echo substr($product_config, $start, $end-$start);
+        }
+    ?>
+<?php endif;?>
+

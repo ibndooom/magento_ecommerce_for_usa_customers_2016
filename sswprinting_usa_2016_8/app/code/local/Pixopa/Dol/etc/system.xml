@@ -1,0 +1,1502 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<pixopa translate="label">
+			<label>Pixopa</label>
+			<sort_order>100</sort_order>
+		</pixopa>
+	</tabs>
+	<sections>
+		<dol module="dol">
+			<label>Core Settings</label>
+			<tab>pixopa</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>50</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<system_setting translate="label">
+					<label>System Settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<apc_enabled translate="label">
+							<label>APC Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</apc_enabled>
+						<im_enabled translate="label">
+							<label>IM Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</im_enabled>
+						<im_path translate="label">
+							<label>IM Path</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</im_path>
+						<optipng_enabled translate="label">
+							<label>Optimize Images</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</optipng_enabled>
+						<svg_processing_v2 translate="label">
+							<label>SVG Processing V2</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</svg_processing_v2>
+						<flatten_pdf_type translate="label">
+							<label>PDF Generation Method</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</flatten_pdf_type>
+						<flatten_pdf_zoom_factor translate="label">
+							<label>Fast Flatten Zoom Factor</label>
+							<comment>Only applicable for 'Fast Flatten PDF'</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</flatten_pdf_zoom_factor>
+						<solr_hostname translate="label">
+							<label>Solr Hostname</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</solr_hostname>
+						<solr_port translate="label">
+							<label>Solr Port</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</solr_port>
+						<solr_core translate="label">
+							<label>Solr Core</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</solr_core>
+						<solr_path translate="label">
+							<label>Solr Base Directory Path</label>
+							<comment>Example - /home/pixopa (exclude /solr at end)</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</solr_path>
+						<converter_path translate="label">
+							<label>Converter Home Path</label>
+							<comment>Example - /home/pixopa/converter</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</converter_path>
+						<encode_image_in_svg translate="label">
+							<label>Base64 Encode Image in SVG Download</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</encode_image_in_svg>
+						<eps_pdf_dpi translate="label">
+							<label>EPS/PDF Conversion DPI</label>
+							<comment>Default - 300dpi</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</eps_pdf_dpi>
+						<template_url_separator translate="label">
+							<label>Template SEO URL Separator</label>
+							<comment>Allowed values '-' or '/'. Example of Template URL- http://xyz.com/product-name{separator}template-name</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</template_url_separator>
+						<allow_products_indexing translate="label">
+							<label>Allow Magento Products URL Indexing</label>
+							<comment>Default is 'Yes'. This can be set to 'No' when only templates are displayed in the whole website.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>16</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</allow_products_indexing>
+						<design_tool_submit_action translate="label">
+							<label>Design Tool Submit Action</label>
+							<comment>Default - /checkout/cart/add</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</design_tool_submit_action>
+						<design_tool_update_action translate="label">
+							<label>Design Tool Update Action</label>
+							<comment>Default - /checkout/cart/updateDesign</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>18</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</design_tool_update_action>
+						<create_image_for_each_side translate="label">
+							<label>Create Image of Each Side on Add to Cart Event</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>19</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_image_for_each_side>
+						<enable_form_key translate="label">
+							<label>Enable Magento Form Key</label>
+							<comment>Set to 'Yes' for Magento CE 1.8+</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_form_key>
+						<stand_alone_mode translate="label">
+							<label>Use Design Tool on Stand Alone Mode</label>
+							<comment>Set to 'Yes' for Stand Alone Mode</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>22</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</stand_alone_mode>
+						<skip_template_detail_page translate="label">
+							<label>Skip Template Detail Page</label>
+							<comment>Load Template directly in Design Tool and Skip Template Detail Page</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>23</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</skip_template_detail_page>
+						<skip_product_dimensions_check translate="label">
+							<label>Skip Product Dimensions Check</label>
+							<comment>Skip Product Dimensions Check in URL Rewriting. Set 'No' by default</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>24</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</skip_product_dimensions_check>
+						<full_https_mode translate="label">
+							<label>Use Design Tool on Full HTTPS Mode</label>
+							<comment>Set to 'Yes' when full website runs on HTTPS</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>25</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</full_https_mode>
+						<get_started translate="label">
+							<label>Get Started Button</label>
+							<comment>Changes the background color for Get Started Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</get_started>
+						<enable_font translate="label comment">
+							<label>Enable Google Font</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_font>
+						<font translate="label comment">
+							<label>Font Family</label>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Font</frontend_model>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Font_Google_Font</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</font>
+						<!--<add_to_cart translate="label">
+							<label>Add To Cart Button</label>
+							<comment>Changes the background color for Add To Cart Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</add_to_cart>
+						<design_own translate="label">
+							<label>Design Your Own Button</label>
+							<comment>Changes the background color for Design Your Own Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>35</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</design_own>
+						<browse_design translate="label">
+							<label>Browse Design Button</label>
+							<comment>Changes the background color for Browse Design Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</browse_design>-->
+					</fields>
+				</system_setting>
+				<catalog_setting translate="label">
+					<label>Catalog Settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<show_empty_category translate="label">
+							<label>Display Empty Categories</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_empty_category>
+						<root_category_id translate="label">
+							<label>Root Category Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</root_category_id>
+						<topic_category_id translate="label">
+							<label>Topic Root Category Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</topic_category_id>
+						<occassions_category_id translate="label">
+							<label>Events &amp; Occassions Root Category Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</occassions_category_id>
+						<recipient_category_id translate="label">
+							<label>Recipient Root Category Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</recipient_category_id>
+						<products_category_id translate="label">
+							<label>Products Root Category Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</products_category_id>
+						<create_your_own_category_id
+							translate="label">
+							<label>Create Your Own Root Category Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_your_own_category_id>
+						<other_products_category_id translate="label">
+							<label>Other Products Category Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</other_products_category_id>
+						<size_attribute_id translate="label">
+							<label>Size Attribute Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</size_attribute_id>
+						<is_active_attribute_id translate="label">
+							<label>Is Active Attribute Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</is_active_attribute_id>
+						<category_name_attribute_id translate="label">
+							<label>Category Name Attribute Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</category_name_attribute_id>
+						<orientation_attribute_id translate="label">
+							<label>Orientation Attribute Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</orientation_attribute_id>
+						<thickness_attribute_id translate="label">
+							<label>Spine Thickness Attribute Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</thickness_attribute_id>
+						<pagination_attribute_id translate="label">
+							<label>Pages Attribute Ids</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</pagination_attribute_id>
+						<pages_keywords translate="label">
+							<label>Pages Keywords (Pipe separated)</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</pages_keywords>
+						<scp_enabled translate="label">
+							<label>SCP Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>16</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</scp_enabled>
+						<px_simple_products_only translate="label">
+							<label>All Simple Products Only</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</px_simple_products_only>
+					</fields>
+				</catalog_setting>
+				<dol_setting translate="label">
+					<label>DOL Settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<bleed_margin translate="label">
+							<label>Global Bleed Margin (pixels)</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</bleed_margin>
+						<minimum_resolution translate="label">
+							<label>Minimum Resolution for Images (pixels)</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</minimum_resolution>
+						<enable_zoom_factor translate="label">
+							<label>Enable DOL Zoom Factor</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_zoom_factor>
+						<design_thumbnail_size translate="label">
+							<label>Design Thumbnail Size (190px default)</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</design_thumbnail_size>
+					</fields>
+				</dol_setting>
+				<instagram_setting translate="label">
+					<label>Instagram API Settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>4</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<client_id translate="label">
+							<label>Client ID</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</client_id>
+						<client_secret translate="label">
+							<label>Client Secret</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</client_secret>
+						<redirect_uri translate="label">
+							<label>Redirect URI</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</redirect_uri>
+					</fields>
+				</instagram_setting>
+			</groups>
+		</dol>
+	</sections>
+
+	<sections>
+		<doldesign module="dol">
+			<label>Online Designer Settings</label>
+			<tab>pixopa</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>60</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<spriteimage translate="label">
+					<label>Create Sprite Images</label>
+					<comment>Click on the button if any color is modified</comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>6</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<images translate="label">
+							<label>Create Sprite Images</label>
+							<frontend_type>button</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_Button_Cms</frontend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</images>
+					</fields>
+				</spriteimage>
+				
+				<base translate="label">
+					<label>Base Settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>4</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<olddol_enabled translate="label">
+							<label>Enable Classic Designer Theme</label>
+							<comment>Please enable either Classic or Niko Theme</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</olddol_enabled>
+						<niko_enabled translate="label">
+							<label>Enable Niko Designer Theme</label>
+							<comment>Please enable either Classic or Niko Theme</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</niko_enabled>
+						<designer_width translate="label">
+							<label>Online Designer Width</label>
+							<frontend_type>select</frontend_type>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Width_Widths</source_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</designer_width>
+						<show_slider translate="label comment">
+							<label>Show Image Slider By Default</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_slider>
+						<show_fullwidth translate="label comment">
+							<label>Show Design Tool in Full Width Mode By Default</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>22</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_fullwidth>
+						<show_system_cliparts translate="label comment">
+							<label>Show System Cliparts</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_system_cliparts>
+						<show_ruler translate="label comment">
+							<label>Show Ruler By Default</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>25</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_ruler>
+						<default_measurement_unit translate="label">
+							<label>Default Measurement Units</label>
+							<frontend_type>select</frontend_type>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Measurement_Measurements</source_model>
+							<button_path></button_path>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</default_measurement_unit>
+						<enable_best_fit translate="label">
+							<label>Enable Image Best Fit on Upload</label>
+							<frontend_type>select</frontend_type>
+							<comment>All images uploaded by customer will be 'Best Fit' by default in canvas</comment>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>35</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_best_fit>
+						<display_enhance_image translate="label">
+							<label>Enable Enhance Image Feature</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>36</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_enhance_image>
+						<show_personalize_popup translate="label comment">
+							<label>Show Personalize Text Popup by Default</label>
+							<frontend_type>select</frontend_type>
+							<comment>Design Tool will show Quick Text Personalize Popup on load</comment>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>38</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_personalize_popup>
+						<font_start translate="label comment">
+							<label>Text Default Font Size</label>
+							<comment>This value is used as the default font value for Add Text.</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</font_start>
+						<font_end translate="label comment">
+							<label>Font Size Scrolling Range End</label>
+							<comment>Select the Font Scrolling Range End value. Range starts with 1.</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</font_end>
+						<preview_size translate="label">
+							<label>Maximum Preview Width or Height (px)</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</preview_size>
+						<preview_image_with_proof_text translate="label">
+							<label>Add 'Proof' text in Preview Images</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>55</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</preview_image_with_proof_text>
+						<display_blur_opacity_btns translate="label">
+							<label>Show Border, Blur and Opacity Options</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_blur_opacity_btns>
+						<display_color_pallette translate="label">
+							<label>Show Color Pallettes</label>
+							<comment>Set to 'No' to hide Color Picker and Apply Image Dithering in Design Tool.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>61</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_color_pallette>
+						<invert_black_white_colors translate="label">
+							<label>Invert White Colors in PDF</label>
+							<comment>Invert All White Colors to Black in Print PDF </comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>62</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</invert_black_white_colors>
+						<display_info_btn translate="label">
+							<label>Show Info Button</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>65</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_info_btn>
+						<display_help_btn translate="label">
+							<label>Show Help Button</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_help_btn>
+						<display_save_btn translate="label">
+							<label>Show Save Button</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>75</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_save_btn>
+						<display_preview_btn translate="label">
+							<label>Show Preview Button</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_preview_btn>
+						<display_login_from_slider translate="label">
+							<label>Display User Login from Image Slider</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>85</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_login_from_slider>
+						<download_pdf_mode translate="label">
+							<label>Use Design Tool in Download PDF mode</label>
+							<comment>'Add to Cart' button will be replaced with 'Download PDF' button</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</download_pdf_mode>
+						<display_browse_designs translate="label">
+							<label>Display Browse Designs Feature</label>
+							<comment>Show or Hide this feature that is displayed in Tool Options</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_browse_designs>
+						<display_rotate_canvas translate="label">
+							<label>Show Rotate Canvas Feature</label>
+							<comment>Show or Hide this feature that is displayed in Tool Options</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_rotate_canvas>
+					</fields>
+				</base>
+				
+				<theme translate="label">
+					<label>Color Schemes of Niko Theme</label>
+					<comment>Pixopa provides various Designer Themes to choose from. 
+					You can create your own custom theme by modiflying colors and options in fields below</comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<reset translate="label">
+							<label>Select Any Available Theme</label>
+							<comment>Click to view Full Size Screenshot</comment>
+							<frontend_type>select</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Reset</frontend_model>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Reset_Resetcolors</source_model>
+							<theme_path>all/niko/images/background/</theme_path>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</reset>
+					</fields>
+				</theme>
+				
+				<fonts translate="label">
+					<label>Font</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>30</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<font_size translate="label">
+							<label>Basic Font Size</label>
+							<comment>Size of the regular text. Font size of most of the other
+								elements will be calculated relative to this value</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Font_Size_Basic</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</font_size>
+						<enable_font translate="label comment">
+							<label>Enable Google Font</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_font>
+						<font translate="label comment">
+							<label>Font Family</label>
+							<frontend_type>select</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Font</frontend_model>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Font_Google_Font</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</font>
+					</fields>
+				</fonts>
+				
+				<dolleft translate="label">
+					<label>Left Main Buttons</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>50</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<display_text translate="label">
+							<label>Display Text Button</label>
+							<tooltip>Set "Yes" to display Text Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_text>
+						<display_image translate="label">
+							<label>Display Image Button</label>
+							<tooltip>Set "Yes" to display Image Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_image>
+						<display_background translate="label">
+							<label>Display Background Button</label>
+							<tooltip>Set "Yes" to display Background Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>25</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_background>
+						<display_shapes translate="label">
+							<label>Display Cliparts Button</label>
+							<tooltip>Set "Yes" to display Cliparts Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_shapes>
+						<display_qr translate="label">
+							<label>Display QR Button</label>
+							<tooltip>Set "Yes" to display QR Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_qr>
+						<display_draw translate="label">
+							<label>Display Draw Button</label>
+							<tooltip>Set "Yes" to display Draw Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_draw>
+						<display_line translate="label">
+							<label>Display Line Button</label>
+							<tooltip>Set "Yes" to display Line Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_line>
+						<display_ellipse translate="label">
+							<label>Display Ellipse Button</label>
+							<tooltip>Set "Yes" to display Ellipse Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_ellipse>
+						<display_rect translate="label">
+							<label>Display Rectangle Button</label>
+							<tooltip>Set "Yes" to display Rectangle Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_rect>
+						<display_path translate="label">
+							<label>Display Path Button</label>
+							<tooltip>Set "Yes" to display Path Button.</tooltip>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_path>
+						<text_bg translate="label">
+							<label>Text Button</label>
+							<comment>Changes the background color for Text Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</text_bg>
+						<image_bg translate="label">
+							<label>Image Button</label>
+							<comment>Changes the background color for Image Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</image_bg>
+						<shape_bg translate="label">
+							<label>Shapes Button</label>
+							<comment>Changes the background color for Shapes Button.
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>130</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</shape_bg>
+						<qr_bg translate="label">
+							<label>QR Button</label>
+							<comment>Changes the background color for Text Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>140</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</qr_bg>
+						<draw_bg translate="label">
+							<label>Draw Button</label>
+							<comment>Changes the background color for Draw Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>150</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</draw_bg>
+						<line_bg translate="label">
+							<label>Line</label>
+							<comment>Changes the background color for Line Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>160</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</line_bg>
+						<ellipse_bg translate="label">
+							<label>Ellipse Button</label>
+							<comment>Changes the background color for Ellipse Button.
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>170</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</ellipse_bg>
+						<rectangle_bg translate="label">
+							<label>Rectangle Button</label>
+							<comment>Changes the background color for Rectangle Button.
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>180</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</rectangle_bg>
+						<path_bg translate="label">
+							<label>Path Button</label>
+							<comment>Changes the background color for Path Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>190</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</path_bg>
+						<tool_tipster translate="label">
+							<label>Tool Tip</label>
+							<comment>Changes the background color for Tool Tipster</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>200</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tool_tipster>
+						<button_corner translate="label">
+							<label>Button Corners</label>
+							<comment>Click To Enlarge Image</comment>
+							<frontend_type>select</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Buttoncorner</frontend_model>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Corners_Cornersbutton</source_model>
+							<button_path>all/niko/images/background/button/</button_path>
+							<sort_order>210</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</button_corner>
+					</fields>
+				</dolleft>
+
+				<upperleft translate="label">
+					<label>Upper Left Toolbar</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>60</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<top_tool translate="label">
+							<label>Color</label>
+							<comment>Changes the background color for Upper Left Tools.
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</top_tool>
+						<tool_color translate="label">
+							<label>Ribbon Bottom Left Color</label>
+							<comment>Changes the color for Ribbon Bottom Left Color.
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>130</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tool_color>
+						<corners translate="label">
+							<label>Right Corner Style</label>
+							<comment>Click To Enlarge Image</comment>
+							<frontend_type>select</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Toolcorner</frontend_model>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Corners_Corners</source_model>
+							<corner_path>all/niko/images/background/</corner_path>
+							<sort_order>140</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</corners>
+					</fields>
+				</upperleft>
+
+				<dolright translate="label">
+					<label>Options Right Toolbar</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>70</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<dol_right_icon translate="label">
+							<label>Right Color Icons</label>
+							<comment>Changes color for Right Toolbar Icons
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</dol_right_icon>
+						<button_icon translate="label">
+							<label>Multi-line Text Button</label>
+							<comment>Changes the background color for Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</button_icon>
+						<slider translate="label">
+							<label>Scrollbar Right Side Color</label>
+							<comment>Changes the background color for Slider</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slider>
+					</fields>
+				</dolright>
+
+				<upperright translate="label">
+					<label>Upper Right Buttons </label>
+					<frontend_type>text</frontend_type>
+					<sort_order>80</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<dol_help translate="label">
+							<label>Help Button</label>
+							<comment>Changes the background color for Help Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</dol_help>
+						<dol_info translate="label">
+							<label>Info Button</label>
+							<comment>Changes the background color for Info Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</dol_info>
+						<dol_preview translate="label">
+							<label>Preview Button</label>
+							<comment>Changes the background color for Preview Button.
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</dol_preview>
+						<dol_save translate="label">
+							<label>Save Button</label>
+							<comment>Changes the background color for Save Button</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</dol_save>
+						<dol_checkout translate="label">
+							<label> Checkout Button</label>
+							<comment>Changes the background color for Checkout Button
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</dol_checkout>
+					</fields>
+				</upperright>
+
+				<pattern translate="label">
+					<label>Online Designer Background</label>
+					<comment>Change the Canvas Background of Online Designer</comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>90</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<tex translate="label">
+							<label>Background Pattern</label>
+							<frontend_type>select</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Tex</frontend_model>
+							<source_model>Pixopa_Dol_Model_System_Config_Source_Design_Tex_Names</source_model>
+							<tex_path>all/niko/images/background/</tex_path>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tex>
+					</fields>
+				</pattern>
+
+				<imageslider translate="label">
+					<label>Image Slider Tabs</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>100</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<slider translate="label">
+							<label>Image Slider Left Tabs Color</label>
+							<comment>Changes the background color for Image Slider</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>150</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slider>
+					</fields>
+				</imageslider>
+
+				<others translate="label">
+					<label>Others</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>110</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<zoom_control translate="label">
+							<label>Zoom Controls</label>
+							<comment>Changes the background color for Zoom Controls
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>150</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</zoom_control>
+						<tabs translate="label">
+							<label>Left Nav Tabs in Popups</label>
+							<comment>Changes the color for Left Nav buttons in all QR Code, Cliparts and Fonts Popups</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>160</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tabs>
+						<tab_header translate="label">
+							<label>Popups Header</label>
+							<comment>Changes the background color for Popup Header
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>170</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tab_header>
+						<pages_tab translate="label">
+							<label>Multi Page Tab : Inactive State</label>
+							<comment>Changes the background color for Page Tab when
+								Inactive</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>
+							<sort_order>180</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</pages_tab>
+						<pages_tab1 translate="label">
+							<label>Multi Page Tab : Active State</label>
+							<comment>Changes the background color for Page Tab when Active.
+							</comment>
+							<frontend_type>text</frontend_type>
+							<frontend_model>Pixopa_Dol_Block_Adminhtml_System_Config_Form_Field_Color</frontend_model>							<sort_order>180</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</pages_tab1>
+					</fields>
+				</others>
+				
+				<tooltip translate="label">
+					<label>Tool Tips</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>120</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<display_onload_tooltip translate="label">
+							<label>Display On Load Tool Tip</label>
+							<comment>Set "Yes" to display On Load Tool Tip.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_onload_tooltip>
+						<onload_tooltip translate="label">
+                            <label>On Load Tool Tip</label>
+							<tooltip>Change Content of On Load Tool Tip.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </onload_tooltip>
+						<text_tooltip translate="label">
+                            <label>Text Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Text Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </text_tooltip>
+						<image_tooltip translate="label">
+                            <label>Image Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Image Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_tooltip>
+                        <bg_tooltip translate="label">
+                            <label>Background Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Background Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bg_tooltip>
+						<clipart_tooltip translate="label">
+                            <label>Clipart Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Clipart Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </clipart_tooltip>
+						<qr_tooltip translate="label">
+                            <label>QR Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the QR Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </qr_tooltip>
+						<draw_tooltip translate="label">
+                            <label>Draw Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Draw Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </draw_tooltip>
+						<line_tooltip translate="label">
+                            <label>Line Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Line Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </line_tooltip>
+						<ellipse_tooltip translate="label">
+                            <label>Ellipse Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Ellipse Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ellipse_tooltip>
+						<rectangle_tooltip translate="label">
+                            <label>Rectangle Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Rectangle Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rectangle_tooltip>
+						<path_tooltip translate="label">
+                            <label>Path Button Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Path Button.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </path_tooltip>		
+                        <enhance_image_tooltip translate="label">
+                            <label>Enhance Image Tool Tip </label>
+							<tooltip>Change Tool Tip Content for the Enhance Image Button under Image Options.</tooltip>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enhance_image_tooltip>				
+					</fields>
+				</tooltip>
+			</groups>
+		</doldesign>
+	</sections>
+</config>

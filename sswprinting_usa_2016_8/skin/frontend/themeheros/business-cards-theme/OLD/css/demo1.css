@@ -1,0 +1,36 @@
+#main{width:100%;}
+#images{display:none;}
+.panel{position:absolute; left:210px; bottom:30px;}
+.panel .card-sale{float:right; margin:-34px 0 0 350px; width:550px;}
+ul.exposureThumbs{padding:0; margin:0; list-style-type:none;}
+ul.exposureThumbs li{padding: 0; text-align: center; /*display: none;*/ }
+ul.exposureThumbs li img { cursor: pointer; width:100px; height:100px; opacity:1 !important; border:solid 1px #fff; border-radius:2px;}
+ul.exposureThumbs li.last { margin: 0; }
+.exposureTarget { width:100% !important; height:600px; float:left; padding:0 0 80px; margin:0; position:relative;}
+/*.exposureWrapper{overflow:hidden;}
+/*.exposureWrapper img {width:auto; max-width:1900px;}*/
+.exposureLoaded { background-image: none; }
+/*.exposureData {background:rgba(0,0,0,0.4); position: absolute; right:20px; bottom:20px; height:230px; width:230px; padding: 7px; -webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%;}*/
+ul.exposureThumbs li { width:103px; height:103px !important; float:left; margin:0 10px 0 0; border:2px solid #C1C1C1;}
+.exposureSlideshowControls a, .exposureControls span, .exposureControls a{font-family:Arial, Verdana, Helvetica, sans-serif; font-size:11px; display:block; float:left;}
+.exposureSlideshowControls a { float: right; }
+.exposureSlideshowControls a, .exposureControls a { color: #ccc; text-decoration: none; outline: none; }
+.exposureSlideshowControls a:active, .exposureSlideshowControls a:hover, .exposureControls a:active, .exposureControls a:hover { background-color: #444; color: #ddd; }
+.exposurePaging{display:none;}
+.exposurePaging .active { color: #fff; background-color: #111; }
+.clear { clear: both; }
+p.info { margin: 40px auto; text-align: center; width: 600px; }
+p.info a { color: #006fc0; }
+p.info a:hover, p.info a:active { color: #0084e7; }
+#controls{float:left; width:100%; position:absolute; left:0; bottom:0; display:none;}
+
+.exposureControls a{background:url(../images/left-arw.gif) no-repeat; font-size:0px; width:28px; height:40px;}
+.exposureControls a.exposureNextPage{float:right; background:url(../images/right-arw.gif) no-repeat;}
+
+.exposureTarget .exposureWrapper img{max-width:1920px;}
+.exposureTarget .exposureWrapper{text-align:center; overflow:hidden;}
+.exposureData{position:absolute; left:210px; top:80px; width:40%; font-size:18px;}
+.exposureData h2{color:#333; font-size:48px; font-weight:normal; margin:0; line-height:50px; padding:0 0 10px 0;}
+.exposureData a{display:inline-block; background:#5f5f5f; padding:17px; color:#fff; font-size:28px; margin:40px 0 0;}
+
+ul.exposureThumbs li.active{border:2px solid #22b573;}

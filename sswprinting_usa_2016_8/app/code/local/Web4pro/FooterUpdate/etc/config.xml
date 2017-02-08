@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Web4pro_FooterUpdate>
+            <version>0.0.1</version>
+        </Web4pro_FooterUpdate>
+    </modules>
+
+    <global>
+        <blocks>
+            <footerupdate>
+                <class>Web4pro_FooterUpdate_Block</class>
+            </footerupdate>
+        </blocks>
+        <resources>
+            <footerupdate_setup>
+                <setup>
+                    <module>Web4pro_FooterUpdate</module>
+                </setup>
+            </footerupdate_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <footerupdate>
+                    <file>footerupdate.xml</file>
+                </footerupdate>
+            </updates>
+        </layout>
+    </frontend>
+</config>

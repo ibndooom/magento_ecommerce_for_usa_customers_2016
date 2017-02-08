@@ -1,0 +1,70 @@
+.breadcrumbs-holder{
+	height: 197px;
+	@extend %clr;
+	.discount-info{
+		float: right;
+		padding: 12px 0;
+		color: $grey;
+		font-size: 14px;
+		line-height: 16px;
+		@media screen and (max-width: $phablet){
+			float: none;
+			display: block;
+			text-align: center;
+		}
+	}
+}
+.breadcrumbs{
+	padding: 8px 0;
+	font-size: 13px;
+	line-height: 15px;
+	color: $grey;
+	float: left;
+	@media screen and (max-width: $phablet){
+		padding: 19px 0 0;
+		text-align: center;
+		float: none;
+	}
+	li{
+		position: relative;
+		padding: 5px 5px 5px 9px;
+		display: inline-block;
+		vertical-align: top;
+		&:first-child{
+			padding: 0 9px 0 1px;
+			&:before{
+				display: none;
+			}
+			a{
+				position: relative;
+				display: block;
+				width: 21px;
+				height: 21px;
+				text-indent: -9999px;
+				overflow: hidden;
+				&:before{
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					@extend %iconsSprite;
+					@include back-pos('ico-home');
+				}
+			}
+		}
+		&:before{
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 48%;
+			-webkit-transform: translateY(-50%);
+					transform: translateY(-50%);
+			@extend %iconsSprite;
+			@include back-pos('ico-arrow-right-min');
+		}
+	}
+	a{
+		text-decoration: none;
+		color: $grey--custom9;
+	}
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout>	    	
+	<adminhtml_banner_index>
+		<reference name="head">
+			<action method="setTitle" translate="title" module="banner"><title>Manage Banners</title></action>
+		</reference>
+		<reference name="content">
+			<block type="banner/adminhtml_banner"></block>
+		</reference>
+	</adminhtml_banner_index>
+	
+	<adminhtml_banner_edit>
+        <reference name="head">
+            <action method="setCanLoadExtJs"><param>true</param></action>
+            <action method="setCanLoadTinyMce"><param>true</param></action>                        
+        </reference>        
+		<reference name="left">
+			<block type="banner/adminhtml_banner_edit_tabs" name="banner.tabs" />
+		</reference>
+		<reference name="content">
+			<block type="banner/adminhtml_banner_edit" name="banner" />
+		</reference>
+	</adminhtml_banner_edit>
+	
+</layout>

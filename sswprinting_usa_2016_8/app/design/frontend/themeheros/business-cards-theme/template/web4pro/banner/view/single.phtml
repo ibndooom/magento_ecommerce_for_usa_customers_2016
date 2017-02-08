@@ -1,0 +1,12 @@
+<?php if ($this->canShow()):?>
+<?php $banner = $this->getBanner();?>
+<div class="<?php echo $this->getContainerClass()?>">
+    <?php if(!$banner->getHtml()):?>
+        <a href="<?php echo $banner->getUrl()?>" title="<?php echo $banner->getAltText()?>" target="<?php echo $this->getTargetWindow()?>">
+            <img src="<?php echo $banner->getImageUrl()?>"/>
+        </a>
+    <?php else: ?>
+        <?php echo $banner->getHtml();?>
+    <?php endif; ?>
+</div>
+<?php endif; ?>

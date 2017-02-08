@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Web4pro_Orderdetails>
+            <version>0.0.1</version>
+        </Web4pro_Orderdetails>
+    </modules>
+    <global>
+        <helpers>
+        	<orderdetails>
+			  <class>Web4pro_Orderdetails_Helper</class>
+			</orderdetails>
+        </helpers>
+        <blocks>
+        	<orderdetails>
+                <class>Web4pro_Orderdetails_Block</class>
+            </orderdetails>
+        </blocks>
+    </global>
+    <frontend>
+        <routers>
+            <sales>
+                <args>
+                    <modules>
+                        <web4pro_orderdetails before="Mage_Sales_OrderController">Web4pro_Orderdetails</web4pro_orderdetails>
+                    </modules>
+                </args>
+            </sales>
+        </routers>
+        <translate>
+            <modules>
+                <Web4pro_Orderdetails>
+                    <files>
+                        <default>Web4pro_Orderdetails.csv</default>
+                    </files>
+                </Web4pro_Orderdetails>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <orderdetails>
+                    <file>web4pro_orderdetails.xml</file>
+                </orderdetails>
+            </updates>
+        </layout>
+    </frontend>
+</config>

@@ -1,0 +1,94 @@
+.pagination,
+.pager{
+	.pages{
+		margin: 0 0 30px;
+		@media screen and (max-width: $tablet){
+			margin: 0 0 18px;
+		}
+	}
+	.amount,
+	strong{
+		display: none;
+	}
+	ul,
+	ol{
+		font-size: 0;
+		line-height: 0;
+		text-align: center;
+	}
+	li{
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 3px;
+		&:last-child{
+			margin-right: 0px;
+		}
+		&.active,
+		&.current{
+			a{
+				background: $blue;
+				border: 1px solid $blue;
+				color: $white;
+				font-weight: bold;
+			}
+		}
+		&.current{
+			padding: 3px 0;
+			width: 21px;
+			height: 21px;
+			font-size: 12px;
+			line-height: 15px;
+			background: $blue;
+			border: 1px solid $blue;
+			color: $white;
+			font-weight: bold;
+		}
+	}
+	a{
+		display: block;
+		min-width: 21px;
+		min-height: 21px;
+		font-size: 12px;
+		line-height: 15px;
+		padding: 3px 0 0;
+		text-decoration: none;
+		text-align: center;
+		background: $grey--custom7;
+		border: 1px solid $grey--custom7;
+		color: $grey---darkLight;
+		&:hover{
+			border: 1px solid $blue;
+			background: $white;
+			color: $blue--dark;
+		}
+		img{
+			display: none;
+		}
+	}
+	.next{
+		font-size: 0;
+		&:before{
+			content:'';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -4px);
+					transform: translate(-50%, -4px);
+			@extend %iconsSprite;
+			@include back-pos('ico-arrow-right');
+		}
+	}
+	.previous{
+		&:before{
+			content:'';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -4px) rotate(180deg);
+					transform: translate(-50%, -4px) rotate (180deg);
+			@extend %iconsSprite;
+			@include back-pos('ico-arrow-right');
+		}
+	}
+}

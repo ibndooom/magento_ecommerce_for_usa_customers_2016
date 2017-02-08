@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	
+	<customerdesigns_adminhtml_customerdesigns_index>
+			<reference name="content">
+				<block type="customerdesigns/adminhtml_customerdesigns" name="customerdesigns">
+				</block>
+			</reference>
+	</customerdesigns_adminhtml_customerdesigns_index>
+</layout>
+

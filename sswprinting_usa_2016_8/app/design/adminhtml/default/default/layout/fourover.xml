@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout>
+    <fourover_admin_adminhtml_option_index>
+        <reference name="content">
+            <block type="web4pro_4over/option" name="fourover.option.grid.container"/>
+        </reference>
+    </fourover_admin_adminhtml_option_index>
+
+    <fourover_admin_adminhtml_option_edit>
+        <reference name="content">
+            <block type="web4pro_4over/option_edit" name="fourover.option.edit.container"/>
+        </reference>
+    </fourover_admin_adminhtml_option_edit>
+
+    <fourover_admin_adminhtml_product_index>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+            <action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>fourover/js/product.js</name></action>
+        </reference>
+        <reference name="content">
+            <block type="web4pro_4over/product" name="fourover.product.grid.container"/>
+        </reference>
+    </fourover_admin_adminhtml_product_index>
+    <fourover_admin_adminhtml_product_options>
+        <update handle="popup" />
+        <remove name="footer" />
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>fourover/css/product_options.css</name></action>
+        </reference>        
+        <reference name="content">
+            <block type="web4pro_4over/product_options" />
+        </reference>
+    </fourover_admin_adminhtml_product_options>
+</layout>

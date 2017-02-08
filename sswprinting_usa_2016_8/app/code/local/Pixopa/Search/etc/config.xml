@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<config>
+      <modules>
+        <Pixopa_Search>
+          <version>0.1</version>
+        </Pixopa_Search>
+      </modules>
+	  <frontend>
+      <routers>
+        <px_search>
+          <use>standard</use>
+         <args>
+           <module>Pixopa_Search</module>
+           <frontName>px_search</frontName>
+         </args>
+        </px_search>
+      </routers>
+	  <layout>
+          <updates>
+              <px_search>
+                  <file>search.xml</file>
+              </px_search>
+          </updates>
+      </layout>
+    </frontend>
+    
+   <global>
+      <helpers>
+       <px_search>	
+           <class>Pixopa_Search_Helper</class>
+       </px_search>
+      </helpers>   
+
+	  <blocks>
+	  	<px_search><class>Pixopa_Search_Block</class></px_search>
+	  </blocks>
+	 
+	    <models>
+	 		<px_search>
+	  			<class>Pixopa_Search_Model</class>
+	  			<resourceModel>search_mysql4</resourceModel>
+	  		</px_search>
+	  		<catalogsearch>
+	        	<rewrite>
+	        		<fulltext>Pixopa_Search_Model_Fulltext</fulltext>
+	        	</rewrite>
+	        </catalogsearch>
+		</models>
+        <resources>
+            <px_search_setup>
+                <setup>
+                    <module>Pixopa_Search</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </px_search_setup>
+            <px_search_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </px_search_write>
+            <px_search_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </px_search_read>
+        </resources>
+        
+        <rewrite>
+            <px_search_catalogsearch_ajax>
+                <from><![CDATA[#^/catalogsearch/ajax/#]]></from>
+                <to>/px_search/ajax/</to>
+            </px_search_catalogsearch_ajax>
+        </rewrite>
+        <blocks>
+	        <catalogsearch>
+	        	<rewrite>
+	        		<autocomplete>Pixopa_Search_Block_Autocomplete</autocomplete>
+	        	</rewrite>
+	        </catalogsearch>
+        </blocks>
+         
+   </global> 
+
+</config> 

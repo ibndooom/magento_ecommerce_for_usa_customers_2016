@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+<textfields_adminhtml_textfieldsbackend_index>
+		<reference name="head">
+			<action method="setCanLoadExtJs"><flag>1</flag></action>
+			<action method="addJs"><script>commercebug.1.4.js</script></action>
+		</reference> 
+	
+			<reference name="content">
+				<block type="textfields/adminhtml_textfieldsbackend" name="textfieldsbackend" template="textfields/textfieldsbackend.phtml"/>
+			</reference>
+		</textfields_adminhtml_textfieldsbackend_index>
+		<textfields_adminhtml_textfields_index>
+				<reference name="content">
+					    <block type="textfields/adminhtml_textfields" name="textfields" />
+				</reference>
+		</textfields_adminhtml_textfields_index>
+</layout>

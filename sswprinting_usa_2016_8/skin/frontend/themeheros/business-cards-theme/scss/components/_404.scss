@@ -1,0 +1,44 @@
+.cms-index-noroute{
+	.main-container{
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 1010px;
+		padding: 54px 10px;
+		text-align: center;
+		@media screen and (max-width: $phablet){
+			padding: 34px 10px;
+		}
+		@media screen and (max-width: $phablet){
+			padding: 12px 10px 30px;
+		}
+		@media screen and (max-width: $mobile){
+			padding: 0 10px 22px;
+		}
+		dl{
+			margin: 0 0 10px;
+			list-style: none;
+		}
+		ul,
+		ol{
+			list-style: none;
+		}
+		.col-main{
+			margin: 0 0 20px;
+		}
+		#poll-answers{
+			margin: 0 auto 20px;
+			max-width: 100px;
+			text-align: left;
+		}
+		.actions{
+			button{
+				padding: 10px 60px;
+				text-transform: uppercase;
+			}
+		}
+		.no-display{
+			display: block;
+			height: auto;
+		}
+	}
+}

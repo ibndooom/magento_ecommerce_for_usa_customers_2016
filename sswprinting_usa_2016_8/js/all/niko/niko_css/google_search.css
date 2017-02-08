@@ -1,0 +1,161 @@
+/*#content span {
+		padding: 5px;
+}
+#content span img:hover {
+		border: 2px solid blue;
+		padding: 0;
+		position: static;
+}
+#content span img {
+		height: 100px;
+		padding: 2px;
+		position: inherit;
+}
+div {
+		padding: 5px;
+}
+#content a {
+		text-decoration: none;
+}*/
+
+#search_img{
+	 height: 30px;
+    text-indent: 10px;
+    width: 200px;
+}
+
+#google_button{
+	/*  background: #2c9ff8 none repeat scroll 0 0;*/
+    color: #fff;
+    font-size: 12px;
+    height: 30px !important;
+    margin-left: 5px;
+    width: 106px;
+    line-height: normal;
+}
+
+#vtab .imagefilters{
+	margin-top:8px;
+	margin-bottom:15px;
+	float:left;
+}
+
+
+#vtab .imagefilters .sbHolder{
+	width:125px !important;
+	float:left;
+	margin-left:25px;
+	background:#efefef;
+	border:1px solid #ccc;
+	font-size:12px;
+	height:27px;
+	border-radius:3px;
+}
+
+#vtab .imagefilters .sbOptions{
+	width:170px !important;
+	background:#EFEFEF;
+	border:1px solid #EFEFEF;
+	z-index:999;
+	
+}
+
+#vtab .sbOptions a:link, #vtab .sbOptions a:visited{
+	color:#000;
+	font-size: 12px;
+}
+
+#vtab .sbSelector:link,#vtab .sbSelector:visited,#vtab .sbSelector:hover{
+/* 	color:#336699; */
+	text-indent:15px;
+}
+
+#vtab .imagefilters .sbSelector{
+	top:-3px !important;
+}
+
+.google_div li.high_resol:hover .bt1{
+	position:absolute;
+}
+
+.google_text{	
+	font-size: 16px;
+    margin-left: -25%;
+    margin-right: 2%;
+    font-family: Myriad Pro;
+}
+
+.fullwidth .google_text {
+    font-size: 14px;
+    margin-left: -40%;
+    margin-right: 2%;
+}
+
+#vtab .imagefilters .sbToggle{
+		background-position: 0 -169px !important;
+}
+/* .google_div li.high_resol:hover .overlay{ */
+/* 	height:80px; */
+/* } */
+
+.imagefilters .sbDisabled{
+	color:#2C9FF8;
+	text-align:center;
+}
+
+.descLoader1{
+	 left: 460px;
+    position: absolute;
+    top: 95px;
+    z-index: 1;
+}
+/* #vtab > div{ */
+/* 	z-index:99; */
+/* } */
+
+#vtab .google.selected{
+	z-index:999 !important;
+}
+
+.pxboginya #vtab .descLoader1{
+/* 	display:none !important; */
+    left: 385px;
+}
+
+.google_logo{
+	 margin-top:-86px;
+	 width: 155px;
+	 float:right;
+}
+
+.google_div.colorscroll{
+	margin-top:40px;
+}
+
+.limit{
+	float: right;
+    font-size: 17px;
+    color: red;
+    font-family: Myriad Pro;
+    margin-top: -85px;
+    display:none;
+}
+
+.search_loader{
+	float: right;
+    font-size: 17px;
+/*     color: red; */
+    font-family: Myriad Pro;
+    margin-top: -46px;
+    display:none;
+}
+
+.fullwidth #vtab .limit{
+	margin-top:-10px;
+}
+
+.instagram_logo, .facebook_logo, .flickr_logo, .picasa_logo{margin-top:25px;}
+
+.pxboginya .search_loader{margin-top:-85px;}
+.pxboginya .limit{font-size: 11px;}
+.pxboginya .fullwidth .limit{font-size: 17px;}

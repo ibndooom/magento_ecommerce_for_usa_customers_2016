@@ -1,0 +1,33 @@
+<?php  $_categories = Mage::getModel('catalog/category')->getCollection()
+						
+      ->addAttributeToFilter('entity_id', array('nin' =>array('2','3')))
+      ->addAttributeToSelect('name')
+	   ->addAttributeToSelect('description')
+      ->addAttributeToSelect('thumbnail')
+	  ->addLevelFilter(2)
+      ->addAttributeToFilter('is_active',1)
+	  ->addUrlRewriteToResult()
+	  ->addAttributeToFilter('include_in_home_page', '1');
+	  ?>
+<div class="featured-title relative">
+	<h2><?php echo $this->__('Featured Products') ?></h2>
+	<div class="banner-static"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('card-sale')->toHtml(); ?></div>
+</div>	  
+ 
+<div class="featrd-cats">
+	<?php foreach($_categories as $_category) { ?>
+    <?php if($_category->getThumbnail() != "") {?>
+    <div class="image">
+        <h3><?php if($_category->getThumbnail()) 
+            {  
+            echo $_category->getName();
+            
+            }
+            ?></h3>
+        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."catalog/category/".$_category->getThumbnail(); ?>" alt="" />
+		<p><?php echo $_category->getDescription();?></p>
+		<a href="<?php echo $_category->getUrl($_category); ?>"><?php echo $this->__('View Designs')?></a>
+	</div> 
+	<?php }?>
+    <?php }?>
+</div>

@@ -1,0 +1,135 @@
+.tabs-field{
+	padding: 30px 0 60px;
+	background: $grey--lighten;
+	.wrap{
+		padding: 0 25px;
+	}
+	.tabs-block{
+		position: relative;
+		overflow: hidden;
+		background: $white;
+		border: 1px solid $grey--custom7;
+	}
+	.tabset{
+		overflow: hidden;
+		display: table;
+		table-layout: fixed;
+		border-spacing: 0;
+		width: 100%;
+		@media screen and (max-width: $mobile) {
+			display: block;
+		}
+		li{
+			@media screen and (max-width: $mobile) {
+				display: block;
+			}
+			display: table-cell;
+			&:last-child{
+				a{
+					border-right:none;
+				}
+			}
+		}
+		a{
+			display: block;
+			padding: 13px 0;
+			text-align: center;
+			text-decoration: none;
+			border-bottom: 1px solid $grey--custom7;
+			border-right: 1px solid $grey--custom7;
+			font: bold 16px/19px $proximanova;
+			background: $grey--lightExtra;
+			color: $blue;
+			&.active{
+				background: $white;
+				border-bottom: 1px solid $white;
+			}
+		}
+
+	}
+	.tab-content{
+		padding: 23px 20px 40px;
+		h2{
+			text-align:center;
+			font: 30px/34px $proximanova;
+			color: $blue;
+			margin: 0 0 20px;
+		}
+		.text-information{
+			max-width: 600px;
+			margin: 0 auto 24px;
+			padding: 0 20px;
+			font: 13px/19px proximanova, Helvetica, sans-serif;
+		}
+		form{
+			max-width: 395px;
+			margin: 0 auto;
+			overflow: hidden;
+			@media screen and (max-width: $mobile) {
+				text-align: center;
+			}
+			.forSelect{
+				position: relative;
+				float: left;
+				margin: 3px 0 0;
+				@media screen and (max-width: $mobile) {
+					float: none;
+					display: inline-block;
+					vertical-align: top;
+					text-align: center;
+				}
+			}
+			.jcf-select{
+				min-width:232px;
+				@media screen and (max-width: $mobile) {
+					min-width:228px;
+				}
+			}
+			.jcf-select-opener{
+				background-color: $transparent;
+				@extend %iconsSprite;
+				@include back-pos('ico-arrow-down');
+				border: none !important;
+			}
+			select{
+				min-width: 232px;
+				@media screen and (max-width: $mobile) {
+					min-width:228px;
+				}
+			}
+			.forButton{
+				float: right;
+				@media screen and (max-width: $mobile) {
+					float: none;
+					display: inline-block;
+					vertical-align: top;
+					text-align: center;
+				}
+			}
+			button{
+				min-width:140px;
+				height: 35px;
+				padding: 8px 0;
+				text-align: center;
+				font: 16px/19px $proximanova;
+				border: none;
+				background: $blue--dark;
+				color: $white;
+			}
+		}
+	}
+	.testimonials{
+		position: static;
+		background: transparent;
+		padding: 0;
+		.testimonial{
+			padding: 0;
+		}
+		.description{
+			padding: 16px 12px 0;
+		}
+	}
+	.persona{
+		color: $blue;
+	}
+}

@@ -1,0 +1,53 @@
+.cms-help-online-designer{
+	.col-main{
+		max-width: 1010px;
+		margin: 0 auto;
+		padding: 0 10px;
+		padding: 40px 20px 60px;
+		background: white;
+		border: 1px solid #f2f2f2;
+		border-radius: 2px;
+		@media screen and (max-width: $mobile){
+			padding: 30px 15px 40px;
+			text-align: center;
+		}
+	}
+	h1{
+		text-align: center;
+	}
+	.std{
+		text-align: center;
+		padding-bottom: 40px;
+		span{
+			display: block;
+			text-align: center;
+			margin-bottom: 5px;
+			a{
+				display: inline-block;
+				color: $blue;
+				p{
+					display: inline;
+				}
+				span{
+					color: $blue !important;
+				}
+			}
+		}
+		a[href="#standardtools"], a[href="#zoom"]{
+			display: inline-block;
+			color: $blue;
+			margin-bottom: 5px;
+			p{
+				display: inline;
+			}
+			span{
+				color: $blue !important;
+			}
+		}
+		p a[name]+span{
+			font-size: 24px !important;
+			line-height: 28px;
+			color: $blue !important;
+		}
+	}
+}

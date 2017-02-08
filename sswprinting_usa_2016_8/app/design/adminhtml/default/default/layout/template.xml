@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	
+	<default>
+        <block type="core/template" name="backend_dol" template="template/dol/backenddol.phtml"/>
+        <block type="core/template" name="qrcode" template="template/dol/qrcode_admin.phtml"/>
+        <block type="core/template" name="product.image.slider" as="slider" template="template/dol/slider.phtml"/>
+    </default>
+    
+	<template_adminhtml_templatebackend_index>
+		<reference name="head">
+			<action method="setCanLoadExtJs"><flag>1</flag></action>
+			<action method="addJs"><script>commercebug.1.4.js</script></action>
+		</reference> 
+	
+			<reference name="content">
+				<block type="template/adminhtml_templatebackend" name="templatebackend" template="template/templatebackend.phtml"/>
+			</reference>
+	</template_adminhtml_templatebackend_index>
+	<template_adminhtml_template_index>
+			<reference name="content">
+				<block type="template/adminhtml_template" name="template">
+				</block>
+			</reference>
+	</template_adminhtml_template_index>
+	
+</layout>

@@ -1,0 +1,36 @@
+<?php if($product = $this->getProduct()): ?>
+<div class="grid">
+    <?php if ($product->getProductOptionGroups()) : ?>
+    <table cellspacing="0" class="data" id="fover_product_options_table">
+        <tbody>
+        <?php foreach ($product->getProductOptionGroups() as $option): ?>
+            <tr>
+                <td colspan="3" style="padding-left:20px;background:#eee;"><strong><?php echo $option['product_option_group_name'] ?><strong></td>
+            </tr>
+            <?php
+                $optionUids = array();
+                foreach ($option['options'] as $_option) :
+                    if (in_array($_option['option_uuid'], $optionUids))
+                        continue;
+            ?>
+            <tr>
+                <?php if ($_option['option_description'] != $_option['option_name']) : ?>
+                <td style="width:25%"><?php echo $_option['option_name'] ?></td>
+                <td><?php echo $_option['option_description'] ?></td>
+                <?php else: ?>
+                <td colspan="2" style="width:50%;"><?php echo $_option['option_description'] ?></td>
+                <?php endif; ?>
+                <td><?php echo $_option['option_uuid'] ?></td>
+            </tr>
+            <?php
+                $optionUids[] = $_option['option_uuid'];
+                endforeach;
+            ?>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php else: ?>
+    <h2 style="text-align:center;color:#f00;"><?php echo $this->__('No options are available(or weren\'t uploaded) for the product') ?></h2>
+    <?php endif; ?>
+</div>
+<?php endif; ?>

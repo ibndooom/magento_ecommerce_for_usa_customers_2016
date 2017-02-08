@@ -1,0 +1,872 @@
+.main-cat{
+	a{
+		position: relative;
+		color: $grey---darkLight;
+		text-decoration: none;
+		padding-left: 17px;
+		&:before{
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			-webkit-transform: translate(-0, -5px);
+					transform: translate(-0, -5px);
+			@extend %iconsSprite;
+			@include back-pos('ico-arrow-right');
+		}
+	}
+	.current{
+		position: relative;
+		color: $blue;
+		padding-left: 17px;
+		&:before{
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			-webkit-transform: translate(-0, -5px);
+					transform: translate(-0, -5px);
+			@extend %iconsSprite;
+			@include back-pos('ico-arrow--blue');
+		}
+	}
+}
+.dashboard,
+.sales-order-view .my-account,
+.sales-order-history .my-account,
+.sales-order-reorderpage .my-account{
+	padding: 17px 16px 20px;
+	margin-bottom: 30px;
+	h1{
+		margin-bottom: 10px;
+		font-size: 22px;
+		line-height: 26px;
+		color: $blue;
+		@media screen and (max-width: $phablet) {
+			text-align: center;
+		}
+	}
+	.welcome-msg{
+		margin-bottom: 16px;
+		.hello{
+			display: block;
+			margin-bottom: 4px;
+			font-size: 16px;
+			font-weight: bold;
+			line-height: 18px;
+			color: $grey;
+		}
+	}
+	.btn{
+		padding: 5px 16px;
+	}
+	.control-group{
+		@media screen and (max-width: $tablet) {
+			text-align: center;
+		}
+	}
+	.default-account-adress{
+		@media screen and (max-width: $phablet) {
+			display: block;
+			text-align: center;
+		}
+	}
+}
+
+
+.sales-order-view .my-account,
+.sales-order-history .my-account,
+.sales-order-reorderpage .my-account{
+	border:1px solid $grey--custom6;
+}
+.sales-order-reorderpage .my-account{
+	.buttons-set{
+		font-size: 13px;
+		line-height: 15px;
+		margin-top: 18px;
+	}
+}
+
+.customer-address-form{
+	a.account-back-link{
+		margin-top: 6px;
+	}
+}
+
+.box-account-info{
+	padding: 7px 10px 23px;
+	overflow: hidden;
+	.box-head{
+		padding-bottom: 7px;
+	}
+	h2{
+		margin: 0;
+		font-size: 16px;
+		line-height: 18px;
+		text-transform: none;
+		@media screen and (max-width: $phablet) {
+			text-align: center;
+		}
+	}
+}
+.box-account-outer{
+	font-size: 0;
+	line-height: 0;
+	margin: 0 -10px;
+	li{
+		margin-bottom: 3px;
+		color: $grey---darkLight;
+	}
+}
+.dashboard-info{
+	margin-bottom: 20px;
+}
+.box-account{
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+	padding: 0 10px;
+	font-size: 14px;
+	line-height: 18px;
+	@media screen and (max-width: $tablet) {
+		width: 100%;
+	}
+}
+.box-account-title{
+	overflow: hidden;
+	border-bottom: 1px solid $grey--custom7;
+	margin: 0 0 16px;
+	font-size: 14px;
+	line-height: 18px;
+	.box-account-information{
+		overflow: hidden;
+		color: $grey;
+	}
+	.link-decor{
+		margin-left: 10px;
+	}
+}
+.box-account-inner{
+	padding: 0 10px;
+	@media screen and (max-width: $tablet) {
+		padding: 0;
+	}
+}
+.link-decor{
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	color: $blue;
+	text-decoration: none;
+	&:before{
+		content: '';
+		position: absolute;
+		width: 100%;
+		left: 0;
+		bottom: 2px;
+		border-bottom: 1px solid $grey--custom7;
+	}
+
+}
+.inputs-wrap{
+	@extend %clr;
+	padding-bottom: 5px;
+	max-width: 480px;
+	@media screen and (max-width: $phablet) {
+		margin: 0 auto;
+	}
+	em{
+		color: $blue;
+		&+.colon{
+			margin-left: 2px;
+		}
+	}
+	label{
+		font-size: 14px;
+		line-height: 18px;
+	}
+}
+div.input-small{
+	width: 48%;
+	@media screen and (max-width: $mobile) {
+		float: none;
+		margin-bottom: 5px;
+		width: 100%;
+	}
+	input,select{
+		border-radius: 5px;
+		width: 100%;
+	}
+	span.jcf-select{
+		width: 100%;
+		border-radius: 5px;
+		margin: 0;
+	}
+	&:last-child{
+		margin: 0;
+	}
+}
+.input-big{
+	width: 100%;
+	input,select{
+		width: 100%;
+		border-radius: 5px;
+	}
+	span.jcf-select{
+		width: 230px;
+		border-radius: 5px;
+		margin: 0;
+	}
+}
+.customer-address-form, .customer-account-edit{
+	.dashboard{
+		padding-bottom: 30px;
+	}
+	h1{
+		margin-bottom: 14px;
+	}
+	.box-account-info{
+		margin-bottom: 20px;
+		padding-bottom: 14px;
+	}
+	input{
+		padding-top: 7px;
+		padding-bottom: 7px;
+		border: 1px solid $grey--custom7;
+	}
+	.account-checkbox{
+		@media screen and (max-width: $phablet) {
+			padding-top: 5px;
+			text-align: center;
+		}
+	}
+}
+
+.customer-account-edit{
+	.account-foot-links{
+		.account-back-link{
+			margin-top: 6px;
+		}
+	}
+}
+
+.account-foot{
+	font-size: 12px;
+	line-height: 15px;
+	.required{
+		display: block;
+		margin-top: -12px;
+		margin-bottom: 20px;
+		padding-bottom: 4px;
+		border-bottom: 1px solid $grey--custom7;
+	}
+	.account-foot-links{
+		overflow: hidden;
+	}
+	.link-decor{
+		margin-top: 6px;
+	}
+}
+
+// Styles for account-orders
+
+.account-order-date{
+	display: block;
+}
+.my-account{
+	.tabs-field{
+		background: $white;
+		padding: 17px 0 0;
+		.wrap{
+			padding: 0;
+		}
+	}
+	.tab-content{
+		.sub-title{
+			font-size: 20px;
+			line-height: 24px;
+			color: $grey;
+		}
+	}
+}
+
+
+
+.account-table{
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 14px;
+	line-height: 16px;
+	p{
+		margin: 0;
+	}
+	thead{
+		background:#afd9f1;
+		color: $grey;
+		@media screen and (max-width: $tablet){
+			display: none;
+		}
+	}
+	tbody{
+		td:last-child{
+			padding: 23px 6px;
+			@media screen and (max-width: $tablet){
+				padding: 0 6px 16px;
+			}
+			a{
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+				width: 18px;
+				height: 18px;
+				margin: 0 4px;
+				@media screen and (max-width: $phablet){
+					margin: 4px 10px;
+				}
+			}
+		}
+	}
+	tbody,
+	tfoot{
+		tr{
+			border-bottom: 1px solid $grey--custom14;
+		}
+		td{
+			padding: 20px 22px;
+			@media screen and (max-width: $tablet){
+				display: block;
+				width: 100%;
+			}
+			@media screen and (max-width: $tablet){
+				padding: 7px 22px;
+			}
+			&:first-child{
+				vertical-align: top;
+				@media screen and (max-width: $phablet){
+					padding: 20px 0;
+				}
+				@media screen and (max-width: $tablet){
+					padding: 20px 0 0;
+				}
+			}
+		}
+	}
+	tfoot{
+		td{
+			padding-right: 0;
+			padding-left: 0;
+		}
+		td,
+		td:first-child{
+			@media screen and (max-width: $tablet){
+				padding: 20px 0;
+			}
+		}
+	}
+	.product-cart-info, .account-table-info{
+		text-align: left;
+		@media screen and (max-width: $tablet){
+			text-align: center;
+		}
+	}
+	.workspace{
+		a{
+			display: inline-block;
+			margin: 0 0 2px;
+			padding: 15px;
+			width: 110px;
+			border: 1px solid #e4e4e4;
+		}
+	}
+	.item-options{
+		dt{
+			float: left;
+			margin: 0 8px 0 0;
+			position: relative;
+			@media screen and (max-width: $tablet){
+				float: none;
+				margin: 0;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			&:before{
+				content: ':';
+				position: absolute;
+				top: 0;
+				right: -3px;
+			}
+		}
+		dd{
+			overflow: hidden;
+			@media screen and (max-width: $tablet){
+				margin: 0 20px 0 0;
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+	}
+	.qty{
+		border-radius: 5px;
+		width: 45px;
+		padding: 4px 3px 3px;
+		text-align: center;
+	}
+	.cart-footer-actions{
+		overflow: hidden;
+		.btn-continue{
+			float: left;
+			@media screen and (max-width: $mobile){
+				float: none;
+				margin: 5px 0;
+			}
+		}
+		.btn-update{
+			float: right;
+			@media screen and (max-width: $mobile){
+				float: none;
+				margin: 5px 0;
+			}
+		}
+	}
+}
+
+
+.block-account{
+	.no-display{
+		display: block!important;
+		height: auto;
+	}
+}
+.account-table{
+	font-size: 12px;
+	line-height: 15px;
+	.product-name{
+		margin: 0 0 16px;
+		font-size: 14px;
+		line-height: 18px;
+		text-align: left;
+		color: $grey;
+		border-bottom: 1px solid $grey--custom7;
+		@media screen and (max-width: $tablet){
+			text-align: center;
+		}
+	}
+	tbody,
+	tfoot{
+		td{
+			padding: 10px 22px;
+	}
+	}
+	th{
+		padding: 12px 21px;
+		border-left: 1px solid $white;
+		&:first-child{
+			width: 102px;
+			border: none;
+			@media screen and (max-width: $tablet){
+				padding-top: 10px;
+			}
+			@media screen and (max-width: $phablet){
+				width: 110px;
+			}
+		}
+		&:nth-child(2){
+			text-align: left;
+		}
+		&:nth-child(3){
+			width: 85px;
+			@media screen and (max-width: $phablet){
+				width: 75px;
+			}
+		}
+		&:nth-child(4){
+			width: 62px;
+			@media screen and (max-width: $phablet){
+				width: 64px;
+			}
+		}
+		&:nth-child(5){
+			width: 97px;
+			@media screen and (max-width: $phablet){
+				width: 94px;
+			}
+		}
+		&:nth-child(6){
+			width: 85px;
+			@media screen and (max-width: $phablet){
+				width: 65px;
+			}
+		}
+	}
+	tfoot td{
+		&:first-child{
+			text-align: left;
+			padding: 10px 30px;
+			@media screen and (max-width: $tablet){
+				float: left;
+				width: auto;
+			}
+		}
+	}
+	tfoot tr{
+		overflow: hidden;
+		.last{
+			@media screen and (max-width: $tablet){
+				width: 85px;
+				float: right
+			}
+		}
+	}
+	.workspace{
+		a{
+			width: 80px;
+		}
+	}
+	.account-table-code{
+		display: block;
+		margin-bottom: 3px;
+		color: $grey;
+		font-weight: bold;
+		.link-decor{
+			margin-left: 3px;
+			font-weight: normal;
+		}
+	}
+	.item-options{
+		overflow: hidden;
+		dt, dd{
+			margin-bottom: 3px;
+			margin-right: 3px;
+			@media screen and (max-width: $tablet){
+				float: left;
+			}
+		}
+		dd{
+				float: left;
+				margin-left: 3px;
+		}
+	}
+	.account-code{
+		display: block;
+	}
+	.show_history{
+		color: $grey;
+		text-align: left;
+	}
+	.account-table-total{
+		overflow: hidden;
+	}
+	.account-chiped{
+		padding: 37px 0 0;
+		display: block;
+		@media screen and (max-width: $tablet){
+			padding-top: 0;
+		}
+	}
+	.collaps_history_outer{
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 -22px -9999px;
+		padding: 6px 22px 9999px;
+		min-height: 50%;
+		border: 1px solid transparent;
+		border-bottom: none;
+		text-decoration: none;
+		outline: none;
+		&.collaps_history_decor{
+			position: relative;
+			background: $grey--custom13;
+			border-color: $grey--custom14;
+			@media screen and (max-width: $tablet){
+				border: 1px solid $grey--custom14;
+				margin-top: 15px;
+				margin-bottom: 10px;
+				padding-bottom: 6px;
+			}
+		}
+		.collaps_history{
+			display: inline-block;
+			vertical-align: top;
+			text-decoration: none;
+		}
+	}
+	.product-date-status{
+		padding: 0 0 10px !important;
+		.account-product-date{
+			position: relative;
+			padding: 8px 20px 0;
+			background: $grey--custom13;
+			border: 1px solid $grey--custom14;
+			border-top: none;
+			&:before{
+				content: '';
+				position: absolute;
+				width: 95px;
+				border-bottom: 1px solid $grey--custom13;
+				top:-1px;
+				right: 88px;
+				@media screen and (max-width: $tablet){
+					display: none;
+				}
+			}
+		}
+		.account-history-row{
+			padding-bottom: 5px;
+		}
+	}
+}
+.my-account{
+	.account-back-link{
+		display: inline-block;
+		vertical-align: top;
+		font-size: 14px;
+		line-height: 16px;
+		margin-top: 18px;
+	}
+	.tabs-field .tab-content {
+		padding-bottom: 22px;
+	}
+	.order-links{
+		@media screen and (max-width: $tablet){
+			margin-bottom: 5px;
+		}
+		&+.sub-title{
+			@media screen and (max-width: $tablet){
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+.sales-order-view,.sales-order-history{
+	.account-table-actions{
+		.nobr{
+			@media screen and (max-width: $tablet){
+				display: inline-block;
+				max-width: 100%;
+				margin: 0 auto;
+				padding: 7px 20px 5px;
+				border: 1px solid $grey--custom14;
+				border-radius: 5px;
+			}
+		}
+	}
+}
+.account-table.account-history-table{
+	tbody,
+	tfoot{
+		td{
+			padding: 10px 5px;
+			@media screen and (max-width: $tablet){
+				padding: 5px 5px 0;
+			}
+			.fade-field{
+				display: none;
+				@media screen and (max-width: $tablet){
+					display: inline;
+				}
+			}
+			&:first-child{
+				vertical-align: middle;
+				@media screen and (max-width: $tablet){
+					padding-top: 18px;
+				}
+			}
+			&:nth-child(3){
+				width: auto;
+				@media screen and (max-width: $phablet){
+					text-align: center;
+				}
+			}
+			&:nth-child(6){
+				a.link-decor{
+					width: auto;
+					height:auto;
+				}
+				@media screen and (max-width: $tablet){
+					padding-bottom: 18px;
+				}
+			}
+			.reorder{
+				color: $scarlet;
+			}
+		}
+	}
+	th{
+		padding: 10px 5px 7px;
+		border-left: 1px solid $white;
+		font-size: 12px;
+		line-height: 12px;
+		&:first-child{
+			width: 84px;
+			border: none;
+			span{
+				display: block;
+			}
+			@media screen and (max-width: $tablet){
+				padding-top: 10px;
+			}
+			@media screen and (max-width: $phablet){
+				width: 110px;
+			}
+		}
+		&:nth-child(2){
+			text-align: center;
+			width: 80px;
+		}
+		&:nth-child(3){
+			width: auto;
+			text-align: left;
+			@media screen and (max-width: $phablet){
+				width: auto;
+			}
+		}
+		&:nth-child(4){
+			width: 80px;
+		}
+		&:nth-child(5){
+			width: 90px;
+		}
+		&:nth-child(6){
+			width: 101px;
+		}
+	}
+}
+.account-table.account-orders-table{
+	.account-table-annotation{
+			display: block;
+			text-align: left;
+		}
+	tbody,
+	tfoot{
+		td{
+			padding: 10px 5px;
+			.fade-field{
+				display: none;
+				@media screen and (max-width: $tablet){
+					display: inline;
+				}
+			}
+			&:first-child{
+				vertical-align: middle;
+				padding-left: 0;
+				padding-right:0;
+
+				.jcf-checkbox{
+					margin: 0;
+				}
+			}
+			&:nth-child(3){
+				width: auto;
+				@media screen and (max-width: $phablet){
+					text-align: center;
+				}
+			}
+			&:nth-child(5){
+				@media screen and (max-width: $tablet){
+					span{
+						display: inline-block;
+						max-width: 100%;
+						margin: 0 auto;
+						padding: 7px 20px 5px;
+						border: 1px solid #cdcdcd;
+						border-radius: 5px;
+					}
+				}
+			}
+			&:nth-child(6){
+				a.link-decor{
+					width: auto;
+					height:auto;
+				}
+			}
+			.reorder{
+				color: $scarlet;
+			}
+		}
+	}
+	th{
+		padding: 10px 5px 7px;
+		border-left: 1px solid $white;
+		font-size: 12px;
+		line-height: 12px;
+		&:first-child{
+			width: 22px;
+		}
+		&:nth-child(2){
+			text-align: center;
+			width: 80px;
+		}
+		&:nth-child(3){
+			width: auto;
+			text-align: left;
+		}
+		&:nth-child(4){
+			width: 68px;
+		}
+		&:nth-child(5){
+			width: 62px;
+		}
+		&:nth-child(6){
+			width: 98px;
+		}
+		&:nth-child(7){
+			width: 86px;
+		}
+	}
+}
+
+.customer-address-index{
+	.page-title{
+		@extend %clr;
+		@media screen and (max-width: $mobile){
+			text-align: center;
+		}
+		h1{
+			float: left;
+			@media screen and (max-width: $mobile){
+				float: none;
+				text-align: center;
+			}
+		}
+		button{
+			@media screen and (max-width: $mobile){
+				float: none;
+				display: inline-block;
+				vertical-align: top;
+				margin-bottom: 20px;
+			}
+		}
+	}
+	.box-account-title{
+		color: $grey;
+	}
+	address{
+		font-style: normal;
+	}
+	.addresses-additional{
+		ol{
+			font-size: 14px;
+			line-height: 18px;
+		}
+	}
+}
+
+.newsletter-manage-index{
+	.control-group{
+		margin-bottom: 16px;
+	}
+	.account-back-link{
+		margin-top: 6px;
+	}
+}
+
+.account-history-table{
+	margin-bottom: 18px;
+}
+
+
+
+
+
+

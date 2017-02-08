@@ -1,0 +1,36 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 02.07.15
+ * Time: 14:27
+ */
+$params = $this->helper('web4pro_pixopa')->getCategoryAdvancedData(Mage::registry('current_category'));
+if(isset($params['super_attribute'])):?>
+<form method="post" id="dolForm" method="post" action="<?php echo Mage::getBaseUrl().'dol'; ?>">
+    <?php foreach($params as $name=>$param): ?>
+        <?php if(!is_array($param)):?>
+            <input type="hidden" name="<?php echo $name; ?>" value="<?php echo htmlentities($param);?>"/>
+        <?php else:?>
+            <?php foreach($param as $k=>$v):?>
+                <input type="hidden" name="<?php echo $name.'['.$k.']';?>" value="<?php echo htmlentities($v); ?>"/>
+            <?php endforeach;?>
+        <?php endif;?>
+    <?php endforeach;?>
+</form>
+<script type="text/javascript">
+    jQuery().ready(function(){
+        jQuery('.products-grid a').click(function(){
+            var template_id = this.rel;
+            var form = document.getElementById('dolForm');
+            var input = document.createElement('input');
+                input.type="hidden";
+                input.name='template_id';
+                input.value = template_id;
+                form.appendChild(input);
+                form.submit();
+            return false;
+        });
+    });
+</script>
+<?php endif;?>

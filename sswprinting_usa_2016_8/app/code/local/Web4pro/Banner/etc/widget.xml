@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<widgets>
+    <banner type="banner/view" translate="name description" module="banner">
+        <name>Banner</name>
+        <description>Adds a Banner on a page</description>
+        <parameters>
+            <group>
+                <label>How much articles to show</label>
+                <type>select</type>
+                <source_model>banner/source_group</source_model>
+                <visible>1</visible>
+                <required>1</required>                
+            </group>
+        </parameters>
+    </banner>
+</widgets> 

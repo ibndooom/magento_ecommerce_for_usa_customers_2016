@@ -1,0 +1,64 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 13.07.15
+ * Time: 13:57
+ */
+if($this->canShow()):?>
+	<div class="testimonials">
+		<div class="wrap">
+			<div class="grid-outer">
+				<div class="grid3-2">
+					<section class="grid-section up-decor">
+						<div class="description bottom-decor bord-light">
+							<h3><?php echo $this->__('Testimonials'); ?></h3>
+							<div id="home_bottom_testimonials">
+								<?php foreach($this->getTestimonials() as $_testimonial):?>
+									<div class="testimonial">
+										<div class="f-left photo">
+											<div class="image-outer">
+												<img src="<?php echo $this->getImageUrl($_testimonial); ?>" width="100" height="100"/>
+											</div>
+											<span class="persona"><?php echo $_testimonial->getName();?></span>
+										</div>
+										<blockquote><?php echo $_testimonial->getTestimonial(); ?></blockquote>
+									</div>
+								<?php endforeach;?>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="grid3 grid3_1">
+					<section class="grid-section advantages up-decor">
+						<div class="advantages-inner description bottom-decor bord-light">
+							<div class="advantage">
+								<h4><?php echo $this->__('Timely Delivery') ?></h4>
+								<div class="image-outer">
+									<img src="/skin/frontend/themeheros/business-cards-theme/images/clock.png" alt="image">
+								</div>
+								<div class="advantage-text">
+									<p><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('timely_delivery')->toHtml();?>
+									</p>
+								</div>
+							</div>
+							<div class="advantage">
+								<h4><?php echo $this->__('Quality Printing') ?></h4>
+								<div class="image-outer">
+									<img src="/skin/frontend/themeheros/business-cards-theme/images/quality.png" alt="image">
+								</div>
+								<div class="advantage-text">
+									<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('quality-printing')->toHtml();?>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var testSlideUrl = '<?php echo $this->getUrl('web4pro_testimonial'); ?>'
+		var testSlidePage = 3;
+	</script>
+<?php endif; ?>

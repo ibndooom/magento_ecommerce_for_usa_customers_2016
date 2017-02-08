@@ -1,0 +1,36 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 22.06.15
+ * Time: 16:56
+ */
+$categories = $this->getCategories();
+if($this->canShow()):?>
+<section class="future-products">
+	<div class="wrap">
+		<div class="relative hedding">
+			<h2><?php echo $this->__('Featured Products &amp; Designs'); ?></h2>
+			<p class="center"><?php echo Mage::getStoreConfig('featured/general/block_head'); ?></p>
+		</div>
+		<ul class="grid-outer">
+			<?php foreach($categories->getItems() as $category):?>
+				<li class="grid3">
+					<section class="grid-section up-decor">
+						<div class="description category-description bottom-decor bord-light">
+							<h3><?php echo $category->getName(); ?></h3>
+							<?php $src = $category->getImageUrl();
+								  if(!$src)
+									$src = Mage::getDesign()->getSkinUrl('images/catalog/product/placeholder/image.jpg');?>
+							<a href="<?php echo $category->getUrl(); ?>" class="image-outer"><img src="<?php echo $src; ?>"/></a>
+							<div class="annotation"><p><?php echo $category->getDescription(); ?></p></div>
+							<a href="<?php echo $category->getUrl(); ?>" class="more btn"><?php echo $this->__('More Products'); ?></a>
+						</div>
+					</section>
+				</li>
+			<?php endforeach;?>
+		</ul>
+	</div>
+</section>
+
+<?php endif;?>

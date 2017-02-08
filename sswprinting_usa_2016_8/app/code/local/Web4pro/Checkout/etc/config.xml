@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Web4pro_Checkout>
+            <version>0.0.1</version>
+        </Web4pro_Checkout>
+    </modules>
+    <global>
+        <helpers>
+            <web4pro_checkout>
+                <class>Web4pro_Checkout_Helper</class>
+            </web4pro_checkout>
+        </helpers>
+        <models>
+        
+        </models>
+        <blocks>
+        	<checkout>
+                <rewrite>
+                    <cart_item_renderer>Web4pro_Checkout_Block_Cart_Item_Renderer</cart_item_renderer>
+                </rewrite>
+            </checkout>
+        </blocks>
+    </global>
+    <frontend>
+        <routers>
+            <web4procheckout>
+                <use>standard</use>
+                <args>
+                    <module>Web4pro_Checkout</module>
+                    <frontName>web4procheckout</frontName>
+                </args>
+            </web4procheckout>
+        </routers>
+        <layout>
+            <updates>
+                <web4pro_checkout>
+                    <file>web4pro_checkout.xml</file>
+                </web4pro_checkout>
+            </updates>
+        </layout>
+    </frontend>
+</config>

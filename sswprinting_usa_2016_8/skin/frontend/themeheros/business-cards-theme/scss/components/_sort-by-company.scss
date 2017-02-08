@@ -1,0 +1,140 @@
+.categorypath-sort-by-company-html {
+	h1 {
+		color: #0e76b2;
+	}
+	
+	section.companies .company-nav{
+		position: static !important;
+		
+		> ul {
+			display: block !important;
+			text-align: left !important;
+			padding-top: 30px;
+			
+			> li {
+				width: 30%;
+				margin: 1% 1%;
+				float: left;
+				min-height: 210px;
+				
+				@media (min-width: 768px) and (max-width: 992px) {
+					width: 48%;
+				}
+				
+				@media (max-width: 768px) {
+					width: 98%;
+				}
+				
+				> a {
+					color: white !important;
+					width: 100%;
+					display: block;
+					padding: 8px 18px;
+					text-decoration: none;
+				}
+				
+				> ul {
+					padding-top: 15px;
+					
+					> li a {
+						padding: 3px 18px 2px !important;
+						text-decoration: none;
+						width: 100%;
+						display: block;
+					}
+				}
+			}
+			
+			.list-abc-even {
+				> a {
+					background-color: #0e76b2;
+				}
+				
+				> ul > li > a {
+					color:  #0e76b2 !important;
+					
+					&:hover {
+						color: white !important;
+						background-color: #0e76b2;
+					}
+				}
+			} 
+			.list-abc-odd {
+				> a {
+					background-color: #888;
+				}
+				
+				> ul > li > a {
+					color:  #888 !important;
+					
+					&:hover {
+						color: white !important;
+						background-color: #888 !important;
+					}
+				}
+			}
+			
+			@media (min-width: 768px) and (max-width: 992px) {
+				.list-ab-even {
+					> a {
+						background-color: #0e76b2;
+					}
+					
+					> ul > li > a {
+						color:  #0e76b2 !important;
+						
+						&:hover {
+							color: white !important;
+							background-color: #0e76b2;
+						}
+					}
+				} 
+				.list-ab-odd {
+					> a {
+						background-color: #888;
+					}
+					
+					> ul > li > a {
+						color:  #888 !important;
+						
+						&:hover {
+							color: white !important;
+							background-color: #888 !important;
+						}
+					}
+				}
+			}
+			
+			@media (max-width: 768px) {
+				.list-a-even {
+					> a {
+						background-color: #0e76b2;
+					}
+					
+					> ul > li > a {
+						color:  #0e76b2 !important;
+						
+						&:hover {
+							color: white !important;
+							background-color: #0e76b2;
+						}
+					}
+				} 
+				.list-a-odd {
+					> a {
+						background-color: #888;
+					}
+					
+					> ul > li > a {
+						color:  #888 !important;
+						
+						&:hover {
+							color: white !important;
+							background-color: #888 !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

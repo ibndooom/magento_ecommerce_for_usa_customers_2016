@@ -1,0 +1,32 @@
+.contacts-index-index{
+	h1,h2,#contactForm{
+		text-align: center;
+	}
+	.col-main{
+		.wrap{
+			padding: 40px 20px 60px;
+			background: $white;
+			border: 1px solid $grey--lightExtra;
+			border-radius: 2px;
+			@media screen and (max-width: $mobile){
+				padding: 30px 15px 40px;
+				text-align: center;
+			}
+		}
+	}
+	.input-text{
+		width: 300px;
+		min-height: 32px;
+		border-radius: 5px;
+		border: 1px solid $grey--custom7;
+		@media screen and (max-width: $mobile){
+			width: 100%;
+		}
+	}
+	.input-field{
+		margin-bottom: 10px;
+	}
+	.btn{
+		min-width: 110px;
+	}
+}

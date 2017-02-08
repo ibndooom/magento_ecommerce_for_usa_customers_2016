@@ -1,0 +1,44 @@
+<?php
+/**
+ * @category    Web4pro
+ * @package     Web4pro_Fourover
+ */
+?>
+<?php if ($candidates = $this->getCandidates()) : ?>
+<div id="fourover-address-candidates">
+    <h3><?php echo $this->__('Please, select one of the address candidates')?></h3>
+    <?php foreach ($candidates as $key => $candidate) : ?>
+    <div class="input-box">
+        <input type="radio" id="address-candidate-<?php echo $this->escapeHtml($key) ?>" name="address_candidate[<?php echo $this->escapeHtml($key) ?>]" value="<?php echo $this->escapeHtml($key) ?>" class="address-candidate" data-candidate="<?php echo $this->escapeHtml($key) ?>" />
+        <label for="address-candidate-<?php echo $this->escapeHtml($key) ?>">
+            <?php echo $this->getCandidateLabel($candidate) ?>
+        </label>
+    </div>
+    <?php endforeach; ?>
+</div>
+<script type="text/javascript">
+    (function($){
+        var addressCandidates = <?php echo json_encode($candidates) ?>;
+        $('.address-candidate').click(function(){;
+            var self = $(this);
+            var index = self.data('candidate');
+            if (typeof(addressCandidates[index]) == 'undefined') {
+                return;
+            }
+
+            var candidate = addressCandidates[index];
+            $('#shipping\\:street1').val(candidate.address);
+            $('#shipping\\:city').val(candidate.city);
+            $('#shipping\\:postcode').val(candidate.zipcode);
+            //@TODO update state and country data
+            //triggering shipping method save via IWD checkout object
+            if (typeof(IWD) != 'undefined') {
+                //showing new address dialog after form's been fulfilled
+                $j_opc('#shipping-address-select').val(null);
+                $j_opc('#shipping-new-address-form').show();
+                IWD.OPC.Shipping.save();
+            }
+        });
+    })(jQuery);
+</script>
+<?php endif; ?>

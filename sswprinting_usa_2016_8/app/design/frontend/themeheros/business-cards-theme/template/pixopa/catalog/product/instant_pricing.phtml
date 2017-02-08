@@ -1,0 +1,152 @@
+<?php 
+	$params  = $this->getRequest()->getParams();
+	$id = $params['id'];
+	
+	if(array_key_exists('productIds', $params)){
+		$product_ids = $params['productIds'];
+		
+		if($product_ids){
+			$product_ids = explode('|', $product_ids);
+		}
+	}else{
+		$product_ids = array();
+	}
+
+	$is_last_level = $this->getData('is_last_level');
+	
+	if(!$is_last_level){
+		$is_last_level = false;
+	}
+	
+	$configurable_list = Mage::helper('template')->getAllConfigurableProducts();	
+?>
+
+<script type="text/javascript" src="/js/all/common/product.js"></script>
+<?php $is_scp_enabled = Mage::getStoreConfig('dol/catalog_setting/scp_enabled');
+if($is_scp_enabled){?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/scp_product_extension.js') ?>"></script>
+<?php }?>
+<script type="text/javascript">
+//<![CDATA[
+
+jQuery.cachedScript = function(url, options) {
+	// allow user to set any option except for dataType, cache, and url
+	options = $j.extend(options || {}, {
+	dataType: "script",
+	cache: true,
+	url: url
+	});
+	// Use $.ajax() since it is more flexible than $.getScript
+	// Return the jqXHR object so we can chain callbacks
+	return jQuery.ajax(options);
+};
+
+var optionsPrice;
+function getProductPricing(product_id){
+	if(product_id!=undefined){
+		url = '/catalog/product/ajax';
+		document.getElementById('pricing').innerHTML = '<div align="center"><img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader1.gif') ?>"/><br /><br /></div>';
+		document.getElementById('getstarted').innerHTML = '';
+		
+		$j.ajax({
+			url: url,
+			data: {'id':product_id},
+			dataType: 'text',
+			success: function(data) {	
+				$j.cachedScript("/catalog/product/js/id/"+product_id)
+					.done(function(script, textStatus) {
+
+					<?php $is_scp_enabled = Mage::getStoreConfig('dol/catalog_setting/scp_enabled');
+					if($is_scp_enabled){?>
+					$('product_addtocart_form').getElements().each(function(el) {
+				        if(el.type == 'select-one') {
+				            if(el.options && (el.options.length > 1)) {
+				                el.options[0].selected = true;
+				                spConfig.reloadOptionLabels(el);
+				            }
+				        }
+				    });
+				    <?php }?>
+
+				    if(spConfig.settings[0]!=undefined && spConfig.settings[0].length>1){
+						for(var i=0; i<10; i++){
+							if(spConfig.settings[i]!=undefined){
+								if(spConfig.settings[i].length>1){
+									spConfig.settings[i].selectedIndex = 1;
+									spConfig.configureElement(spConfig.settings[i]);
+								}else{
+									break;
+								}
+							}else{
+								break;
+							}
+						}
+				    }
+				})
+				data = data.replace(/[*]/g,"");
+				data = data.replace("Required Fields","");
+				data = data.replace("Artwork Zip File (N/A for Design Your Own)","");
+				data = data.replace("Upload Your Artwork Zip File and Add to Cart","");
+				document.getElementById('pricing').innerHTML = data;
+				decorateGeneric($$('#product-options-wrapper dl'), ['last']);
+				//$$('#product-options-wrapper dl.last').invoke('addClassName', 'hide');
+				$$('#product-options-wrapper input.product-custom-option').invoke('addClassName', 'hide');
+
+				url = '/catalog/product/ajaxlink';
+				$j.ajax({
+					url: url,
+					data: {'id':product_id},
+					dataType: 'text',
+					success: function(data) {	
+						document.getElementById('getstarted').innerHTML = data;
+					}
+				});
+			}
+		});
+	}
+}
+//]]>
+</script>
+
+	<div class="sidebar-inner">
+		<div class="sidebar-inner-area">
+			<div class="block block-leftnav">
+			<div class="block-title" style="text-align: center;">
+			    <strong><span><?php echo Mage::helper('catalog')->__('Instant Pricing') ?></span></strong>
+			</div>
+			</div>
+		
+			<div>
+			<h4><?php echo Mage::helper('catalog')->__('Select Product') ?> :</h4>
+					<select id="configurable_product_id" name="configurable_product_id" onchange="getProductPricing(this.value);" class="sidebar-inner-select">
+						<?php
+						  foreach($configurable_list as $product){
+						  	
+						  	if(!$is_last_level || !$product_ids || ($is_last_level && in_array($product->getId(), $product_ids))){
+						 ?>
+						<option value="<?php echo $product->getId()?>" ><?php echo Mage::helper('catalog')->__($product->getName());?></option>
+						<?php
+						  	}
+						  } ?>
+					</select>
+					<input type="hidden" name="is_instant_pricing" id="is_instant_pricing" value="true" />
+					<br/><br/>
+			</div>	
+			<div id="pricing"></div>
+			<div id="getstarted" align="center"></div>
+			<br/>
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+<!--
+getProductPricing($j("#configurable_product_id").first().val());
+
+function changeURL(url){
+location.href=url;
+}
+//-->
+</script>
+
+	

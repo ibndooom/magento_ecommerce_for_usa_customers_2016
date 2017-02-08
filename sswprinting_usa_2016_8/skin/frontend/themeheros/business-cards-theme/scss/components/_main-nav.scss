@@ -1,0 +1,172 @@
+.nav-holder{
+	background:$blue;
+	position: relative;
+}
+.nav-container{
+	max-width: 1010px;
+	padding: 0 10px;
+	margin: 0 auto;
+	display: block;
+	@extend %clearfix;
+	@media screen and (max-width: $phablet) {
+		padding: 0;
+	}
+	@media screen and (max-width: $phablet) {
+		display: none;
+	}
+	#nav{
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 990px;
+		text-align: center;
+		font-weight: bold;
+		display: table;
+		width: 100%;
+		@media screen and (max-width: $phablet) {
+			display: block;
+		}
+		&:after{
+			content: '';
+			display: table;
+			width: 100%;
+			clear: both;
+		}
+		> li{
+			display: table-cell;
+			position: relative;
+			@media screen and (max-width: $phablet) {
+				display: block;
+				border-radius: 5px;
+				&:nth-child(even){
+					background: $blue--dark;
+				}
+			}
+			> a{
+				display: block;
+				padding: 15px 10px 14px;
+				width: 100%;
+				color: $white;
+				text-decoration: none;
+				transition: background 0.3s ease-out;
+				@media screen and (max-width: $phablet) {
+					display: block;
+					width: auto;
+				}
+				&.has-children{
+					span{
+						position: relative;
+						display: inline-block;
+						&:after{
+							content: '';
+							display: inline-block;
+							vertical-align: middle;
+							margin: 0 0 0 10px;
+							@extend %iconsSprite;
+							@include back-pos('ico-arrow-down-min');
+						}
+					}
+				}
+			}
+			&.menu-active,
+			&.over{
+				> a{
+					transition: background 0.3s ease-out;
+					background: $blue--dark;
+				}
+				> ul{
+					display: block;
+					text-align: left;
+					@media screen and (max-width: $phablet) {
+						text-align: center;
+					}
+				}
+			}
+			> ul{
+				display: none;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 282px;
+				border: 1px solid $blue--dark;
+				background:$white;
+				margin: -1px 0 0;
+				z-index: 99;
+				@media screen and (max-width: $phablet) {
+					position: static;
+					width: auto;
+				}
+				a{
+					text-decoration: none;
+					padding: 13px 18px 12px;
+					display: block;
+					color: $black;
+					border: 2px solid $white;
+					transition: background 0.1s ease-out;
+				}
+				a:hover{
+					background:$blue;
+					color: $white;
+					transition: background 0.1s ease-out;
+				}
+			}
+		}
+	}
+}
+.menu-icon {
+	display: none;
+	position: absolute;
+	top: -56px;
+	right: 10px;
+	width: 45px;
+	height: 45px;
+	cursor: pointer;
+	z-index: 9;
+	-webkit-transform: scale(0.8);
+			transform: scale(0.8);
+	-webkit-transition: all 0.3s;
+			transition: all 0.3s;
+	@media screen and (max-width: $phablet) {
+		display: block;
+	}
+	&.open {
+		-webkit-transform: rotate(45deg) scale(0.8);
+				transform: rotate(45deg) scale(0.8);
+		> span:before {
+			-webkit-transform: rotate(90deg);
+					transform: rotate(90deg);
+		}
+		> span:after {
+			-webkit-transform: rotate(90deg);
+					transform: rotate(90deg);
+		}
+	}
+	> span {
+		position: absolute;
+		top: 50%;
+		display: block;
+		width: 100%;
+		height: 0.5em;
+		margin-top: -0.5em;
+		background-color: $blue;
+		border-radius: 3px;
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: $blue;
+			border-radius: 3px;
+			-webkit-transition: all 0.3s;
+					transition: all 0.3s;
+		}
+		&:before {
+			-webkit-transform: translateY(-1em);
+					transform: translateY(-1em);
+		}
+		&:after {
+			-webkit-transform: translateY(1em);
+					transform: translateY(1em);
+		}
+	}
+}

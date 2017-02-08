@@ -1,0 +1,12 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 30.07.15
+ * Time: 13:20
+ */
+$svg_data = $this->getSvgData();
+foreach($svg_data as $_svg){
+    $img = Mage::helper('dol')->getProcessedPNGPath(array($_svg), false, false, 0, array(), null, 1);?>
+    <a class="fancybox" rel="group" href="<?php echo $img ?>"><img src="<?php echo $img; ?>"/></a>
+<?php }?>

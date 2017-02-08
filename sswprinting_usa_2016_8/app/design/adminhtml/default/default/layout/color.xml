@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+<color_adminhtml_colorbackend_index>
+		<reference name="head">
+			<action method="setCanLoadExtJs"><flag>1</flag></action>
+			<action method="addJs"><script>commercebug.1.4.js</script></action>
+		</reference> 
+	
+			<reference name="content">
+				<block type="color/adminhtml_colorbackend" name="colorbackend" template="color/colorbackend.phtml"/>
+			</reference>
+		</color_adminhtml_colorbackend_index>
+		<color_adminhtml_color_index>
+				<reference name="content">
+					    <block type="color/adminhtml_color" name="color" />
+				</reference>
+		</color_adminhtml_color_index>
+</layout>

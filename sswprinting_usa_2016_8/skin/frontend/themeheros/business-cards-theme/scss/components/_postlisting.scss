@@ -1,0 +1,215 @@
+.postlisting-blog{
+	padding: 17px 16px 42px;
+	margin: 0  0 60px;
+	h2{
+		font-size: 22px;
+		line-height: 24px;
+		text-transform: none;
+		font-weight: normal;
+		&.postlisting-title{
+			margin: 0 0 15px;
+		}
+	}
+	.postTitle{
+		margin-bottom: 20px;
+		h4{
+			margin: 0;
+			color: $blue;
+			text-transform: none;
+		}
+	}
+	.filters{
+		margin: 0 -16px 16px;
+		padding: 10px 16px;
+	}
+	.posters{
+		padding: 0 0 36px;
+	}
+	.postlisting-post{
+		font-size: 14px;
+		line-height: 18px;
+		margin: 0 0 34px;
+		color: $grey---darkLight;
+		&:last-child{
+			margin: 0;
+		}
+	}
+	.post-hedding{
+		margin: 0 0 18px;
+	}
+	.postContent{
+		text-align: justify;
+		line-height: 20px;
+		margin-bottom: 0;
+	}
+	.postDetails{
+		color: $grey;
+		a{
+			position: relative;
+			text-decoration: none;
+			&:before{
+				content: '';
+				position: absolute;
+				width: 100%;
+				left: 0;
+				bottom: 0;
+				border-bottom: 1px solid $grey--custom7;
+			}
+		}
+	}
+	.tense{
+		color: $grey;
+	}
+	.comment-inform-outer{
+		padding: 0 0 15px;
+	}
+	.comment-inform{
+		padding: 0 10px 20px;
+		@media screen and (max-width: $tablet) {
+			padding: 0 0 20px;
+		}
+		.comment-inform-inner{
+			@extend %clr;
+			border-bottom: 1px solid $grey--custom7;
+		}
+		.commentDetails{
+			float: left;
+			margin: 0 20px 20px 0;
+			padding: 6px 10px 16px;
+			min-width: 200px;
+			background: $grey--custom13;
+			@media screen and (max-width: $tablet) {
+				float: none;
+				margin-right: 0;
+			}
+			.username{
+				display: block;
+				width: 180px;
+				font-size: 14px;
+				font-weight: normal;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				color: $grey;
+			}
+		}
+		.tense{
+			display: block;
+			width: 180px;
+			font-size: 12px;
+			line-height: 15px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			color: $grey---darkLessLight;
+		}
+		.commentContent{
+			overflow: hidden;
+			margin-bottom: 15px;
+			color: $grey;
+			text-align: justify;
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+	.inputs{
+		float: left;
+		width: 242px;
+		margin-right: 20px;
+		margin-bottom: 18px;
+		@media screen and (max-width: $tablet) {
+			float: none;
+			width:100%;
+		}
+		input{
+			width: 100%;
+		}
+	}
+	.aw-blog-comment-area{
+		width: auto;
+		overflow: hidden;
+	}
+	.post-img-outer{
+		max-width:50%;
+		padding: 10px;
+		margin: 0 0 10px 20px;
+		@media screen and (max-width: $tablet) {
+			float: none;
+			max-width:100%;
+			text-align: center;
+		}
+	}
+	.form-list{
+		padding: 0 10px 6px;
+		@media screen and (max-width: $tablet) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		li{
+			overflow: hidden;
+		}
+		label{
+			font-size: 14px;
+			color: $grey---darkLight;
+		}
+		.input-box{
+			margin-bottom: 18px;
+			&:last-child{
+				margin: 0;
+			}
+		}
+		input{
+			padding-top: 6px;
+			padding-bottom: 6px;
+			border-radius: 3px;
+			border: 1px solid $grey--custom7;
+		}
+		textarea{
+			padding: 6px;
+			width: 100%!important;
+			height: 94px!important;
+			border-radius: 3px;
+			border: 1px solid $grey--custom7;
+		}
+	}
+	.group-select{
+		.postTitle{
+			margin-bottom: 16px;
+		}
+	}
+	.quantity-comments{
+		margin-left: 4px;
+		color: $grey;
+	}
+	.button-set{
+		padding: 0 10px;
+		overflow: hidden;
+		button{
+			float: right;
+			margin-top: 13px;
+			padding-left: 18px;
+			padding-right: 18px;
+			background: $blue;
+		}
+	}
+	.required{
+		float: left;
+		font-size: 13px;
+		line-height: 16px;
+		color: $blue;
+		em{
+			color: $blue;
+		}
+	}
+	.colon{
+		margin-left: 2px;
+	}
+}
+.blog-cat-view{
+	.postlisting-blog{
+		@media screen and (max-width: $phablet) {
+			padding-top: 0;
+		}
+	}
+}
+

@@ -1,0 +1,36 @@
+<layout version="0.1.0">
+    <default>
+        <reference name="footer">
+            <remove name="cms_footer_links"/>
+            <remove name="footer_links"/>
+
+            <block type="footerupdate/contacts" name="phone-email-block" as="phone.email.block" template="web4pro/footerupdate/contacts.phtml" before="-" />
+            <block type="newsletter/subscribe" name="footer.newsletter" as="newsletter" template="newsletter/subscribe.phtml" />
+
+            <block type="cms/block" name="footer_products_sub_menu" as="footer.products.sub.menu">
+                <action method="setBlockId">
+                    <block_id>footer_products_sub_menu</block_id>
+                </action>
+            </block>
+
+            <block type="cms/block" name="about_us_sub_menu" as="about.us.sub.menu">
+                <action method="setBlockId">
+                    <block_id>about_us_sub_menu</block_id>
+                </action>
+            </block>
+
+            <block type="cms/block" name="support_sub_menu" as="support.sub.menu">
+                <action method="setBlockId">
+                    <block_id>support_sub_menu</block_id>
+                </action>
+            </block>
+
+            <block type="cms/block" name="footer-social-links" as="footer.social.links">
+                <action method="setBlockId">
+                    <block_id>footer_social_links</block_id>
+                </action>
+            </block>
+
+        </reference>
+    </default>
+</layout>

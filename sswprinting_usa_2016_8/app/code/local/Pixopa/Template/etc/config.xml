@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Pixopa_Template>
+			<version>0.1.23</version>
+		</Pixopa_Template>
+	</modules>
+	<frontend>
+		<routers>
+			<template>
+				<use>standard</use>
+				<args>
+					<module>Pixopa_Template</module>
+					<frontName>template</frontName>
+				</args>
+			</template>
+		</routers>
+		<layout>
+			<updates>
+				<template>
+					<file>template.xml</file>
+				</template>
+			</updates>
+		</layout>
+	</frontend>
+
+	<global>
+		<helpers>
+			<template>
+				<class>Pixopa_Template_Helper</class>
+			</template>
+		</helpers>
+
+		<blocks>
+			<template>
+				<class>Pixopa_Template_Block</class>
+			</template>
+		</blocks>
+		<models>
+			<template>
+				<class>Pixopa_Template_Model</class>
+				<resourceModel>template_mysql4</resourceModel>
+			</template>
+			<template_mysql4>
+				<class>Pixopa_Template_Model_Mysql4</class>
+				<entities>
+					<template>
+						<table>px_template</table>
+					</template>
+					<templatecategory>
+						<table>px_template_cat_assoc</table>
+					</templatecategory>
+					<content>
+						<table>px_template_content</table>
+					</content>
+					<svgdesign>
+						<table>px_svg_design</table>
+					</svgdesign>
+					<customerdesign>
+						<table>px_customer_design</table>
+					</customerdesign>
+					<customersvgdesign>
+						<table>px_customer_svg_design</table>
+					</customersvgdesign>
+				</entities>
+			</template_mysql4>
+		</models>
+		<resources>
+			<template_setup>
+				<setup>
+					<module>Pixopa_Template</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</template_setup>
+			<template_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</template_write>
+			<template_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</template_read>
+		</resources>
+
+		<events>
+			<sales_convert_quote_item_to_order_item>
+				<observers>
+					<template_design_append_data>
+						<class>template/observer</class>
+						<method>appendDesignData</method>
+					</template_design_append_data>
+				</observers>
+			</sales_convert_quote_item_to_order_item>
+		</events>
+
+	</global>
+	<admin>
+		<routers>
+			<template>
+				<use>admin</use>
+				<args>
+					<module>Pixopa_Template</module>
+					<frontName>template</frontName>
+				</args>
+			</template>
+		</routers>
+	</admin>
+	<adminhtml>
+		<menu>
+			<template module="template">
+				<title>Web to Print</title>
+				<sort_order>31</sort_order>
+				<children>
+					<template module="template">
+						<title>Manage Templates</title>
+						<sort_order>1</sort_order>
+						<action>template/adminhtml_template</action>
+					</template>
+					<blueprint module="blueprint">
+						<title>Manage Product Layouts</title>
+						<sort_order>2</sort_order>
+						<action>blueprint/adminhtml_blueprint</action>
+					</blueprint>
+					<clipart module="clipart">
+						<title>Manage Cliparts</title>
+						<sort_order>3</sort_order>
+						<action>clipart_admin/adminhtml_clipart</action>
+					</clipart>
+					<designer module="designer">
+						<title>Manage Designers</title>
+						<sort_order>4</sort_order>
+						<action>designer/adminhtml_designer</action>
+					</designer>
+					<color module="color">
+						<title>Manage Colors</title>
+						<sort_order>5</sort_order>
+						<action>color/adminhtml_color</action>
+					</color>
+					<textfields module="color">
+						<title>Manage Template Fields</title>
+						<sort_order>6</sort_order>
+						<action>textfields/adminhtml_textfields</action>
+					</textfields>
+					<fonts module="fonts">
+						<title>Enable / Disable Fonts</title>
+						<sort_order>7</sort_order>
+						<action>fonts_admin/adminhtml_fonts</action>
+					</fonts>
+					<customerdesigns module="customerdesigns">
+						<title>View Designs by Customers</title>
+						<sort_order>8</sort_order>
+						<action>customerdesigns/adminhtml_customerdesigns</action>
+					</customerdesigns>
+					<settings module="template">
+						<title>Online Designer Settings</title>
+						<sort_order>9</sort_order>
+						<action>adminhtml/system_config/edit/section/doldesign</action>
+					</settings>
+				</children>
+			</template>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<template translate="title" module="template">
+							<title>Template Builder</title>
+							<sort_order>1000</sort_order>
+							<children>
+								<template translate="title">
+									<title>Manage Templates</title>
+								</template>
+								<blueprint translate="title">
+									<title>Manage Product Layouts</title>
+								</blueprint>
+								<clipart translate="title">
+									<title>Manage Cliparts</title>
+								</clipart>
+								<designer translate="title">
+									<title>Manage Designers</title>
+								</designer>
+								<color translate="title">
+									<title>Manage Colors</title>
+								</color>
+								<textfields translate="title">
+									<title>Manage Template Fields</title>
+								</textfields>
+								<fonts translate="title">
+									<title>Manage Fonts</title>
+								</fonts>
+								<customerdesigns translate="title">
+									<title>Manage Designs by Customers</title>
+								</customerdesigns>
+								<settings translate="title">
+									<title>Online Designer Settings</title>
+								</settings>
+							</children>
+						</template>
+					</children>
+				</admin>
+
+			</resources>
+		</acl>
+
+		<layout>
+			<updates>
+				<template>
+					<file>template.xml</file>
+				</template>
+			</updates>
+		</layout>
+	</adminhtml>
+
+</config> 

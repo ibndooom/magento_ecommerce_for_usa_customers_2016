@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+<designer_adminhtml_designerbackend_index>
+		<reference name="head">
+			<action method="setCanLoadExtJs"><flag>1</flag></action>
+			<action method="addJs"><script>commercebug.1.4.js</script></action>
+		</reference> 
+	
+			<reference name="content">
+				<block type="designer/adminhtml_designerbackend" name="designerbackend" template="designer/designerbackend.phtml"/>
+			</reference>
+		</designer_adminhtml_designerbackend_index>
+		<designer_adminhtml_designer_index>
+				<reference name="content">
+					    <block type="designer/adminhtml_designer" name="designer" />
+				</reference>
+		</designer_adminhtml_designer_index>
+</layout>

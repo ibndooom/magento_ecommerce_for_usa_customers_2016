@@ -1,0 +1,373 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ */
+-->
+<config>
+    <tabs>
+        <fourover translate="label" module="web4pro_4over">
+            <label>4over Print</label>
+            <sort_order>310</sort_order>
+        </fourover>
+    </tabs>
+    <sections>
+        <fover_connection translate="label" module="web4pro_4over">
+            <class>separator-top</class>
+            <label>Connection</label>
+            <tab>fourover</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <mode_settings translate="label">
+                    <label>Mode Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <is_sandbox translate="label">
+                            <label>Use Sandbox</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>adminhtml/system_config_backend_store</backend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </is_sandbox>
+                    </fields>
+                </mode_settings>
+                <credentials translate="label">
+                    <label>Credentials</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <public_key translate="label">
+                            <label>Public key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </public_key>
+                        <private_key translate="label">
+                            <label>Private key</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </private_key>
+                    </fields>
+                </credentials>
+            </groups>
+        </fover_connection>
+        <fover_merchant translate="label" module="customer">
+            <class>separator-top</class>
+            <label>Client's information</label>
+            <tab>fourover</tab>
+            <sort_order>101</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <ship_from_billing_address translate="label">
+                    <label>Ship from(Billing) Address</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <company translate="label">
+                            <label>Company</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </company>
+                        <firstname translate="label">
+                            <label>Firstname</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </firstname>
+                        <lastname translate="label">
+                            <label>Lastname</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </lastname>
+                        <email translate="label">
+                            <label>Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email>
+                        <phone translate="label">
+                            <label>Phone</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone>
+                        <address translate="label">
+                            <label>Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <validate>required-entry</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </address>
+                        <address2 translate="label">
+                            <label>Address2</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </address2>
+                        <city translate="label">
+                            <label>City</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <validate>required-entry</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </city>
+                        <state translate="label">
+                            <label>State</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </state>
+                        <zipcode translate="label">
+                            <label>Zipcode</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <validate>required-entry</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </zipcode>
+                        <country translate="label">
+                            <label>Country</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <validate>required-entry</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </country>
+                    </fields>
+                </ship_from_billing_address>
+                <shipper translate="label">
+                    <label>Shipper</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>11</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <shipping_method translate="label">
+                            <label>Shipping method</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </shipping_method>
+                        <shipping_code translate="label">
+                            <label>Shipping code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </shipping_code>
+                    </fields>
+                </shipper>
+                <payment_information translate="label">
+                    <label>Payment information</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>12</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <uuid translate="label">
+                            <label>Payment provider UUID</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </uuid>
+                        <currency_code translate="label">
+                            <label>Currency code</label>
+                            <frontend_type>select</frontend_type>
+                            <backend_model>web4pro_4over/backend_currency</backend_model>
+                            <source_model>adminhtml/system_config_source_currency</source_model>
+                            <validate>required-entry</validate>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </currency_code>
+                        <info_json translate="label">
+                            <label>Payment info JSON</label>
+                            <frontend_type>textarea</frontend_type>
+                            <backend_model>web4pro_4over/backend_paymentinfo</backend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </info_json>
+                    </fields>
+                </payment_information>
+            </groups>
+        </fover_merchant>
+        <fover_product_options translate="label" module="customer">
+            <class>separator-top</class>
+            <label>Product Options</label>
+            <tab>fourover</tab>
+            <sort_order>300</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <mapping>
+                    <label>Options Title Mapping</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>12</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <runsize_labels translate="label">
+                            <label>Runsize Option Labels</label>
+                            <comment>List runsize options separated with commas</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </runsize_labels>
+                        <colorspec_labels translate="label">
+                            <label>Printed Sides(Colorspec) Option Labels</label>
+                            <comment>List printed sides options separated with commas</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </colorspec_labels>
+                        <turnaround_labels translate="label">
+                            <label>Turnaround Time Option Labels</label>
+                            <comment>List turnaround time options separated with commas</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </turnaround_labels>
+                    </fields>
+                </mapping>    
+            </groups>
+        </fover_product_options>
+        <fover_product_update>
+            <class>separator-top</class>
+            <label>Product Import/Update</label>
+            <tab>fourover</tab>
+            <sort_order>400</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <prices>
+                    <label>Price Update Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>12</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <margin translate="label">
+                            <label>Product price margin in percents</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </margin>
+                    </fields>
+                </prices>
+            </groups>
+        </fover_product_update>
+        <carriers>
+            <groups>
+                <fourover translate="label">
+                    <label>4over(UPS based)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled for Checkout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </title>
+                        <rateadd translate="label">
+                            <label>Rate addition in percents</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </rateadd>
+                    </fields>
+                </fourover>
+            </groups>
+        </carriers>
+    </sections>
+</config>

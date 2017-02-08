@@ -1,0 +1,58 @@
+.faq.wrap{
+	margin: 0 auto 60px;
+	padding: 15px 20px 17px;
+	max-width: 990px;
+	background: $white;
+	border-color: $grey--custom7;
+	@media screen and (max-width: $phablet) {
+		margin-left:10px;
+		margin-right: 10px;
+		margin: 0 auto 24px;
+	}
+	.active{
+		.opener{
+			background: $blue;
+			color: $white;
+			&:before{
+				@include back-pos('ico-minus');
+			}
+		}
+	}
+	h1{
+		font-size: 22px;
+		line-height: 30px;
+		text-transform: uppercase;
+		color: $blue;
+		border-bottom: 1px solid $grey--custom7;
+	}
+	.opener{
+		display: block;
+		position: relative;
+		padding: 7px 32px;
+		margin: 0 0 10px;
+		text-decoration: none;
+		background: $grey--lightExtra;
+		color: $blue;
+		&:before{
+			content:'';
+			position: absolute;
+			left: 10px;
+			top: 50%;
+			-webkit-transform: translate(0, -50%);
+					transform: translate(0, -50%);
+			@extend %iconsSprite;
+			@include back-pos('ico-plus');
+		}
+	}
+	.accordion{
+		padding: 15px 10px;
+		@media screen and (max-width: $tablet) {
+			padding: 15px 0;
+		}
+	}
+	.slide{
+		padding: 6px 9px 15px;
+		font-size: 14px;
+		line-height:20px;
+	}
+}

@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Pixopa_Dol>
+          <version>0.1.0</version>
+        </Pixopa_Dol>
+    </modules>
+	
+	<frontend>
+    	<routers>
+	        <dol>
+	          	<use>standard</use>
+	         	<args>
+	           		<module>Pixopa_Dol</module>
+	          		<frontName>dol</frontName>
+	       		</args>
+	    	</dol>
+      	</routers>
+	  	<layout>
+        	<updates>
+            	<dol>
+                	<file>dol.xml</file>
+            	</dol>
+        	</updates>
+      	</layout>
+      	<translate>
+            <modules>
+                <Pixopa_Dol>
+                    <files>
+                        <default>Pixopa_Dol.csv</default>
+                    </files>
+                </Pixopa_Dol>
+            </modules>
+        </translate>
+   </frontend>
+   <admin>
+        <routers>
+			<dol>
+				<use>admin</use>
+				<args>
+					<module>Pixopa_Dol</module>
+					<frontName>doladmin</frontName>
+				</args>
+			</dol>
+        </routers>
+    </admin>
+    
+    <global>
+		 <blocks>
+            <dol>
+                <class>Pixopa_Dol_Block</class>
+            </dol>
+        </blocks>
+    	<helpers>
+    		<dol>
+    			<class>Pixopa_Dol_Helper</class>
+    		</dol>
+    	</helpers>
+    </global>
+    
+    <adminhtml>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<system>
+							<children>
+	                        	<config>
+	                          		<children>	                            		
+	                            	<dol translate="title" module="dol">
+										<title>Settings</title>
+										<sort_order>1</sort_order> 
+                                    </dol>
+									<doldesign translate="title" module="dol">
+										<title>Design Studio Theme</title>
+										<sort_order>5</sort_order> 
+                                    </doldesign>
+								   	</children>
+								</config>
+							</children>
+						</system>
+					</children>					
+				</admin>
+			</resources>
+		</acl>
+    </adminhtml> 
+	<default>
+		<dol>
+			<catalog_setting>
+				<pages_keywords>side|page|format|reverse</pages_keywords>
+			</catalog_setting>
+			<system_setting>
+				<converter_path>/var/www/html/sites/etc/converter</converter_path>
+				<solr_path>base</solr_path>
+				<solr_hostname>localhost</solr_hostname>
+				<solr_port>8983</solr_port>
+				<solr_core>pixopa_core1</solr_core>
+				<flatten_pdf_type>Direct PDF</flatten_pdf_type>
+				<svg_processing_v2>0</svg_processing_v2>
+				<optipng_enabled>0</optipng_enabled>
+				<flatten_pdf_zoom_factor>3</flatten_pdf_zoom_factor>
+				<eps_pdf_dpi>300</eps_pdf_dpi>
+				<allow_products_indexing>1</allow_products_indexing>
+				<template_url_separator>-</template_url_separator>
+				<design_tool_submit_action>/checkout/cart/add</design_tool_submit_action>
+				<design_tool_update_action>/checkout/cart/updateDesign</design_tool_update_action>
+				<create_image_for_each_side>0</create_image_for_each_side>
+				<enable_form_key>1</enable_form_key>
+				<stand_alone_mode>0</stand_alone_mode>
+				<flatten_pdf_zoom_factor>3</flatten_pdf_zoom_factor>
+				<encode_image_in_svg>1</encode_image_in_svg>
+				<!--<add_to_cart>#0099cc</add_to_cart>
+				<design_own>#fa6121</design_own>
+				<browse_design>#ff0080</browse_design>-->
+				<get_started>#009592</get_started>
+				<enable_font>0</enable_font>
+				<font>Lato</font>
+				<full_https_mode>0</full_https_mode>
+				<skip_template_detail_page>0</skip_template_detail_page>
+				<skip_product_dimensions_check>1</skip_product_dimensions_check>
+			</system_setting>
+		</dol>
+		<doldesign>
+			<base>
+				<olddol_enabled>0</olddol_enabled>
+				<niko_enabled>1</niko_enabled>
+				<designer_width>1170px</designer_width>
+				<show_slider>0</show_slider>
+				<show_fullwidth>0</show_fullwidth>
+				<show_personalize_popup>0</show_personalize_popup>
+				<show_system_cliparts>1</show_system_cliparts>
+				<show_ruler>0</show_ruler>
+				<default_measurement_unit>in</default_measurement_unit>
+				<enable_best_fit>0</enable_best_fit>
+				<display_enhance_image>0</display_enhance_image>
+				<font_start>24</font_start>
+				<font_end>200</font_end>
+				<preview_size>840</preview_size>
+				<preview_image_with_proof_text>1</preview_image_with_proof_text>
+				<display_color_pallette>1</display_color_pallette>
+				<display_blur_opacity_btns>1</display_blur_opacity_btns>
+				<invert_black_white_colors>0</invert_black_white_colors>
+				<display_info_btn>1</display_info_btn>
+				<display_help_btn>1</display_help_btn>
+				<display_save_btn>1</display_save_btn>
+				<display_preview_btn>1</display_preview_btn>
+				<display_login_from_slider>1</display_login_from_slider>
+				<download_pdf_mode>0</download_pdf_mode>
+				<display_rotate_canvas>1</display_rotate_canvas>
+				<display_browse_designs>1</display_browse_designs>
+			</base>
+			<theme>
+				<reset>theme_2</reset>
+			</theme>
+			<tooltip>
+				<display_onload_tooltip>1</display_onload_tooltip>
+				<onload_tooltip><![CDATA[Welcome to the new<br/>Online Designer!<br/><br/>The easy-to-use tools below help<br/>with creation of<br/>Custom Personalized Designs.<br/><br/>Hover over to know more.]]></onload_tooltip>
+				<text_tooltip><![CDATA[Click and<br />start typing to<br />add New Text<br />or <br />double-click on Text<br />in Design Canvas<br />to Edit it]]></text_tooltip>
+				<image_tooltip><![CDATA[Click to<br />upload images from<br />Local System or <br />Facebook, Instagram, <br />Flickr and Picasa then<br />Drag n Drop them on <br />Design Canvas]]></image_tooltip>
+				<bg_tooltip><![CDATA[Click to<br /> Add or Change<br/>Background Color or<br />Image.<br/>Click 'Clear'<br/>to remove <br/>Background<br/>]]></bg_tooltip>
+				<clipart_tooltip><![CDATA[Click to<br />add variety of<br />Cliparts like<br />Symbols, Arrows, <br />Objects, Dialogs and<br />a lot more<br />in your Design]]></clipart_tooltip>
+				<qr_tooltip><![CDATA[Click to<br />add vCards,<br />vCalendar Events,<br />Geo Coordinates and <br />many others<br />as QR Code in<br />your Design]]></qr_tooltip>
+				<draw_tooltip><![CDATA[Click<br />and make any<br />Freehand Drawing<br />using Pencil Tool.<br />Use Undo to<br/>Erase]]></draw_tooltip>
+				<line_tooltip><![CDATA[Click<br />to draw<br />a Straight Line]]></line_tooltip>
+				<ellipse_tooltip><![CDATA[Click<br />to draw<br />an Ellipse or<br />a Circle]]></ellipse_tooltip>
+				<rectangle_tooltip><![CDATA[ Click<br />to draw<br />a Rectangle or<br />a Square]]></rectangle_tooltip>
+				<path_tooltip><![CDATA[Click<br />to draw a<br />Path of any<br />Shape]]></path_tooltip>
+				<enhance_image_tooltip><![CDATA[Did you know?<br/>You can<br/> apply different<br/> filters to <br/>enhance image.]]></enhance_image_tooltip>
+			</tooltip>
+			<dolleft>
+				<display_text>1</display_text>
+				<display_image>1</display_image>
+				<display_background>1</display_background>
+				<display_shapes>1</display_shapes>
+				<display_qr>1</display_qr>
+				<display_draw>1</display_draw>
+				<display_line>1</display_line>
+				<display_ellipse>1</display_ellipse>
+				<display_rect>1</display_rect>
+				<display_path>1</display_path>
+				<button_corner>round</button_corner>
+				<text_bg>#336699</text_bg>
+				<image_bg>#336699</image_bg>
+				<qr_bg>#336699</qr_bg>
+				<shape_bg>#336699</shape_bg>
+				<draw_bg>#336699</draw_bg>
+				<line_bg>#336699</line_bg>
+				<ellipse_bg>#336699</ellipse_bg>
+				<rectangle_bg>#336699</rectangle_bg>
+				<path_bg>#336699</path_bg>
+				<tool_tipster>#E9931A</tool_tipster>	
+			</dolleft>
+			<upperleft>
+				<top_tool>#8FACC9</top_tool>
+				<tool_color>#336699</tool_color>
+				<corners>slant</corners>				
+			</upperleft>
+			<dolright>
+				<dol_right_icon>#2C9FF8</dol_right_icon>		
+				<button_icon>#CCCCCC</button_icon>
+				<slider>#EEEEEE</slider>
+		    </dolright>
+	  		<upperright>
+				<dol_help>#E84C3D</dol_help>
+				<dol_info>#F5A101</dol_info>
+				<dol_preview>#9C56B2</dol_preview>
+				<dol_save>#2ACDEF</dol_save>
+				<dol_checkout>#50A929</dol_checkout>					  
+			</upperright>
+	  		<pattern>
+				<tex>transp_bg</tex>
+			</pattern>
+         	<imageslider>
+				<slider>#336699</slider>
+			</imageslider>
+	  		<others>
+				<zoom_control>#8FACC9</zoom_control>
+				<tabs>#8FACC9</tabs>
+				<tab_header>#336699</tab_header>
+				<pages_tab>#336699</pages_tab>
+				<pages_tab1>#2C9FF8</pages_tab1>  
+			</others>			
+			<fonts>
+				<enable_font>0</enable_font>
+				<font>Myriad Pro</font>
+				<font_size>14px</font_size>
+			</fonts>
+		</doldesign>
+	</default>	
+		
+</config> 

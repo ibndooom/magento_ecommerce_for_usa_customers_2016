@@ -1,0 +1,29 @@
+<?php if ($this->canShow()): ?>
+    <div class="catalog-banner multi-banner <?php echo $this->getGroup(); ?>">
+        <div id="main-slider">
+            <?php foreach ($this->getCollection() as $banner): ?>
+                <div class="slide">
+                    <a href="<?php echo $banner->getUrl() ?>" title="<?php echo $banner->getAltText() ?>" target="<?php echo $this->getTargetWindow() ?>" onclick="if(typeof(ga)!='undefined'){ga('send','event','Banner','Click Category Slider','<?php echo $banner->getId() ?>');}">
+                        <img src="<?php echo $banner->getImageUrl() ?>" alt="<?php echo $banner->getAltText() ?>" />
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <a class="vert-up" id="benner_up" href="#">&uarr;</a>
+        <a class="vert-down" id="benner_down" href="#">&darr;</a>
+    </div>
+    <script>
+        jQuery(function(){
+            jQuery("#main-slider").carouFredSel({
+                items       : 1,
+                direction   : "up",
+                prev : "#benner_up",
+                next : "#benner_down",
+                auto : {
+                    timeoutDuration: <?php echo $this->getRotateTime() * 1000?>,
+                    pauseOnHover: true
+                }
+            });
+        });
+    </script>
+<?php endif; ?>

@@ -1,0 +1,1 @@
+mysqldump -uroot -p sswprinting w4p_imported_printable_configs > impoted_options_history.sql

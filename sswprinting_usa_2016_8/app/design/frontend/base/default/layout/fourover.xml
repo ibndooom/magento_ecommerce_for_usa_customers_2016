@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Web4pro
+ * @package     Web4pro_Fourover
+ */
+-->
+<layout version="0.1.0">
+    <fourover_address_candidates>
+        <reference name="checkout.onepage.shipping_method.additional">
+            <action method="setTemplate"><template>fourover/shipping/methods_additional.phtml</template></action>
+            <block type="web4pro_4over/checkout_addresscandidates" name="fourover.address.candidates" as="address_candidates" template="fourover/shipping/address_candidates.phtml" />
+        </reference>
+    </fourover_address_candidates>
+
+    <checkout_onepage_index>
+        <update handle="fourover_address_candidates" />
+    </checkout_onepage_index>
+
+    <opc_index_index>
+        <update handle="fourover_address_candidates" />
+    </opc_index_index>
+</layout>
+

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <web4pro translate="label" module="banner">
+            <label>Web4pro</label>
+            <sort_order>100</sort_order>
+        </web4pro>
+    </tabs>
+    <sections>
+        <banner translate="label" module="banner">
+            <label>Banner</label>
+            <tab>web4pro</tab>
+            <sort_order>600</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Group Settings</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <banner_open_page translate="label">
+                            <label>Banner Open Page Settings</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>banner/system_config_source_open_window</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </banner_open_page>
+                        <banner_randomize_order translate="label">
+                            <label>Banner Randomize Order</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>(If you set yes banner display randomly!)</comment>
+                        </banner_randomize_order>
+                        <rotata_duration translate="label comment">
+                            <label>Rotate duration for tabs</label>
+                            <comment>in seconds</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_class>required-entry</frontend_class>
+                            <validate>validate-number</validate>
+                        </rotata_duration>
+                    </fields>
+                </general>
+            </groups>
+        </banner>
+    </sections>
+</config>

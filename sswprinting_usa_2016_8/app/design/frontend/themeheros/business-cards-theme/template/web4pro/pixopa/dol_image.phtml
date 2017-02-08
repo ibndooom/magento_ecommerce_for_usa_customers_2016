@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 09.07.15
+ * Time: 15:39
+ */
+if($this->canShow()):?>
+<script type="text/javascript">
+    var image = "<?php echo $this->getImageUrl(); ?>";
+    jQuery().ready(function(){
+       jQuery(window).load(function(){
+           setTimeout('svgCanvas.addLoadImage(image,true)',1000);
+           jQuery('#editor_panel .top_left_bar').hide();
+           jQuery('.tools_left').hide();
+       });
+    });
+</script>
+<?php endif;?>

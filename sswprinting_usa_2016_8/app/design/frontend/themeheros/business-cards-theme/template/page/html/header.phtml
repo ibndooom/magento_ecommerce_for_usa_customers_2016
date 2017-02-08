@@ -1,0 +1,103 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php $customerSession = Mage::getSingleton('customer/session');
+$loginBlock = $this->getLayout()
+    ->createBlock('customer/form_login')
+    ->setTemplate('customer/form/mini.login.top.phtml');
+
+$block = Mage::helper('sociallogin')->addButtonsToMiniLogin($loginBlock);
+
+?>
+
+<header class="header-container case" itemscope itemtype="http://schema.org/WPHeader">
+	<div class="header container top-part wrap">
+		<div class="logo">
+            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" itemprop="url">
+                <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" itemprop="image" />
+            </a>
+            <strong itemprop="name"><?php echo $this->getLogoAlt() ?></strong>
+        </div>
+        <div class="top-cart header-minicart">
+            <?php echo $this->getChildHtml('minicart_head'); ?>
+            <div class="logined-links sign-in-block">
+                <div class="header-social"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-social')->toHtml(); ?></div>
+                <div class="top-links">
+                    <ul class="skip-links">
+                        <li class="header-account">
+                            <div class="sign-area">
+                                <?php if (!$customerSession->isLoggedIn()): ?>
+                                    <div class="sign-in-block">
+                                        <div class="sign-in-head">
+                                            <a href="#header-account" class="skip-link skip-account">
+                                                <span class="prefix"><?php echo $this->__('Sign In'); ?></span>
+                                                <span class="label"><?php echo $this->__('Your Account'); ?></span>
+                                            </a>
+                                        </div>
+                                        <?php echo $block->toHtml();
+                                        ?>
+                                    </div>
+                                <?php else: ?>
+                                    <?php $customer = $customerSession->getCustomer()?>
+                                    <div class="sign-in-head">
+                                        <a href="#header-account" class="skip-link skip-account">
+                                            <span class="prefix color-orange"><?php echo $customer->getName(); ?></span>
+                                        </a>
+                                        <div class="register-links">
+                                            <?php echo $this->getChildHtml('topLinks_custom'); ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="header-info">
+            <div class="phone">
+                <!-- <img src="<?php echo $this->getSkinUrl('images/i-1.gif') ?>" alt="title" /> -->
+                Call: <span class="call"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></span>
+                <span class="separate">or</span>
+                <a href="<?php echo $this->helper('cms/page')->getPageUrl('faq'); ?>"><?php echo $this->__('FAQ');?></a>
+            </div>
+            <!-- <div class="wish"><a href="<?php //echo Mage::getBaseUrl(); ?>wishlist"><img src="<?php //echo $this->getSkinUrl('images/i-4.gif') ?>" alt="title" /> Wish List</a></div> -->
+            <?php echo $this->getChildHtml('topSearch') ?>
+        </div>
+    </div>
+    <!--<div class="welcme-txt"><?php //echo $this->getWelcome() ?> <?php //echo $this->getAdditionalHtml() ?></div>-->
+	<?php echo $this->getChildHtml('topContainer'); ?>
+</header>
+<div class="nav-holder">
+    <?php echo $this->getChildHtml('topMenu') ?>
+    <div class="menu-icon">
+        <span></span>
+    </div>
+</div>

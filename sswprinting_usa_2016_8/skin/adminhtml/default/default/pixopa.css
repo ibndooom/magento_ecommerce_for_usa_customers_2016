@@ -1,0 +1,4 @@
+/* Pixopa */
+
+.designImage { margin: 3px auto 5px auto; box-shadow: 3px 3px 5px #999; -moz-box-shadow: 3px 3px 5px #999; -webkit-box-shadow: 3px 3px 5px #999;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=3, OffY=3,Color='#D0D0D0');}
+.loupe {background:none repeat scroll 0 0 rgba(255, 255, 255, 0.95);border:1px solid #AAAAAA;padding:5px;z-index:3000;}

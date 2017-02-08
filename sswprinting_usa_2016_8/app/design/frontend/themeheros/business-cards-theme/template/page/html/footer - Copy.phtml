@@ -1,0 +1,108 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<footer class="footer-container case" itemscope itemtype="http://schema.org/WPFooter">
+ 	<div class="footer container bottom-brdr">
+ 		<div class="call"><img src="<?php echo $this->getSkinUrl('images/img-1.png') ?>" alt="title" /> &nbsp;+000 0008 0088</div>
+ 		<div class="mail"><img src="<?php echo $this->getSkinUrl('images/img-2.png') ?>" alt="title" /> &nbsp;info@Companyname.com</div>
+ 		<div class="place"><img src="<?php echo $this->getSkinUrl('images/img-3.png') ?>" alt="title" /> &nbsp;Visit us: 2 - 4 abc Street, Xyz CBD, US - 00000</div>
+ 	</div>
+	<div>&nbsp;</div>
+	<div class="container">
+		<div class="row">
+			<div class="footer-block span3">
+				<h4>Title 1</h4>
+				<ul>
+					<li><a href="#">Business Cards</a></li>
+					<li><a href="#">Mini cards</a></li>
+					<li><a href="#">Die-cut Cards</a></li>
+					<li><a href="#">Stickers</a></li>
+					<li><a href="#">Letterheads</a></li>
+					<li><a href="#">Postcards</a></li>
+				</ul>
+			</div>
+			<div class="footer-block span3">
+				<h4>Title 2</h4>
+				<ul>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Quality Assurance</a></li>
+					<li><a href="#">Delivery and Timelines</a></li>
+					<li><a href="#">Artwork Guidelines</a></li>
+					<li><a href="#">Terms of Service</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+			</div>
+			<div class="footer-block span2">
+				<h4>Title 3</h4>
+				<ul>
+					<li><a href="#">Press Center</a></li>
+					<li><a href="#">Testimonials</a></li>
+					<li><a href="#">Career</a></li>
+					<li><a href="#">FAQs</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Contact Us</a></li>
+				</ul>
+			</div>
+			<div class="footer-block span4">
+				<?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+				<div>
+					<h4>Follow Us</h4>
+					<a href="#"><img src="<?php echo $this->getSkinUrl('images/social-1-1.gif') ?>" alt="title" /></a>
+					<a href="#"><img src="<?php echo $this->getSkinUrl('images/social-2-2.gif') ?>" alt="title" /></a>
+					<a href="#"><img src="<?php echo $this->getSkinUrl('images/social-3-3.gif') ?>" alt="title" /></a>
+					<a href="#"><img src="<?php echo $this->getSkinUrl('images/social-4-4.gif') ?>" alt="title" /></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>&nbsp;</div>
+	<div class="container copy-div">
+		<div class="pull-left"><?php echo $this->getCopyright() ?></div>
+		<div class="pull-right">
+			<div class="payment pull-right">
+				payment methods
+				<img src="<?php echo $this->getSkinUrl('images/card-1.gif') ?>" alt="title" />
+				<img src="<?php echo $this->getSkinUrl('images/card-2.gif') ?>" alt="title" />
+				<img src="<?php echo $this->getSkinUrl('images/card-3.gif') ?>" alt="title" />
+				<img src="<?php echo $this->getSkinUrl('images/card-4.gif') ?>" alt="title" />
+			</div>
+		</div>
+	</div>
+
+
+
+		<section class="row">
+			<?php //echo $this->getChildHtml('cms_footer_links') ?>
+
+		</section>
+	<!--<div class="copy-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="copyright span4"><?php //echo $this->getCopyright() ?></div>
+			</div>
+		</div>
+	</div>-->
+</footer>

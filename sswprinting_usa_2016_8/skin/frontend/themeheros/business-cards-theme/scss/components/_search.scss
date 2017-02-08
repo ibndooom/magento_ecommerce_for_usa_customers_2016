@@ -1,0 +1,17 @@
+.catalogsearch-result-index{
+	.col-main{
+		background:$transparent;
+	}
+	.page-title{
+		margin: 0 0 14px;
+		@media screen and (max-width: $phablet){
+			text-align: center;
+		}
+		h1{
+			color: $blue;
+			font-size: 22px;
+			line-height: 24px;
+			margin: 0;
+		}
+	}
+}

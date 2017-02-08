@@ -1,0 +1,72 @@
+<?php /* @var $this MageParts_Ddq_Block_Ddq */  ?>
+<?php $jsonConfig = $this->getJsConfig() ?>
+<?php $products = $this->_getProducts() ?>
+
+
+<?php if (count($products)): ?>
+    <?php foreach ($products as $product): ?>
+    <?php $id = $product->getDdqId() ? $product->getDdqId() : $product->getId() ?>
+    <span id="mp-ddq-el-<?php echo $id ?>" class="mp-ddq-el">
+        <?php if ($product->getDdqLayout() == 'table'): ?>
+            <?php $cols = Mage::helper('ddq')->getLayoutTableColumns() ?>
+            <?php if (count($cols)): ?>
+                <table id="mp-ddq-el-<?php echo $id ?>-<?php echo $product->getDdqLayout()?>" class="data-table" style="display:none;" data-mp-ddq="">
+                    <thead>
+                    <?php foreach ($cols as $col): ?>
+                        <th><?php echo $col['title'] ?></th>
+                    <?php endforeach; ?>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($product->getDdqQtyList() as $o): ?>
+                        <?php echo $this->getTableRow($product, $o) ?>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+        <?php else: ?>
+        <select id="mp-ddq-el-<?php echo $id ?>-<?php echo $product->getDdqLayout() ?>" style="display:none;" data-mp-ddq="" disabled>
+            <?php if (Mage::getStoreConfigFlag('ddq/layout/select_header', $product->getStoreId())): ?>
+            <option value="0"><?php echo Mage::getStoreConfig('ddq/layout/select_header_text', $product->getStoreId()) ?></option>
+            <?php endif; ?>
+            <?php foreach ($product->getDdqQtyList() as $o): ?>
+            <option value="<?php echo $o['qty'] ?>"<?php if ($product->getDdqPreselected() == $o['qty']): ?> selected<?php endif; ?>><?php echo Mage::helper('ddq')->getOptionLabel($o, $product) ?></option>
+            <?php endforeach; ?>
+        </select>
+        <?php endif; ?>
+    </span>
+    <?php endforeach; ?>
+
+    <?php if (!$this->getAvoidJsInstance()): ?>
+    <script type="text/javascript">
+        //<![CDATA[
+        (function() {
+            var config = <?php echo $jsonConfig ?>;
+            var view   = MP_DDQ_SETTINGS.view;
+
+            if (view === 'list') {
+                new MageParts.Ddq.ProductList(config);
+            }
+            else if (view === 'cart') {
+                new MageParts.Ddq.Cart(config);
+            }
+            else {
+                switch(config.productType) {
+                    case 'simple'       : new MageParts.Ddq.Product(config); break;
+                    case 'grouped'      : new MageParts.Ddq.Grouped(config); break;
+                    case 'bundle'       : new MageParts.Ddq.Bundle(config);  break;
+                    case 'configurable' : new MageParts.Ddq.Configurable(config); break;
+                }
+            }
+        }());
+        //]]>
+    </script>
+    <?php endif; ?>
+<?php else: ?>
+    <?php // hide normal quantity text box element before it's replaced by javascript (prevents element from blinking into view on page load)?>
+    <?php $paths = Mage::getBlockSingleton('ddq/general')->getCssRemovalPaths(true) ?>
+    <?php if (!empty($paths)): ?>
+        <style type="text/css">
+            <?php echo $paths ?> { display:block; }
+        </style>
+    <?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <checkout_cart_index>
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>calendar/calendar.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>js/cart.js</script></action>
+        </reference>
+        <reference name="root">
+            <block type="core/text_list" name="before_document_end">
+                <block type="core/template" name="checkout.cart.option.popup" template="pixopa/checkout/cart/popup.phtml"/>
+            </block>
+        </reference>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb"><crumbName>Cart</crumbName><crumbInfo><label>Cart</label><title>Cart</title></crumbInfo></action>
+        </reference>
+    </checkout_cart_index>
+
+    <opc_index_index>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><script>js/cart.js</script></action>
+        </reference>
+        <reference name="root">
+            <block type="core/text_list" name="before_document_end">
+                <block type="core/template" name="checkout.cart.option.popup" template="pixopa/checkout/cart/popup.phtml"/>
+            </block>
+        </reference>
+    </opc_index_index>
+
+</layout>

@@ -1,0 +1,471 @@
+// Stylemap
+// typography
+.font--normal{
+	font-weight: 300;
+}
+.font--bold{
+	font-weight: bold;
+}
+// buttons
+a.btn{
+	text-decoration: none;
+}
+div .btn,
+button{
+	border:none;
+	padding:8px;
+	display: inline-block;
+	vertical-align: top;
+	background: $grey--dark;
+	font-family: proximanova, Helvetica, sans-serif;
+	color: $white;
+	text-transform: capitalize;
+	border: none;
+	border-radius: 0;
+	-webkit-transition: background 0.2s ease;
+			transition: background 0.2s ease;
+	&:hover{
+		background:$blue--dark;
+		color: $white;
+		-webkit-transition: background 0.2s ease;
+				transition: background 0.2s ease;
+	}
+	&.btn--big{
+		padding: 10px 20px;
+		font: 27px/33px $proximanova;
+		text-decoration: none;
+		@media screen and (max-width: $tablet) {
+			font-size: 24px;
+			line-height: 26px;
+		}
+		@media screen and (max-width: $mobile) {
+			font-size: 20px;
+			line-height: 20px;
+		}
+	}
+	&.btn--search{
+		position: relative;
+		width: 35px;
+		height: 35px;
+		&:before{
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+			@extend %iconsSprite;
+			@include back-pos('ico-search');
+		}
+	}
+	&.btn--colored{
+		background:$blue--dark;
+		color: $white--light;
+	}
+}
+// slider
+.slick-slider{
+	position: static;
+	.slick-prev,
+	.slick-next{
+		background: $grey--custom2;
+		position: absolute;
+		width: 38px;
+		height: 43px;
+		display: block;
+		border: none;
+		border-radius: 0;
+		bottom: 0;
+		outline: none;
+		@extend %text-hide;
+		&:before{
+			content: '';
+			position: absolute;
+			top: 50%;
+			-webkit-transform: translate( 0, -50%);
+					transform: translate( 0, -50%);
+			@extend %iconsSprite;
+		}
+	}
+	.slick-prev{
+		right: 38px;
+		&:before{
+			left: 14px;
+			@include back-pos('ico-slide-left');
+		}
+		&.slick-disabled{
+			&:before{
+				@include back-pos('icon-slide-left--disabled');
+			}
+		}
+	}
+	.slick-next{
+		right: 0;
+		&:before{
+			right: 14px;
+			@include back-pos('ico-slide-right');
+		}
+		&.slick-disabled{
+			&:before{
+				@include back-pos('ico-slide-right--disabled');
+			}
+		}
+	}
+	.slick-disabled{
+		cursor: default !important;
+	}
+}
+// background
+.bg--pattern{
+	background:url('../images/bg-pattern.jpg') repeat;
+}
+.bg--light{
+	background:$grey--lighten;
+}
+.bg--dark{
+	background:$grey--lightExtra;
+}
+.bg--blue{
+	background:$blue;
+}
+.phone--big,
+.mail--big{
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	border-radius: 50%;
+	margin-right: 12px;
+	@media screen and (max-width: $tablet) {
+		-ms-transform: scale(0.8);
+		-webkit-transform: scale(0.8);
+		transform: scale(0.8);
+	}
+}
+.phone--big{
+	@extend %iconsSprite;
+	@include back-pos('ico-telephone');
+}
+.mail--big{
+	@extend %iconsSprite;
+	@include back-pos('ico-letters');
+}
+.up-decor{
+	position: relative;
+	&:before, &:after{
+		content: '';
+		box-sizing:border-box;
+		position: absolute;
+		top:-9px;
+		width:10px;
+		height: 10px;
+		border-bottom: 1px solid $grey--custom6;
+	}
+	&:before{
+		left: -9px;
+		border-right: 1px solid $grey--custom6;
+	}
+	&:after{
+		right: -9px;
+		border-left: 1px solid $grey--custom6;
+	}
+}
+.bottom-decor{
+	position: relative;
+	&:before, &:after{
+		content: '';
+		box-sizing:border-box;
+		position: absolute;
+		bottom:-10px;
+		width:10px;
+		height: 10px;
+		border-top: 1px solid $grey--custom6;
+	}
+	&:before{
+		left: -10px;
+		border-right: 1px solid $grey--custom6;
+	}
+	&:after{
+		right: -10px;
+		border-left: 1px solid $grey--custom6;
+	}
+}
+.bord-light{
+	border:1px solid $grey--custom6;
+}
+.f-left{
+	float: left;
+}
+.f-right{
+	float: right;
+}
+.text-tr{
+	text-transform: uppercase;
+}
+.standart-title{
+	font-size: 22px;
+	line-height: 30px;
+	text-align: left;
+	text-transform: uppercase;
+	color: $blue;
+	border-bottom: 2px solid $grey--custom7;
+	margin-bottom: 8px;
+	padding-bottom: 4px;
+	a{
+		text-decoration: none;
+	}
+}
+form{
+	em{
+		color: $blue;
+	}
+}
+
+// footered bottom
+html,
+body{
+	height: 100%;
+	width: 100%;
+}
+body{
+	.page-holder{
+		display: table;
+		table-layout: fixed;
+		height: 100%;
+		width: 100%;
+	}
+	.w1{
+		display: table-row;
+	}
+	.footer-box{
+		display: table-footer-group;
+	}
+	.footer{
+		display: table-cell;
+		height: 1%;
+	}
+}
+// main style
+.cms-home{
+	.main{
+		.std{
+			display: none;
+		}
+	}
+}
+.wrap{
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1010px;
+	padding: 0 10px;
+	&:after{
+		content: '';
+		display: table;
+		width: 100%;
+		clear: both;
+	}
+}
+.col-main{
+	.note-msg{
+		margin: 0 auto;
+		padding: 10px;
+		text-align: center;
+		font-weight: bold;
+	}
+}
+#configurable_product_id_chosen{
+	display: none;
+}
+.category-some-topic,
+.category-listing{
+	.bg--pattern + .wrap{
+		padding-bottom: 20px;
+	}
+}
+.tamplate-page{
+	.col-main{
+		float: none;
+		width: 100%;
+		margin: 0;
+		background:$transparent;
+	}
+}
+.layared-visibility{
+	position: relative;
+	display: none;
+	text-indent: -9999px;
+	overflow: hidden;
+	width: 20px;
+	height: 20px;
+	margin: 0 0 10px;
+	@media screen and (max-width: $phablet){
+		display: block;
+	}
+	&:before{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%) scale(0.04);
+				transform: translate(-50%, -50%) scale(0.04);
+		@extend %iconsSprite;
+		@include back-pos('ico-layared');
+	}
+}
+.products-grid{
+	margin: 0 -8px 28px;
+	text-align: center;
+	@media screen and (max-width: $tablet){
+		margin: 0 0 18px;
+	}
+	.thumbnail{
+		padding: 11px 0 10px;
+		background:$white;
+		h4{
+			padding: 0 10px;
+			@media screen and (max-width: $phablet){
+				font-size: 24px;
+				line-height: 34px;
+			}
+		}
+	}
+	.product-name{
+		a{
+			color: $grey;
+			text-decoration: none;
+		}
+	}
+	.product-image{
+		display: block;
+		margin: 0 0 20px;
+	}
+	.btn{
+		padding: 7px 16px 5px;
+	}
+}
+.products-grid-list{
+	margin: 0 0 28px;
+	.thumbnail{
+		overflow: hidden;
+		position: relative;
+		padding-right: 20px;
+		padding-left: 20px;
+		text-align: left;
+		@media screen and (max-width: $mobile){
+			text-align: center;
+		}
+		h4{
+			padding: 0;
+			font-size: 28px;
+			line-height: 30px;
+			float: left;
+			width: 62%;
+			text-align: left;
+			@media screen and (max-width: $tablet){
+				width: 100%;
+				float: none;
+				margin: 0 0 24px;
+			}
+			@media screen and (max-width: $mobile){
+				text-align: center;
+			}
+		}
+	}
+	.product-image{
+		float: left;
+		width: 200px;
+		margin: 0 20px 0 0;
+		@media screen and (max-width: $mobile){
+			float: none;
+			width: auto;
+			margin: 0 0 20px;
+		}
+	}
+	.product-desc{
+		position: absolute;
+		left: 230px;
+		right: 10px;
+		padding: 10px;
+		text-align: right;
+		@media screen and (max-width: $mobile){
+			position: static;
+		}
+		@media screen and (max-width: $mobile){
+			text-align: center;
+		}
+	}
+}
+#frame_content_upload{
+	.fileinput-button{
+		position: relative;
+		.jcf-file{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
+			background:transparent;
+			color: transparent;
+			*{
+				border: none;
+				background:transparent;
+			}
+		}
+	}
+}
+.messages{
+	display: block;
+	max-width: 1010px;
+	padding: 20px 10px;
+	margin: 0 auto;
+	text-align: center;
+	color: $scarlet;
+}
+.breadcrumbs-holder{
+	margin-bottom: -155px;
+	@media screen and (max-width: $phablet){
+		margin-bottom: -100px;
+	}
+}
+
+
+//Styles for fancybox navigation
+a.fancybox-nav {
+	background: none;
+}
+a.fancybox-nav span {
+	visibility: visible;
+	margin-top: 0;
+	-webkit-transform: translate( 0, -50%);
+	transform: translate( 0, -50%);
+}
+a.fancybox-prev span {
+	left: -50px;
+	-webkit-transform: translate( 0, -50%) rotate(-180deg);
+	transform: translate( 0, -50%) rotate(-180deg);
+	@extend %iconsSprite;
+	@include back-pos('ico-slide-right');
+}
+a.fancybox-next span {
+	right: -50px;
+	@extend %iconsSprite;
+	@include back-pos('ico-slide-right');
+}
+.fancybox-inner:before,
+.fancybox-inner:after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate( 0, -50%);
+	transform: translate( 0, -50%);
+	@extend %iconsSprite;
+}
+.fancybox-inner:before{
+	left: -50px;
+	@include back-pos('icon-slide-left--disabled');
+}
+.fancybox-inner:after{
+	right: -50px;
+	@include back-pos('ico-slide-right--disabled');
+}
+

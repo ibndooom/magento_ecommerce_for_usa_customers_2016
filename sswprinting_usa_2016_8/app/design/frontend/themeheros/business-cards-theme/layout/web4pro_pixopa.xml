@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<layout>
+
+    <web4pro_pixopa_category>
+        <update handle="page_one_column"/>
+        <reference name="category.products">
+            <action method="setTemplate"><template>pixopa/catalog/category/view.phtml</template></action>
+        </reference>
+        <reference name="product_list">
+            <action method="setTemplate"><template>pixopa/catalog/product/list.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="web4pro_pixopa/category" name="category.design.options" template="web4pro/pixopa/category.phtml"/>
+            <block type="core/template" name="category.design.bottom" template="web4pro/pixopa/category_bottom.phtml">
+                <block type="web4pro_pixopa/specification" name="specification" template="web4pro/pixopa/specification.phtml">
+                    <action method="setHtmlId"><value>specification</value></action>
+                </block>
+                <block type="web4pro_pixopa/start" name="start_file" template="web4pro/pixopa/start.phtml">
+                    <action method="setHtmlId"><value>start</value></action>
+                </block>
+            </block>
+        </reference>
+
+    </web4pro_pixopa_category>
+
+    <web4pro_pixopa_designs>
+        <reference name="root">
+            <action method="addBodyClass"><value>category-listing</value></action>
+        </reference>
+        <reference name="category.products">
+            <action method="setTemplate"><template>pixopa/catalog/category/view.phtml</template></action>
+        </reference>
+        <reference name="product_list">
+            <action method="setTemplate"><template>pixopa/catalog/product/list.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="product.addto.form" template="web4pro/pixopa/addtocart.phtml"/>
+        </reference>
+    </web4pro_pixopa_designs>
+
+    <dol_index_index>
+        <reference name="root">
+            <block name="dol.breadcrumb" type="web4pro_pixopa/breadcrumbs"/>
+            <block type="core/text_list" name="before_document_end">
+                <block type="web4pro_pixopa/design_image" name="dol.image" template="web4pro/pixopa/dol_image.phtml"/>
+            </block>
+        </reference>
+    </dol_index_index>
+
+
+</layout>

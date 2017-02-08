@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    <default>
+    	<!--
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>dol/dol.css</name></action>
+        </reference>
+         -->
+        <block type="core/template" name="image_slider" template="pixopa/dol/image_slider.phtml"/>
+        <block type="core/template" name="product.image.slider" as="slider" template="pixopa/catalog/product/view/slider.phtml"/>      
+        <block type="core/template" name="image_filters" template="pixopa/dol/image_filters.phtml"/>  
+        <block type="core/template" name="qrcode" template="pixopa/dol/qrcode.phtml"/>
+        <block type="core/template" name="backend_dol" template="template/dol/backenddol.phtml"/>
+        <block type="core/template" name="browse" template="pixopa/dol/standalone/browse.phtml"/>    		             
+       	<block type="core/template" name="personalize" template="pixopa/dol/standalone/personalization.phtml"/>
+       	<block type="core/template" name="newpricing" template="pixopa/dol/standalone/pricing.phtml"/>
+    </default>
+
+    <dol_index_index>
+		<reference name="head">
+            <action method="setTitle" translate="title" module="catalog"><title>Customize Design</title></action>
+            <action method="setIsDol"><value>1</value></action>
+            
+            <!--<action method="removeItem"><type>js</type><name>all/genericfortis/theme.js</name><params/></action>-->
+           
+            <!--<action method="addJs"><script>all/common/all.js</script></action>-->
+            <!--<action method="addJs"><script>all/genericfortis/theme-dol.js</script></action>-->
+            <action method="addJs"><script>all/common/editor.js</script></action>	
+
+			<action method="removeItem"><type>skin_css</type><name>bootstrap/bootstrap/css/bootstrap.css</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/pixopa/css/bootstrap_dol.css</name></action>
+			<action method="addCss"><script>../../../../js/all/editor/jquery.fancybox.css</script></action>		
+			<action method="addCss"><script>../../../../js/all/editor/colorpicker.css</script></action>
+			<action method="addCss"><script>../../../../js/all/editor/encode.css</script></action>
+			<action method="addCss"><script>../../../../js/all/editor/jquery.Jcrop.css</script></action>			
+            <action method="addCss"><script>../../../../js/all/editor/jquery.lightbox-0.5.css</script></action>
+            <action method="addCss"><script>../../../../js/all/editor/jgraduate/css/jPicker.css</script></action>
+            <action method="addCss"><script>../../../../js/all/editor/jgraduate/css/jgraduate.css</script></action>
+            <action method="addCss"><script>../../../../js/all/editor/JQuerySpinBtn.css</script></action>
+            <action method="addCss"><script>../../../../js/all/editor/jquery-ui-1.9.2.custom.css</script></action>
+            
+            <action method="addCss"><script>../../../../js/all/editor/dol_basic.css</script></action>
+            <action method="addCss" ifconfig="doldesign/base/olddol_enabled"><script>../../../../js/all/editor/dol.css</script></action>
+            <action method="addCss" ifconfig="doldesign/base/niko_enabled"><script>../../../../js/all/niko/niko_css/niko_dol.css</script></action>
+                <action method="addCss"><stylesheet>../../../../js/all/niko/niko_css/niko_imageslider.css</stylesheet></action>
+            <action method="addCss"><script>../../../../js/all/editor/dol_reset.css</script></action>
+            <action method="addCss" ifconfig="doldesign/base/niko_enabled"><script>../../../../js/all/niko/niko_css/tooltipster.css</script></action>
+			
+            <!--
+            <action method="addJs"><script>dol/editor/js-hotkeys/jquery.hotkeys.min.js</script></action>
+            <action method="addJs"><script>dol/editor/jquerybbq/jquery.bbq.min.js</script></action>
+            <action method="addJs"><script>dol/editor/svgicons/jquery.svgicons.js</script></action>
+            <action method="addJs"><script>all/editor/jgraduate/jgraduate_combine.js</script></action>
+            <action method="addJs"><script>all/editor/editor.js</script></action>
+             -->
+             <action method="addCss"><script>../../../../js/all/standalone/dol_popup_style.css</script></action>
+             <action method="addCss"><script>../../../../js/all/standalone/selectbox/css/jquery.selectbox.css</script></action>
+       
+        </reference>
+        <reference name="header">
+        	<action method="setIsDol"><value>1</value></action>
+        </reference>
+    	<reference name="root">			
+            <action method="setTemplate"><template>pixopa/page/1column-dol.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="dol">
+            	<action method="setTemplate" ifconfig="doldesign/base/olddol_enabled"><template>pixopa/dol/dol.phtml</template></action>
+            	<action method="setTemplate" ifconfig="doldesign/base/niko_enabled"><template>pixopa/dol/niko_dol.phtml</template></action>
+            </block>
+        </reference>
+        <reference name="footer">
+        	<action method="setIsDol"><value>1</value></action>
+        </reference>
+    </dol_index_index>
+    
+    
+    <dol_auth_instagram>
+    	<reference name="root">
+            <action method="setTemplate"><template>pixopa/page/1column-dol.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="instagram" template="pixopa/dol/instagram.phtml"/>
+        </reference>
+    </dol_auth_instagram>
+    
+    
+    <dol_auth_instagramcallback>
+    	<reference name="root">
+            <action method="setTemplate"><template>pixopa/page/1column-dol.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="instagram" template="pixopa/dol/instagram_callback.phtml"/>
+        </reference>
+    </dol_auth_instagramcallback>
+   
+  	<dol_index_chrome>
+    	<reference name="root">
+            <action method="setTemplate"><template>pixopa/page/1column-dol.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="instagram" template="pixopa/dol/chrome.phtml"/>
+        </reference>
+    </dol_index_chrome>
+    
+     <dol_index_alone>
+	   		<reference name="head">
+	    		 <action method="addCss" ifconfig="doldesign/base/niko_enabled"><script>../../../../js/all/niko/niko_css/niko_dol.css</script></action>            
+	             <action method="addCss"><script>../../../../js/all/standalone/dol_popup_style.css</script></action>
+	             <action method="addCss"><script>../../../../js/all/standalone/selectbox/css/jquery.selectbox.css</script></action>
+	             <action method="addCss"><script>../../../../js/all/editor/jquery-ui-1.9.2.custom.css</script></action>
+	             <action method="addCss"><script>../../../../js/all/standalone/jquery.mCustomScrollbar.css</script></action>
+	        </reference>
+	        <reference name="content">        	   
+	             <block type="core/template" name="standalone" template="dol/standalone/standalone.phtml"/> 
+	        </reference>
+    </dol_index_alone>  
+    
+     <dol_index_personalize>        
+	    	<reference name="root">
+	            <action method="setTemplate"><template>pixopa/page/empty.phtml</template></action>
+	        </reference>
+	        <reference name="content">        	
+	            <block type="core/template" name="personalize" template="pixopa/dol/standalone/personalization.phtml"/>
+	        </reference>
+    </dol_index_personalize>
+    
+     <dol_index_template>        
+	    	<reference name="root">
+	            <action method="setTemplate"><template>pixopa/page/empty.phtml</template></action>
+	        </reference>
+	        <reference name="content">        	
+	            <block type="core/template" name="browse" template="pixopa/dol/standalone/browse.phtml"/>
+	        </reference>
+    </dol_index_template>
+    
+    <dol_index_pricing>        
+	    	<reference name="root">
+	            <action method="setTemplate"><template>pixopa/page/empty.phtml</template></action>
+	        </reference>
+	        <reference name="content">        	
+	            <block type="core/template" name="newpricing" template="pixopa/dol/standalone/pricing.phtml"/>
+	        </reference>
+    </dol_index_pricing>   
+    
+</layout> 

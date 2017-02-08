@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<ThemeHeros_Imageslider>
+		    <active>true</active>
+		    <codePool>local</codePool>		   
+		</ThemeHeros_Imageslider>
+	</modules>
+</config>

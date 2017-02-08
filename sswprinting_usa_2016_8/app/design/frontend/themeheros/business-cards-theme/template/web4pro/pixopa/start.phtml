@@ -1,0 +1,35 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 03.07.15
+ * Time: 16:23
+ */ ?>
+
+
+		<div>
+			<h2><?php echo $this->__('Download Start File') ?></h2>
+			<div class="text-information">
+				<p><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_title_tabs')->toHtml(); ?></p>
+			</div>
+			<form method="post" action="<?php echo $this->getUrl('web4pro_pixopa/index/download'); ?>" name="startForm">
+				<div class="forSelect">
+					<?php echo $this->getFileTypeSelect();?>
+				</div>
+				<input type="hidden" name="product_id" value="<?php echo $this->getRequest()->getParam('productIds'); ?>"/>
+				<input type="hidden" name="size"/>
+				<div class="forButton">
+					<button type="button" onclick="submitTypeForm();"><span><span><?php echo $this->__('Download file'); ?></span></span></button>
+				</div>
+			</form>
+		</div>
+<script type="text/javascript">
+ function submitTypeForm(){
+	 var el;
+	 if(typeof(superAttributeId)!='undefined' && (el = document.getElementById(superAttributeId))){
+		 var sid=el.options[el.selectedIndex].value;
+		 document.startForm.size.value = sid;
+		 document.startForm.submit();
+	 }
+ }
+</script>

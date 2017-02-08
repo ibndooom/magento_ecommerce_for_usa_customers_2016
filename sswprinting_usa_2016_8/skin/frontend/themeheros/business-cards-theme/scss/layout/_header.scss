@@ -1,0 +1,570 @@
+header{
+	border-top: 1px solid $grey--custom4;
+}
+.logo{
+	float: left;
+	width: 210px;
+	height: 38px;
+	margin: 32px 30px 0 0;
+	@media only screen and (max-width: 1136px){
+		margin: 32px 30px 0 4%;
+	}
+	@media only screen and (max-width: $phablet){
+		float: none;
+		margin: 30px auto 22px;
+	}
+	strong{
+		display: none;
+	}
+	a{
+		display: block;
+		width: 100%;
+		height: 38px;
+	}
+}
+.top-cart{
+	float: right;
+	position: relative;
+	padding: 39px 22px 21px;
+	background:$grey--custom3;
+	width: 214px;
+	@media only screen and (max-width: $phablet){
+		float: none;
+		margin: 0 auto 16px;
+		width: 100%;
+		border-radius: 60px;
+		padding: 33px 22px 5px;
+	}
+	.cart-holder{
+		position: relative;
+		z-index: 10;
+		width: 171px;
+		margin: 0 auto;
+		&:hover{
+			.skip-cart{
+				background:$white;
+				box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+				text-overflow: ellipsis;
+				&:after{
+					opacity: 1;
+				}
+			}
+			.block-cart{
+				display: block;
+			}
+		}
+		.block-cart{
+			display: none;
+			position: absolute;
+			top: 100%;
+			right: 0;
+			width: 271px;
+			padding: 11px 9px 20px;
+			box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+			background:$white;
+			@media only screen and (max-width: $phablet){
+				right: -46px;
+			}
+			&:before{
+				content: '';
+				position: absolute;
+				top: -4px;
+				right: 0;
+				width: 171px;
+				height: 5px;
+				background:$white;
+				@media only screen and (max-width: $phablet){
+					right: 46px;
+				}
+			}
+		}
+	}
+	.mini-products-list{
+		margin: 0 0 17px;
+		> li{
+			position: relative;
+			overflow: hidden;
+			padding: 6px 24px 4px 0;
+			border-bottom: 1px solid $grey--custom12;
+			> a{
+				float: left;
+				width: 63px;
+				margin: 3px 15px 0 0;
+				border: 1px solid $grey--custom12;
+			}
+			img{
+				width: 100%;
+				height: auto;
+			}
+			.product-details{
+				overflow: hidden;
+				a{
+					color: $grey---darkLight;
+					text-decoration: none;
+					font-size: 14px;
+					line-height: 16px;
+				}
+				p{
+					margin: 0;
+				}
+			}
+			.info-wrapper{
+				color: $black;
+				font-size: 14px;
+				line-height: 16px;
+			}
+			.remove{
+				position: absolute;
+				top: 22px;
+				right: 2px;
+				width: 17px;
+				height: 17px;
+				text-indent: -9999px;
+				overflow: hidden;
+				border: 1px solid $grey--custom12;
+				&:before{
+					content: '';
+					position: absolute;
+					top: 49%;
+					left: 49%;
+					-webkit-transform: translate(-50%, -50%);
+							transform: translate(-50%, -50%);
+					@extend %iconsSprite;
+					@include back-pos('ico-close');
+				}
+			}
+		}
+	}
+	.subtotal{
+		overflow: hidden;
+		margin: 0 0 17px;
+		font-size: 14px;
+		line-height: 16px;
+		.label{
+			float: left;
+			color: $black;
+		}
+		.price{
+			float: right;
+			color: $blue;
+		}
+	}
+	.minicart-actions{
+		overflow: hidden;
+		a{
+			display: block;
+			padding: 8px;
+			width: 120px;
+			text-align: center;
+			text-decoration: none;
+			color: $white;
+			font-weight: bold;
+			background:$grey--dark;
+			font-size: 14px;
+			line-height: 16px;
+			&:hover{
+				background:$blue;
+			}
+		}
+		.checkout-types{
+			float: right;
+			a{
+				background: $blue;
+			}
+		}
+		.cart-link{
+			float: left;
+		}
+	}
+	.skip-cart{
+		position: relative;
+		display: block;
+		vertical-align: top;
+		height: 39px;
+		padding: 10px 4px 7px 6px;
+		text-align: center;
+		color: $grey---darkLight;
+		font-size: 15px;
+		line-height: 22px;
+		text-decoration: none;
+		white-space: nowrap;
+		overflow: hidden;
+		&:before{
+			content: '';
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 4px 0 0;
+			@extend %iconsSprite;
+			@include back-pos('ico-cart');
+		}
+		&:after{
+			content: '';
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 0 0 10px;
+			@extend %iconsSprite;
+			@include back-pos('ico-arrow-down');
+			opacity: 0;
+		}
+		.count{
+			color: $blue;
+		}
+	}
+}
+.header-info{
+	// overflow: hidden;
+	// max-width: 350px;
+	max-width: 322px;
+	margin: 0 auto;
+	// padding: 18px 28px 18px 0;
+	padding: 18px 0;
+	@media only screen and (max-width: $phablet){
+		text-align: center;
+		padding: 18px 12px 18px 0;
+	}
+	@media only screen and (max-width: $mobile){
+		padding: 18px 48px 18px 0;
+	}
+	.phone{
+		padding: 0 0 0 20px;
+		margin: 0 0 4px;
+		color: $grey--lightMore;
+		font-size: 17px;
+		line-height: 17px;
+		&:before{
+			-webkit-transform: none;
+					transform: none;
+			left: 0;
+			top: 0;
+		}
+		.call{
+			color: $black;
+		}
+		.separate{
+			display: inline-block;
+			vertical-align: top;
+			padding: 0 10px;
+			font-size: 13px;
+			line-height: 17px;
+		}
+	}
+	#search_mini_form{
+		position: relative;
+		padding: 0 36px 0 0;
+		input{
+			display: block;
+			padding: 9px 10px;
+			border: 1px solid $blue;
+			width: 100%;
+		}
+		.srch-btn{
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 37px;
+			height: 35px;
+			background: $blue;
+			border: none;
+			&:before{
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate(-50%, -50%);
+						transform: translate(-50%, -50%);
+				@extend %iconsSprite;
+				@include back-pos('ico-search');
+			}
+		}
+	}
+}
+.search-autocomplete{
+	padding: 3px 0 0;
+	border: 1px solid $blue;
+	background:$white;
+	z-index: 9;
+	border-top: none;
+	color: $black;
+	border-radius: 0 0 5px 5px;
+	-webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+			box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+	li {
+		border-top: 1px solid $blue;
+		margin: 0 9px;
+		padding: 6px 10px 3px;
+		cursor: pointer;
+		&:hover{
+			background:$blue;
+			color: $white;
+		}
+		&.first{
+			border: none;
+		}
+	}
+}
+
+// login
+.sign-in-block{
+	width: 171px;
+	background:$white;
+	position: absolute;
+	top: 1px;
+	z-index: 10;
+	@media only screen and (max-width: $phablet){
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+				transform: translateX(-50%);
+	}
+	&:hover{
+		box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+		.sign-in-head{
+			background:$white;
+			border-color: transparent;
+		}
+		.block-login,
+		.register-links{
+			display: block;
+		}
+	}
+	.register-links{
+		display: none;
+		padding: 16px 10px;
+		text-align: left;
+		position: relative;
+		&:before{
+			content: '';
+			position: absolute;
+			left: 9px;
+			right: 9px;
+			top: 0;
+			height: 1px;
+			border-bottom: 1px solid $grey--custom5;
+		}
+		a{
+			position: relative;
+			display: block;
+			margin: 0 0 12px;
+			padding: 0 0 0 14px;
+			text-decoration: none;
+			font-size: 14px;
+			line-height: 16px;
+			color: $grey---darkLight;
+			&:before{
+				content: '';
+				position: absolute;
+				top: 50%;
+				-webkit-transform: translateY(-50%);
+						transform: translateY(-50%);
+				left: 0;
+				@extend %iconsSprite;
+				@include back-pos('ico-arrow-right-min');
+			}
+		}
+		a:last-child{
+			position: relative;
+			padding: 8px;
+			background:$blue;
+			color: $white;
+			position: relative;
+			margin: 38px 14px 4px;
+			font-weight: bold;
+			text-align: center;
+			&:before{
+				left: -14px;
+				right: -14px;
+				width: auto;
+				top: -21px;
+				height: 1px;
+				background: none;
+				border-bottom: 1px solid $grey--custom5;
+			}
+		}
+	}
+	.sign-in-head{
+		text-align: center;
+		background:$grey--custom3;
+		border-bottom: 1px solid $grey--custom6;
+		.skip-link{
+			position: relative;
+			display: block;
+			padding: 7px 30px 7px 10px;
+			text-decoration: none;
+			font-size: 12px;
+			line-height: 16px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			&:before{
+				content: '';
+				position: absolute;
+				top: 46%;
+				right: 14px;
+				-webkit-transform: translateY(-50%);
+						transform: translateY(-50%);
+				@extend %iconsSprite;
+				@include back-pos('ico-arrow-down');
+				width: 10px;
+			}
+		}
+		.label{
+			color: $grey--default;
+		}
+	}
+}
+.block-login{
+	display: none;
+	padding: 0 12px 12px;
+	form{
+		font-size: 14px;
+		line-height: 16px;
+	}
+	.login-head{
+		display: block;
+		margin: 0 -10px 7px;
+		padding: 7px;
+		text-align: center;
+		background: $grey--light;
+		color: $blue;
+		text-transform: uppercase;
+		font-size: 18px;
+		line-height: 20px;
+	}
+	label{
+		display: block;
+		margin: 0 0 1px;
+		color: $grey---darkLight;
+	}
+	input{
+		display: block;
+		width: 100%;
+		padding: 7px 7px 6px;
+		border-radius: 5px;
+	}
+	.form-row{
+		margin: 0 0 8px;
+	}
+	.account-login{
+		padding: 10px 0;
+	}
+	.forgot-pass-link{
+		display: inline-block;
+		font-size: 11px;
+		line-height: 13px;
+	}
+	.actions{
+		float: none;
+		text-align: center;
+		padding: 14px 0 20px;
+		button[type="submit"]{
+			display: inline-block;
+			padding: 8px 8px 9px;
+			min-width: 122px;
+			border: none;
+			background: $blue;
+			color: $white;
+			font-weight: bold;
+			span{
+				font-size: 14px;
+				line-height: 16px;
+			}
+		}
+	}
+	.sign-up-link{
+		border-top: 1px solid $grey--custom5;
+		padding: 17px 10px 8px;
+		text-align: center;
+		font-size: 16px;
+		line-height: 18px;
+	}
+}
+
+
+
+
+.multi-banner-holder{
+	position: relative;
+	padding: 74px 0 116px;
+	@media only screen and (max-width: $phablet){
+		padding: 3% 0;
+	}
+	.banner-preview{
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		@media only screen and (max-width: $phablet){
+			width: 100%;
+		}
+	}
+	.banner-info{
+		max-width: 470px;
+		position: relative;
+		z-index: 1;
+		@media only screen and (max-width: $mobile){
+			text-align: center;
+		}
+	}
+	.text-holder{
+		margin: 0 0 51px;
+		font-size: 18px;
+		line-height: 24px;
+		color: $black;
+		@media only screen and (max-width: $phablet){
+			margin: 0 0 20px;
+		}
+		@media only screen and (max-width: $mobile){
+			font-size: 16px;
+			line-height: 24px;
+		}
+	}
+}
+.thumbs-wrapper{
+	margin-top: -47px;
+	padding: 0 0 23px;
+	border-bottom: 8px solid $grey--light;
+	@media only screen and (max-width: $mobile){
+		margin: 0;
+		padding: 10px 0 23px;
+	}
+	.discount-info{
+		margin: -17px 0 0;
+		display: block;
+		text-align: right;
+		font-size: 14px;
+		line-height: 16px;
+		color: $black;
+		@media only screen and (max-width: $phablet){
+			margin: 0;
+			padding: 30px 0 0;
+			text-align: center;
+		}
+	}
+}
+.home-banner-list{
+	li{
+		display: inline-block;
+		margin: 0 0 0 9px;
+		border: 2px solid $grey--custom;
+		cursor: pointer;
+		&:first-child{
+			margin: 0;
+		}
+		div{
+			display: block;
+			border: 1px solid $white;
+			width: 95px;
+			height: 94px;
+			@media only screen and (max-width: $phablet){
+				width: 70px;
+				height: 70px;
+			}
+			@media only screen and (max-width: $mobile){
+				width: 54px;
+				height: 54px;
+			}
+		}
+	}
+	.slick-active{
+		border-color: $green;
+	}
+}

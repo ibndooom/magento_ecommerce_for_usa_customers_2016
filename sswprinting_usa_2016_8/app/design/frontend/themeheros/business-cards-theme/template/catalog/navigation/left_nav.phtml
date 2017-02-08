@@ -1,0 +1,88 @@
+<?php 
+$_currentCategory = Mage::registry('current_category');
+
+$currUrl = Mage::helper('core/url')->getCurrentUrl();
+
+$cats = explode("/" , $currUrl);
+
+$count = count($cats);
+
+
+if ( $_currentCategory->getParentId() == Mage::app()->getStore()->getRootCategoryId() )
+    {
+        // current category is a toplevel category
+        $loadCategory = $_currentCategory;
+    }
+    else
+    {
+        $loadCategory = Mage::getModel('catalog/category')->load($_currentCategory->getParentId());
+       
+    }    
+	//echo $loadCategory->getChildren();
+  
+    $subCategories = explode(',', $loadCategory->getChildren());
+   
+   
+    
+	//echo $subCategories;
+	//exit;
+
+ ?>
+<?php $_helper = Mage::helper('catalog/category') ?>
+<?php $_categories = $_helper->getStoreCategories() ?>
+
+<?php if (count($_categories) > 0): ?>
+
+
+<!--<div class="block block-tags">
+	<div class="block-title"><?php echo $this->__('Top Categories')?></div>
+    <div class="block-content main-cat">
+    	<ul>
+			<?php foreach($_categories as $_category):
+			 $currname = Mage::registry('current_category')->getName();
+			 	
+				
+			?>
+            <li>
+            	<a class="<?php //if($currname == $_category->getName() ||( $_category->getUrlKey() == $cats[$count-2]))  echo 'active';?>" 
+				<?php if($_category->getUrlKey() == $cats[$count-2] || $_category->getName() == Mage::registry('current_category')->getName()){ ?> <?php } ?> href="<?php echo $_helper->getCategoryUrl($_category) ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</div>-->
+<?php 
+//echo "<pre>";
+//echo count($subCategories[0]);
+if ($subCategories[0] != '') { ?>
+<div class="block block-tags">
+		<div class="block-title"><?php $currcat = explode(".",$cats[4]);
+		//echo Mage::registry('current_category')->getName(); ]
+		echo $currcat[0]; ?></div>
+		<div class="block-content sub-cat">
+            <ul>
+                <?php foreach($subCategories as $_subcategory): 
+				$cat = Mage::getModel('catalog/category')->load($_subcategory);
+				
+				//if($cat->getIsActive())
+				?>
+				
+                    <li>
+                        <a class="<?php if($cat->getName() == Mage::registry('current_category')->getName()) echo 'active';?>" href="<?php echo $cat->getURL() ?>" title="<?php echo $cat->getName() ?>">
+							<?php echo $cat->getName() ?>
+							
+                        </a>
+                    </li>
+				
+                <?php endforeach; ?>
+				
+            </ul>
+		</div>
+		
+	</div>
+	<?php }?>
+            <?php //endif; ?>
+            <?php //endif; ?>
+    
+   
+<?php endif; ?>

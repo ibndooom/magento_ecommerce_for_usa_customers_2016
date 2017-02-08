@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">  
+<cms_index_index>
+	    <!--<reference name="content">
+            <block type="imageslider/imageslider" before="-" name="imageslider" template="imageslider/imageslider.phtml" />
+        </reference>-->
+</cms_index_index>  
+ 
+</layout>

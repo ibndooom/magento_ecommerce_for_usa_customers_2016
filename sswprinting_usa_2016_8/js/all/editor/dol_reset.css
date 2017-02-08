@@ -1,0 +1,55 @@
+	
+	/**  Forties CSS  **/
+.dol-index-index .section{
+	padding:0px;
+}
+/*.dol-index-index button.button span {
+	background-color:#ddd ; 
+	color:#333;
+}*/
+.dol-index-index #save_design_login_box button.button, .top_toolbar button.button{
+	height:35px !important;
+}
+.dol-index-index #vtab input.input-text{
+	/*height: 26px;*/
+}
+.dol-index-index button.button span span {
+	padding:0 12px;
+	height:35px; 
+	line-height:34px;
+}
+#svg_editor .tool_multi div.icon {
+	width: 140px;
+}
+#svg_editor .image_panel .value_image snap{font-size:11px;}
+#svg_editor div.icon, #svg_editor span.icon {
+/* 	background-color:transparent; */
+/* 	background-position:0 0; */
+	background-repeat:no-repeat;
+	border-radius:0%;
+	vertical-align:middle;
+	display:block;
+	padding:0px;
+}
+#svg_editor .refit .icon {margin-top:-1px;}
+
+	/**  Ultimo CSS **/	
+#svg_editor.ultimo_svg{margin:0 0 0 2px !important}
+#font_view_content #previewimage .text{
+	font-size: 20px;
+}
+#review_proof_box .desc{margin-right:-25px}
+#review_proof_box .desc{padding:21px !important}
+#review_proof_box .desc img{margin:-7px -3px -3px 10px !important;float:right}
+
+#add_to_cart_box .desc{margin-left:-15px}
+#add_to_cart_box .desc{padding:21px !important}
+#add_to_cart_box .desc .desc img{float:right;margin:-6px 2px -3px 10px !important}
+
+#save_design_login_box button.btn-login-save-design{margin-bottom:20px !important;}
+#save_design_login_box_container input#px_sd_password{margin-right:6px}
+
+#svg_editor.ultimo_svg #line_spacing{margin-left: 8px !important;}
+
+.dropdown .mini-products-list li:hover{background:none !important;}
+.dropdown .mini-products-list li{width:300px !important;margin-top:5px;background:none;border:none;}

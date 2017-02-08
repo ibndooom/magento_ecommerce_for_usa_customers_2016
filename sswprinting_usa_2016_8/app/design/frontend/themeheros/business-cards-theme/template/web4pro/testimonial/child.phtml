@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dmitriy
+ * Date: 13.07.15
+ * Time: 14:51
+ */
+foreach($this->getTestimonials() as $_testimonial):?>
+	<div class="testimonial">
+		<div class="f-left photo">
+			<div class="image-outer">
+				<img src="<?php echo $this->getImageUrl($_testimonial); ?>" width="100" height="100"/>
+			</div>
+			<span class="persona"><?php echo $_testimonial->getName();?></span>
+		</div>
+		<blockquote><?php echo $_testimonial->getTestimonial(); ?></blockquote></blockquote>
+	</div>
+<?php endforeach;?>

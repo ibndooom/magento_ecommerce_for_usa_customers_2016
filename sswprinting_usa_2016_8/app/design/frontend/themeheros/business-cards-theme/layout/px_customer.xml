@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+<!--
+Default layout, loads most of the pages
+-->
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="customer"><name>my_images</name><path>customer/images</path><label>My Images</label></action>
+            <action method="addLink" translate="label" module="customer"><name>my_designs</name><path>customer/designs</path><label>My Saved Designs</label></action>
+            <action method="addLink" translate="label" module="customer"><name>my_templates</name><path>customer/templates</path><label>My Templates</label></action>
+            <remove name="catalog.compare.sidebar"/>
+        </reference>
+    </customer_account>
+    
+    
+    <customer_images_index translate="label">
+        <label>Customer My Images</label>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="customer"><title>My Uploaded Images</title></action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="core/template" name="customer_images" template="pixopa/customer/images.phtml" />
+        </reference>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="customer"><title>My Images</title></action>
+        </reference>
+    </customer_images_index>
+    
+    
+    <customer_designs_index translate="label">
+        <label>Customer My Designs</label>
+        <update handle="customer_account"/>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="customer"><title>My Saved Designs</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="core/template" name="customer_designs" template="pixopa/customer/designs.phtml" />
+        </reference>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="customer"><title>My Saved Designs</title></action>
+        </reference>
+    </customer_designs_index>
+    
+    
+    <customer_templates_index translate="label">
+        <label>Customer My Templates</label>
+        <update handle="customer_account"/>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="customer"><title>My Templates</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="core/template" name="customer_templates" template="pixopa/customer/templates.phtml" />
+        </reference>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title" module="customer"><title>My Templates</title></action>
+        </reference>
+    </customer_templates_index>
+
+</layout>
